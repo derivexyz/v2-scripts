@@ -1,7 +1,9 @@
-import {callWeb3, toBN} from "../web3/utils";
-import {loadContractAddresses} from "../getAddresses";
+import {callWeb3, executeWeb3, toBN} from "../web3/utils";
+import {getAllAddresses} from "../getAddresses";
 import { getSubaccountMargin} from "./auctions";
 import {subIdToOptionDetails} from "./option";
+import {getManagerAddress, ManagerType} from "../types/managers";
+import {ethers} from "ethers";
 
 export type AccountPortfolio = {
     cash: bigint,
@@ -30,9 +32,38 @@ export type AccountDetails = {
 }
 
 
+export async function createAndGetNewSubaccount(wallet: ethers.Wallet, manager: ManagerType): Promise<bigint> {
+    const addresses = await getAllAddresses();
+
+    const tx = await executeWeb3(wallet, addresses.subAccounts, 'createAccount(address,address)', [wallet.address, await getManagerAddress(manager)]);
+    return getSubaccountIdFromEvents(tx.logs);
+}
+
+export async function approveSubaccount(wallet: ethers.Wallet, spender: string, subaccount: bigint) {
+    const addresses = await getAllAddresses();
+
+    const approved = await callWeb3(null, addresses.subAccounts, 'getApproved(uint256)', [subaccount], ["address"]);
+    if (approved == spender) {
+        return;
+    }
+
+    await executeWeb3(wallet, addresses.subAccounts, 'approve(address to,uint256 tokenId)', [spender, subaccount]);
+}
+
+export function getSubaccountIdFromEvents(logs: any[]) {
+    const filteredLogs = logs.filter(x => x.topics[0] == "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef");
+    if (filteredLogs.length > 1) {
+        throw Error("More than one subaccount created in a single transaction");
+    }
+    if (filteredLogs.length == 0) {
+        throw Error("No subaccount created in transaction");
+    }
+    const subAccId = filteredLogs[0].topics[3];
+    return BigInt(subAccId);
+}
 
 export async function getAccountDetails(subAccId: bigint): Promise<AccountDetails> {
-    const addresses = await loadContractAddresses();
+    const addresses = await getAllAddresses();
 
     const lastTradeId = await callWeb3(null, addresses.subAccounts, 'lastAccountTradeId(uint256)', [subAccId], ["uint256"]);
 
@@ -54,7 +85,7 @@ export async function getAccountDetails(subAccId: bigint): Promise<AccountDetail
 }
 
 export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPortfolio> {
-    const addresses = await loadContractAddresses();
+    const addresses = await getAllAddresses();
 
     const balances = await callWeb3(null, addresses.subAccounts, 'getAccountBalances(uint256)', [subAccId], ["(address,uint256,int256)[]"]);
 

@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "getBalances": "ts-node ./src/scripts/getBalances.ts"
+    "debugTrace": "ts-node ./src/scripts/debugTrace.ts",
+    "getAllCurrentAuctions": "ts-node ./src/scripts/getAllCurrentAuctions.ts",
+    "getBalances": "ts-node ./src/scripts/getBalances.ts",
+    "liquidationFlow": "ts-node ./src/scripts/liquidationFlow.ts",
+    "mintAndTradePerps": "ts-node ./src/scripts/mintAndTradePerps.ts"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +16,7 @@
   "dependencies": {
     "axios": "^1.6.2",
     "child_process": "^1.0.2",
+    "commander": "^11.1.0",
     "dotenv": "^16.3.1",
     "ethers": "^6.8.1",
     "ts-node": "^10.9.1",

@@ -76,7 +76,7 @@ async function loadMarketAddresses(market: string): Promise<any> {
     };
 }
 
-export async function loadContractAddresses(): Promise<AllContracts> {
+export async function getAllAddresses(): Promise<AllContracts> {
     if (cachedAddresses) {
         return cachedAddresses;
     }

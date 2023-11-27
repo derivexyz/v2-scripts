@@ -1,7 +1,7 @@
 import { BigNumberish, ethers } from 'ethers';
 import { exec, execSync } from 'child_process';
 import {vars} from "../../vars";
-import {debugTraceLog} from "../debugTraceLog";
+import {debugTraceLog} from "./debugTraceLog";
 
 
 function execAsync(cmd: string, options: any) {
@@ -16,7 +16,7 @@ function execAsync(cmd: string, options: any) {
 }
 
 // allow for decimals to be passed in up to 9dp of precision
-export function toBN(val: string, decimals?: number): string {
+export function toBN(val: string, decimals?: number): bigint {
     decimals = decimals ?? 18;
     // multiplier is to handle decimals
     if (val.includes('e')) {
@@ -44,7 +44,7 @@ export function toBN(val: string, decimals?: number): string {
         x[1] = x[1].slice(0, decimals);
         val = x[0] + '.' + x[1];
     }
-    return ethers.parseUnits(val, decimals).toString();
+    return ethers.parseUnits(val, decimals);
 }
 
 export function fromBN(val: BigNumberish, dec?: number): string {
@@ -58,7 +58,7 @@ export async function executeWeb3(
     args: any[],
     options = '--gas-limit 15000000 -- --broadcast',
 ) {
-    const argsStr = args.map((x) => `"${x.toString()}"`).join(' ');
+    const argsStr = args.map((x) => `"${stringifyForCast(x)}"`).join(' ');
     console.log(
         `sending from ${signer.address}\n`,
         `cast send <...> ${contractAddr} "${func}" ${
@@ -66,7 +66,6 @@ export async function executeWeb3(
         } ${options}`,
     );
 
-    let res;
     let lastError;
     for (let i = 0; i < 3; i++) {
         try {
@@ -88,7 +87,7 @@ export async function executeWeb3(
     throw new Error(`Error in executeWeb3: ${lastError}`);
 }
 
-export function decodeCastOutput(out: Buffer, funcName: string): Promise<string> {
+export function decodeCastOutput(out: Buffer, funcName: string): Promise<any> {
     const res = JSON.parse(out.toString('utf-8'));
 
     if (res.status !== '0x1') {
@@ -189,4 +188,17 @@ export async function deployContract(signer: ethers.Wallet, bytecode: string) {
         throw new Error(`Failed to deploy contract: ${res.error}. Tx hash: ${res.transactionHash}`);
     }
     return res.contractAddress;
+}
+
+function stringifyForCast(val: any) {
+    return JSON.parse(JSON.stringify(val, (key, value) => {
+        switch (typeof value) {
+            case 'bigint':
+                return value.toString()
+            case 'object': // to handle arrays
+                return `(${value.map((x: any) => stringifyForCast(x))})`
+            default:
+                return value // return everything else unchanged
+        }
+    }));
 }

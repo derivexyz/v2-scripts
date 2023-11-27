@@ -1,10 +1,10 @@
 import {execSync} from "child_process";
-import {AllContracts, loadContractAddresses} from "./getAddresses";
-import {vars} from "../vars";
+import {AllContracts, getAllAddresses} from "../getAddresses";
+import {vars} from "../../vars";
 
 export async function debugTraceLog(tx_hash: string) {
     // Parse JSON data
-    const data: AllContracts = await loadContractAddresses(); // switch .env to .env.<cluster> to use different cluster
+    const data: AllContracts = await getAllAddresses(); // switch .env to .env.<cluster> to use different cluster
     console.log({ tx_hash });
 
     // Initial command

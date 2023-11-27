@@ -1,7 +1,8 @@
-import {callWeb3, getLogsWeb3} from "../web3/utils";
-import {loadContractAddresses} from "../getAddresses";
+import {callWeb3, executeWeb3, getLogsWeb3, toBN} from "../web3/utils";
+import {getAllAddresses} from "../getAddresses";
 import {ethers} from "ethers";
 import {AccountMarginDetails} from "./subaccounts";
+import {timeSeconds} from "../utils/time";
 
 export type AuctionDetails  = {
     subAccId: bigint,
@@ -37,7 +38,7 @@ export type AuctionAccountMargin = {
 
 
 export async function getAuctionParams(): Promise<AuctionParams> {
-    const addresses = await loadContractAddresses();
+    const addresses = await getAllAddresses();
     const auctionParamsRes = await callWeb3(null, addresses.auction, 'getAuctionParams()', [], ["uint", "uint", "uint", "uint", "uint", "uint", "uint"]);
     return {
         startingMtMPercentage: auctionParamsRes[0],
@@ -51,7 +52,7 @@ export async function getAuctionParams(): Promise<AuctionParams> {
 }
 
 export async function getAllAuctionsubAccIds() {
-    const addresses = await loadContractAddresses();
+    const addresses = await getAllAddresses();
 
     // Find all current auctions
     const allsubAccIds = new Set<bigint>();
@@ -65,7 +66,7 @@ export async function getAllAuctionsubAccIds() {
 }
 
 export async function getAuctionDetails(subAccId: bigint): Promise<AuctionDetails> {
-    const addresses = await loadContractAddresses();
+    const addresses = await getAllAddresses();
 
     if (addresses.auction == "0x026dD5F94275faa74E41b16fea68f664d1ec68cC") {
         // uint accountId; uint scenarioId; bool insolvent; bool ongoing; uint cachedMM;
@@ -95,7 +96,7 @@ export async function getAuctionDetails(subAccId: bigint): Promise<AuctionDetail
 }
 
 export async function getSubaccountMargin(subAccId: bigint): Promise<AuctionAccountMargin> {
-    const addresses = await loadContractAddresses();
+    const addresses = await getAllAddresses();
     const mmRes = await callWeb3(null, addresses.auctionUtils, 'getMM(uint256)', [subAccId], ["address", "int256", "int", "uint"]);
     return {
         manager: mmRes[0],
@@ -105,12 +106,45 @@ export async function getSubaccountMargin(subAccId: bigint): Promise<AuctionAcco
     }
 }
 
+export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liquidatorId: bigint, percent: bigint) {
+    const addresses = await getAllAddresses();
+    const auctionDetails = await getAuctionDetails(subAccId);
+    const auctionMargin = await getSubaccountMargin(subAccId);
+    const auctionParams = await getAuctionParams();
+
+    const cashRequired = getBufferMargin(auctionMargin, auctionParams) + getAuctionBidPrice(auctionDetails, auctionMargin, auctionParams);
+
+    return await executeWeb3(
+        wallet,
+        addresses.auctionUtils,
+        'advancedBid(uint256,uint256,uint256,uint256,int256,uint256,uint256,bool,bytes)',
+        [
+            auctionMargin.worstScenario,
+            subAccId,
+            liquidatorId,
+            percent, // percent of account
+            // Safety checks, set to 0 for simplicity. TODO: update these
+            0,
+            0,
+            // collateral amount must be > 0.
+            // Final balance of liquidator must be > BM * % for solvent, > MM * % for insolvent
+            // So add enough collateral to cover that + the bid price * %
+            // add 1 for buffer
+            cashRequired * percent / toBN('1') + toBN('1'),
+            // Merge the account back into the one liquidating
+            false,
+            ""
+        ]
+    )
+}
+
+
 ////////////////////////////////////////////
 // Helpers for calculating auction prices //
 ////////////////////////////////////////////
 
 export function getAuctionBidPrice(auction: AuctionDetails, margin: AccountMarginDetails, params: AuctionParams) {
-    const now = BigInt(Math.floor(Date.now() / 1000));
+    const now = BigInt(timeSeconds());
 
     if (auction.insolvent) {
         if (now - auction.startTime > params.insolventAuctionLength) {
