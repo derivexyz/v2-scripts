@@ -26,7 +26,8 @@ async function getAllCurrentAuctions() {
     for (const subAccId of allsubAccIds) {
         // manager, mm, mtm, worstScenario
         auctionResults.push(getAuctionDetails(subAccId));
-        if (auctionResults.length % 10 == 0) {
+        // Every 20 entries, wait for them all to finish before moving on
+        if (auctionResults.length % 20 == 0) {
             await Promise.all(auctionResults);
         }
     }
@@ -39,8 +40,8 @@ async function getAllCurrentAuctions() {
 
     for (let i = 0; i < currentAuctions.length; ++i) {
         accountDetails.push(getAccountDetails(currentAuctions[i].subAccId));
-        // Every 10 entries, wait for them all to finish before moving on
-        if (accountDetails.length % 10 == 0) {
+        // Every 20 entries, wait for them all to finish before moving on
+        if (accountDetails.length % 20 == 0) {
             await Promise.all(accountDetails);
         }
     }
@@ -52,7 +53,7 @@ async function getAllCurrentAuctions() {
         const portfolioComposition = await accountDetails[i];
 
         const [bidPrice, discount] = getAuctionBidPrice(auction, portfolioComposition.margin, auctionParams);
-        logger.info(`\nSubaccount: ${chalk.bold(auction.subAccId)}`);
+        logger.info(`\nSubaccount: ${chalk.bold(auction.subAccId)} (lastTradeId: ${portfolioComposition.lastTradeId})`);
         printPortfolio(portfolioComposition.portfolio)
         logger.info(`MtM: ${prettifyBN(portfolioComposition.margin.MtM)}`);
         logger.info(`MM: ${prettifyBN(portfolioComposition.margin.MM)}`);
