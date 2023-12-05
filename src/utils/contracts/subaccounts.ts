@@ -1,9 +1,12 @@
-import {callWeb3, executeWeb3, toBN} from "../web3/utils";
+import {callWeb3, executeWeb3, fromBN, toBN} from "../web3/utils";
 import {getAllAddresses} from "../getAddresses";
 import { getSubaccountMargin} from "./auctions";
 import {subIdToOptionDetails} from "./option";
 import {getManagerAddress, ManagerType} from "../../types/managers";
 import {ethers} from "ethers";
+import {logger} from "../logger";
+import chalk from "chalk";
+import {prettifyBN} from "../misc/prettifyBN";
 
 export type AccountPortfolio = {
     cash: bigint,
@@ -60,7 +63,7 @@ export function getSubaccountIdFromEvents(logs: any[]) {
 
     if (filteredLogs.length > 1) {
         if (!filteredLogs.every(x => x.topics[3] == subAccId)) {
-            console.log(filteredLogs)
+            logger.debug(filteredLogs)
             throw Error("More than one subaccount created in a single transaction");
         }
     }
@@ -145,13 +148,17 @@ export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPort
 }
 
 export function printPortfolio(portfolio: AccountPortfolio) {
-    console.log("Cash: ", portfolio.cash);
+    logger.info(`- Cash: ${prettifyBN(portfolio.cash)}`);
     for (const currency of Object.keys(portfolio.markets)) {
-        console.log(currency);
-        console.log("  Base: ", portfolio.markets[currency].base);
-        console.log("  Perp: ", portfolio.markets[currency].perp);
+        logger.info(`- ${currency}:`);
+        if (portfolio.markets[currency].base != 0n) {
+            logger.info(`-- Base: ${prettifyBN(portfolio.markets[currency].base)}`);
+        }
+        if (portfolio.markets[currency].perp != 0n) {
+            logger.info(`-- Perp: ${prettifyBN(portfolio.markets[currency].perp)}`);
+        }
         for (const optionKey of Object.keys(portfolio.markets[currency].options)) {
-            console.log(`  ${optionKey}: `, portfolio.markets[currency].options[optionKey]);
+            logger.info(`-- ${optionKey}: ${prettifyBN(portfolio.markets[currency].options[optionKey])}`);
         }
     }
 }

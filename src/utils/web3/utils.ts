@@ -2,6 +2,7 @@ import { BigNumberish, ethers } from 'ethers';
 import { exec, execSync } from 'child_process';
 import {vars} from "../../vars";
 import {debugTraceLog} from "./debugTraceLog";
+import {logger} from "../logger";
 
 
 function execAsync(cmd: string, options: any) {
@@ -59,7 +60,7 @@ export async function executeWeb3(
     options = '--gas-limit 15000000 -- --broadcast',
 ) {
     const argsStr = args.map((x) => `"${stringifyForCast(x)}"`).join(' ');
-    console.log(
+    logger.debug(
         `sending from ${signer.address}\n`,
         `cast send <...> ${contractAddr} "${func}" ${
             argsStr.slice(0, 149) + (argsStr.length > 150 ? '[...]"' : '')
@@ -67,7 +68,7 @@ export async function executeWeb3(
     );
 
     let lastError;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 1; i++) {
         try {
             const out = execSync(
                 `cast send -j --private-key ${signer.privateKey} --rpc-url ${vars.provider} ${contractAddr} "${func}" ${argsStr} ${options}`,
@@ -76,29 +77,27 @@ export async function executeWeb3(
             return decodeCastOutput(out, func);
         } catch (e) {
             lastError = e;
-            console.log('Cast send error: ', e);
+            logger.debug('Cast send error: ', e);
             const randomDelay = Math.floor(Math.random() * 9000 + 1000); // Random delay between 1-10 seconds
-            console.log(`Attempt ${i + 1} failed. Retrying in ${randomDelay / 1000} seconds...`);
+            logger.debug(`Attempt ${i + 1} failed. Retrying in ${randomDelay / 1000} seconds...`);
             await new Promise((resolve) => setTimeout(resolve, randomDelay));
         }
     }
 
-    console.error('Max retries reached. Giving up.');
+    logger.error('Max retries reached. Giving up.');
     throw new Error(`Error in executeWeb3: ${lastError}`);
 }
 
-export function decodeCastOutput(out: Buffer, funcName: string): Promise<any> {
+export async function decodeCastOutput(out: Buffer, funcName: string): Promise<any> {
     const res = JSON.parse(out.toString('utf-8'));
 
     if (res.status !== '0x1') {
-        console.log('==========================');
-        console.log('=== FAILED TRANSACTION ===');
-        console.log('==========================\n');
-        console.log(res);
-        debugTraceLog(res.transactionHash);
+        logger.debug('=== FAILED TRANSACTION ===\n');
+        logger.debug(res);
+        await debugTraceLog(res.transactionHash);
         throw new Error(`Failed to execute command: ${res.error}. Tx hash: ${res.transactionHash}`);
     }
-    console.log(`${funcName} Success. Transaction hash: ${res.transactionHash}`);
+    logger.info(`${funcName} Success. Transaction hash: ${res.transactionHash}`);
 
     return res;
 }
@@ -112,7 +111,7 @@ export async function callWeb3(
 ) {
     const PK = signer ? signer.privateKey : '0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef';
     const argsStr = args.map((x) => `"${x.toString()}"`).join(' ');
-    console.log(
+    logger.debug(
         `cast call <...> ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.length > 80 ? '[...]"' : '')}`,
     );
     const out: any = await execAsync(
@@ -138,7 +137,7 @@ export async function callWeb3(
 export async function getLogsWeb3(contractAddr: string, eventType: string) {
     // TODO: filters
 
-    console.log(
+    logger.debug(
         `cast logs -j --rpc-url ${vars.provider} --address ${contractAddr} --from-block 0 --to-block latest "${eventType}"`,
     );
     const out: any = await execAsync(
@@ -184,7 +183,7 @@ export async function deployContract(signer: ethers.Wallet, bytecode: string) {
     });
     const res = JSON.parse(out.toString('utf-8'));
     if (res.status !== '0x1') {
-        console.log(res);
+        logger.info(res);
         throw new Error(`Failed to deploy contract: ${res.error}. Tx hash: ${res.transactionHash}`);
     }
     return res.contractAddress;

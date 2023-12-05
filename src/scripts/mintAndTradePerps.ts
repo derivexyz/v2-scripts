@@ -4,6 +4,7 @@ import {approveIfNotApproved} from "../utils/contracts/cash";
 import {getAllAddresses} from "../utils/getAddresses";
 import {executeWeb3, toBN} from "../utils/web3/utils";
 import {submitTransfer} from "../utils/contracts/transfer";
+import {logger} from "../utils/logger";
 
 
 async function mintAccountsAndTradePerps() {
@@ -12,7 +13,7 @@ async function mintAccountsAndTradePerps() {
     // Note: assumes these two wallets have been funded with USDC and ETH
     const wallet1 = new ethers.Wallet('0x' + "c0ffee".padEnd(64, '0'));
     const wallet2 = new ethers.Wallet('0x' + "c1ffee".padEnd(64, '0'));
-    console.log(`Creating a perp trade between ${wallet1.address} and ${wallet2.address}`);
+    logger.info(`Creating a perp trade between ${wallet1.address} and ${wallet2.address}`);
 
     // get subaccounts ready for trading
     const subAcc1 = await prepareAccount(wallet1, toBN("100", 6));
@@ -41,4 +42,4 @@ async function prepareAccount(wallet: ethers.Wallet, collateralAmount: bigint) {
     return subAcc;
 }
 
-mintAccountsAndTradePerps().then(console.log).catch(console.error);
+mintAccountsAndTradePerps().then().catch(console.error);

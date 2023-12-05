@@ -4,6 +4,7 @@ import {SignedAction} from "./actionSigning";
 import {getRandomNonce} from "../../misc/getRandomNonce";
 import {getCurrency, getManagerAddress, ManagerType, MarginType} from "../../../types/managers";
 import {timeSeconds} from "../../misc/time";
+import {logger} from "../../logger";
 
 
 export async function constructAndSignDeposit(
@@ -24,7 +25,7 @@ export async function constructAndSignDeposit(
         addresses.cash, // Asset address
         await getManagerAddress(manager), // Manager address
     ];
-    console.log({amount: amount.toString()});
+    logger.debug({amount: amount.toString()});
 
     const DepositDataABI = ['uint256', 'address', 'address'];
     const encodedData = encoder.encode(DepositDataABI, depositData);

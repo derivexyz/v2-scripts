@@ -9,6 +9,7 @@ import {approveSubaccount, createAndGetNewSubaccount, getSubaccountIdFromEvents}
 import * as process from "process";
 import {bidOnAccount} from "../utils/contracts/auctions";
 import {sleep} from "../utils/misc/time";
+import {logger} from "../utils/logger";
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ async function setupLiquidationAccs(tradingDepositAmt: string, biddingDepositAmt
     // Start with a wallet on L2 that already has some USDC and ETH
     const wallet = new ethers.Wallet(process.env.SIGNING_KEY as string);
 
-    console.log(`Using ${wallet.address} as executor and signer`);
+    logger.info(`Using ${wallet.address} as executor and signer`);
 
     // create an exchange account
     await createAccount(wallet);
@@ -31,9 +32,9 @@ async function setupLiquidationAccs(tradingDepositAmt: string, biddingDepositAmt
         // deposit to subaccount
         await depositToNewSubaccount(wallet, toBN(tradingDepositAmt, 6));
         vars.tradingSubaccount = await getLatestSubaccount(wallet);
-        console.log(`Created trading subaccount: ${vars.tradingSubaccount}`);
+        logger.info(`Created trading subaccount: ${vars.tradingSubaccount}`);
     } else {
-        console.log(`Using existing trading subaccount: ${vars.tradingSubaccount}`);
+        logger.info(`Using existing trading subaccount: ${vars.tradingSubaccount}`);
         // TODO: deposit into this subaccount
     }
 
@@ -42,9 +43,9 @@ async function setupLiquidationAccs(tradingDepositAmt: string, biddingDepositAmt
 
         // create subaccount
         vars.biddingSubaccount = await createAndGetNewSubaccount(wallet, 'SM');
-        console.log(`Created bidding subaccount: ${vars.biddingSubaccount}`);
+        logger.info(`Created bidding subaccount: ${vars.biddingSubaccount}`);
     } else {
-        console.log(`Using existing bidding subaccount: ${vars.biddingSubaccount}`);
+        logger.info(`Using existing bidding subaccount: ${vars.biddingSubaccount}`);
     }
 
     const depositBn = toBN(biddingDepositAmt, 6);
@@ -53,10 +54,10 @@ async function setupLiquidationAccs(tradingDepositAmt: string, biddingDepositAmt
         await executeWeb3(wallet, addresses.cash, 'deposit(uint256,uint256)', [vars.biddingSubaccount, toBN(biddingDepositAmt, 6)]);
     }
 
-    console.log(`Trading subaccount: ${vars.tradingSubaccount}`);
-    console.log(`Bidding subaccount: ${vars.biddingSubaccount}`);
+    logger.info(`Trading subaccount: ${vars.tradingSubaccount}`);
+    logger.info(`Bidding subaccount: ${vars.biddingSubaccount}`);
 }
 
 setupLiquidationAccs(process.argv[process.argv.length - 2], process.argv[process.argv.length - 2])
-  .then(console.log)
+  .then()
   .catch(console.error);

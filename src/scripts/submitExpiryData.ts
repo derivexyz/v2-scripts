@@ -5,12 +5,13 @@ import {executeWeb3, toBN} from "../utils/web3/utils";
 import {ethers} from "ethers";
 import {vars} from "../vars";
 import {encodeBaseFeedData} from "../utils/feeds/encodeFeedData";
+import {logger} from "../utils/logger";
 
 
 const abiCoder = new ethers.AbiCoder();
 
 export function encodeForwardData(data: any): string {
-  console.log(data);
+  logger.debug(data);
   return encodeBaseFeedData(
     data,
     abiCoder.encode(
@@ -32,12 +33,12 @@ async function submitExpiryData(currency: string, expiry: number) {
   // Start with a wallet on L2 that already has some USDC and ETH
   const wallet = new ethers.Wallet(vars.signingKey);
 
-  console.log(`Using ${wallet.address} as executor and signer`);
+  logger.debug(`Using ${wallet.address} as executor and signer`);
 
   const now = timeSeconds();
   const res = await axios.get(`http://103.4.9.137:12345/expiry-data?expiry=${expiry}&currency=${currency}`);
 
-  console.log(res);
+  logger.debug(res);
   const data = res.data;
 
   if (data.deadline < now) {

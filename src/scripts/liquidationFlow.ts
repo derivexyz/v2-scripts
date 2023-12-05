@@ -9,6 +9,7 @@ import {approveSubaccount, createAndGetNewSubaccount, getSubaccountIdFromEvents}
 import * as process from "process";
 import {bidOnAccount} from "../utils/contracts/auctions";
 import {sleep} from "../utils/misc/time";
+import {logger} from "../utils/logger";
 
 dotenv.config();
 
@@ -30,7 +31,7 @@ async function liquidationFlow(accountToBidOn: string) {
     // Start with a wallet on L2 that already has some USDC and ETH
     const wallet = new ethers.Wallet(process.env.SIGNING_KEY as string);
 
-    console.log(`Using ${wallet.address} as executor and signer`);
+    logger.info(`Using ${wallet.address} as executor and signer`);
 
     // Approve auction utils to use bidding subaccount
     await approveSubaccount(wallet, addresses.auctionUtils, BigInt(vars.biddingSubaccount));
@@ -39,7 +40,7 @@ async function liquidationFlow(accountToBidOn: string) {
     const tx = await bidOnAccount(wallet, BigInt(accountToBidOn), BigInt(vars.biddingSubaccount), toBN("0.001"));
     const newSubAcc = getSubaccountIdFromEvents(tx.logs);
 
-    console.log(`Created new subaccount from bidding: ${newSubAcc}`);
+    logger.info(`Created new subaccount from bidding: ${newSubAcc}`);
 
     // Deposit the new subaccount into the exchange
     await approveSubaccount(wallet, addresses.matching, newSubAcc);
@@ -49,7 +50,7 @@ async function liquidationFlow(accountToBidOn: string) {
     await sleep(10000);
 
     const subAcc = await getLatestSubaccount(wallet);
-    console.log(`Using subaccount: ${subAcc}`);
+    logger.info(`Using subaccount: ${subAcc}`);
 
     // TODO: Transfer all the assets from this new subaccount into the trading account
     // await transferAll(wallet, subAcc, vars.tradingSubaccount);
@@ -57,4 +58,4 @@ async function liquidationFlow(accountToBidOn: string) {
 }
 
 // TODO: add a price limit/percentage/more configuration for bidding
-liquidationFlow(process.argv[process.argv.length - 1]).then(console.log).catch(console.error);
+liquidationFlow(process.argv[process.argv.length - 1]).then().catch(console.error);

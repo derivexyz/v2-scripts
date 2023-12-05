@@ -1,10 +1,8 @@
-import {ethers, Mnemonic} from "ethers";
+import {ethers} from "ethers";
 import {tryRPC} from "./requests";
 import {isRPCError} from "../../types/rpc";
 import {
-  Amount, Direction, InstrumentName, LimitPrice, MaxFee, Nonce,
-  PrivateTransferPosition,
-  PrivateTransferPositionParamsSchema, Signature, SignatureExpirySec, Signer, SubaccountId
+  PrivateTransferPosition
 } from "../../types/stubs/private.transfer_position";
 import {getRandomNonce} from "../misc/getRandomNonce";
 import {getAllBalances} from "./wallets/getBalances";
@@ -12,6 +10,7 @@ import {SignedAction} from "../contracts/matching/actionSigning";
 import {getAllAddresses} from "../getAddresses";
 import {toBN} from "../web3/utils";
 import {optionDetailsToSubId} from "../contracts/option";
+import {logger} from "../logger";
 
 
 export async function transferAll(wallet: ethers.Wallet, from: bigint, to: bigint) {
@@ -22,8 +21,8 @@ export async function transferAll(wallet: ethers.Wallet, from: bigint, to: bigin
     await submitTransfer(wallet, from, to, position.instrument_name, position.instrument_type, position.amount);
   }
 
-  console.log(allBalances.result.positions);
-  console.log(allBalances.result.collaterals);
+  logger.debug(allBalances.result.positions);
+  logger.debug(allBalances.result.collaterals);
 }
 
 
@@ -38,7 +37,7 @@ function getEncodedTradeData(asset: string, subId: bigint, limitPrice: bigint, a
     direction == "buy", //isbid
   ];
 
-  // console.log('tradeData', tradeData);
+  // logger.debug('tradeData', tradeData);
 
   const TradeDataABI = ['address', 'uint', 'int', 'int', 'uint', 'uint', 'bool'];
   const encoder = ethers.AbiCoder.defaultAbiCoder();
@@ -132,6 +131,7 @@ export async function submitTransfer(wallet: ethers.Wallet, from: bigint, to: bi
     throw `Failed to transfer asset: ${JSON.stringify(transferRes.error)}`;
   }
 
-  console.log(transferRes.result)
+  logger.debug(transferRes.result)
+  return transferRes.result;
 }
 

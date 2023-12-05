@@ -3,6 +3,7 @@ import {getAllAddresses} from "../getAddresses";
 import {ethers} from "ethers";
 import {AccountMarginDetails} from "./subaccounts";
 import {timeSeconds} from "../misc/time";
+import {logger} from "../logger";
 
 export type AuctionDetails  = {
     subAccId: bigint,
@@ -112,10 +113,11 @@ export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liqu
     const auctionMargin = await getSubaccountMargin(subAccId);
     const auctionParams = await getAuctionParams();
 
-    const cashRequired = getAuctionBidPrice(auctionDetails, auctionMargin, auctionParams) - getBufferMargin(auctionMargin, auctionParams);
+    const [bidPrice, _]= getAuctionBidPrice(auctionDetails, auctionMargin, auctionParams)
+    const cashRequired = bidPrice - getBufferMargin(auctionMargin, auctionParams);
 
-    console.log(cashRequired)
-    console.log(percent)
+    logger.debug(`cashRequired: ${cashRequired}`)
+    logger.debug(`percent: ${percent}`)
 
     return await executeWeb3(
         wallet,
@@ -146,23 +148,37 @@ export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liqu
 // Helpers for calculating auction prices //
 ////////////////////////////////////////////
 
-export function getAuctionBidPrice(auction: AuctionDetails, margin: AccountMarginDetails, params: AuctionParams) {
+export function getAuctionBidPrice(auction: AuctionDetails, margin: AccountMarginDetails, params: AuctionParams): [bigint, bigint] {
     const now = BigInt(timeSeconds());
 
     if (auction.insolvent) {
         if (now - auction.startTime > params.insolventAuctionLength) {
-            return margin.MM
+            return [margin.MM, -toBN("1")];
         } else {
             const cappedMtm: bigint = margin.MtM > 0 ? BigInt(0) : margin.MtM // will now be <= 0
-            return (margin.MM - cappedMtm) * (now - auction.startTime) / params.insolventAuctionLength;
+            const discount = (now - auction.startTime) / params.insolventAuctionLength;
+            return [(margin.MM - cappedMtm) * (now - auction.startTime) / params.insolventAuctionLength, -discount];
         }
     } else {
         const bufferMargin = getBufferMargin(margin, params);
 
         const discount = getDiscountPercentage(auction.startTime, now, params);
 
-        return (bufferMargin - auction.reservedCash) * discount / ethers.parseUnits("1", 18);
+        return [(bufferMargin - auction.reservedCash) * discount / toBN('1'), discount];
     }
+}
+
+export function getAuctionMaxProportion(margin: AccountMarginDetails, params: AuctionParams, discount: bigint): bigint {
+    const bufferMargin = getBufferMargin(margin, params);
+
+    if (bufferMargin > 0) {
+        return toBN("1");
+    }
+
+    const denominator = bufferMargin - (margin.MtM * discount / toBN("1"))
+        - (margin.MM - margin.MtM) * (toBN("1") - discount) / toBN("1");
+
+    return bufferMargin / denominator;
 }
 
 export function getBufferMargin(margin: AccountMarginDetails, params: AuctionParams) {

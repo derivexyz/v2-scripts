@@ -1,11 +1,11 @@
 import {execSync} from "child_process";
 import {AllContracts, getAllAddresses} from "../getAddresses";
 import {vars} from "../../vars";
+import {logger} from "../logger";
 
 export async function debugTraceLog(tx_hash: string) {
     // Parse JSON data
     const data: AllContracts = await getAllAddresses(); // switch .env to .env.<cluster> to use different cluster
-    console.log({ tx_hash });
 
     // Initial command
     let command = `cast run --rpc-url ${vars.provider} ${tx_hash}`;
@@ -45,11 +45,11 @@ export async function debugTraceLog(tx_hash: string) {
     command += ` --label ${data.perpSettlementHelper}:perpSettlementHelper`;
 
     // Execute command
-    console.log('command is:', command);
+    logger.debug('command is:', command);
     try {
         const output = execSync(command, { shell: '/bin/bash' });
-        console.log(output.toString());
+        logger.debug(output.toString());
     } catch (error) {
-        console.error(`Error: ${error}`);
+        logger.error(`Error: ${error}`);
     }
 }

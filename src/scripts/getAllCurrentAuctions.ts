@@ -1,14 +1,15 @@
-import { Wallet} from "ethers";
-import {getAllFeedManagerData} from "../utils/feeds/getManagerData";
 import {
     AuctionDetails,
     getAllAuctionsubAccIds, getAuctionBidPrice,
-    getAuctionDetails,
-    getAuctionParams, getSubaccountMargin
+    getAuctionDetails, getAuctionMaxProportion,
+    getAuctionParams
 } from "../utils/contracts/auctions";
-import {getAllAddresses} from "../utils/getAddresses";
-import {getAccountDetails, printPortfolio} from "../utils/contracts/subaccounts";
+import { getAccountDetails, printPortfolio} from "../utils/contracts/subaccounts";
 import * as console from "console";
+import {logger} from "../utils/logger";
+import {fromBN} from "../utils/web3/utils";
+import chalk from "chalk";
+import {prettifyBN} from "../utils/misc/prettifyBN";
 
 
 const SUBMIT_FEED_DATA = true;
@@ -18,30 +19,53 @@ async function getAllCurrentAuctions() {
     const auctionParams = await getAuctionParams()
     const allsubAccIds = await getAllAuctionsubAccIds();
 
-    const currentAuctions: AuctionDetails[] = []
+    const auctionResults: Promise<AuctionDetails>[] = []
+
+    logger.info(`Checking ${allsubAccIds.size} total seen auctions`);
 
     for (const subAccId of allsubAccIds) {
-        console.log('Checking', subAccId);
         // manager, mm, mtm, worstScenario
-        const auctionDetails = await getAuctionDetails(subAccId);
-        if (auctionDetails.ongoing) {
-            currentAuctions.push(auctionDetails)
+        auctionResults.push(getAuctionDetails(subAccId));
+        if (auctionResults.length % 10 == 0) {
+            await Promise.all(auctionResults);
         }
     }
 
-    console.log(currentAuctions);
+    const currentAuctions = (await Promise.all(auctionResults)).filter(a => a.ongoing);
 
+    logger.info(`Getting details for ${currentAuctions.length} ongoing auctions`);
 
-    for (const auction of currentAuctions) {
-        const portfolioComposition = await getAccountDetails(auction.subAccId);
+    const accountDetails = [];
 
-        const bidPrice = getAuctionBidPrice(auction, portfolioComposition.margin, auctionParams);
-        console.log('Checking auction', auction.subAccId);
-        console.log("bid price", bidPrice);
-        console.log(portfolioComposition)
+    for (let i = 0; i < currentAuctions.length; ++i) {
+        accountDetails.push(getAccountDetails(currentAuctions[i].subAccId));
+        // Every 10 entries, wait for them all to finish before moving on
+        if (accountDetails.length % 10 == 0) {
+            await Promise.all(accountDetails);
+        }
+    }
+
+    await Promise.all(accountDetails);
+
+    for (let i = 0; i < currentAuctions.length; ++i) {
+        const auction = currentAuctions[i];
+        const portfolioComposition = await accountDetails[i];
+
+        const [bidPrice, discount] = getAuctionBidPrice(auction, portfolioComposition.margin, auctionParams);
+        logger.info(`\nSubaccount: ${chalk.bold(auction.subAccId)}`);
         printPortfolio(portfolioComposition.portfolio)
+        logger.info(`MtM: ${prettifyBN(portfolioComposition.margin.MtM)}`);
+        logger.info(`MM: ${prettifyBN(portfolioComposition.margin.MM)}`);
+        logger.info(`auction is ${auction.insolvent ? chalk.yellow("insolvent") : chalk.blue("solvent")}`);
+        logger.info(`bid price: ${chalk.yellow(fromBN(bidPrice))}`);
+        logger.info(`discount %: ${fromBN(discount)}`);
+        logger.info(`max bid percentage: ${
+            auction.insolvent 
+              ? "1.0" 
+              : fromBN(getAuctionMaxProportion(portfolioComposition.margin, auctionParams, discount))
+        }`);
     }
 }
 
 
-getAllCurrentAuctions().then(console.log).catch(console.error);
+getAllCurrentAuctions().then().catch(console.error);
