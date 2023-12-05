@@ -2,7 +2,7 @@ import {callWeb3, executeWeb3, toBN} from "../web3/utils";
 import {getAllAddresses} from "../getAddresses";
 import { getSubaccountMargin} from "./auctions";
 import {subIdToOptionDetails} from "./option";
-import {getManagerAddress, ManagerType} from "../types/managers";
+import {getManagerAddress, ManagerType} from "../../types/managers";
 import {ethers} from "ethers";
 
 export type AccountPortfolio = {
@@ -51,14 +51,20 @@ export async function approveSubaccount(wallet: ethers.Wallet, spender: string, 
 }
 
 export function getSubaccountIdFromEvents(logs: any[]) {
+    // Transfer events
     const filteredLogs = logs.filter(x => x.topics[0] == "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef");
-    if (filteredLogs.length > 1) {
-        throw Error("More than one subaccount created in a single transaction");
-    }
     if (filteredLogs.length == 0) {
         throw Error("No subaccount created in transaction");
     }
     const subAccId = filteredLogs[0].topics[3];
+
+    if (filteredLogs.length > 1) {
+        if (!filteredLogs.every(x => x.topics[3] == subAccId)) {
+            console.log(filteredLogs)
+            throw Error("More than one subaccount created in a single transaction");
+        }
+    }
+
     return BigInt(subAccId);
 }
 

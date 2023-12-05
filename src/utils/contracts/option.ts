@@ -19,3 +19,8 @@ export function subIdToOptionDetails(subId: bigint): OptionDetails {
         isCall
     }
 }
+
+export function optionDetailsToSubId(optionDetails: OptionDetails): bigint {
+    // return (isCall ? 1n : 0n) << 95n | strike / 1e10 << 32n | expiry;
+    return (optionDetails.isCall ? 1n : 0n) << 95n | optionDetails.strike / 10_000_000_000n << 32n | optionDetails.expiry;
+}

@@ -5,12 +5,12 @@ import {
     encodePerpData,
     encodeSpotData,
     encodeVolData
-} from "../../utils/web3/managerData";
-import { getAllAddresses} from "../../utils/getAddresses";
+} from "./encodeFeedData";
+import { getAllAddresses} from "../getAddresses";
 import {vars} from "../../vars";
-import {timeSeconds} from "../../utils/utils/time";
+import {timeSeconds} from "../misc/time";
 
-export async function getAllFeedManagerData(skipSpot=false, skipForward=false, skipVol=false, skipPerp=false) {
+export async function getAllFeedManagerData(skipSpot= false, skipForward= false, skipVol=false, skipPerp=false) {
     const addresses = await getAllAddresses()
     
     const now = timeSeconds();

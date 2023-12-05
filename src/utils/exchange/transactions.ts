@@ -1,5 +1,5 @@
 import {tryRPC} from "./requests";
-import {sleep} from "../utils/time";
+import {sleep} from "../misc/time";
 import console from "console";
 
 export type Status = "requested" | "pending" | "settled" | "reverted" | "ignored";

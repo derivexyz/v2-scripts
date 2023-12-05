@@ -1,4 +1,4 @@
-import {getAllAddresses} from "../getAddresses";
+import {getAllAddresses} from "../utils/getAddresses";
 
 export type MarginType = "SM" | "PM";
 

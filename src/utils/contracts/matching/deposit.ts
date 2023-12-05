@@ -1,9 +1,9 @@
 import {ethers} from "ethers";
 import {getAllAddresses} from "../../getAddresses";
 import {SignedAction} from "./actionSigning";
-import {getRandomNonce} from "../../utils/getRandomNonce";
-import {getCurrency, getManagerAddress, ManagerType, MarginType} from "../../types/managers";
-import {timeSeconds} from "../../utils/time";
+import {getRandomNonce} from "../../misc/getRandomNonce";
+import {getCurrency, getManagerAddress, ManagerType, MarginType} from "../../../types/managers";
+import {timeSeconds} from "../../misc/time";
 
 
 export async function constructAndSignDeposit(

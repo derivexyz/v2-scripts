@@ -1,7 +1,7 @@
 import {getAllAddresses} from "../getAddresses";
 import {executeWeb3} from "../web3/utils";
 import {ethers} from "ethers";
-import {getAllFeedManagerData} from "../../scripts/utils/getManagerData";
+import {getAllFeedManagerData} from "../feeds/getManagerData";
 
 
 export async function submitTransfer(wallet: ethers.Wallet, subAccFrom: bigint, subAccTo: bigint, assetAddr: string, amount: bigint, subId: bigint) {

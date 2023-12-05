@@ -1,5 +1,5 @@
 import * as ethers from 'ethers';
-import { toBN } from './utils';
+import { toBN } from '../web3/utils';
 
 const abiCoder = new ethers.AbiCoder();
 

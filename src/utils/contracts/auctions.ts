@@ -2,7 +2,7 @@ import {callWeb3, executeWeb3, getLogsWeb3, toBN} from "../web3/utils";
 import {getAllAddresses} from "../getAddresses";
 import {ethers} from "ethers";
 import {AccountMarginDetails} from "./subaccounts";
-import {timeSeconds} from "../utils/time";
+import {timeSeconds} from "../misc/time";
 
 export type AuctionDetails  = {
     subAccId: bigint,
@@ -112,7 +112,10 @@ export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liqu
     const auctionMargin = await getSubaccountMargin(subAccId);
     const auctionParams = await getAuctionParams();
 
-    const cashRequired = getBufferMargin(auctionMargin, auctionParams) + getAuctionBidPrice(auctionDetails, auctionMargin, auctionParams);
+    const cashRequired = getAuctionBidPrice(auctionDetails, auctionMargin, auctionParams) - getBufferMargin(auctionMargin, auctionParams);
+
+    console.log(cashRequired)
+    console.log(percent)
 
     return await executeWeb3(
         wallet,
@@ -130,10 +133,10 @@ export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liqu
             // Final balance of liquidator must be > BM * % for solvent, > MM * % for insolvent
             // So add enough collateral to cover that + the bid price * %
             // add 1 for buffer
-            cashRequired * percent / toBN('1') + toBN('1'),
+            cashRequired * percent / toBN('1') + toBN('10'),
             // Merge the account back into the one liquidating
             false,
-            ""
+            "0x"
         ]
     )
 }

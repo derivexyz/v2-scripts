@@ -8,7 +8,8 @@
     "getAllCurrentAuctions": "ts-node ./src/scripts/getAllCurrentAuctions.ts",
     "getBalances": "ts-node ./src/scripts/getBalances.ts",
     "liquidationFlow": "ts-node ./src/scripts/liquidationFlow.ts",
-    "mintAndTradePerps": "ts-node ./src/scripts/mintAndTradePerps.ts"
+    "mintAndTradePerps": "ts-node ./src/scripts/mintAndTradePerps.ts",
+    "submitExpiryData": "ts-node src/scripts/submitExpiryData.ts"
   },
   "keywords": [],
   "author": "",

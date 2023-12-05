@@ -1,11 +1,11 @@
 import {ethers} from "ethers";
-import {tryRequest, tryRPC, tryRPCWithRetry} from "./requests";
+import {tryRequest, tryRPC, tryRPCWithRetry} from "../requests";
 import {assert} from "console";
-import {constructAndSignDeposit} from "../contracts/matching/deposit";
-import {getCurrency, getMarginType, ManagerType, MarginType} from "../types/managers";
-import {getSuccessfulTransaction} from "./transactions";
-import {isRPCError} from "../types/rpc";
-import {fromBN} from "../web3/utils";
+import {constructAndSignDeposit} from "../../contracts/matching/deposit";
+import {getCurrency, getMarginType, ManagerType, MarginType} from "../../../types/managers";
+import {getSuccessfulTransaction} from "../transactions";
+import {isRPCError} from "../../../types/rpc";
+import {fromBN} from "../../web3/utils";
 
 export async function createAccount(wallet: ethers.Wallet | string) {
     if (wallet instanceof ethers.Wallet) {

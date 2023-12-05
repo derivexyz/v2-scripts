@@ -1,5 +1,5 @@
 import { Wallet} from "ethers";
-import {getAllFeedManagerData} from "./utils/getManagerData";
+import {getAllFeedManagerData} from "../utils/feeds/getManagerData";
 import {
     AuctionDetails,
     getAllAuctionsubAccIds, getAuctionBidPrice,
