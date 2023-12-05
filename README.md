@@ -36,6 +36,17 @@ Get all the current auctions.
 pnpm getAllCurrentAuctions
 ```
 
+### setupLiquidationAccs
+
+Setup the account required for liquidation flow. There will be one account on the exchange that positions will be 
+transferred into and one account that will be used to bid on the auction this is not on the exchange.
+
+Can be re-run to deposit into the accounts that are set.
+
+```bash
+pnpm setupLiquidationAccs <tradingDepositAmount (e.g. 10.1)> <bidderDepositAmount (e.g. 550.6)>
+```
+
 ### liquidationFlow
 
 Run through a liquidation flow. Create subaccounts, bid, deposit to exchange and transfer assets to another account.

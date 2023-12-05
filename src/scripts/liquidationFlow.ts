@@ -18,6 +18,12 @@ async function liquidationFlow(accountToBidOn: string) {
         console.error("Please specify an account to bid on");
         process.exit(1);
     }
+    if (!vars.tradingSubaccount || !vars.biddingSubaccount) {
+        throw Error(
+          "Please run setupLiquidationAccs first. Must set TRADING_SUBACCOUNT and BIDDING_SUBACCOUNT in .env"
+        );
+    }
+
 
     const addresses = await getAllAddresses();
 
@@ -26,29 +32,6 @@ async function liquidationFlow(accountToBidOn: string) {
 
     console.log(`Using ${wallet.address} as executor and signer`);
 
-    await approveIfNotApproved(wallet, addresses.usdc, addresses.deposit, toBN("200000", 6));
-    await approveIfNotApproved(wallet, addresses.usdc, addresses.cash, toBN("1000000", 6));
-
-    // Create an account on the exchange, depositing into it
-    await createAccount(wallet);
-    if (!vars.tradingSubaccount) {
-        // create subaccount
-        // deposit to subaccount
-        await depositToNewSubaccount(wallet, toBN("1000", 6));
-        vars.tradingSubaccount = await getLatestSubaccount(wallet);
-        console.log(`Created trading subaccount: ${vars.tradingSubaccount}`);
-    }
-
-    // Create a new subaccount on the base layer - this is the liquidation wallet
-    if (!vars.biddingSubaccount) {
-        // create subaccount
-        vars.biddingSubaccount = await createAndGetNewSubaccount(wallet, 'SM');
-        console.log(`Created bidding subaccount: ${vars.biddingSubaccount}`);
-        // deposit to subaccount
-        // await executeWeb3(wallet, addresses.cash, 'deposit(uint256,uint256)', [vars.biddingSubaccount, toBN("1000000", 6)]);
-        throw Error("Deposit CashAsset to new subaccount, and set in .env")
-    }
-
     // Approve auction utils to use bidding subaccount
     await approveSubaccount(wallet, addresses.auctionUtils, BigInt(vars.biddingSubaccount));
 
@@ -56,7 +39,7 @@ async function liquidationFlow(accountToBidOn: string) {
     const tx = await bidOnAccount(wallet, BigInt(accountToBidOn), BigInt(vars.biddingSubaccount), toBN("0.001"));
     const newSubAcc = getSubaccountIdFromEvents(tx.logs);
 
-    // const newSubAcc = 11009;
+    console.log(`Created new subaccount from bidding: ${newSubAcc}`);
 
     // Deposit the new subaccount into the exchange
     await approveSubaccount(wallet, addresses.matching, newSubAcc);
