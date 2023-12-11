@@ -1,4 +1,4 @@
-import {callWeb3, executeWeb3, getLogsWeb3, toBN} from "../web3/utils";
+import {callWeb3, executeWeb3, fromBN, getLogsWeb3, toBN} from "../web3/utils";
 import {getAllAddresses} from "../getAddresses";
 import {ethers} from "ethers";
 import {AccountMarginDetails} from "./subaccounts";
@@ -107,7 +107,7 @@ export async function getSubaccountMargin(subAccId: bigint): Promise<AuctionAcco
     }
 }
 
-export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liquidatorId: bigint, percent: bigint) {
+export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liquidatorId: bigint, percent: bigint, collateralAmount: bigint, lastTradeId: bigint) {
     const addresses = await getAllAddresses();
     const auctionDetails = await getAuctionDetails(subAccId);
     const auctionMargin = await getSubaccountMargin(subAccId);
@@ -118,6 +118,10 @@ export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liqu
 
     logger.debug(`cashRequired: ${cashRequired}`)
     logger.debug(`percent: ${percent}`)
+
+    if (collateralAmount < cashRequired * percent / toBN('1')) {
+        throw Error(`Not enough collateral to bid on account, must have at least ${fromBN(cashRequired * percent / toBN('1'))}`);
+    }
 
     return await executeWeb3(
         wallet,
@@ -130,7 +134,7 @@ export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liqu
             percent, // percent of account
             // Safety checks, set to 0 for simplicity. TODO: update these
             0,
-            0,
+            lastTradeId,
             // collateral amount must be > 0.
             // Final balance of liquidator must be > BM * % for solvent, > MM * % for insolvent
             // So add enough collateral to cover that + the bid price * %

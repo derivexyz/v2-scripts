@@ -24,7 +24,7 @@ export async function tryRPCWithRetry<T extends { request: { method: string; par
         try {
             return await tryRPC(method, params, wallet);
         } catch (error) {
-            logger.warning(`An error occurred during tryRPCWithRetry: ${error}, retrying in ${delay / 1000} seconds...`);
+            logger.warn(`An error occurred during tryRPCWithRetry: ${error}, retrying in ${delay / 1000} seconds...`);
             retry++;
             if (retry < retries) {
                 await new Promise((res) => setTimeout(res, delay));
@@ -70,8 +70,7 @@ export async function tryRequest<T = any, R = any>(
     try {
         if (verbose) {
             logger.debug(
-                `\x1b[34m${method} ${url}\x1b[0m request with data: \n`,
-                `${JSON.stringify(data, null, '\t')}\n`,
+                `\x1b[34m${method} ${url}\x1b[0m request with data: \n ${JSON.stringify(data, null, '\t')}\n`
             );
         }
         const response = await axios.request<R>({
@@ -83,8 +82,8 @@ export async function tryRequest<T = any, R = any>(
         const stringified = JSON.stringify(response.data);
         if (verbose) {
             logger.debug(
-                `\x1b[34m${method} ${url}\x1b[0m successful: \n`,
-                `${JSON.stringify(response.data, null, '\t')}\n` + `with status: ${response.status}`,
+                `\x1b[34m${method} ${url}\x1b[0m successful: \n ${JSON.stringify(response.data, null, '\t')}\n with status: ${response.status}`,
+                ``,
             );
         }
         return {

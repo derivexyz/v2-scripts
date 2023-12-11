@@ -52,8 +52,13 @@ pnpm setupLiquidationAccs <tradingDepositAmount (e.g. 10.1)> <bidderDepositAmoun
 Run through a liquidation flow. Create subaccounts, bid, deposit to exchange and transfer assets to another account.
 
 ```bash
-pnpm liquidationFlow <auctionId>
+pnpm liquidationFlow <auctionId> <percentOfAccount> <collateralAmount> <lastTradeId>
 ```
+
+auctionId - the subaccount id of the account to bid on
+percentOfAccount - the percentage of the account being bid on that you want to take over
+collateralAmount - the amount of collateral to put into the newly generated subaccount (must cover bid cost too)
+lastTradeId - the last trade id that was made on the account being bid on (set to 0 to not check)
 
 ### getBalances
 

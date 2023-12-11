@@ -35,6 +35,7 @@ async function setupLiquidationAccs(tradingDepositAmt: string, biddingDepositAmt
         logger.info(`Created trading subaccount: ${vars.tradingSubaccount}`);
     } else {
         logger.info(`Using existing trading subaccount: ${vars.tradingSubaccount}`);
+        logger.warn(`Not depositing into trading subaccount, not implemented`)
         // TODO: deposit into this subaccount
     }
 

@@ -76,21 +76,21 @@ export async function getAccountDetails(subAccId: bigint): Promise<AccountDetail
 
     const lastTradeId = await callWeb3(null, addresses.subAccounts, 'lastAccountTradeId(uint256)', [subAccId], ["uint256"]);
 
-    const margin = await getSubaccountMargin(subAccId);
+    // const margin = await getSubaccountMargin(subAccId);
 
     const portfolio = await getAccountPortfolio(subAccId);
 
     return {
         subAccId,
-        manager: margin.manager,
+        // manager: margin.manager,
         lastTradeId,
         margin: {
-            MM: margin.MM,
-            MtM: margin.MtM,
-            worstScenario: margin.worstScenario
-        },
+            // MM: margin.MM,
+            // MtM: margin.MtM,
+            // worstScenario: margin.worstScenario
+        } as any,
         portfolio
-    }
+    } as any
 }
 
 export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPortfolio> {

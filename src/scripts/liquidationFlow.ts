@@ -14,7 +14,7 @@ import {logger} from "../utils/logger";
 dotenv.config();
 
 
-async function liquidationFlow(accountToBidOn: string) {
+async function liquidationFlow(accountToBidOn: string, percentage: string, collateralAmount: string, lastTradeId: string) {
     if (!accountToBidOn) {
         console.error("Please specify an account to bid on");
         process.exit(1);
@@ -37,7 +37,7 @@ async function liquidationFlow(accountToBidOn: string) {
     await approveSubaccount(wallet, addresses.auctionUtils, BigInt(vars.biddingSubaccount));
 
     // Bid on the account (creating a new subaccount)
-    const tx = await bidOnAccount(wallet, BigInt(accountToBidOn), BigInt(vars.biddingSubaccount), toBN("0.001"));
+    const tx = await bidOnAccount(wallet, BigInt(accountToBidOn), BigInt(vars.biddingSubaccount), toBN(percentage), toBN(collateralAmount), BigInt(lastTradeId));
     const newSubAcc = getSubaccountIdFromEvents(tx.logs);
 
     logger.info(`Created new subaccount from bidding: ${newSubAcc}`);
@@ -57,5 +57,14 @@ async function liquidationFlow(accountToBidOn: string) {
     // TODO: Clean up the outstanding subaccount
 }
 
-// TODO: add a price limit/percentage/more configuration for bidding
-liquidationFlow(process.argv[process.argv.length - 1]).then().catch(console.error);
+// TODO: add a price limit/more configuration (i.e. merge) for bidding
+liquidationFlow(
+  // account to bid on
+  process.argv[process.argv.length - 4],
+  // percentage of account to bid on
+  process.argv[process.argv.length - 3],
+  // collateral amount to bid with
+  process.argv[process.argv.length - 2],
+  // last trade id
+  process.argv[process.argv.length - 1]
+).then().catch(console.error);
