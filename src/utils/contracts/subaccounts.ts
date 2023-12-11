@@ -5,7 +5,6 @@ import {subIdToOptionDetails} from "./option";
 import {getManagerAddress, ManagerType} from "../../types/managers";
 import {ethers} from "ethers";
 import {logger} from "../logger";
-import chalk from "chalk";
 import {prettifyBN} from "../misc/prettifyBN";
 
 export type AccountPortfolio = {
@@ -30,7 +29,7 @@ export type AccountDetails = {
     subAccId: bigint,
     manager: string,
     lastTradeId: bigint,
-    margin: AccountMarginDetails,
+    margin?: AccountMarginDetails,
     portfolio: AccountPortfolio
 }
 
@@ -76,7 +75,12 @@ export async function getAccountDetails(subAccId: bigint): Promise<AccountDetail
 
     const lastTradeId = await callWeb3(null, addresses.subAccounts, 'lastAccountTradeId(uint256)', [subAccId], ["uint256"]);
 
-    // const margin = await getSubaccountMargin(subAccId);
+    let margin: AccountMarginDetails | undefined = undefined;
+    try {
+        margin = await getSubaccountMargin(subAccId);
+    } catch (e) {
+        logger.warn("Could not compute margin due to feeds being stale")
+    }
 
     const portfolio = await getAccountPortfolio(subAccId);
 
@@ -84,11 +88,7 @@ export async function getAccountDetails(subAccId: bigint): Promise<AccountDetail
         subAccId,
         // manager: margin.manager,
         lastTradeId,
-        margin: {
-            // MM: margin.MM,
-            // MtM: margin.MtM,
-            // worstScenario: margin.worstScenario
-        } as any,
+        margin,
         portfolio
     } as any
 }

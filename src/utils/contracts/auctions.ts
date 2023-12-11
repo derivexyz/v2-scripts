@@ -107,7 +107,7 @@ export async function getSubaccountMargin(subAccId: bigint): Promise<AuctionAcco
     }
 }
 
-export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liquidatorId: bigint, percent: bigint, collateralAmount: bigint, lastTradeId: bigint) {
+export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liquidatorId: bigint, percent: bigint, collateralAmount: bigint | null, lastTradeId: bigint, maxCost: bigint, merge: boolean) {
     const addresses = await getAllAddresses();
     const auctionDetails = await getAuctionDetails(subAccId);
     const auctionMargin = await getSubaccountMargin(subAccId);
@@ -118,6 +118,11 @@ export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liqu
 
     logger.debug(`cashRequired: ${cashRequired}`)
     logger.debug(`percent: ${percent}`)
+
+    if (collateralAmount == null) {
+        // if unspecified, provide the minimum with some buffer
+        collateralAmount = cashRequired * percent / toBN('1') + toBN("10");
+    }
 
     if (collateralAmount < cashRequired * percent / toBN('1')) {
         throw Error(`Not enough collateral to bid on account, must have at least ${fromBN(cashRequired * percent / toBN('1'))}`);
@@ -132,16 +137,14 @@ export async function bidOnAccount(wallet: ethers.Wallet, subAccId: bigint, liqu
             subAccId,
             liquidatorId,
             percent, // percent of account
-            // Safety checks, set to 0 for simplicity. TODO: update these
-            0,
+            // Safety checks, set to 0 to skip
+            maxCost,
             lastTradeId,
             // collateral amount must be > 0.
             // Final balance of liquidator must be > BM * % for solvent, > MM * % for insolvent
-            // So add enough collateral to cover that + the bid price * %
-            // add 1 for buffer
-            cashRequired * percent / toBN('1') + toBN('10'),
+            collateralAmount,
             // Merge the account back into the one liquidating
-            false,
+            merge,
             "0x"
         ]
     )

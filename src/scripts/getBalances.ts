@@ -1,8 +1,7 @@
 import {BigNumberish} from "ethers";
-import * as process from "process";
 import {getAccountDetails, printPortfolio} from "../utils/contracts/subaccounts";
-import console from "console";
 import {logger} from "../utils/logger";
+import {Command} from "commander";
 
 async function getBalances(subAccId: BigNumberish) {
     const accountDetails = await getAccountDetails(BigInt(subAccId));
@@ -10,5 +9,7 @@ async function getBalances(subAccId: BigNumberish) {
     printPortfolio(accountDetails.portfolio)
 }
 
-
-getBalances(process.argv[process.argv.length - 1]).then().catch(console.error);
+export default new Command("getBalances")
+  .description("Get balances for a subaccount")
+  .argument("<subaccount>", "Subaccount to get balances for")
+  .action(getBalances)

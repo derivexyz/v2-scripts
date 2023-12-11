@@ -10,9 +10,7 @@ import {logger} from "../utils/logger";
 import {fromBN} from "../utils/web3/utils";
 import chalk from "chalk";
 import {prettifyBN} from "../utils/misc/prettifyBN";
-
-
-const SUBMIT_FEED_DATA = true;
+import {Command} from "commander";
 
 
 async function getAllCurrentAuctions() {
@@ -50,23 +48,30 @@ async function getAllCurrentAuctions() {
 
     for (let i = 0; i < currentAuctions.length; ++i) {
         const auction = currentAuctions[i];
-        const portfolioComposition = await accountDetails[i];
+        const portfolio = await accountDetails[i];
 
-        const [bidPrice, discount] = getAuctionBidPrice(auction, portfolioComposition.margin, auctionParams);
-        logger.info(`\nSubaccount: ${chalk.bold(auction.subAccId)} (lastTradeId: ${portfolioComposition.lastTradeId})`);
-        printPortfolio(portfolioComposition.portfolio)
-        logger.info(`MtM: ${prettifyBN(portfolioComposition.margin.MtM)}`);
-        logger.info(`MM: ${prettifyBN(portfolioComposition.margin.MM)}`);
+
+        logger.info(`\nSubaccount: ${chalk.bold(auction.subAccId)} (lastTradeId: ${portfolio.lastTradeId})`);
         logger.info(`auction is ${auction.insolvent ? chalk.yellow("insolvent") : chalk.blue("solvent")}`);
-        logger.info(`bid price: ${chalk.yellow(fromBN(bidPrice))}`);
-        logger.info(`discount %: ${fromBN(discount)}`);
-        logger.info(`max bid percentage: ${
-            auction.insolvent 
-              ? "1.0" 
-              : fromBN(getAuctionMaxProportion(portfolioComposition.margin, auctionParams, discount))
-        }`);
+        printPortfolio(portfolio.portfolio)
+        if (portfolio.margin) {
+            const [bidPrice, discount] = getAuctionBidPrice(auction, portfolio.margin, auctionParams);
+            logger.info(`MtM: ${prettifyBN(portfolio.margin.MtM)}`);
+            logger.info(`MM: ${prettifyBN(portfolio.margin.MM)}`);
+            logger.info(`bid price: ${chalk.yellow(fromBN(bidPrice))}`);
+            logger.info(`discount %: ${fromBN(discount)}`);
+            logger.info(`max bid percentage: ${
+              auction.insolvent
+                ? "1.0"
+                : fromBN(getAuctionMaxProportion(portfolio.margin, auctionParams, discount))
+            }`);
+        } else {
+            logger.warn(chalk.red("Could not compute margin (must update feeds)"));
+        }
     }
 }
 
 
-getAllCurrentAuctions().then().catch(console.error);
+export default new Command("getAllCurrentAuctions")
+  .description("Get all current auctions. Note; may need to submitFeedData first to get accurate values.")
+  .action(getAllCurrentAuctions)

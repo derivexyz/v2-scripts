@@ -6,6 +6,7 @@ import {ethers} from "ethers";
 import {vars} from "../vars";
 import {encodeBaseFeedData} from "../utils/feeds/encodeFeedData";
 import {logger} from "../utils/logger";
+import {Command} from "commander";
 
 
 const abiCoder = new ethers.AbiCoder();
@@ -59,4 +60,7 @@ async function submitExpiryData(currency: string, expiry: number) {
   await executeWeb3(wallet as any, addresses.markets[currency].forwardFeed, 'acceptData(bytes)', [encodedData]);
 }
 
-submitExpiryData(process.argv[2], parseInt(process.argv[3])).then(console.log).catch(console.error);
+export default new Command("submitExpiryData")
+  .description("Submit expiry data for a currency")
+  .arguments("<currency> <expiry>")
+  .action(submitExpiryData);

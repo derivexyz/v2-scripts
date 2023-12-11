@@ -10,6 +10,7 @@ import * as process from "process";
 import {bidOnAccount} from "../utils/contracts/auctions";
 import {sleep} from "../utils/misc/time";
 import {logger} from "../utils/logger";
+import {Command} from "commander";
 
 dotenv.config();
 
@@ -59,6 +60,18 @@ async function setupLiquidationAccs(tradingDepositAmt: string, biddingDepositAmt
     logger.info(`Bidding subaccount: ${vars.biddingSubaccount}`);
 }
 
-setupLiquidationAccs(process.argv[process.argv.length - 2], process.argv[process.argv.length - 2])
-  .then()
-  .catch(console.error);
+export default new Command("setupLiquidationAccs")
+  .summary("Setup liquidation accounts, or deposit more into existing ones.")
+  .description(`Setup liquidation accounts, or deposit more into existing ones. 
+  Requires SIGNING_KEY env var to be set. 
+  For deposits, requires USDC to be in the wallet.
+  If TRADING_SUBACCOUNT or BIDDING_SUBACCOUNT env vars are set, will use those subaccounts instead of creating new ones.
+  
+  Sets up the accounts required for liquidation flow. There will be one account on the exchange that positions will be 
+  transferred into and one account that will be used to bid on the auction this is not on the exchange.
+
+  Can be re-run to deposit into the accounts that are set.
+  `)
+  .option("-t, --tradingDepositAmt <tradingDepositAmt>", "Amount to deposit into trading subaccount")
+  .option("-b, --biddingDepositAmt <biddingDepositAmt>", "Amount to deposit into bidding subaccount")
+  .action(setupLiquidationAccs);

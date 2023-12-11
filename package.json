@@ -4,13 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "debugTrace": "ts-node ./src/scripts/debugTrace.ts",
-    "getAllCurrentAuctions": "ts-node ./src/scripts/getAllCurrentAuctions.ts",
-    "getBalances": "ts-node ./src/scripts/getBalances.ts",
-    "setupLiquidationAccs": "ts-node ./src/scripts/setupLiquidationAccs.ts",
-    "liquidationFlow": "ts-node ./src/scripts/liquidationFlow.ts",
-    "mintAndTradePerps": "ts-node src/private-scripts/mintAndTradePerps.ts",
-    "submitExpiryData": "ts-node src/scripts/submitExpiryData.ts"
+    "cmd": "ts-node ./src/cli.ts",
+    "getAllCurrentAuctions": "ts-node ./src/cli.ts getAllCurrentAuctions",
+    "setupLiquidationAccs": "ts-node ./src/cli.ts setupLiquidationAccs",
+    "liquidationFlow": "ts-node ./src/cli.ts liquidationFlow"
   },
   "keywords": [],
   "author": "",

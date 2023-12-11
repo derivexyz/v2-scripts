@@ -1,3 +1,7 @@
 import {debugTraceLog} from "../utils/web3/debugTraceLog";
+import {Command} from "commander";
 
-debugTraceLog(process.argv[2]).then();
+export default new Command("debugTrace")
+  .description("Debug trace a transaction")
+  .argument("<txHash>", "Transaction to debug trace")
+  .action(debugTraceLog)

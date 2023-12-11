@@ -1,7 +1,7 @@
-import console from "console";
 import {logger} from "../utils/logger";
 import {getAllAddresses} from "../utils/getAddresses";
 import {callWeb3, fromBN} from "../utils/web3/utils";
+import {Command} from "commander";
 
 async function checkCashStats() {
   const addresses = await getAllAddresses()
@@ -35,4 +35,6 @@ async function checkCashStats() {
 }
 
 
-checkCashStats().then().catch(console.error);
+export default new Command("checkCashStats")
+  .description("Log common stats about the cash contract")
+  .action(checkCashStats);
