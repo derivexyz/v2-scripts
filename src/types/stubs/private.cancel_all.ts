@@ -9,7 +9,7 @@
  * Cancel all open orders for a given subaccount.
  */
 export type PrivateCancelAll = PrivateCancelAllJSONRPCSchema;
-export type Method = "private/cancel_all";
+export type Method = 'private/cancel_all';
 /**
  * Subaccount ID
  */

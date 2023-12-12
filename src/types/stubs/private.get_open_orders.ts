@@ -9,7 +9,7 @@
  * Get all open orders of a subacccount
  */
 export type PrivateGetOpenOrders = PrivateGetOpenOrdersJSONRPCSchema;
-export type Method = "private/get_open_orders";
+export type Method = 'private/get_open_orders';
 /**
  * Subaccount_id for which to get open orders
  */
@@ -26,16 +26,16 @@ export type AveragePrice = string;
  * If cancelled, reason behind order cancellation
  */
 export type CancelReason =
-  | ""
-  | "user_request"
-  | "mmp_trigger"
-  | "insufficient_margin"
-  | "signed_max_fee_too_low"
-  | "cancel_on_disconnect"
-  | "ioc_or_market_partial_fill"
-  | "session_key_deregistered"
-  | "subaccount_withdrawn"
-  | "compliance";
+  | ''
+  | 'user_request'
+  | 'mmp_trigger'
+  | 'insufficient_margin'
+  | 'signed_max_fee_too_low'
+  | 'cancel_on_disconnect'
+  | 'ioc_or_market_partial_fill'
+  | 'session_key_deregistered'
+  | 'subaccount_withdrawn'
+  | 'compliance';
 /**
  * Creation timestamp (in ms since Unix epoch)
  */
@@ -43,7 +43,7 @@ export type CreationTimestamp = number;
 /**
  * Order direction
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Total filled amount for the order
  */
@@ -91,11 +91,11 @@ export type OrderId = string;
 /**
  * Order status
  */
-export type OrderStatus = "open" | "filled" | "rejected" | "cancelled" | "expired";
+export type OrderStatus = 'open' | 'filled' | 'rejected' | 'cancelled' | 'expired';
 /**
  * Order type
  */
-export type OrderType = "limit" | "market";
+export type OrderType = 'limit' | 'market';
 /**
  * Ethereum signature of the order
  */
@@ -115,7 +115,7 @@ export type SubaccountId1 = number;
 /**
  * Time in force
  */
-export type TimeInForce = "gtc" | "post_only" | "fok" | "ioc";
+export type TimeInForce = 'gtc' | 'post_only' | 'fok' | 'ioc';
 /**
  * List of open orders
  */

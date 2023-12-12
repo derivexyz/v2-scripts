@@ -9,7 +9,7 @@
  * Fix balance drift for a given subaccounts by completely resetting their balances to chain state
  */
 export type InternalFixMultipleBalanceDrift = InternalFixMultipleBalanceDriftJSONRPCSchema;
-export type Method = "internal/fix_multiple_balance_drift";
+export type Method = 'internal/fix_multiple_balance_drift';
 export type SubaccountIdsToUpdate1 = number;
 /**
  * Subaccounts to fix balance drift for

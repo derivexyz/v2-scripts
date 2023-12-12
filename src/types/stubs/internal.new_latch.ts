@@ -6,7 +6,7 @@
  */
 
 export type InternalNewLatch = InternalNewLatchJSONRPCSchema;
-export type Method = "internal/new_latch";
+export type Method = 'internal/new_latch';
 export type PodId = string;
 export type ServiceType = string;
 export type HeartbeatInterval = number;

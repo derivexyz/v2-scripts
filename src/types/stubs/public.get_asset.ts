@@ -9,7 +9,7 @@
  * Get single asset by asset name
  */
 export type PublicGetAsset = PublicGetAssetJSONRPCSchema;
-export type Method = "public/get_asset";
+export type Method = 'public/get_asset';
 /**
  * Asset name
  */
@@ -29,7 +29,7 @@ export type AssetName1 = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type AssetType = "erc20" | "option" | "perp";
+export type AssetType = 'erc20' | 'option' | 'perp';
 /**
  * Underlying currency of asset (`ETH`, `BTC`, etc)
  */
@@ -62,7 +62,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Settlement price of the option
  */

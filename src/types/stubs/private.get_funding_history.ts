@@ -9,7 +9,7 @@
  * Get subaccount funding history.
  */
 export type PrivateGetFundingHistory = PrivateGetFundingHistoryJSONRPCSchema;
-export type Method = "private/get_funding_history";
+export type Method = 'private/get_funding_history';
 /**
  * End timestamp of the event history (default current time)
  */

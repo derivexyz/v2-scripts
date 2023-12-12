@@ -9,7 +9,7 @@
  * Subscribe to a list of channels.
  */
 export type Subscribe = SubscribeJSONRPCSchema;
-export type Method = "subscribe";
+export type Method = 'subscribe';
 export type Channels1 = string;
 /**
  * A list of channels names to subscribe to

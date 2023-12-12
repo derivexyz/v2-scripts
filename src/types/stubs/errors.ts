@@ -111,7 +111,7 @@ export interface RPCError1 {
  */
 export interface Ok {
   code: 0;
-  message: "";
+  message: '';
   data?: any;
 }
 /**
@@ -119,7 +119,7 @@ export interface Ok {
  */
 export interface RateLimitExceeded {
   code: -32000;
-  message: "Rate limit exceeded";
+  message: 'Rate limit exceeded';
   data?: any;
 }
 /**
@@ -127,7 +127,7 @@ export interface RateLimitExceeded {
  */
 export interface ConcurrentWsClientExceeded {
   code: -32100;
-  message: "Number of concurrent websocket clients limit exceeded";
+  message: 'Number of concurrent websocket clients limit exceeded';
   data?: any;
 }
 /**
@@ -135,7 +135,7 @@ export interface ConcurrentWsClientExceeded {
  */
 export interface ParseError {
   code: -32700;
-  message: "Parse error";
+  message: 'Parse error';
   data?: any;
 }
 /**
@@ -143,7 +143,7 @@ export interface ParseError {
  */
 export interface InvalidRequest {
   code: -32600;
-  message: "Invalid Request";
+  message: 'Invalid Request';
   data?: any;
 }
 /**
@@ -151,7 +151,7 @@ export interface InvalidRequest {
  */
 export interface MethodNotFound {
   code: -32601;
-  message: "Method not found";
+  message: 'Method not found';
   data?: any;
 }
 /**
@@ -159,7 +159,7 @@ export interface MethodNotFound {
  */
 export interface InvalidParams {
   code: -32602;
-  message: "Invalid params";
+  message: 'Invalid params';
   data?: any;
 }
 /**
@@ -167,7 +167,7 @@ export interface InvalidParams {
  */
 export interface InternalError {
   code: -32603;
-  message: "Internal error";
+  message: 'Internal error';
   data?: any;
 }
 /**
@@ -175,7 +175,7 @@ export interface InternalError {
  */
 export interface DatabaseError {
   code: 8000;
-  message: "Database error";
+  message: 'Database error';
   data?: any;
 }
 /**
@@ -183,7 +183,7 @@ export interface DatabaseError {
  */
 export interface DjangoError {
   code: 8001;
-  message: "Django error";
+  message: 'Django error';
   data?: any;
 }
 /**
@@ -191,7 +191,7 @@ export interface DjangoError {
  */
 export interface DuplicateCashAsset {
   code: 8002;
-  message: "Duplicate cash asset";
+  message: 'Duplicate cash asset';
   data?: any;
 }
 /**
@@ -199,7 +199,7 @@ export interface DuplicateCashAsset {
  */
 export interface OptionBalanceForSettlementNotFound {
   code: 8003;
-  message: "No open option balance for the settlement event was not found";
+  message: 'No open option balance for the settlement event was not found';
   data?: any;
 }
 /**
@@ -207,7 +207,7 @@ export interface OptionBalanceForSettlementNotFound {
  */
 export interface MoreThanOneOptionBalanceForSettlementFound {
   code: 8004;
-  message: "More than one option balance for the settlement event was found";
+  message: 'More than one option balance for the settlement event was found';
   data?: any;
 }
 /**
@@ -215,7 +215,7 @@ export interface MoreThanOneOptionBalanceForSettlementFound {
  */
 export interface NoVacantInstruments {
   code: 8100;
-  message: "No vacant instruments";
+  message: 'No vacant instruments';
   data?: any;
 }
 /**
@@ -223,7 +223,7 @@ export interface NoVacantInstruments {
  */
 export interface InvalidServiceType {
   code: 8101;
-  message: "Invalid service type";
+  message: 'Invalid service type';
   data?: any;
 }
 /**
@@ -231,7 +231,7 @@ export interface InvalidServiceType {
  */
 export interface LatchNotRetained {
   code: 8102;
-  message: "Latch not retained";
+  message: 'Latch not retained';
   data?: any;
 }
 /**
@@ -239,7 +239,7 @@ export interface LatchNotRetained {
  */
 export interface FeedsNotFound {
   code: 8200;
-  message: "Feeds not found";
+  message: 'Feeds not found';
   data?: any;
 }
 /**
@@ -247,7 +247,7 @@ export interface FeedsNotFound {
  */
 export interface InvalidOptionInstrumentDeactivation {
   code: 8300;
-  message: "Scheduled deactivation too late";
+  message: 'Scheduled deactivation too late';
   data?: any;
 }
 /**
@@ -255,7 +255,7 @@ export interface InvalidOptionInstrumentDeactivation {
  */
 export interface InvalidHeartbeatInterval {
   code: 8301;
-  message: "Engine or publisher heartbeat inervals is invalid";
+  message: 'Engine or publisher heartbeat inervals is invalid';
   data?: any;
 }
 /**
@@ -263,7 +263,7 @@ export interface InvalidHeartbeatInterval {
  */
 export interface InvalidMakerOrTakerFee {
   code: 8303;
-  message: "The maker and/or taker fees are invalid";
+  message: 'The maker and/or taker fees are invalid';
   data?: any;
 }
 /**
@@ -271,7 +271,7 @@ export interface InvalidMakerOrTakerFee {
  */
 export interface OptionSettlementPriceCouldNotBeSaved {
   code: 8402;
-  message: "Option settlement price could not be saved";
+  message: 'Option settlement price could not be saved';
   data?: any;
 }
 /**
@@ -279,7 +279,7 @@ export interface OptionSettlementPriceCouldNotBeSaved {
  */
 export interface CannotSaveSettlementPriceToNonOptionAsset {
   code: 8403;
-  message: "Option settlement price cannot be saved to a non-option asset";
+  message: 'Option settlement price cannot be saved to a non-option asset';
   data?: any;
 }
 /**
@@ -287,7 +287,7 @@ export interface CannotSaveSettlementPriceToNonOptionAsset {
  */
 export interface CounterpartyInsufficientFunds {
   code: 8500;
-  message: "Counterparty insufficient funds";
+  message: 'Counterparty insufficient funds';
   data?: any;
 }
 /**
@@ -295,7 +295,7 @@ export interface CounterpartyInsufficientFunds {
  */
 export interface CounterpartyMaxFeeTooLow {
   code: 8501;
-  message: "Max fee for one or more counterparties is too low";
+  message: 'Max fee for one or more counterparties is too low';
   data?: any;
 }
 /**
@@ -303,7 +303,7 @@ export interface CounterpartyMaxFeeTooLow {
  */
 export interface OrderConfirmationTimeout {
   code: 9000;
-  message: "Order confirmation timeout";
+  message: 'Order confirmation timeout';
   data?: any;
 }
 /**
@@ -311,7 +311,7 @@ export interface OrderConfirmationTimeout {
  */
 export interface ManagerNotFound {
   code: 10000;
-  message: "Manager not found";
+  message: 'Manager not found';
   data?: any;
 }
 /**
@@ -319,7 +319,7 @@ export interface ManagerNotFound {
  */
 export interface AssetNotErc20 {
   code: 10001;
-  message: "Asset is not an ERC20 token";
+  message: 'Asset is not an ERC20 token';
   data?: any;
 }
 /**
@@ -327,7 +327,7 @@ export interface AssetNotErc20 {
  */
 export interface TransferWalletMismatch {
   code: 10002;
-  message: "Sender and recipient wallet do not match";
+  message: 'Sender and recipient wallet do not match';
   data?: any;
 }
 /**
@@ -335,7 +335,7 @@ export interface TransferWalletMismatch {
  */
 export interface SameAccountTransfer {
   code: 10003;
-  message: "Sender and recipient subaccount IDs are the same";
+  message: 'Sender and recipient subaccount IDs are the same';
   data?: any;
 }
 /**
@@ -343,7 +343,7 @@ export interface SameAccountTransfer {
  */
 export interface MultipleCurrenciesNotSupported {
   code: 10004;
-  message: "Multiple currencies not supported";
+  message: 'Multiple currencies not supported';
   data?: any;
 }
 /**
@@ -351,7 +351,7 @@ export interface MultipleCurrenciesNotSupported {
  */
 export interface MaxSubaccountsPerWallet {
   code: 10005;
-  message: "Maximum number of subaccounts per wallet reached";
+  message: 'Maximum number of subaccounts per wallet reached';
   data?: any;
 }
 /**
@@ -359,7 +359,7 @@ export interface MaxSubaccountsPerWallet {
  */
 export interface MaxSessionKeysPerWallet {
   code: 10006;
-  message: "Maximum number of session keys per wallet reached";
+  message: 'Maximum number of session keys per wallet reached';
   data?: any;
 }
 /**
@@ -367,7 +367,7 @@ export interface MaxSessionKeysPerWallet {
  */
 export interface MaxAssetsPerSubaccount {
   code: 10007;
-  message: "Maximum number of assets per subaccount reached";
+  message: 'Maximum number of assets per subaccount reached';
   data?: any;
 }
 /**
@@ -375,7 +375,7 @@ export interface MaxAssetsPerSubaccount {
  */
 export interface MaxExpiriesPerSubaccount {
   code: 10008;
-  message: "Maximum number of expiries per subaccount reached";
+  message: 'Maximum number of expiries per subaccount reached';
   data?: any;
 }
 /**
@@ -383,7 +383,7 @@ export interface MaxExpiriesPerSubaccount {
  */
 export interface InsufficientFunds {
   code: 11000;
-  message: "Insufficient funds";
+  message: 'Insufficient funds';
   data?: any;
 }
 /**
@@ -391,7 +391,7 @@ export interface InsufficientFunds {
  */
 export interface OrderRejectedFromQueue {
   code: 11002;
-  message: "Order rejected from queue";
+  message: 'Order rejected from queue';
   data?: any;
 }
 /**
@@ -399,7 +399,7 @@ export interface OrderRejectedFromQueue {
  */
 export interface OrderAlreadyCancelled {
   code: 11003;
-  message: "Already cancelled";
+  message: 'Already cancelled';
   data?: any;
 }
 /**
@@ -407,7 +407,7 @@ export interface OrderAlreadyCancelled {
  */
 export interface OrderAlreadyFilled {
   code: 11004;
-  message: "Already filled";
+  message: 'Already filled';
   data?: any;
 }
 /**
@@ -415,7 +415,7 @@ export interface OrderAlreadyFilled {
  */
 export interface OrderAlreadyExpired {
   code: 11005;
-  message: "Already expired";
+  message: 'Already expired';
   data?: any;
 }
 /**
@@ -423,7 +423,7 @@ export interface OrderAlreadyExpired {
  */
 export interface OrderDoesNotExist {
   code: 11006;
-  message: "Does not exist";
+  message: 'Does not exist';
   data?: any;
 }
 /**
@@ -431,7 +431,7 @@ export interface OrderDoesNotExist {
  */
 export interface SelfCrossingDisallowed {
   code: 11007;
-  message: "Self-crossing disallowed";
+  message: 'Self-crossing disallowed';
   data?: any;
 }
 /**
@@ -439,7 +439,7 @@ export interface SelfCrossingDisallowed {
  */
 export interface PostOnlyReject {
   code: 11008;
-  message: "Post-only reject";
+  message: 'Post-only reject';
   data?: any;
 }
 /**
@@ -447,7 +447,7 @@ export interface PostOnlyReject {
  */
 export interface ZeroLiquidityForTakerOrder {
   code: 11009;
-  message: "Zero liquidity for market or IOC/FOK order";
+  message: 'Zero liquidity for market or IOC/FOK order';
   data?: any;
 }
 /**
@@ -455,7 +455,7 @@ export interface ZeroLiquidityForTakerOrder {
  */
 export interface PostOnlyInvalidOrderType {
   code: 11010;
-  message: "Post-only invalid order type";
+  message: 'Post-only invalid order type';
   data?: any;
 }
 /**
@@ -463,7 +463,7 @@ export interface PostOnlyInvalidOrderType {
  */
 export interface OrderInvalidSignatureExpiry {
   code: 11011;
-  message: "Invalid signature expiry";
+  message: 'Invalid signature expiry';
   data?: any;
 }
 /**
@@ -471,7 +471,7 @@ export interface OrderInvalidSignatureExpiry {
  */
 export interface OrderInvalidAmount {
   code: 11012;
-  message: "Invalid amount";
+  message: 'Invalid amount';
   data?: any;
 }
 /**
@@ -479,7 +479,7 @@ export interface OrderInvalidAmount {
  */
 export interface OrderInvalidLimitPrice {
   code: 11013;
-  message: "Invalid limit price";
+  message: 'Invalid limit price';
   data?: any;
 }
 /**
@@ -487,7 +487,7 @@ export interface OrderInvalidLimitPrice {
  */
 export interface FokNotFilled {
   code: 11014;
-  message: "Fill-or-kill not filled";
+  message: 'Fill-or-kill not filled';
   data?: any;
 }
 /**
@@ -495,7 +495,7 @@ export interface FokNotFilled {
  */
 export interface MmpFrozen {
   code: 11015;
-  message: "MMP frozen";
+  message: 'MMP frozen';
   data?: any;
 }
 /**
@@ -503,7 +503,7 @@ export interface MmpFrozen {
  */
 export interface OrderAlreadyConsumed {
   code: 11016;
-  message: "Already consumed";
+  message: 'Already consumed';
   data?: any;
 }
 /**
@@ -511,7 +511,7 @@ export interface OrderAlreadyConsumed {
  */
 export interface OrderNonUniqueNonce {
   code: 11017;
-  message: "Non unique nonce";
+  message: 'Non unique nonce';
   data?: any;
 }
 /**
@@ -519,7 +519,7 @@ export interface OrderNonUniqueNonce {
  */
 export interface OrderInvalidNonceDate {
   code: 11018;
-  message: "Invalid nonce date";
+  message: 'Invalid nonce date';
   data?: any;
 }
 /**
@@ -527,7 +527,7 @@ export interface OrderInvalidNonceDate {
  */
 export interface TooManyOrders {
   code: 11019;
-  message: "Open orders limit exceeded";
+  message: 'Open orders limit exceeded';
   data?: any;
 }
 /**
@@ -535,7 +535,7 @@ export interface TooManyOrders {
  */
 export interface NegativeErc20Balance {
   code: 11020;
-  message: "Negative ERC20 balance";
+  message: 'Negative ERC20 balance';
   data?: any;
 }
 /**
@@ -543,7 +543,7 @@ export interface NegativeErc20Balance {
  */
 export interface InstrumentNotLive {
   code: 11021;
-  message: "Instrument is not live";
+  message: 'Instrument is not live';
   data?: any;
 }
 /**
@@ -551,7 +551,7 @@ export interface InstrumentNotLive {
  */
 export interface RejectTimestampExceeded {
   code: 11022;
-  message: "Reject timestamp exceeded";
+  message: 'Reject timestamp exceeded';
   data?: any;
 }
 /**
@@ -559,7 +559,7 @@ export interface RejectTimestampExceeded {
  */
 export interface MaxFeeTooLow {
   code: 11023;
-  message: "Max fee order param is too low";
+  message: 'Max fee order param is too low';
   data?: any;
 }
 /**
@@ -567,7 +567,7 @@ export interface MaxFeeTooLow {
  */
 export interface ReduceOnlyNotSupported {
   code: 11024;
-  message: "Reduce only not supported with this time in force";
+  message: 'Reduce only not supported with this time in force';
   data?: any;
 }
 /**
@@ -575,7 +575,7 @@ export interface ReduceOnlyNotSupported {
  */
 export interface ReduceOnlyReject {
   code: 11025;
-  message: "Reduce only reject";
+  message: 'Reduce only reject';
   data?: any;
 }
 /**
@@ -583,7 +583,7 @@ export interface ReduceOnlyReject {
  */
 export interface TransferReject {
   code: 11026;
-  message: "Transfer reject";
+  message: 'Transfer reject';
   data?: any;
 }
 /**
@@ -591,7 +591,7 @@ export interface TransferReject {
  */
 export interface AssetNotFound {
   code: 12000;
-  message: "Asset not found";
+  message: 'Asset not found';
   data?: any;
 }
 /**
@@ -599,7 +599,7 @@ export interface AssetNotFound {
  */
 export interface InstrumentNotFound {
   code: 12001;
-  message: "Instrument not found";
+  message: 'Instrument not found';
   data?: any;
 }
 /**
@@ -607,7 +607,7 @@ export interface InstrumentNotFound {
  */
 export interface CurrencyNotFound {
   code: 12002;
-  message: "Currency not found";
+  message: 'Currency not found';
   data?: any;
 }
 /**
@@ -615,7 +615,7 @@ export interface CurrencyNotFound {
  */
 export interface InvalidChannels {
   code: 13000;
-  message: "Invalid channels";
+  message: 'Invalid channels';
   data?: any;
 }
 /**
@@ -623,7 +623,7 @@ export interface InvalidChannels {
  */
 export interface AccountNotFound {
   code: 14000;
-  message: "Account not found";
+  message: 'Account not found';
   data?: any;
 }
 /**
@@ -631,7 +631,7 @@ export interface AccountNotFound {
  */
 export interface SubaccountNotFound {
   code: 14001;
-  message: "Subaccount not found";
+  message: 'Subaccount not found';
   data?: any;
 }
 /**
@@ -639,7 +639,7 @@ export interface SubaccountNotFound {
  */
 export interface UseDeregisterSessionKey {
   code: 14008;
-  message: "Cannot reduce expiry using registerSessionKey RPC route";
+  message: 'Cannot reduce expiry using registerSessionKey RPC route';
   data?: any;
 }
 /**
@@ -647,7 +647,7 @@ export interface UseDeregisterSessionKey {
  */
 export interface SessionKeyExpiryTooSoon {
   code: 14009;
-  message: "Session key expiry must be > utc_now + 10 min";
+  message: 'Session key expiry must be > utc_now + 10 min';
   data?: any;
 }
 /**
@@ -655,7 +655,7 @@ export interface SessionKeyExpiryTooSoon {
  */
 export interface SessionKeyAlreadyRegistered {
   code: 14010;
-  message: "Session key already registered for this account";
+  message: 'Session key already registered for this account';
   data?: any;
 }
 /**
@@ -663,7 +663,7 @@ export interface SessionKeyAlreadyRegistered {
  */
 export interface SessionKeyTaken {
   code: 14011;
-  message: "Session key already registered with another account";
+  message: 'Session key already registered with another account';
   data?: any;
 }
 /**
@@ -671,7 +671,7 @@ export interface SessionKeyTaken {
  */
 export interface AddressIsNotChecksum {
   code: 14012;
-  message: "Address must be checksummed";
+  message: 'Address must be checksummed';
   data?: any;
 }
 /**
@@ -679,7 +679,7 @@ export interface AddressIsNotChecksum {
  */
 export interface StringIsNotEthereumAddress {
   code: 14013;
-  message: "String is not a valid ethereum address";
+  message: 'String is not a valid ethereum address';
   data?: any;
 }
 /**
@@ -687,7 +687,7 @@ export interface StringIsNotEthereumAddress {
  */
 export interface InvalidSignature {
   code: 14014;
-  message: "Signature invalid for message or transaction";
+  message: 'Signature invalid for message or transaction';
   data?: any;
 }
 /**
@@ -695,7 +695,7 @@ export interface InvalidSignature {
  */
 export interface InvalidNonce {
   code: 14015;
-  message: "Transaction count for given wallet does not match provided nonce";
+  message: 'Transaction count for given wallet does not match provided nonce';
   data?: any;
 }
 /**
@@ -703,7 +703,7 @@ export interface InvalidNonce {
  */
 export interface SignedTxAndFunctionNameDoNotMatch {
   code: 14016;
-  message: "The provided signed raw transaction contains function name that does not match the expected function name";
+  message: 'The provided signed raw transaction contains function name that does not match the expected function name';
   data?: any;
 }
 /**
@@ -711,7 +711,7 @@ export interface SignedTxAndFunctionNameDoNotMatch {
  */
 export interface SignedTxAndContractAddressDoNotMatch {
   code: 14017;
-  message: "The provided signed raw transaction contains contract address that does not match the expected contract address";
+  message: 'The provided signed raw transaction contains contract address that does not match the expected contract address';
   data?: any;
 }
 /**
@@ -719,7 +719,7 @@ export interface SignedTxAndContractAddressDoNotMatch {
  */
 export interface SignedTxAndFunctionParamNamesDoNotMatch {
   code: 14018;
-  message: "The provided signed raw transaction contains function params that do not match any expected function params";
+  message: 'The provided signed raw transaction contains function params that do not match any expected function params';
   data?: any;
 }
 /**
@@ -727,7 +727,7 @@ export interface SignedTxAndFunctionParamNamesDoNotMatch {
  */
 export interface SignedTxAndFunctionParamValuesDoNotMatch {
   code: 14019;
-  message: "The provided signed raw transaction contains function param values that do not match the expected values";
+  message: 'The provided signed raw transaction contains function param values that do not match the expected values';
   data?: any;
 }
 /**
@@ -735,7 +735,7 @@ export interface SignedTxAndFunctionParamValuesDoNotMatch {
  */
 export interface AuthHeaderMismatch {
   code: 14020;
-  message: "The X-LyraWallet header does not match the requested subaccount_id or wallet";
+  message: 'The X-LyraWallet header does not match the requested subaccount_id or wallet';
   data?: any;
 }
 /**
@@ -743,7 +743,7 @@ export interface AuthHeaderMismatch {
  */
 export interface AuthMissingWalletHeader {
   code: 14021;
-  message: "The X-LyraWallet header not provided";
+  message: 'The X-LyraWallet header not provided';
   data?: any;
 }
 /**
@@ -751,7 +751,7 @@ export interface AuthMissingWalletHeader {
  */
 export interface ChannelNotAuthorized {
   code: 14022;
-  message: "Subscription to a private channel failed";
+  message: 'Subscription to a private channel failed';
   data?: any;
 }
 /**
@@ -759,7 +759,7 @@ export interface ChannelNotAuthorized {
  */
 export interface InvalidSigner {
   code: 14023;
-  message: "Signer in on-chain related request is not wallet owner or registered session key";
+  message: 'Signer in on-chain related request is not wallet owner or registered session key';
   data?: any;
 }
 /**
@@ -767,7 +767,7 @@ export interface InvalidSigner {
  */
 export interface InvalidChainId {
   code: 14024;
-  message: "Chain ID must match the current roll up chain id";
+  message: 'Chain ID must match the current roll up chain id';
   data?: any;
 }
 /**
@@ -775,7 +775,7 @@ export interface InvalidChainId {
  */
 export interface PrivateRequestMissingWalletOrSubaccount {
   code: 14025;
-  message: "The private request is missing a wallet or subaccount_id param";
+  message: 'The private request is missing a wallet or subaccount_id param';
   data?: any;
 }
 /**
@@ -783,7 +783,7 @@ export interface PrivateRequestMissingWalletOrSubaccount {
  */
 export interface SessionKeyNotFound {
   code: 14026;
-  message: "Session key not found";
+  message: 'Session key not found';
   data?: any;
 }
 /**
@@ -791,7 +791,7 @@ export interface SessionKeyNotFound {
  */
 export interface RegionRestricted {
   code: 16000;
-  message: "You are in a restricted region that violates our terms of service.";
+  message: 'You are in a restricted region that violates our terms of service.';
   data?: any;
 }
 /**
@@ -799,7 +799,7 @@ export interface RegionRestricted {
  */
 export interface AccountDisabled {
   code: 16001;
-  message: "Account is disabled due to compliance violations, please contact support to enable it.";
+  message: 'Account is disabled due to compliance violations, please contact support to enable it.';
   data?: any;
 }
 /**
@@ -807,6 +807,6 @@ export interface AccountDisabled {
  */
 export interface InvalidSentinelAuthorization {
   code: 16100;
-  message: "Sentinel authorization is invalid";
+  message: 'Sentinel authorization is invalid';
   data?: any;
 }

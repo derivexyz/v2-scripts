@@ -9,7 +9,7 @@
  * Withdraw an asset to wallet.
  */
 export type PrivateWithdraw = PrivateWithdrawJSONRPCSchema;
-export type Method = "private/withdraw";
+export type Method = 'private/withdraw';
 /**
  * Amount of the asset to withdraw
  */

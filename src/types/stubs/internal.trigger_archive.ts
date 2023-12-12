@@ -9,7 +9,7 @@
  * Triggers an archive (For testing purposes)
  */
 export type InternalTriggerArchive = InternalTriggerArchiveJSONRPCSchema;
-export type Method = "internal/trigger_archive";
+export type Method = 'internal/trigger_archive';
 /**
  * True if success
  */

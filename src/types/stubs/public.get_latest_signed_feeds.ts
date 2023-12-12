@@ -9,7 +9,7 @@
  * Get latest signed data feeds
  */
 export type PublicGetLatestSignedFeeds = PublicGetLatestSignedFeedsJSONRPCSchema;
-export type Method = "public/get_latest_signed_feeds";
+export type Method = 'public/get_latest_signed_feeds';
 /**
  * Currency
  */
@@ -79,7 +79,7 @@ export type Timestamp1 = number;
 /**
  * The type of perp feed; mid price, ask impact or bid impact
  */
-export type Type = "P" | "A" | "B";
+export type Type = 'P' | 'A' | 'B';
 /**
  * The confidence score of the price
  */

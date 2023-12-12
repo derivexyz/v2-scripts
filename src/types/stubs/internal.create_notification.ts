@@ -9,11 +9,11 @@
  * Internal RPC for creating a new notification.
  */
 export type InternalCreateNotification = InternalCreateNotificationJSONRPCSchema;
-export type Method = "internal/create_notification";
+export type Method = 'internal/create_notification';
 /**
  * The specific event leading to the notification.
  */
-export type Event = "deposit" | "withdraw" | "transfer" | "trade" | "settlement" | "liquidation" | "custom";
+export type Event = 'deposit' | 'withdraw' | 'transfer' | 'trade' | 'settlement' | 'liquidation' | 'custom';
 export type SubaccountIds1 = number;
 /**
  * A list of the subaccount_ids that were notified.

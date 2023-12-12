@@ -9,7 +9,7 @@
  * Get subaccount interest payment history.
  */
 export type PrivateGetInterestHistory = PrivateGetInterestHistoryJSONRPCSchema;
-export type Method = "private/get_interest_history";
+export type Method = 'private/get_interest_history';
 /**
  * End timestamp of the event history (default current time)
  */

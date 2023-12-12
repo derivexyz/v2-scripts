@@ -9,7 +9,7 @@
  * Get expired option settlement history for a subaccount
  */
 export type PrivateGetOptionSettlementHistory = PrivateGetOptionSettlementHistoryJSONRPCSchema;
-export type Method = "private/get_option_settlement_history";
+export type Method = 'private/get_option_settlement_history';
 /**
  * Subaccount_id for which to get expired option settlement history
  */

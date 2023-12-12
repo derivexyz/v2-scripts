@@ -9,7 +9,7 @@
  * Get collaterals of a subaccount
  */
 export type PrivateGetCollaterals = PrivateGetCollateralsJSONRPCSchema;
-export type Method = "private/get_collaterals";
+export type Method = 'private/get_collaterals';
 /**
  * Subaccount_id
  */
@@ -25,7 +25,7 @@ export type AssetName = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type AssetType = "erc20" | "option" | "perp";
+export type AssetType = 'erc20' | 'option' | 'perp';
 /**
  * Cumulative interest earned on supplying collateral or paid for borrowing
  */

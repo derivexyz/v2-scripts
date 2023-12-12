@@ -9,7 +9,7 @@
  * Snapshot Intervals Retriever that gets the intervals file from the S3 bucket
  */
 export type InternalGetOrderSnapshotIntervals = InternalGetOrderSnapshotIntervalsJSONRPCSchema;
-export type Method = "internal/get_order_snapshot_intervals";
+export type Method = 'internal/get_order_snapshot_intervals';
 /**
  * Date of the snapshot for RANDOM snapshots
  */
@@ -21,7 +21,7 @@ export type Instrument = string;
 /**
  * Snapshot type (FIXED or RANDOM)
  */
-export type SnapshotType = "FIXED" | "RANDOM";
+export type SnapshotType = 'FIXED' | 'RANDOM';
 export type Intervals1 = number;
 /**
  * List of snapshot intervals

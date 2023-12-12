@@ -6,7 +6,7 @@
  */
 
 export type PrivateChangeSessionKeyLabel = PrivateChangeSessionKeyLabelJSONRPCSchema;
-export type Method = "private/change_session_key_label";
+export type Method = 'private/change_session_key_label';
 export type Label = string;
 export type Label1 = string;
 

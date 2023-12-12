@@ -9,7 +9,7 @@
  * Get the TWAPs for the perp mid price, ask impact price, and bid impact price
  */
 export type PublicGetPerpImpactTwap = PublicGetPerpImpactTwapJSONRPCSchema;
-export type Method = "public/get_perp_impact_twap";
+export type Method = 'public/get_perp_impact_twap';
 /**
  * Currency
  */

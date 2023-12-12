@@ -9,7 +9,7 @@
  * Set the mmp config for the subaccount and currency
  */
 export type PrivateSetMmpConfig = PrivateSetMmpConfigJSONRPCSchema;
-export type Method = "private/set_mmp_config";
+export type Method = 'private/set_mmp_config';
 /**
  * Currency of this mmp config
  */

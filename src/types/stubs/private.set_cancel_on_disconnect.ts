@@ -9,7 +9,7 @@
  * Enables cancel on disconnect for the account
  */
 export type PrivateSetCancelOnDisconnect = PrivateSetCancelOnDisconnectJSONRPCSchema;
-export type Method = "private/set_cancel_on_disconnect";
+export type Method = 'private/set_cancel_on_disconnect';
 /**
  * Whether to enable or disable cancel on disconnect
  */
@@ -18,7 +18,7 @@ export type Enabled = boolean;
  * Public key (wallet) of the account
  */
 export type Wallet = string;
-export type Result = "ok";
+export type Result = 'ok';
 
 export interface PrivateSetCancelOnDisconnectJSONRPCSchema {
   request: PrivateSetCancelOnDisconnectRequestSchema;

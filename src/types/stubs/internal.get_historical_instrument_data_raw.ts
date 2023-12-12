@@ -9,7 +9,7 @@
  * Historical Instrument data retriever that gets a particular instrument at a particular time
  */
 export type InternalGetHistoricalInstrumentDataRaw = InternalGetHistoricalInstrumentDataRawJSONRPCSchema;
-export type Method = "internal/get_historical_instrument_data_raw";
+export type Method = 'internal/get_historical_instrument_data_raw';
 /**
  * Instrument name
  */
@@ -21,7 +21,7 @@ export type Interval = number;
 /**
  * Snapshot type (FIXED or RANDOM)
  */
-export type SnapshotType = "FIXED" | "RANDOM";
+export type SnapshotType = 'FIXED' | 'RANDOM';
 
 export interface InternalGetHistoricalInstrumentDataRawJSONRPCSchema {
   request: InternalGetHistoricalInstrumentDataRawRequestSchema;

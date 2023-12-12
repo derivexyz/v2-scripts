@@ -9,7 +9,7 @@
  * Get the current mmp config for a subaccount (optionally filtered by currency)
  */
 export type PrivateGetMmpConfig = PrivateGetMmpConfigJSONRPCSchema;
-export type Method = "private/get_mmp_config";
+export type Method = 'private/get_mmp_config';
 /**
  * Currency to get the config for. If not provided, returns all configs for the subaccount
  */

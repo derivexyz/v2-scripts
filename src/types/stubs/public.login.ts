@@ -9,7 +9,7 @@
  * Authenticate a websocket connection. Unavailable via HTTP.
  */
 export type PublicLogin = PublicLoginJSONRPCSchema;
-export type Method = "public/login";
+export type Method = 'public/login';
 /**
  * Signature of the timestamp, signed with the wallet's private key or a session key
  */

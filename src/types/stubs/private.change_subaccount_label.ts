@@ -9,7 +9,7 @@
  * Change a user defined label for given subaccount
  */
 export type PrivateChangeSubaccountLabel = PrivateChangeSubaccountLabelJSONRPCSchema;
-export type Method = "private/change_subaccount_label";
+export type Method = 'private/change_subaccount_label';
 /**
  * User defined label
  */

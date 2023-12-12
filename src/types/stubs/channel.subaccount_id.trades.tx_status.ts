@@ -16,7 +16,7 @@ export type SubaccountId = number;
 /**
  * Transaction status (`settled` or `reverted`)
  */
-export type TxStatus = "settled" | "reverted";
+export type TxStatus = 'settled' | 'reverted';
 export type Method = string;
 /**
  * Subscribed channel name
@@ -25,7 +25,7 @@ export type Channel = string;
 /**
  * Order direction
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Index price of the underlying at the time of the trade
  */
@@ -45,7 +45,7 @@ export type Label = string;
 /**
  * Role of the user in the trade
  */
-export type LiquidityRole = "maker" | "taker";
+export type LiquidityRole = 'maker' | 'taker';
 /**
  * Mark price of the instrument at the time of the trade
  */
@@ -89,7 +89,7 @@ export type TxHash = string | null;
 /**
  * Blockchain transaction status
  */
-export type TxStatus1 = "requested" | "pending" | "settled" | "reverted" | "ignored";
+export type TxStatus1 = 'requested' | 'pending' | 'settled' | 'reverted' | 'ignored';
 export type Data = TradeResponseSchema[];
 
 export interface SubaccountIdTradesTxStatusPubSubSchema {

@@ -1,13 +1,12 @@
-import axios from "axios";
-import { getAllAddresses} from "../utils/getAddresses";
-import {timeSeconds} from "../utils/misc/time";
-import {executeWeb3, toBN} from "../utils/web3/utils";
-import {ethers} from "ethers";
-import {vars} from "../vars";
-import {encodeBaseFeedData} from "../utils/feeds/encodeFeedData";
-import {logger} from "../utils/logger";
-import {Command} from "commander";
-
+import axios from 'axios';
+import { getAllAddresses } from '../utils/getAddresses';
+import { timeSeconds } from '../utils/misc/time';
+import { executeWeb3 } from '../utils/web3/utils';
+import { ethers } from 'ethers';
+import { vars } from '../vars';
+import { encodeBaseFeedData } from '../utils/feeds/encodeFeedData';
+import { logger } from '../utils/logger';
+import { Command } from 'commander';
 
 const abiCoder = new ethers.AbiCoder();
 
@@ -29,7 +28,7 @@ export function encodeForwardData(data: any): string {
 }
 
 async function submitExpiryData(currency: string, expiry: number) {
-  const addresses = await getAllAddresses()
+  const addresses = await getAllAddresses();
 
   // Start with a wallet on L2 that already has some USDC and ETH
   const wallet = new ethers.Wallet(vars.signingKey);
@@ -52,15 +51,15 @@ async function submitExpiryData(currency: string, expiry: number) {
     signatures: {
       signers: [data.signers[1]],
       signatures: [data.signatures[1]],
-    }
-  }
+    },
+  };
 
   const encodedData = encodeForwardData(dataToSign);
 
   await executeWeb3(wallet as any, addresses.markets[currency].forwardFeed, 'acceptData(bytes)', [encodedData]);
 }
 
-export default new Command("submitExpiryData")
-  .description("Submit expiry data for a currency")
-  .arguments("<currency> <expiry>")
+export default new Command('submitExpiryData')
+  .description('Submit expiry data for a currency')
+  .arguments('<currency> <expiry>')
   .action(submitExpiryData);

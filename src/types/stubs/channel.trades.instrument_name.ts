@@ -21,7 +21,7 @@ export type Channel = string;
 /**
  * Direction or the taker order
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Index price of the underlying at the time of the trade
  */

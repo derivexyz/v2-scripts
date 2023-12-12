@@ -6,7 +6,7 @@
  */
 
 export type InternalOrderRisk = InternalOrderRiskJSONRPCSchema;
-export type Method = "internal/order_risk";
+export type Method = 'internal/order_risk';
 /**
  * Order amount in units of the base
  */
@@ -14,7 +14,7 @@ export type Amount = string;
 /**
  * Order direction
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Instrument name
  */
@@ -42,7 +42,7 @@ export type Nonce = number;
 /**
  * Order type:<br />- `limit`: limit order (default)<br />- `market`: market order, note that limit_price is still required for market orders, but unfilled order portion will be marked as cancelled
  */
-export type OrderType = "limit" | "market";
+export type OrderType = 'limit' | 'market';
 /**
  * If true, the order will not be able to increase position's size (default false). If the order amount exceeds available position size, the order will be filled up to the position size and the remainder will be cancelled. This flag is only supported for market orders or non-resting limit orders (IOC or FOK)
  */
@@ -74,7 +74,7 @@ export type SubaccountId = number;
 /**
  * Time in force behaviour:<br />- `gtc`: good til cancelled (default)<br />- `post_only`: a limit order that will be rejected if it crosses any order in the book, i.e. acts as a taker order<br />- `fok`: fill or kill, will be rejected if it is not fully filled<br />- `ioc`: immediate or cancel, fill at best bid/ask (market) or at limit price (limit), the unfilled portion is cancelled<br />Note that the order will still expire on the `signature_expiry_sec` timestamp.
  */
-export type TimeInForce = "gtc" | "post_only" | "fok" | "ioc";
+export type TimeInForce = 'gtc' | 'post_only' | 'fok' | 'ioc';
 export type BalanceNonce = number;
 export type Code = number;
 export type Data = string | null;

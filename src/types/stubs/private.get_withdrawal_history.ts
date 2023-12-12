@@ -9,7 +9,7 @@
  * Get subaccount withdrawal history.
  */
 export type PrivateGetWithdrawalHistory = PrivateGetWithdrawalHistoryJSONRPCSchema;
-export type Method = "private/get_withdrawal_history";
+export type Method = 'private/get_withdrawal_history';
 /**
  * End timestamp of the event history (default current time)
  */

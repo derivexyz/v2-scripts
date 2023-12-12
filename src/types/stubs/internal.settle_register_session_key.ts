@@ -11,7 +11,7 @@
  * NOTE: for direct on-chain registrations, refer to the event_listener.py
  */
 export type InternalSettleRegisterSessionKey = InternalSettleRegisterSessionKeyJSONRPCSchema;
-export type Method = "internal/settle_register_session_key";
+export type Method = 'internal/settle_register_session_key';
 export type ExpirySec = number;
 export type OwnerAddress = string;
 export type RawSignedTx = string;

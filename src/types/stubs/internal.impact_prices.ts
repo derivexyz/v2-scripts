@@ -11,7 +11,7 @@
  * The impact prices for perp instruments will be used to compute the funding rate.
  */
 export type InternalImpactPrices = InternalImpactPricesJSONRPCSchema;
-export type Method = "internal/impact_prices";
+export type Method = 'internal/impact_prices';
 /**
  * Impact size in USDC
  */

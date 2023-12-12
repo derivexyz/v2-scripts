@@ -9,7 +9,7 @@
  * Resets (unfreezes) the mmp state for a subaccount (optionally filtered by currency)
  */
 export type PrivateResetMmp = PrivateResetMmpJSONRPCSchema;
-export type Method = "private/reset_mmp";
+export type Method = 'private/reset_mmp';
 /**
  * Currency to reset the mmp for. If not provided, resets all configs for the subaccount
  */
@@ -21,7 +21,7 @@ export type SubaccountId = number;
 /**
  * The result of this method call, `ok` if successful
  */
-export type Result = "ok";
+export type Result = 'ok';
 
 export interface PrivateResetMmpJSONRPCSchema {
   request: PrivateResetMmpRequestSchema;

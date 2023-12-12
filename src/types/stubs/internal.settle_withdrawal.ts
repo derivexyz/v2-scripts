@@ -9,7 +9,7 @@
  * Used for settling withdrawals to the blockchain by submitting them to the sequencer RPC.
  */
 export type InternalSettleWithdrawal = InternalSettleWithdrawalJSONRPCSchema;
-export type Method = "internal/settle_withdrawal";
+export type Method = 'internal/settle_withdrawal';
 export type AssetId = string;
 export type AssetName = string;
 export type Amount = string;

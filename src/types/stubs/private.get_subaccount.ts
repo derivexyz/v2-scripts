@@ -9,7 +9,7 @@
  * Get open orders, active positions, and collaterals of a subaccount
  */
 export type PrivateGetSubaccount = PrivateGetSubaccountJSONRPCSchema;
-export type Method = "private/get_subaccount";
+export type Method = 'private/get_subaccount';
 /**
  * Subaccount_id
  */
@@ -25,7 +25,7 @@ export type AssetName = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type AssetType = "erc20" | "option" | "perp";
+export type AssetType = 'erc20' | 'option' | 'perp';
 /**
  * Cumulative interest earned on supplying collateral or paid for borrowing
  */
@@ -81,7 +81,7 @@ export type MaintenanceMargin1 = string;
 /**
  * Margin type of subaccount (`PM` (Portfolio Margin) or `SM` (Standard Margin))
  */
-export type MarginType = "PM" | "SM";
+export type MarginType = 'PM' | 'SM';
 /**
  * Order amount in units of the base
  */
@@ -94,16 +94,16 @@ export type AveragePrice = string;
  * If cancelled, reason behind order cancellation
  */
 export type CancelReason =
-  | ""
-  | "user_request"
-  | "mmp_trigger"
-  | "insufficient_margin"
-  | "signed_max_fee_too_low"
-  | "cancel_on_disconnect"
-  | "ioc_or_market_partial_fill"
-  | "session_key_deregistered"
-  | "subaccount_withdrawn"
-  | "compliance";
+  | ''
+  | 'user_request'
+  | 'mmp_trigger'
+  | 'insufficient_margin'
+  | 'signed_max_fee_too_low'
+  | 'cancel_on_disconnect'
+  | 'ioc_or_market_partial_fill'
+  | 'session_key_deregistered'
+  | 'subaccount_withdrawn'
+  | 'compliance';
 /**
  * Creation timestamp (in ms since Unix epoch)
  */
@@ -111,7 +111,7 @@ export type CreationTimestamp = number;
 /**
  * Order direction
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Total filled amount for the order
  */
@@ -159,11 +159,11 @@ export type OrderId = string;
 /**
  * Order status
  */
-export type OrderStatus = "open" | "filled" | "rejected" | "cancelled" | "expired";
+export type OrderStatus = 'open' | 'filled' | 'rejected' | 'cancelled' | 'expired';
 /**
  * Order type
  */
-export type OrderType = "limit" | "market";
+export type OrderType = 'limit' | 'market';
 /**
  * Ethereum signature of the order
  */
@@ -183,7 +183,7 @@ export type SubaccountId1 = number;
 /**
  * Time in force
  */
-export type TimeInForce = "gtc" | "post_only" | "fok" | "ioc";
+export type TimeInForce = 'gtc' | 'post_only' | 'fok' | 'ioc';
 /**
  * All open orders of subaccount
  */
@@ -227,7 +227,7 @@ export type InstrumentName1 = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type InstrumentType = "erc20" | "option" | "perp";
+export type InstrumentType = 'erc20' | 'option' | 'perp';
 /**
  * Only for perps. Leverage of the position, defined as `abs(notional) / collateral net of options margin`
  */

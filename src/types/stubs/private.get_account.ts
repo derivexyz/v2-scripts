@@ -9,7 +9,7 @@
  * Account details getter
  */
 export type PrivateGetAccount = PrivateGetAccountJSONRPCSchema;
-export type Method = "private/get_account";
+export type Method = 'private/get_account';
 /**
  * Ethereum wallet address of account
  */

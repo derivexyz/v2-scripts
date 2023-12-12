@@ -9,7 +9,7 @@
  * Get single instrument by name including all admin details
  */
 export type InternalGetInstrument = InternalGetInstrumentJSONRPCSchema;
-export type Method = "internal/get_instrument";
+export type Method = 'internal/get_instrument';
 /**
  * Instrument name
  */
@@ -49,7 +49,7 @@ export type InstrumentName1 = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type InstrumentType = "erc20" | "option" | "perp";
+export type InstrumentType = 'erc20' | 'option' | 'perp';
 /**
  * If `True`: instrument is tradeable within `activation` and `deactivation` timestamps
  */
@@ -78,7 +78,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Settlement price of the option
  */

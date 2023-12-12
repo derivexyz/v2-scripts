@@ -10,7 +10,7 @@
  * open orders margin requirements.
  */
 export type PrivateGetMargin = PrivateGetMarginJSONRPCSchema;
-export type Method = "private/get_margin";
+export type Method = 'private/get_margin';
 /**
  * Optional, add positions to simulate a trade
  */

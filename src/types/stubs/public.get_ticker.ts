@@ -9,7 +9,7 @@
  * Get all active instrument tickers for a given `currency` and `type`
  */
 export type PublicGetTicker = PublicGetTickerJSONRPCSchema;
-export type Method = "public/get_ticker";
+export type Method = 'public/get_ticker';
 /**
  * Instrument name
  */
@@ -57,7 +57,7 @@ export type InstrumentName1 = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type InstrumentType = "erc20" | "option" | "perp";
+export type InstrumentType = 'erc20' | 'option' | 'perp';
 /**
  * If `True`: instrument is tradeable within `activation` and `deactivation` timestamps
  */
@@ -98,7 +98,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Settlement price of the option
  */

@@ -9,7 +9,7 @@
  * Create a new order
  */
 export type PrivateOrder = PrivateOrderJSONRPCSchema;
-export type Method = "private/order";
+export type Method = 'private/order';
 /**
  * Order amount in units of the base
  */
@@ -17,7 +17,7 @@ export type Amount = string;
 /**
  * Order direction
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Instrument name
  */
@@ -45,7 +45,7 @@ export type Nonce = number;
 /**
  * Order type:<br />- `limit`: limit order (default)<br />- `market`: market order, note that limit_price is still required for market orders, but unfilled order portion will be marked as cancelled
  */
-export type OrderType = "limit" | "market";
+export type OrderType = 'limit' | 'market';
 /**
  * If true, the order will not be able to increase position's size (default false). If the order amount exceeds available position size, the order will be filled up to the position size and the remainder will be cancelled. This flag is only supported for market orders or non-resting limit orders (IOC or FOK)
  */
@@ -77,7 +77,7 @@ export type SubaccountId = number;
 /**
  * Time in force behaviour:<br />- `gtc`: good til cancelled (default)<br />- `post_only`: a limit order that will be rejected if it crosses any order in the book, i.e. acts as a taker order<br />- `fok`: fill or kill, will be rejected if it is not fully filled<br />- `ioc`: immediate or cancel, fill at best bid/ask (market) or at limit price (limit), the unfilled portion is cancelled<br />Note that the order will still expire on the `signature_expiry_sec` timestamp.
  */
-export type TimeInForce = "gtc" | "post_only" | "fok" | "ioc";
+export type TimeInForce = 'gtc' | 'post_only' | 'fok' | 'ioc';
 /**
  * Order amount in units of the base
  */
@@ -90,16 +90,16 @@ export type AveragePrice = string;
  * If cancelled, reason behind order cancellation
  */
 export type CancelReason =
-  | ""
-  | "user_request"
-  | "mmp_trigger"
-  | "insufficient_margin"
-  | "signed_max_fee_too_low"
-  | "cancel_on_disconnect"
-  | "ioc_or_market_partial_fill"
-  | "session_key_deregistered"
-  | "subaccount_withdrawn"
-  | "compliance";
+  | ''
+  | 'user_request'
+  | 'mmp_trigger'
+  | 'insufficient_margin'
+  | 'signed_max_fee_too_low'
+  | 'cancel_on_disconnect'
+  | 'ioc_or_market_partial_fill'
+  | 'session_key_deregistered'
+  | 'subaccount_withdrawn'
+  | 'compliance';
 /**
  * Creation timestamp (in ms since Unix epoch)
  */
@@ -107,7 +107,7 @@ export type CreationTimestamp = number;
 /**
  * Order direction
  */
-export type Direction1 = "buy" | "sell";
+export type Direction1 = 'buy' | 'sell';
 /**
  * Total filled amount for the order
  */
@@ -155,11 +155,11 @@ export type OrderId = string;
 /**
  * Order status
  */
-export type OrderStatus = "open" | "filled" | "rejected" | "cancelled" | "expired";
+export type OrderStatus = 'open' | 'filled' | 'rejected' | 'cancelled' | 'expired';
 /**
  * Order type
  */
-export type OrderType1 = "limit" | "market";
+export type OrderType1 = 'limit' | 'market';
 /**
  * Ethereum signature of the order
  */
@@ -179,11 +179,11 @@ export type SubaccountId1 = number;
 /**
  * Time in force
  */
-export type TimeInForce1 = "gtc" | "post_only" | "fok" | "ioc";
+export type TimeInForce1 = 'gtc' | 'post_only' | 'fok' | 'ioc';
 /**
  * Order direction
  */
-export type Direction2 = "buy" | "sell";
+export type Direction2 = 'buy' | 'sell';
 /**
  * Index price of the underlying at the time of the trade
  */
@@ -203,7 +203,7 @@ export type Label2 = string;
 /**
  * Role of the user in the trade
  */
-export type LiquidityRole = "maker" | "taker";
+export type LiquidityRole = 'maker' | 'taker';
 /**
  * Mark price of the instrument at the time of the trade
  */
@@ -247,7 +247,7 @@ export type TxHash = string | null;
 /**
  * Blockchain transaction status
  */
-export type TxStatus = "requested" | "pending" | "settled" | "reverted" | "ignored";
+export type TxStatus = 'requested' | 'pending' | 'settled' | 'reverted' | 'ignored';
 export type Trades = TradeResponseSchema[];
 
 export interface PrivateOrderJSONRPCSchema {

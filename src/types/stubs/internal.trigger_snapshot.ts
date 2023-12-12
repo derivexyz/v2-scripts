@@ -9,7 +9,7 @@
  * Triggers a snapshot (For testing purposes)
  */
 export type InternalTriggerSnapshot = InternalTriggerSnapshotJSONRPCSchema;
-export type Method = "internal/trigger_snapshot";
+export type Method = 'internal/trigger_snapshot';
 /**
  * True if success
  */

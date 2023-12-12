@@ -9,7 +9,7 @@
  * Cancel an order with a given subaccount and a given nonce.
  */
 export type PrivateCancelByNonce = PrivateCancelByNonceJSONRPCSchema;
-export type Method = "private/cancel_by_nonce";
+export type Method = 'private/cancel_by_nonce';
 /**
  * Cancel an order with this nonce
  */

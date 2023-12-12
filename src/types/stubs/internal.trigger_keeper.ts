@@ -6,7 +6,7 @@
  */
 
 export type InternalTriggerKeeper = InternalTriggerKeeperJSONRPCSchema;
-export type Method = "internal/trigger_keeper";
+export type Method = 'internal/trigger_keeper';
 /**
  * ID of keeper to run
  */

@@ -9,7 +9,7 @@
  * Create a new subaccount under a given wallet, and deposit an asset into that subaccount.
  */
 export type PrivateCreateSubaccount = PrivateCreateSubaccountJSONRPCSchema;
-export type Method = "private/create_subaccount";
+export type Method = 'private/create_subaccount';
 /**
  * Amount of the asset to deposit
  */
@@ -25,7 +25,7 @@ export type Currency = string | null;
 /**
  * `PM` (Portfolio Margin) or `SM` (Standard Margin)
  */
-export type MarginType = "PM" | "SM";
+export type MarginType = 'PM' | 'SM';
 /**
  * Unique nonce defined as <UTC_timestamp in ms><random_number_up_to_6_digits> (e.g. 1695836058725001, where 001 is the random number)
  */

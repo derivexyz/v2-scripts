@@ -9,7 +9,7 @@
  * Triggers an archive (For testing purposes)
  */
 export type InternalTriggerDriftDetector = InternalTriggerDriftDetectorJSONRPCSchema;
-export type Method = "internal/trigger_drift_detector";
+export type Method = 'internal/trigger_drift_detector';
 /**
  * True if success
  */

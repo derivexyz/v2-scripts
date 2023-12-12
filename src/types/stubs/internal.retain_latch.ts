@@ -6,7 +6,7 @@
  */
 
 export type InternalRetainLatch = InternalRetainLatchJSONRPCSchema;
-export type Method = "internal/retain_latch";
+export type Method = 'internal/retain_latch';
 export type InstrumentName = string;
 export type PodId = string;
 export type ServiceType = string;

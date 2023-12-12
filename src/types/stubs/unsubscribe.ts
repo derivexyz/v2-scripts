@@ -9,7 +9,7 @@
  * Unsubscribe from a list of channels, or all channels.
  */
 export type Unsubscribe = UnsubscribeJSONRPCSchema;
-export type Method = "unsubscribe";
+export type Method = 'unsubscribe';
 /**
  * A list of channels names to unsubscribe from.<br />If not provided, unsubscribe from all channels.
  */
@@ -18,7 +18,7 @@ export type Channels1 = string;
 /**
  * The result of this method call, `ok` if successful
  */
-export type Result = "ok";
+export type Result = 'ok';
 
 export interface UnsubscribeJSONRPCSchema {
   request: UnsubscribeRequestSchema;

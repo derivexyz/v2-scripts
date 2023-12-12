@@ -9,7 +9,7 @@
  * Get subaccount deposit history.
  */
 export type PrivateGetDepositHistory = PrivateGetDepositHistoryJSONRPCSchema;
-export type Method = "private/get_deposit_history";
+export type Method = 'private/get_deposit_history';
 /**
  * End timestamp of the event history (default current time)
  */

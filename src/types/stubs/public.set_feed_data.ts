@@ -6,7 +6,7 @@
  */
 
 export type PublicSetFeedData = PublicSetFeedDataJSONRPCSchema;
-export type Method = "public/set_feed_data";
+export type Method = 'public/set_feed_data';
 /**
  * The confidence score of the price
  */
@@ -73,7 +73,7 @@ export type Timestamp1 = number;
 /**
  * The type of perp feed; mid price, ask impact or bid impact
  */
-export type Type = "P" | "A" | "B";
+export type Type = 'P' | 'A' | 'B';
 export type Perp = PerpFeedDataSchema[];
 /**
  * The confidence score of the price

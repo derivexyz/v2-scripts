@@ -9,7 +9,7 @@
  * RPC to mark specified notifications as seen for a given subaccount.
  */
 export type PrivateUpdateNotifications = PrivateUpdateNotificationsJSONRPCSchema;
-export type Method = "private/update_notifications";
+export type Method = 'private/update_notifications';
 export type NotificationIds1 = number;
 /**
  * List of notification IDs to be marked as seen
@@ -18,7 +18,7 @@ export type NotificationIds = NotificationIds1[];
 /**
  * Status of the notification
  */
-export type Status = "unseen" | "seen" | "hidden";
+export type Status = 'unseen' | 'seen' | 'hidden';
 /**
  * Subaccount_id
  */

@@ -9,7 +9,7 @@
  * Cancel all open orders for a given subaccount and a given label.
  */
 export type PrivateCancelByLabel = PrivateCancelByLabelJSONRPCSchema;
-export type Method = "private/cancel_by_label";
+export type Method = 'private/cancel_by_label';
 /**
  * Cancel all orders for this label
  */

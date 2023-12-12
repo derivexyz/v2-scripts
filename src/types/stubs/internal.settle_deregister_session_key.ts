@@ -11,7 +11,7 @@
  * NOTE: for direct on-chain deregistrations, refer to the event_listener.py
  */
 export type InternalSettleDeregisterSessionKey = InternalSettleDeregisterSessionKeyJSONRPCSchema;
-export type Method = "internal/settle_deregister_session_key";
+export type Method = 'internal/settle_deregister_session_key';
 export type RawSignedTx = string;
 export type Status = 0 | 1 | 2;
 export type TransactionHash = string | null;

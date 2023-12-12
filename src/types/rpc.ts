@@ -1,8 +1,8 @@
 export type RPCErrorCode = {
-    code: number;
-    message: string;
-    data?: any;
-}
+  code: number;
+  message: string;
+  data?: any;
+};
 
 export interface RPCError {
   id: number | string;

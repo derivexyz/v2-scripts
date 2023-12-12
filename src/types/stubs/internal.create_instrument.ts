@@ -6,7 +6,7 @@
  */
 
 export type InternalCreateInstrument = InternalCreateInstrumentJSONRPCSchema;
-export type Method = "internal/create_instrument";
+export type Method = 'internal/create_instrument';
 export type AmountStep = string;
 export type BaseAsset = string;
 export type EngineHeartbeatInterval = number;
@@ -45,7 +45,7 @@ export type InstrumentName1 = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type InstrumentType = "erc20" | "option" | "perp";
+export type InstrumentType = 'erc20' | 'option' | 'perp';
 /**
  * If `True`: instrument is tradeable within `activation` and `deactivation` timestamps
  */
@@ -74,7 +74,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Settlement price of the option
  */

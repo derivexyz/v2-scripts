@@ -13,7 +13,7 @@
  * in a fill are attached as data to the requests.
  */
 export type InternalFillRisk = InternalFillRiskJSONRPCSchema;
-export type Method = "internal/fill_risk";
+export type Method = 'internal/fill_risk';
 export type InstrumentName = string;
 export type PortfolioDelta = string;
 export type SubaccountId = number;

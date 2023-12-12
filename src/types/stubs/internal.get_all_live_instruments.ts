@@ -9,7 +9,7 @@
  * Get all live instruments for which queues are expected to be running
  */
 export type InternalGetAllLiveInstruments = InternalGetAllLiveInstrumentsJSONRPCSchema;
-export type Method = "internal/get_all_live_instruments";
+export type Method = 'internal/get_all_live_instruments';
 export type Result1 = string;
 export type Result = Result1[];
 

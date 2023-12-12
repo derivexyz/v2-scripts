@@ -9,7 +9,7 @@
  * Used for settling matched orders to the blockchain by submitting them to the sequencer RPC.
  */
 export type InternalSettleTrade = InternalSettleTradeJSONRPCSchema;
-export type Method = "internal/settle_trade";
+export type Method = 'internal/settle_trade';
 export type AmountFilled = string;
 export type Fee = string;
 export type FilledAccount = number;

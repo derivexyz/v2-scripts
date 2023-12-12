@@ -9,7 +9,7 @@
  * Triggers an expiry sweep (For testing purposes)
  */
 export type InternalTriggerRiskRunner = InternalTriggerRiskRunnerJSONRPCSchema;
-export type Method = "internal/trigger_risk_runner";
+export type Method = 'internal/trigger_risk_runner';
 /**
  * True if success
  */

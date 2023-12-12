@@ -12,11 +12,11 @@ export type OrderbookInstrumentNameGroupDepth = OrderbookInstrumentNameGroupDept
 /**
  * Number of price levels returned
  */
-export type Depth = "1" | "10" | "20" | "50" | "100";
+export type Depth = '1' | '10' | '20' | '50' | '100';
 /**
  * Price grouping (rounding)
  */
-export type Group = "1" | "10" | "100" | "500";
+export type Group = '1' | '10' | '100' | '500';
 /**
  * Instrument name
  */

@@ -9,7 +9,7 @@
  * Set or update the given currency
  */
 export type InternalSetCurrency = InternalSetCurrencyJSONRPCSchema;
-export type Method = "internal/set_currency";
+export type Method = 'internal/set_currency';
 /**
  * Underlying currency of asset (`ETH`, `BTC`, etc)
  */
@@ -22,7 +22,7 @@ export type MarketId = number | null;
  * Address of PortfolioMarginRiskManager contract
  */
 export type PmrmAddress = string | null;
-export type Result = "ok";
+export type Result = 'ok';
 
 export interface InternalSetCurrencyJSONRPCSchema {
   request: InternalSetCurrencyRequestSchema;

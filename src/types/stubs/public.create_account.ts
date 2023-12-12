@@ -9,7 +9,7 @@
  * Create a new account
  */
 export type PublicCreateAccount = PublicCreateAccountJSONRPCSchema;
-export type Method = "public/create_account";
+export type Method = 'public/create_account';
 /**
  * Ethereum wallet address
  */

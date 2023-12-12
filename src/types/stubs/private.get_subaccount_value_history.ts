@@ -9,7 +9,7 @@
  * Get the value history of a subaccount
  */
 export type PrivateGetSubaccountValueHistory = PrivateGetSubaccountValueHistoryJSONRPCSchema;
-export type Method = "private/get_subaccount_value_history";
+export type Method = 'private/get_subaccount_value_history';
 /**
  * End timestamp
  */

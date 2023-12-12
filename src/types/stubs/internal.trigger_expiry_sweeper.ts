@@ -9,7 +9,7 @@
  * Triggers an expiry sweep (For testing purposes)
  */
 export type InternalTriggerExpirySweeper = InternalTriggerExpirySweeperJSONRPCSchema;
-export type Method = "internal/trigger_expiry_sweeper";
+export type Method = 'internal/trigger_expiry_sweeper';
 /**
  * True if success
  */

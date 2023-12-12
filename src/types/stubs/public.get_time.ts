@@ -6,7 +6,7 @@
  */
 
 export type PublicGetTime = PublicGetTimeJSONRPCSchema;
-export type Method = "public/get_time";
+export type Method = 'public/get_time';
 /**
  * Current time in milliseconds since UNIX epoch
  */

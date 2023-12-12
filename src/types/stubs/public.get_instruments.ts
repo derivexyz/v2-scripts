@@ -9,7 +9,7 @@
  * Get all active instruments for a given `currency` and `type`
  */
 export type PublicGetInstruments = PublicGetInstrumentsJSONRPCSchema;
-export type Method = "public/get_instruments";
+export type Method = 'public/get_instruments';
 /**
  * Underlying currency of asset (`ETH`, `BTC`, etc)
  */
@@ -21,7 +21,7 @@ export type Expired = boolean;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type InstrumentType = "erc20" | "option" | "perp";
+export type InstrumentType = 'erc20' | 'option' | 'perp';
 /**
  * Minimum valid increment of order amount
  */
@@ -45,7 +45,7 @@ export type InstrumentName = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type InstrumentType1 = "erc20" | "option" | "perp";
+export type InstrumentType1 = 'erc20' | 'option' | 'perp';
 /**
  * If `True`: instrument is tradeable within `activation` and `deactivation` timestamps
  */
@@ -74,7 +74,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Settlement price of the option
  */

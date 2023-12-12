@@ -9,7 +9,7 @@
  * Get active positions of a subaccount
  */
 export type PrivateGetPositions = PrivateGetPositionsJSONRPCSchema;
-export type Method = "private/get_positions";
+export type Method = 'private/get_positions';
 /**
  * Subaccount_id
  */
@@ -49,7 +49,7 @@ export type InstrumentName = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type InstrumentType = "erc20" | "option" | "perp";
+export type InstrumentType = 'erc20' | 'option' | 'perp';
 /**
  * Only for perps. Leverage of the position, defined as `abs(notional) / collateral net of options margin`
  */

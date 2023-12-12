@@ -9,7 +9,7 @@
  * Cancel all open orders for a given subaccount and a given instrument.
  */
 export type PrivateCancelByInstrument = PrivateCancelByInstrumentJSONRPCSchema;
-export type Method = "private/cancel_by_instrument";
+export type Method = 'private/cancel_by_instrument';
 /**
  * Cancel all orders for this instrument
  */

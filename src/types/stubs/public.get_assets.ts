@@ -9,11 +9,11 @@
  * Get all assets for a given `currency` and `type`
  */
 export type PublicGetAssets = PublicGetAssetsJSONRPCSchema;
-export type Method = "public/get_assets";
+export type Method = 'public/get_assets';
 /**
  * Asset type
  */
-export type AssetType = "erc20" | "option" | "perp";
+export type AssetType = 'erc20' | 'option' | 'perp';
 /**
  * Underlying currency of asset (`ETH`, `BTC`, etc)
  */
@@ -37,7 +37,7 @@ export type AssetName = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type AssetType1 = "erc20" | "option" | "perp";
+export type AssetType1 = 'erc20' | 'option' | 'perp';
 /**
  * Underlying currency of asset (`ETH`, `BTC`, etc)
  */
@@ -70,7 +70,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Settlement price of the option
  */

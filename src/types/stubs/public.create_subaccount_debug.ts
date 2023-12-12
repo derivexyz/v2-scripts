@@ -9,7 +9,7 @@
  * Used for debugging only, do not use in production. Will return the incremental encoded and hashed data.
  */
 export type PublicCreateSubaccountDebug = PublicCreateSubaccountDebugJSONRPCSchema;
-export type Method = "public/create_subaccount_debug";
+export type Method = 'public/create_subaccount_debug';
 /**
  * Amount of the asset to deposit
  */
@@ -25,7 +25,7 @@ export type Currency = string | null;
 /**
  * `PM` (Portfolio Margin) or `SM` (Standard Margin)
  */
-export type MarginType = "PM" | "SM";
+export type MarginType = 'PM' | 'SM';
 /**
  * Unique nonce defined as <UTC_timestamp in ms><random_number_up_to_6_digits> (e.g. 1695836058725001, where 001 is the random number)
  */

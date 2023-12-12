@@ -9,7 +9,7 @@
  * Get all subaccounts of an account / wallet
  */
 export type PrivateGetSubaccounts = PrivateGetSubaccountsJSONRPCSchema;
-export type Method = "private/get_subaccounts";
+export type Method = 'private/get_subaccounts';
 /**
  * Ethereum wallet address of account
  */

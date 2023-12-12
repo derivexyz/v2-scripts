@@ -9,7 +9,7 @@
  * Get trade history for a subaccount, with filter parameters.
  */
 export type PrivateGetTradeHistory = PrivateGetTradeHistoryJSONRPCSchema;
-export type Method = "private/get_trade_history";
+export type Method = 'private/get_trade_history';
 /**
  * Earliest timestamp to filter by (in ms since Unix epoch). If not provied, defaults to 0.
  */
@@ -37,7 +37,7 @@ export type SubaccountId1 = number;
 /**
  * Order direction
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Index price of the underlying at the time of the trade
  */
@@ -57,7 +57,7 @@ export type Label = string;
 /**
  * Role of the user in the trade
  */
-export type LiquidityRole = "maker" | "taker";
+export type LiquidityRole = 'maker' | 'taker';
 /**
  * Mark price of the instrument at the time of the trade
  */
@@ -101,7 +101,7 @@ export type TxHash = string | null;
 /**
  * Blockchain transaction status
  */
-export type TxStatus = "requested" | "pending" | "settled" | "reverted" | "ignored";
+export type TxStatus = 'requested' | 'pending' | 'settled' | 'reverted' | 'ignored';
 /**
  * List of trades
  */

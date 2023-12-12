@@ -9,7 +9,7 @@
  * Register or update expiry of an existing session key.
  */
 export type PublicRegisterSessionKey = PublicRegisterSessionKeyJSONRPCSchema;
-export type Method = "public/register_session_key";
+export type Method = 'public/register_session_key';
 /**
  * Expiry of the session key
  */

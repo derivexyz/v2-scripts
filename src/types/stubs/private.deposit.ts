@@ -9,7 +9,7 @@
  * Deposit an asset to a subaccount.
  */
 export type PrivateDeposit = PrivateDepositJSONRPCSchema;
-export type Method = "private/deposit";
+export type Method = 'private/deposit';
 /**
  * Amount of the asset to deposit
  */

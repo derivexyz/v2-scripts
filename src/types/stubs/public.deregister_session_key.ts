@@ -6,7 +6,7 @@
  */
 
 export type PublicDeregisterSessionKey = PublicDeregisterSessionKeyJSONRPCSchema;
-export type Method = "public/deregister_session_key";
+export type Method = 'public/deregister_session_key';
 /**
  * Session key in the form of an Ethereum EOA
  */

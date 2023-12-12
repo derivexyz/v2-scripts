@@ -9,7 +9,7 @@
  * Used for getting a transaction by its transaction id
  */
 export type PublicGetTransaction = PublicGetTransactionJSONRPCSchema;
-export type Method = "public/get_transaction";
+export type Method = 'public/get_transaction';
 /**
  * transaction_id of the transaction to get
  */
@@ -17,7 +17,7 @@ export type TransactionId = string;
 /**
  * Status of the transaction
  */
-export type Status = "requested" | "pending" | "settled" | "reverted" | "ignored";
+export type Status = 'requested' | 'pending' | 'settled' | 'reverted' | 'ignored';
 /**
  * Transaction hash of a pending tx
  */

@@ -9,7 +9,7 @@
  * Internal Admin RPC for creating new module.
  */
 export type InternalCreateModule = InternalCreateModuleJSONRPCSchema;
-export type Method = "internal/create_module";
+export type Method = 'internal/create_module';
 /**
  * On-chain address of the module contract
  */
@@ -17,7 +17,7 @@ export type Address = string;
 /**
  * Module type
  */
-export type ModuleType = "deposit" | "withdraw" | "trade" | "transfer" | "rm_change";
+export type ModuleType = 'deposit' | 'withdraw' | 'trade' | 'transfer' | 'rm_change';
 /**
  * On-chain address of the module contract
  */
@@ -25,7 +25,7 @@ export type Address1 = string;
 /**
  * Module type
  */
-export type ModuleType1 = "deposit" | "withdraw" | "trade" | "transfer" | "rm_change";
+export type ModuleType1 = 'deposit' | 'withdraw' | 'trade' | 'transfer' | 'rm_change';
 /**
  * `created`
  */

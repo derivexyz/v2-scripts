@@ -6,7 +6,7 @@
  */
 
 export type PrivateGetLiquidationHistory = PrivateGetLiquidationHistoryJSONRPCSchema;
-export type Method = "private/get_liquidation_history";
+export type Method = 'private/get_liquidation_history';
 /**
  * End timestamp of the event history (default current time)
  */
@@ -26,7 +26,7 @@ export type AuctionId = string;
 /**
  * Type of auction
  */
-export type AuctionType = "solvent" | "insolvent";
+export type AuctionType = 'solvent' | 'insolvent';
 export type AmountsLiquidated1 = string;
 /**
  * Cash received for auctioning off the percentage of the subaccount

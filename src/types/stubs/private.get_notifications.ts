@@ -9,7 +9,7 @@
  * Get the notifications related to a subaccount.
  */
 export type PrivateGetNotifications = PrivateGetNotificationsJSONRPCSchema;
-export type Method = "private/get_notifications";
+export type Method = 'private/get_notifications';
 /**
  * Page number of results to return
  */
@@ -21,7 +21,7 @@ export type PageSize = number;
 /**
  * Status of the notification
  */
-export type Status = ("unseen" | "seen" | "hidden") | null;
+export type Status = ('unseen' | 'seen' | 'hidden') | null;
 /**
  * Subaccount_id
  */
@@ -29,7 +29,7 @@ export type SubaccountId = number;
 /**
  * Status of the notification
  */
-export type Type = ("deposit" | "withdraw" | "transfer" | "trade" | "settlement" | "liquidation" | "custom") | null;
+export type Type = ('deposit' | 'withdraw' | 'transfer' | 'trade' | 'settlement' | 'liquidation' | 'custom') | null;
 /**
  * The specific event leading to the notification.
  */

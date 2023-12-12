@@ -9,7 +9,7 @@
  * Triggers a listing (For testing purposes)
  */
 export type InternalTriggerListing = InternalTriggerListingJSONRPCSchema;
-export type Method = "internal/trigger_listing";
+export type Method = 'internal/trigger_listing';
 /**
  * True if success
  */

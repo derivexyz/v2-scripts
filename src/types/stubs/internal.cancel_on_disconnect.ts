@@ -9,7 +9,7 @@
  * Used by the Node server to cancel all of the user's orders on disconnect.
  */
 export type InternalCancelOnDisconnect = InternalCancelOnDisconnectJSONRPCSchema;
-export type Method = "internal/cancel_on_disconnect";
+export type Method = 'internal/cancel_on_disconnect';
 export type SubaccountIds1 = number;
 /**
  * Subaccount IDs
@@ -18,7 +18,7 @@ export type SubaccountIds = SubaccountIds1[];
 /**
  * The result of this method call, `ok` if successful
  */
-export type Result = "ok";
+export type Result = 'ok';
 
 export interface InternalCancelOnDisconnectJSONRPCSchema {
   request: InternalCancelOnDisconnectRequestSchema;

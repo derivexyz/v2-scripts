@@ -15,7 +15,7 @@
  * The maker order is forcibly considered to be `reduce_only`, meaning it can only reduce the position size.
  */
 export type PrivateTransferPosition = PrivateTransferPositionJSONRPCSchema;
-export type Method = "private/transfer_position";
+export type Method = 'private/transfer_position';
 /**
  * Order amount in units of the base
  */
@@ -23,7 +23,7 @@ export type Amount = string;
 /**
  * Order direction
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Instrument name
  */
@@ -72,16 +72,16 @@ export type AveragePrice = string;
  * If cancelled, reason behind order cancellation
  */
 export type CancelReason =
-  | ""
-  | "user_request"
-  | "mmp_trigger"
-  | "insufficient_margin"
-  | "signed_max_fee_too_low"
-  | "cancel_on_disconnect"
-  | "ioc_or_market_partial_fill"
-  | "session_key_deregistered"
-  | "subaccount_withdrawn"
-  | "compliance";
+  | ''
+  | 'user_request'
+  | 'mmp_trigger'
+  | 'insufficient_margin'
+  | 'signed_max_fee_too_low'
+  | 'cancel_on_disconnect'
+  | 'ioc_or_market_partial_fill'
+  | 'session_key_deregistered'
+  | 'subaccount_withdrawn'
+  | 'compliance';
 /**
  * Creation timestamp (in ms since Unix epoch)
  */
@@ -89,7 +89,7 @@ export type CreationTimestamp = number;
 /**
  * Order direction
  */
-export type Direction1 = "buy" | "sell";
+export type Direction1 = 'buy' | 'sell';
 /**
  * Total filled amount for the order
  */
@@ -137,11 +137,11 @@ export type OrderId = string;
 /**
  * Order status
  */
-export type OrderStatus = "open" | "filled" | "rejected" | "cancelled" | "expired";
+export type OrderStatus = 'open' | 'filled' | 'rejected' | 'cancelled' | 'expired';
 /**
  * Order type
  */
-export type OrderType = "limit" | "market";
+export type OrderType = 'limit' | 'market';
 /**
  * Ethereum signature of the order
  */
@@ -161,11 +161,11 @@ export type SubaccountId1 = number;
 /**
  * Time in force
  */
-export type TimeInForce = "gtc" | "post_only" | "fok" | "ioc";
+export type TimeInForce = 'gtc' | 'post_only' | 'fok' | 'ioc';
 /**
  * Order direction
  */
-export type Direction2 = "buy" | "sell";
+export type Direction2 = 'buy' | 'sell';
 /**
  * Index price of the underlying at the time of the trade
  */
@@ -185,7 +185,7 @@ export type Label1 = string;
 /**
  * Role of the user in the trade
  */
-export type LiquidityRole = "maker" | "taker";
+export type LiquidityRole = 'maker' | 'taker';
 /**
  * Mark price of the instrument at the time of the trade
  */
@@ -229,7 +229,7 @@ export type TxHash = string | null;
 /**
  * Blockchain transaction status
  */
-export type TxStatus = "requested" | "pending" | "settled" | "reverted" | "ignored";
+export type TxStatus = 'requested' | 'pending' | 'settled' | 'reverted' | 'ignored';
 
 export interface PrivateTransferPositionJSONRPCSchema {
   request: PrivateTransferPositionRequestSchema;

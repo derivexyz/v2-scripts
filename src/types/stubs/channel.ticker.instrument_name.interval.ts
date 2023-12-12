@@ -13,7 +13,7 @@ export type InstrumentName = string;
 /**
  * Interval in milliseconds
  */
-export type Interval = "100" | "1000" | "10000";
+export type Interval = '100' | '1000' | '10000';
 export type Method = string;
 /**
  * Subscribed channel name
@@ -62,7 +62,7 @@ export type InstrumentName1 = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type InstrumentType = "erc20" | "option" | "perp";
+export type InstrumentType = 'erc20' | 'option' | 'perp';
 /**
  * If `True`: instrument is tradeable within `activation` and `deactivation` timestamps
  */
@@ -103,7 +103,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Settlement price of the option
  */

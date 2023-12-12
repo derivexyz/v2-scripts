@@ -9,7 +9,7 @@
  * Get spot feed history by currency
  */
 export type PublicGetSpotFeedHistory = PublicGetSpotFeedHistoryJSONRPCSchema;
-export type Method = "public/get_spot_feed_history";
+export type Method = 'public/get_spot_feed_history';
 /**
  * Currency
  */

@@ -9,7 +9,7 @@
  * Used for settling transfers to the blockchain by submitting them to the sequencer RPC.
  */
 export type InternalSettleTransfer = InternalSettleTransferJSONRPCSchema;
-export type Method = "internal/settle_transfer";
+export type Method = 'internal/settle_transfer';
 export type IsRecipientTransfer = boolean;
 export type ManagerForNewAccount = string;
 export type ToAccountId = number;

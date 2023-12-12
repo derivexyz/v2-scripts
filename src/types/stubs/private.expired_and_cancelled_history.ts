@@ -9,7 +9,7 @@
  * Generate a list of URLs to retrieve archived orders
  */
 export type PrivateExpiredAndCancelledHistory = PrivateExpiredAndCancelledHistoryJSONRPCSchema;
-export type Method = "private/expired_and_cancelled_history";
+export type Method = 'private/expired_and_cancelled_history';
 /**
  * End Unix timestamp
  */

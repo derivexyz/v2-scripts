@@ -10,11 +10,11 @@
  * open orders margin requirements.
  */
 export type PublicGetMargin = PublicGetMarginJSONRPCSchema;
-export type Method = "public/get_margin";
+export type Method = 'public/get_margin';
 /**
  * `PM` (Portfolio Margin) or `SM` (Standard Margin)
  */
-export type MarginType = "PM" | "SM";
+export type MarginType = 'PM' | 'SM';
 /**
  * Optional, add positions to simulate a trade
  */

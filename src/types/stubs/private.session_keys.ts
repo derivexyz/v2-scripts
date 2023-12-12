@@ -6,7 +6,7 @@
  */
 
 export type PrivateSessionKeys = PrivateSessionKeysJSONRPCSchema;
-export type Method = "private/session_keys";
+export type Method = 'private/session_keys';
 /**
  * Ethereum wallet address of account
  */

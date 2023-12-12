@@ -9,7 +9,7 @@
  * Build a signable transaction params dictionary.
  */
 export type PublicBuildRegisterSessionKeyTx = PublicBuildRegisterSessionKeyTxJSONRPCSchema;
-export type Method = "public/build_register_session_key_tx";
+export type Method = 'public/build_register_session_key_tx';
 /**
  * Expiry of the session key
  */

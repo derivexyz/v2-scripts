@@ -15,7 +15,7 @@
  * with the error details.
  */
 export type PrivateOrderQuote = PrivateOrderQuoteJSONRPCSchema;
-export type Method = "private/order_quote";
+export type Method = 'private/order_quote';
 /**
  * Order amount in units of the base
  */
@@ -23,7 +23,7 @@ export type Amount = string;
 /**
  * Order direction
  */
-export type Direction = "buy" | "sell";
+export type Direction = 'buy' | 'sell';
 /**
  * Instrument name
  */
@@ -51,7 +51,7 @@ export type Nonce = number;
 /**
  * Order type:<br />- `limit`: limit order (default)<br />- `market`: market order, note that limit_price is still required for market orders, but unfilled order portion will be marked as cancelled
  */
-export type OrderType = "limit" | "market";
+export type OrderType = 'limit' | 'market';
 /**
  * If true, the order will not be able to increase position's size (default false). If the order amount exceeds available position size, the order will be filled up to the position size and the remainder will be cancelled. This flag is only supported for market orders or non-resting limit orders (IOC or FOK)
  */
@@ -83,7 +83,7 @@ export type SubaccountId = number;
 /**
  * Time in force behaviour:<br />- `gtc`: good til cancelled (default)<br />- `post_only`: a limit order that will be rejected if it crosses any order in the book, i.e. acts as a taker order<br />- `fok`: fill or kill, will be rejected if it is not fully filled<br />- `ioc`: immediate or cancel, fill at best bid/ask (market) or at limit price (limit), the unfilled portion is cancelled<br />Note that the order will still expire on the `signature_expiry_sec` timestamp.
  */
-export type TimeInForce = "gtc" | "post_only" | "fok" | "ioc";
+export type TimeInForce = 'gtc' | 'post_only' | 'fok' | 'ioc';
 /**
  * An estimate for how much the user will actually pay in fees for the order (per contract).
  */
@@ -99,7 +99,7 @@ export type EstimatedFillPrice = string;
 /**
  * An estimate for the order status after submission. Fully filled orders will be marked as `filled`, unfilled and partially filled limit orders will be marked as `open` and partially filled market / IOC orders will be marked as `cancelled`.
  */
-export type EstimatedOrderStatus = "open" | "filled" | "rejected" | "cancelled" | "expired";
+export type EstimatedOrderStatus = 'open' | 'filled' | 'rejected' | 'cancelled' | 'expired';
 /**
  * An estimate for the realized PnL of the order. For orders with an estimated `cancelled` status this only includes PnL of the filled amount.
  */

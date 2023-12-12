@@ -1,7 +1,7 @@
-import {ethers} from "ethers";
-import {tryRPC} from "../requests";
-import {PrivateGetSubaccount} from "../../../types/stubs/private.get_subaccount";
-import {isRPCError} from "../../../types/rpc";
+import { ethers } from 'ethers';
+import { tryRPC } from '../requests';
+import { PrivateGetSubaccount } from '../../../types/stubs/private.get_subaccount';
+import { isRPCError } from '../../../types/rpc';
 
 export async function getAllBalances(wallet: ethers.Wallet, subAcc: bigint) {
   const result = await tryRPC<PrivateGetSubaccount>(
@@ -9,8 +9,8 @@ export async function getAllBalances(wallet: ethers.Wallet, subAcc: bigint) {
     {
       subaccount_id: Number(subAcc),
     },
-    wallet
-  )
+    wallet,
+  );
 
   if (isRPCError(result)) {
     throw `Failed to get subaccount ${subAcc} balances: ${JSON.stringify(result.error)}`;

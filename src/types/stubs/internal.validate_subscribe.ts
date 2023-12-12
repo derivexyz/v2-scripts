@@ -10,7 +10,7 @@
  * authenticated user's wallet address and/or subaccount ids.
  */
 export type InternalValidateSubscribe = InternalValidateSubscribeJSONRPCSchema;
-export type Method = "internal/validate_subscribe";
+export type Method = 'internal/validate_subscribe';
 /**
  * A list of authenticated subaccount ids
  */

@@ -9,7 +9,7 @@
  * Used by the engine to evaluate a subaccounts open order risk after they are filled.
  */
 export type InternalPostTradeRisk = InternalPostTradeRiskJSONRPCSchema;
-export type Method = "internal/post_trade_risk";
+export type Method = 'internal/post_trade_risk';
 export type SubaccountId = number;
 export type Success = boolean;
 

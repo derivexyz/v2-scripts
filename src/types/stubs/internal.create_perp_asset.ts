@@ -9,7 +9,7 @@
  * Internal Admin RPC for creating a new Perp asset.
  */
 export type InternalCreatePerpAsset = InternalCreatePerpAssetJSONRPCSchema;
-export type Method = "internal/create_perp_asset";
+export type Method = 'internal/create_perp_asset';
 /**
  * On-chain address of Asset.sol contract
  */
@@ -41,7 +41,7 @@ export type AssetName = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type AssetType = "erc20" | "option" | "perp";
+export type AssetType = 'erc20' | 'option' | 'perp';
 /**
  * Underlying currency of asset (`ETH`, `BTC`, etc)
  */
@@ -78,7 +78,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index1 = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Asset identifier for the settlement ERC20 asset
  */

@@ -9,7 +9,7 @@
  * Internal Admin RPC for creating new manager.
  */
 export type InternalCreateManager = InternalCreateManagerJSONRPCSchema;
-export type Method = "internal/create_manager";
+export type Method = 'internal/create_manager';
 /**
  * On-chain address of the manager contract
  */
@@ -21,7 +21,7 @@ export type Currency = string | null;
 /**
  * Margin type
  */
-export type MarginType = "PM" | "SM";
+export type MarginType = 'PM' | 'SM';
 /**
  * On-chain address of the manager contract
  */
@@ -33,7 +33,7 @@ export type Currency1 = string | null;
 /**
  * Margin type
  */
-export type MarginType1 = "PM" | "SM";
+export type MarginType1 = 'PM' | 'SM';
 
 export interface InternalCreateManagerJSONRPCSchema {
   request: InternalCreateManagerRequestSchema;

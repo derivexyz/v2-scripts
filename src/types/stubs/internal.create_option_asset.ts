@@ -6,7 +6,7 @@
  */
 
 export type InternalCreateOptionAsset = InternalCreateOptionAssetJSONRPCSchema;
-export type Method = "internal/create_option_asset";
+export type Method = 'internal/create_option_asset';
 /**
  * On-chain address of Asset.sol contract
  */
@@ -20,7 +20,7 @@ export type Expiry = number;
  * Underlying settlement price index
  */
 export type Index = string;
-export type OptionType = "C" | "P";
+export type OptionType = 'C' | 'P';
 /**
  * Asset identifier for the settlement ERC20 asset
  */
@@ -41,7 +41,7 @@ export type AssetName = string;
 /**
  * `erc20`, `option`, or `perp`
  */
-export type AssetType = "erc20" | "option" | "perp";
+export type AssetType = 'erc20' | 'option' | 'perp';
 /**
  * Underlying currency of asset (`ETH`, `BTC`, etc)
  */
@@ -78,7 +78,7 @@ export type Expiry1 = number;
  * Underlying settlement price index
  */
 export type Index1 = string;
-export type OptionType1 = "C" | "P";
+export type OptionType1 = 'C' | 'P';
 /**
  * Asset identifier for the settlement ERC20 asset
  */

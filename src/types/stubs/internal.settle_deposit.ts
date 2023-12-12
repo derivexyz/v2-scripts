@@ -9,7 +9,7 @@
  * Used for settling deposits to the blockchain by submitting them to the sequencer RPC.
  */
 export type InternalSettleDeposit = InternalSettleDepositJSONRPCSchema;
-export type Method = "internal/settle_deposit";
+export type Method = 'internal/settle_deposit';
 export type AssetId = string;
 export type AssetName = string;
 export type Amount = string;

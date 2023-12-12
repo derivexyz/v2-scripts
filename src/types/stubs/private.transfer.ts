@@ -9,7 +9,7 @@
  * Transfer assets from one subaccount to another.
  */
 export type PrivateTransfer = PrivateTransferJSONRPCSchema;
-export type Method = "private/transfer";
+export type Method = 'private/transfer';
 /**
  * Base currency of the recipient subaccount (only for `PM` if creating a new subaccount)
  */
@@ -33,7 +33,7 @@ export type Signer = string;
 /**
  * `PM` (Portfolio Margin) or `SM` (Standard Margin) if creating a new subaccount. Can be omitted otherwise
  */
-export type RecipientMarginType = ("PM" | "SM") | null;
+export type RecipientMarginType = ('PM' | 'SM') | null;
 /**
  * Subaccount_id of the recipient
  */

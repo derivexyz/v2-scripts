@@ -9,11 +9,11 @@
  * Get the value history of a subaccount
  */
 export type PublicChangeComplianceStatus = PublicChangeComplianceStatusJSONRPCSchema;
-export type Method = "public/change_compliance_status";
+export type Method = 'public/change_compliance_status';
 /**
  * Compliance status enum: enabled, disabled, force_enabled, force_disabled
  */
-export type Status = "enabled" | "disabled";
+export type Status = 'enabled' | 'disabled';
 /**
  * Wallet address of the account owner
  */
