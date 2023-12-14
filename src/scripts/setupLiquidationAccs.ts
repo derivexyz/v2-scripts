@@ -13,7 +13,7 @@ import { toBN } from '../utils/misc/BN';
 
 dotenv.config();
 
-async function setupLiquidationAccs(tradingDepositAmt: string, biddingDepositAmt: string) {
+async function setupLiquidationAccs(options: { tradingDepositAmt?: string; biddingDepositAmt?: string }) {
   const addresses = await getAllAddresses();
 
   // Start with a wallet on L2 that already has some USDC and ETH
@@ -24,40 +24,45 @@ async function setupLiquidationAccs(tradingDepositAmt: string, biddingDepositAmt
   // create an exchange account
   await createAccount(wallet);
 
-  // Create a subaccount on the exchange, depositing into it
-  if (!vars.tradingSubaccount) {
-    await approveIfNotApproved(wallet, addresses.usdc, addresses.deposit, toBN(tradingDepositAmt, 6));
-    // create subaccount
-    // deposit to subaccount
-    await depositToNewSubaccount(wallet, toBN(tradingDepositAmt, 6));
-    vars.tradingSubaccount = await getLatestSubaccount(wallet);
-    logger.info(`Created trading subaccount: ${vars.tradingSubaccount}`);
-  } else {
-    logger.info(`Using existing trading subaccount: ${vars.tradingSubaccount}`);
-    logger.warn(`Not depositing into trading subaccount, not implemented`);
-    // TODO: deposit into this subaccount
+  if (!!options.tradingDepositAmt) {
+    // Create a subaccount on the exchange, depositing into it
+    if (!vars.tradingSubaccount) {
+      await approveIfNotApproved(wallet, addresses.usdc, addresses.deposit, toBN(options.tradingDepositAmt, 6));
+      // create subaccount
+      // deposit to subaccount
+      await depositToNewSubaccount(wallet, toBN(options.tradingDepositAmt, 6));
+      vars.tradingSubaccount = await getLatestSubaccount(wallet);
+      logger.info(`Created trading subaccount: ${vars.tradingSubaccount}`);
+    } else {
+      logger.info(`Using existing trading subaccount: ${vars.tradingSubaccount}`);
+      logger.warn(`Not depositing into trading subaccount, not implemented`);
+      // TODO: deposit into this subaccount
+    }
   }
 
-  // Create a new subaccount on the base layer - this is the liquidation wallet
-  if (!vars.biddingSubaccount) {
-    // create subaccount
-    vars.biddingSubaccount = await createAndGetNewSubaccount(wallet, 'SM');
-    logger.info(`Created bidding subaccount: ${vars.biddingSubaccount}`);
-  } else {
-    logger.info(`Using existing bidding subaccount: ${vars.biddingSubaccount}`);
-  }
+  if (!!options.biddingDepositAmt) {
+    // Create a new subaccount on the base layer - this is the liquidation wallet
+    if (!vars.biddingSubaccount) {
+      // create subaccount
+      vars.biddingSubaccount = await createAndGetNewSubaccount(wallet, 'SM');
+      logger.info(`Created bidding subaccount: ${vars.biddingSubaccount}`);
+    } else {
+      logger.info(`Using existing bidding subaccount: ${vars.biddingSubaccount}`);
+    }
 
-  const depositBn = toBN(biddingDepositAmt, 6);
-  if (depositBn > 0n) {
-    await approveIfNotApproved(wallet, addresses.usdc, addresses.cash, toBN(biddingDepositAmt, 6));
-    await executeWeb3(wallet, addresses.cash, 'deposit(uint256,uint256)', [
-      vars.biddingSubaccount,
-      toBN(biddingDepositAmt, 6),
-    ]);
+    const depositBn = toBN(options.biddingDepositAmt, 6);
+    if (depositBn > 0n) {
+      await approveIfNotApproved(wallet, addresses.usdc, addresses.cash, toBN(options.biddingDepositAmt, 6));
+      await executeWeb3(wallet, addresses.cash, 'deposit(uint256,uint256)', [
+        vars.biddingSubaccount,
+        toBN(options.biddingDepositAmt, 6),
+      ]);
+    }
   }
 
   logger.info(`Trading subaccount: ${vars.tradingSubaccount}`);
   logger.info(`Bidding subaccount: ${vars.biddingSubaccount}`);
+  logger.info('Please set TRADING_SUBACCOUNT and BIDDING_SUBACCOUNT in .env');
 }
 
 export default new Command('setupLiquidationAccs')

@@ -11,6 +11,8 @@ import { toBN } from '../utils/misc/BN';
 import { executeWeb3 } from '../utils/web3/utils';
 import { sleep } from '../utils/misc/time';
 import { getLatestSubaccount } from '../utils/exchange/wallets/createAccount';
+import { withdrawFromExchange } from '../utils/exchange/withdraw';
+import { depositToExchange } from '../utils/exchange/deposit';
 
 dotenv.config();
 
@@ -35,6 +37,11 @@ async function liquidationFlow(
 
   if (options.merge && options.deposit) {
     console.error('Please specify either merge or deposit, not both');
+    process.exit(1);
+  }
+
+  if (options.deposit) {
+    logger.error('Deposit not implemented yet, please either use merge or no option');
     process.exit(1);
   }
 
@@ -63,20 +70,20 @@ async function liquidationFlow(
 
   logger.info(`Created new subaccount from bidding: ${newSubAcc}`);
 
-  // Deposit the new subaccount into the exchange
-  await approveSubaccount(wallet, addresses.matching, newSubAcc);
-  await executeWeb3(wallet, addresses.matching, 'depositSubAccount(uint256)', [newSubAcc]);
+  if (options.deposit) {
+    // Deposit the new subaccount into the exchange
+    await approveSubaccount(wallet, addresses.matching, newSubAcc);
+    await executeWeb3(wallet, addresses.matching, 'depositSubAccount(uint256)', [newSubAcc]);
 
-  // Now we wait for the CLOB to detect the new subaccount
-  await sleep(10000);
+    // Now we wait for the CLOB to detect the new subaccount
+    await sleep(10000);
 
-  const subAcc = await getLatestSubaccount(wallet);
-  logger.info(`Successfully deposited subaccount: ${subAcc}`);
+    const subAcc = await getLatestSubaccount(wallet);
+    logger.info(`Successfully deposited subaccount: ${subAcc}`);
 
-  // TODO: transfer assets to another account
-  // if (options.deposit) {
-  //     await transferAll(wallet, subAcc, vars.tradingSubaccount);
-  // }
+    // TODO: this isn't fully implemented yet
+    // await transferAll(wallet, subAcc, vars.tradingSubaccount);
+  }
 }
 
 export default new Command('liquidationFlow')

@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import console from 'console';
+import { logger } from '../../logger';
 
 export class SignedAction {
   accountId: number;
@@ -39,15 +39,17 @@ export class SignedAction {
   public signAction(wallet?: ethers.BaseWallet): string {
     const signer = wallet ? wallet : this.owner;
     const encodedDataHashed: string = this.getActionHash(this.module);
-    console.log('encodedDataHashed', encodedDataHashed);
+    logger.debug(`encodedDataHashed: ${encodedDataHashed}`);
     const typedDataHash = SignedAction.toTypedDataHash(encodedDataHashed);
-    console.log('typedDataHash', typedDataHash);
+    logger.debug(`typedDataHash: ${typedDataHash}`);
     return signer.signingKey.sign(typedDataHash).serialized;
   }
 
   private getActionHash(matchingModuleAddress: string): string {
     const encoder = ethers.AbiCoder.defaultAbiCoder();
 
+    logger.debug(`encodedDataHash: ${ethers.keccak256(Buffer.from(this.data.slice(2), 'hex'))}`);
+    logger.debug(`matchingModuleAddress: ${matchingModuleAddress}`);
     return ethers.keccak256(
       encoder.encode(
         ['bytes32', 'uint256', 'uint256', 'address', 'bytes32', 'uint256', 'address', 'address'],
