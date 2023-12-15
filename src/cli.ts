@@ -1,6 +1,5 @@
 import { Command } from 'commander';
 import submitFeedData from './scripts/submitFeedData';
-import submitExpiryData from './private-scripts/submitExpiryData';
 import setupLiquidationAccs from './scripts/setupLiquidationAccs';
 import liquidationFlow from './scripts/liquidationFlow';
 import checkCashStats from './scripts/checkCashStats';
@@ -19,7 +18,6 @@ program.addCommand(getAllCurrentAuctions);
 program.addCommand(getBalances);
 program.addCommand(liquidationFlow);
 program.addCommand(submitFeedData);
-program.addCommand(submitExpiryData);
 program.addCommand(setupLiquidationAccs);
 program.addCommand(withdrawFromSubaccount);
 
