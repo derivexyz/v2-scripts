@@ -10,6 +10,7 @@ import { optionDetailsToSubId } from '../contracts/option';
 import { logger } from '../logger';
 import { bnAbs, fromBN, toBN } from '../misc/BN';
 import { sleep } from '../misc/time';
+import { getEncodedTradeData } from './trades/utils';
 
 export async function transferAll(wallet: ethers.Wallet, from: bigint, to: bigint) {
   // TODO: transfer any negative cash first
@@ -36,32 +37,6 @@ export async function transferAll(wallet: ethers.Wallet, from: bigint, to: bigin
 
     // TODO: transfer ERC20
   }
-}
-
-function getEncodedTradeData(
-  asset: string,
-  subId: bigint,
-  limitPrice: bigint,
-  amount: bigint,
-  maxFee: bigint,
-  subaccountId: bigint,
-  direction: 'buy' | 'sell',
-) {
-  const tradeData = [
-    asset, // Asset address
-    subId, //sub id
-    limitPrice, // limit
-    amount, //desired amount
-    maxFee, //worst fee
-    subaccountId, //recipient id
-    direction == 'buy', //isbid
-  ];
-
-  // logger.debug('tradeData', tradeData);
-
-  const TradeDataABI = ['address', 'uint', 'int', 'int', 'uint', 'uint', 'bool'];
-  const encoder = ethers.AbiCoder.defaultAbiCoder();
-  return encoder.encode(TradeDataABI, tradeData);
 }
 
 export async function submitTransfer(

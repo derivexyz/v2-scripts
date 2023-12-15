@@ -20,8 +20,15 @@ export async function executeWeb3(
   contractAddr: string,
   func: string,
   args: any[],
-  options = ' --gas-limit 15000000 -- --broadcast', // TODO:
+  options?: string,
 ) {
+  if (!options) {
+    if (vars.fixedGas != '0') {
+      options = ` --gas-limit ${vars.fixedGas} -- --broadcast`;
+    } else {
+      options = ' -- --broadcast';
+    }
+  }
   const argsStr = args.map((x) => `"${stringifyForCast(x)}"`).join(' ');
   logger.debug(
     `sending from ${signer.address}\n`,

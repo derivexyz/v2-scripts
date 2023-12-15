@@ -1,4 +1,4 @@
-import { tryRequest } from './requests';
+import { tryRequest } from '../requests';
 import { ethers } from 'ethers';
 
 import { assert } from 'console';

@@ -1,7 +1,6 @@
 import axios, { AxiosError, AxiosResponse, Method } from 'axios';
-import { LyraAuthHeader } from './auth';
+import { LyraAuthHeader, getLyraAuthHeader } from './auth/headers';
 import { ethers } from 'ethers';
-import { getLyraAuthHeader } from './auth';
 import { RequestParamsType, ResponseType, MethodOf } from '../../types/rpc';
 import { vars } from '../../vars';
 import { logger } from '../logger';

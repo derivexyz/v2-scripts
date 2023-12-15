@@ -13,6 +13,7 @@ import { sleep } from '../utils/misc/time';
 import { getLatestSubaccount } from '../utils/exchange/wallets/createAccount';
 import { withdrawFromExchange } from '../utils/exchange/withdraw';
 import { depositToExchange } from '../utils/exchange/deposit';
+import { closeAllPositions } from '../utils/exchange/closePositions';
 
 dotenv.config();
 
@@ -23,11 +24,10 @@ async function liquidationFlow(
     collateral?: string;
     lastTradeId?: string;
     maxCost?: string;
-    merge?: boolean;
-    deposit?: boolean;
+    closeType?: string;
   },
 ) {
-  if (!vars.tradingSubaccount || !vars.biddingSubaccount) {
+  if (!vars.biddingSubaccount) {
     throw Error('Please run setupLiquidationAccs first. Must set TRADING_SUBACCOUNT and BIDDING_SUBACCOUNT in .env');
   }
   if (!targetAccount) {
@@ -35,12 +35,17 @@ async function liquidationFlow(
     process.exit(1);
   }
 
-  if (options.merge && options.deposit) {
-    console.error('Please specify either merge or deposit, not both');
+  if (!options.closeType) {
+    console.error('Please specify close type');
     process.exit(1);
   }
 
-  if (options.deposit) {
+  if (!['b', 'm', 'd', 'c'].includes(options.closeType)) {
+    console.error('Invalid close type');
+    process.exit(1);
+  }
+
+  if (options.closeType == 'd') {
     logger.error('Deposit not implemented yet, please either use merge or no option');
     process.exit(1);
   }
@@ -64,14 +69,26 @@ async function liquidationFlow(
     options.collateral ? toBN(options.collateral) : null,
     BigInt(options.lastTradeId || 0),
     BigInt(options.maxCost || 0),
-    options.merge || false,
+    options.closeType === 'm',
   );
   const newSubAcc = getSubaccountIdFromEvents(tx.logs);
 
   logger.info(`Created new subaccount from bidding: ${newSubAcc}`);
 
-  if (options.deposit) {
-    // Deposit the new subaccount into the exchange
+  if (options.closeType === 'b') {
+    logger.info(`Leaving accounts alone`);
+    process.exit(1);
+  }
+
+  if (options.closeType === 'm') {
+    logger.info(`Merged new subaccount into bidding subaccount`);
+    process.exit(1);
+  }
+
+  // Deposit the new subaccount into the exchange
+  if (options.closeType === 'd' || options.closeType === 'c') {
+    logger.info(`Depositing new subaccount into exchange`);
+
     await approveSubaccount(wallet, addresses.matching, newSubAcc);
     await executeWeb3(wallet, addresses.matching, 'depositSubAccount(uint256)', [newSubAcc]);
 
@@ -81,8 +98,11 @@ async function liquidationFlow(
     const subAcc = await getLatestSubaccount(wallet);
     logger.info(`Successfully deposited subaccount: ${subAcc}`);
 
-    // TODO: this isn't fully implemented yet
-    // await transferAll(wallet, subAcc, vars.tradingSubaccount);
+    if (options.closeType === 'd') {
+      process.exit(1);
+    }
+    logger.info('Now attempting to close all deposited positions');
+    await closeAllPositions(wallet, subAcc);
   }
 }
 
@@ -100,6 +120,14 @@ export default new Command('liquidationFlow')
   .option('-c, --collateral <collateral>', 'Collateral amount to bid with. $10 above minimum if undefined.')
   .option('-l, --lastTradeId <lastTradeId>', 'Last trade id. Skips check if 0.')
   .option('-m, --maxCost <maxCost>', 'Max bid price to pay. Skips check if 0.')
-  .option('-r, --merge', 'Merge the new subaccount into the bidding subaccount')
-  .option('-d, --deposit', 'Deposit the freshly made account into the exchange')
+  .option(
+    '-t, --closeType <closeType>',
+    `
+One of <b: bid, m: merge, d: deposit, c: close>.
+b: bid and create new subaccount, which remains on lyra chain
+m: Merge the new subaccount into the bidding subaccount
+d: Deposit the new subaccount into the exchange
+c: Deposit it into the exchange and close all positions (up to trade limits, leaving dust)
+`,
+  )
   .action(liquidationFlow);
