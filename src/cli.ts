@@ -1,12 +1,13 @@
 import { Command } from 'commander';
 import submitFeedData from './scripts/submitFeedData';
-import submitExpiryData from './scripts/submitExpiryData';
+import submitExpiryData from './private-scripts/submitExpiryData';
 import setupLiquidationAccs from './scripts/setupLiquidationAccs';
 import liquidationFlow from './scripts/liquidationFlow';
 import checkCashStats from './scripts/checkCashStats';
 import debugTrace from './scripts/debugTrace';
 import getAllCurrentAuctions from './scripts/getAllCurrentAuctions';
 import getBalances from './scripts/getBalances';
+import withdrawFromSubaccount from "./scripts/withdrawFromSubaccount";
 
 const program = new Command();
 
@@ -20,5 +21,6 @@ program.addCommand(liquidationFlow);
 program.addCommand(submitFeedData);
 program.addCommand(submitExpiryData);
 program.addCommand(setupLiquidationAccs);
+program.addCommand(withdrawFromSubaccount);
 
 program.parse(process.argv);
