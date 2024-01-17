@@ -104,14 +104,32 @@ export async function callWeb3(
   }
 }
 
-export async function getLogsWeb3(contractAddr: string, eventType: string) {
+
+export async function getBlockWeb3(
+  blockNumber: number | "latest",
+) {
+  logger.debug(
+    `cast block <...> ${blockNumber}`,
+  );
+  const out: any = await execAsync(
+    `cast block --rpc-url ${vars.provider}  ${blockNumber} -j`,
+    {
+      shell: '/bin/bash',
+    },
+  );
+
+  return JSON.parse(out.toString('utf-8').trim());
+}
+
+
+export async function getLogsWeb3(contractAddr: string, eventType: string, fromBlock=0, toBlock?: number) {
   // TODO: filters
 
   logger.debug(
-    `cast logs -j --rpc-url ${vars.provider} --address ${contractAddr} --from-block 0 --to-block latest "${eventType}"`,
+    `cast logs -j --rpc-url ${vars.provider} --address ${contractAddr} --from-block ${fromBlock} --to-block ${toBlock ? toBlock : "latest"} "${eventType}"`,
   );
   const out: any = await execAsync(
-    `cast logs -j --rpc-url ${vars.provider} --address ${contractAddr} --from-block 0 --to-block latest "${eventType}"`,
+    `cast logs -j --rpc-url ${vars.provider} --address ${contractAddr} --from-block ${fromBlock} --to-block ${toBlock ? toBlock : "latest"} "${eventType}"`,
     {
       shell: '/bin/bash',
       maxBuffer: 128 * 1024 * 1024, // 128MB
@@ -132,10 +150,14 @@ export async function getLogsWeb3(contractAddr: string, eventType: string) {
       };
     });
 
+
   if (types) {
     return res.map((x: any) => {
+
+      const eventData = `0x${x.topics.slice(1).map((x: string) => x.slice(2)).join('')}${x.data.slice(2)}`;
+
       const data = ethers.AbiCoder.defaultAbiCoder()
-        .decode(types as any, x.data)
+        .decode(types as any, eventData)
         .toObject();
       return {
         ...x,

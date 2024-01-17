@@ -45,10 +45,10 @@ export async function debugTraceLog(tx_hash: string) {
   command += ` --label ${data.perpSettlementHelper}:perpSettlementHelper`;
 
   // Execute command
-  logger.debug('command is:', command);
+  logger.debug(`command is: command`);
   try {
     const output = execSync(command, { shell: '/bin/bash' });
-    logger.debug(output.toString());
+    logger.info(output.toString());
   } catch (error) {
     logger.error(`Error: ${error}`);
   }
