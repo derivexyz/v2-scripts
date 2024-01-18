@@ -1,12 +1,3 @@
-import {
-  AuctionDetails,
-  getAllAuctionsubAccIds,
-  getAuctionBidPrice,
-  getAuctionDetails,
-  getAuctionMaxProportion,
-  getAuctionParams,
-} from '../utils/contracts/auctions';
-import { getAccountDetails, printPortfolio } from '../utils/contracts/subaccounts';
 import { logger } from '../utils/logger';
 import chalk from 'chalk';
 import { fromBN, prettifyBN } from '../utils/misc/BN';
@@ -35,18 +26,15 @@ async function getOptionSettlements() {
   let totalItmEthOptions = 0;
   let totalItmBtcOptions = 0;
 
-  2563.9625255443
-
   for (let i = 0; i < res.length; i++) {
     const {accountId, option, subId, amount, value} = res[i].data;
     const market = option.toLowerCase() === addresses.markets['ETH'].option.toLowerCase() ? 'ETH' : 'BTC';
-    // logger.info(`\nSubaccount: ${chalk.bold(accountId)}`);
-    logger.info(`optionDetails: ${subIdToOptionDetails(subId).expiry} ${subIdToOptionDetails(subId).strike} ${subIdToOptionDetails(subId).isCall ? 'C' : 'P'}`);
+    logger.info(`\nSubaccount: ${chalk.bold(accountId)}`);
+    logger.info(`optionDetails: ${subIdToOptionDetails(subId).expiry} ${fromBN(subIdToOptionDetails(subId).strike)} ${subIdToOptionDetails(subId).isCall ? 'C' : 'P'}`);
+    logger.info(`market: ${market}`);
+    logger.info(`amount: ${fromBN(amount)}`);
+    logger.info(`value: ${fromBN(value)}`);
 
-
-    // logger.info(`market: ${market}`);
-    // logger.info(`amount: ${fromBN(amount)}`);
-    // logger.info(`value: ${fromBN(value)}`);
     if (value > 0) {
       if (market === 'ETH') {
         totalItmEthOptions += +fromBN(amount);
