@@ -28,6 +28,8 @@ async function checkCashStats() {
     ['int256'],
   );
 
+  const borrowRate = await callWeb3(null, addresses.rateModel, 'getBorrowRate(uint256,uint256)', [totalSupply, totalBorrow], ['uint256']);
+
   logger.info(`cash totalSupply: ${fromBN(totalSupply)}`);
   logger.info(`cash totalBorrow: ${fromBN(totalBorrow)}`);
   logger.info(`cash netSettledCash: ${fromBN(netSettledCash)}`);
@@ -35,6 +37,7 @@ async function checkCashStats() {
   logger.info(`cash borrowIndex: ${fromBN(borrowIndex)}`);
   logger.info(`cash supplyIndex: ${fromBN(supplyIndex)}`);
   logger.info(`cash cashToStableRate: ${fromBN(cashToStableRate)}`);
+  logger.info(`cash borrowRate: ${fromBN(borrowRate, 18)}`);
   logger.info(`cash USDCInCash: ${fromBN(USDCInCash, 6)}`);
 
   logger.info(`SM SubId: ${SMSubId}`);

@@ -1,7 +1,7 @@
 import { callWeb3, executeWeb3 } from '../web3/utils';
 import { getAllAddresses } from '../getAddresses';
 import { getSubaccountMargin } from './auctions';
-import { subIdToOptionDetails } from './option';
+import {optionDetailsToString, subIdToOptionDetails} from './option';
 import { getManagerAddress, ManagerType } from '../../types/managers';
 import { ethers } from 'ethers';
 import { logger } from '../logger';
@@ -128,7 +128,7 @@ export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPort
     } else {
       for (const currency of Object.keys(addresses.markets)) {
         const market = addresses.markets[currency];
-        if (market.base == asset) {
+        if (market.baseAsset == asset) {
           if (!res.markets[currency]) {
             res.markets[currency] = {
               base: 0n,
@@ -155,9 +155,7 @@ export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPort
             };
           }
           const optionDetails = subIdToOptionDetails(subId);
-          const optionKey = `${optionDetails.expiry}_${optionDetails.strike / BigInt(toBN('1'))}_${
-            optionDetails.isCall ? 'C' : 'P'
-          }`;
+          const optionKey = optionDetailsToString(optionDetails);
           res.markets[currency].options[optionKey] = amount;
         }
       }

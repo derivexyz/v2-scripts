@@ -1,3 +1,5 @@
+import {toBN} from "../misc/BN";
+
 type OptionDetails = {
   isCall: boolean;
   expiry: bigint;
@@ -26,3 +28,17 @@ export function optionDetailsToSubId(optionDetails: OptionDetails): bigint {
     ((optionDetails.isCall ? 1n : 0n) << 95n) | ((optionDetails.strike / 10_000_000_000n) << 32n) | optionDetails.expiry
   );
 }
+
+export function optionDetailsToString(optionDetails: OptionDetails): string {
+  return `${new Date(parseInt(optionDetails.expiry.toString()) * 1000).toISOString()}__${Number(optionDetails.strike * 1000n / BigInt(toBN('1'))) / 1000}__${
+    optionDetails.isCall ? 'C' : 'P'
+  }`;
+}
+
+
+// const optionDetails = subIdToOptionDetails(39614081407456024158480045568n);
+//
+// const optionKey = `${new Date(parseInt(optionDetails.expiry.toString()) * 1000).toISOString()}__${Number(optionDetails.strike * 1000n / BigInt(toBN('1'))) / 1000}__${
+//   optionDetails.isCall ? 'C' : 'P'
+// }`;
+// console.log(optionKey)

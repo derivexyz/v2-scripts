@@ -14,7 +14,7 @@ export async function debugTraceLog(tx_hash: string) {
   for (const market of Object.keys(data.markets)) {
     command += ` --label ${data.markets[market].option}:option-${market}:`;
     command += ` --label ${data.markets[market].perp}:perp-${market}:`;
-    command += ` --label ${data.markets[market].base}:base-${market}`;
+    command += ` --label ${data.markets[market].baseAsset}:base-${market}`;
     command += ` --label ${data.markets[market].spotFeed}:spotFeed-${market}`;
     command += ` --label ${data.markets[market].volFeed}:volFeed-${market}`;
     command += ` --label ${data.markets[market].forwardFeed}:forwardFeed-${market}`;

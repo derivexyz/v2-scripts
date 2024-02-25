@@ -5,7 +5,8 @@ type MarketContracts = {
   marketId: number;
   option: string;
   perp: string;
-  base: string;
+  baseERC20: string;
+  baseAsset: string;
   spotFeed: string;
   volFeed: string;
   forwardFeed: string;
@@ -14,6 +15,8 @@ type MarketContracts = {
   iapFeed: string;
   rateFeed: string;
   pmrm: string;
+  pmrmLib: string;
+  pmrmViewer: string;
 };
 
 export type AllContracts = {
@@ -24,6 +27,7 @@ export type AllContracts = {
   trade: string;
   transfer: string;
   withdrawal: string;
+  rfq: string;
   subAccountCreator: string;
   subAccounts: string;
   cash: string;
@@ -36,42 +40,95 @@ export type AllContracts = {
   dataSubmitter: string;
   optionSettlementHelper: string;
   perpSettlementHelper: string;
+  clobSettlerAddress: string;
   auctionUtils: string;
 };
 
-let cachedAddresses: AllContracts | null = null;
+
+enum AssetType {
+  NotSet,
+  Option,
+  Perpetual,
+  Base,
+}
+
+let cachedAddresses: AllContracts | undefined;
 
 async function loadMarketAddresses(market: string): Promise<any> {
+  const srm = requireEnv('SRM_ADDRESS');
   const marketId = +requireEnv(`${market}_MARKETID`);
-  const base = requireEnv(`W${market}_ADDRESS`);
-  const pmrm = requireEnv(`${market}_PMRM_ADDRESS`);
-  const perp = await callWeb3(null, pmrm, `perp()`, [], ['address']);
+  const type = requireEnv(`${market}_MARKET_TYPE`);
+  const baseERC20 = requireEnv(`${['BTC', 'ETH'].includes(market) ? `W${market}` : market}_ADDRESS`);
 
-  const [option, spotFeed, volFeed, forwardFeed, rateFeed, perpFeed, ibpFeed, iapFeed] = await Promise.all([
-    callWeb3(null, pmrm, `option()`, [], ['address']),
-    callWeb3(null, pmrm, `spotFeed()`, [], ['address']),
-    callWeb3(null, pmrm, `volFeed()`, [], ['address']),
-    callWeb3(null, pmrm, `forwardFeed()`, [], ['address']),
-    callWeb3(null, pmrm, `interestRateFeed()`, [], ['address']),
-    callWeb3(null, perp, `perpFeed()`, [], ['address']),
-    callWeb3(null, perp, `impactBidPriceFeed()`, [], ['address']),
-    callWeb3(null, perp, `impactAskPriceFeed()`, [], ['address']),
-  ]);
+  if (type === 'ALL') {
+    const pmrm = requireEnv(`${market}_PMRM_ADDRESS`);
+    const perp = await callWeb3(null, pmrm, `perp()`, [], ['address']);
 
-  return {
-    marketId,
-    option,
-    perp,
-    base,
-    spotFeed,
-    volFeed,
-    forwardFeed,
-    rateFeed,
-    perpFeed,
-    ibpFeed,
-    iapFeed,
-    pmrm,
-  };
+    const [option, baseAsset, spotFeed, volFeed, forwardFeed, rateFeed, perpFeed, ibpFeed, iapFeed, lib, view] =
+      await Promise.all([
+        callWeb3(null, pmrm, `option()`, [], ['address']),
+        callWeb3(null, pmrm, `baseAsset()`, [], ['address']),
+        callWeb3(null, pmrm, `spotFeed()`, [], ['address']),
+        callWeb3(null, pmrm, `volFeed()`, [], ['address']),
+        callWeb3(null, pmrm, `forwardFeed()`, [], ['address']),
+        callWeb3(null, pmrm, `interestRateFeed()`, [], ['address']),
+        callWeb3(null, perp, `perpFeed()`, [], ['address']),
+        callWeb3(null, perp, `impactBidPriceFeed()`, [], ['address']),
+        callWeb3(null, perp, `impactAskPriceFeed()`, [], ['address']),
+        callWeb3(null, pmrm, `lib()`, [], ['address']),
+        callWeb3(null, pmrm, `viewer()`, [], ['address']),
+      ]);
+
+    return {
+      marketId,
+      option,
+      perp,
+      baseERC20,
+      baseAsset,
+      spotFeed,
+      volFeed,
+      forwardFeed,
+      rateFeed,
+      perpFeed,
+      ibpFeed,
+      iapFeed,
+      pmrm,
+      pmrmLib: lib,
+      pmrmViewer: view,
+    };
+  } else if (type === 'SRM_BASE_ONLY') {
+    const baseAsset = await callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']);
+    const [spotFeed, ,] = await callWeb3(
+      null,
+      srm,
+      `getMarketFeeds(uint)`,
+      [marketId],
+      ['address', 'address', 'address'],
+    );
+    return {
+      marketId,
+      baseERC20,
+      baseAsset,
+      spotFeed,
+    };
+  } else if (type === 'SRM_OPTION_ONLY') {
+    const [option, baseAsset, [spotFeed, forwardFeed, volFeed]] = await Promise.all([
+      callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']),
+      callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']),
+      callWeb3(null, srm, `getMarketFeeds(uint)`, [marketId], ['address', 'address', 'address']),
+    ]);
+    return {
+      marketId,
+      baseERC20,
+      baseAsset,
+      option,
+      spotFeed,
+      forwardFeed,
+      volFeed,
+    };
+  } else {
+    throw new Error(`Unknown market type ${type}`);
+  }
 }
 
 export async function getAllAddresses(): Promise<AllContracts> {
@@ -79,10 +136,13 @@ export async function getAllAddresses(): Promise<AllContracts> {
     return cachedAddresses;
   }
   cachedAddresses = {
+    clobSettlerAddress: "", rfq: "",
     usdc: requireEnv('USDC_ADDRESS'),
     markets: {
       ETH: await loadMarketAddresses('ETH'),
       BTC: await loadMarketAddresses('BTC'),
+      USDT: await loadMarketAddresses('USDT'),
+      SNX: await loadMarketAddresses('SNX'),
     },
     matching: requireEnv('MATCHING_ADDRESS'),
     deposit: requireEnv('DEPOSIT_ADDRESS'),
@@ -101,7 +161,7 @@ export async function getAllAddresses(): Promise<AllContracts> {
     dataSubmitter: requireEnv('DATA_SUBMITTER_ADDRESS'),
     optionSettlementHelper: requireEnv('OPTION_SETTLEMENT_HELPER'),
     perpSettlementHelper: requireEnv('PERP_SETTLEMENT_HELPER'),
-    auctionUtils: requireEnv('AUCTION_UTILS_ADDRESS'),
+    auctionUtils: requireEnv('AUCTION_UTILS_ADDRESS')
   };
   return cachedAddresses;
 }
