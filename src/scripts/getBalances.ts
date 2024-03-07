@@ -5,6 +5,7 @@ import { Command } from 'commander';
 
 async function getBalances(subAccId: BigNumberish) {
   const accountDetails = await getAccountDetails(BigInt(subAccId));
+  console.log('Account details:', accountDetails);
   printPortfolio(accountDetails.portfolio);
 }
 

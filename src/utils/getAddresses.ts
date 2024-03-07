@@ -143,6 +143,7 @@ export async function getAllAddresses(): Promise<AllContracts> {
       BTC: await loadMarketAddresses('BTC'),
       USDT: await loadMarketAddresses('USDT'),
       SNX: await loadMarketAddresses('SNX'),
+      WSTETH: await loadMarketAddresses('WSTETH'),
     },
     matching: requireEnv('MATCHING_ADDRESS'),
     deposit: requireEnv('DEPOSIT_ADDRESS'),

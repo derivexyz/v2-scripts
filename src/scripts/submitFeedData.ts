@@ -12,7 +12,13 @@ import { Command } from 'commander';
 const abiCoder = new ethers.AbiCoder();
 
 async function submitAllFeedData(options: any) {
-  let currencies = ['ETH', 'BTC', 'USDC'];
+  let currencies = [
+    'ETH',
+    'BTC',
+    'USDC',
+    "USDT",
+    "WSTETH",
+  ];
   if (!options.all && options.currencies) {
     currencies = options.currencies.split(',');
   }
