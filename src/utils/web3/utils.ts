@@ -78,14 +78,15 @@ export async function callWeb3(
   func: string,
   args: any[],
   types?: any[],
+  block?: number
 ) {
   const PK = signer ? signer.privateKey : '0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef';
   const argsStr = args.map((x) => `"${x.toString()}"`).join(' ');
   logger.debug(
-    `cast call <...> ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.length > 80 ? '[...]"' : '')}`,
+    `cast call <...> ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.length > 80 ? '[...]"' : '')}  ${block ? `-B ${block}` : ''}`,
   );
   const out: any = await execAsync(
-    `cast call --private-key ${PK} --rpc-url ${vars.provider} ${contractAddr} "${func}" ${argsStr}`,
+    `cast call --private-key ${PK} --rpc-url ${vars.provider} ${block ? `--block ${block}` : ''} ${contractAddr} "${func}" ${argsStr}`,
     {
       shell: '/bin/bash',
     },

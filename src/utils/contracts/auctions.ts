@@ -67,6 +67,10 @@ export async function getAllAuctionsubAccIds() {
   );
   res.forEach((x: any) => allsubAccIds.add(x.data.accountId));
 
+  for (const x of res) {
+    console.log(x);
+  }
+
   res = await getLogsWeb3(
     addresses.auction,
     'InsolventAuctionStarted(uint accountId, uint scenarioId, int maintenanceMargin)',
@@ -118,7 +122,7 @@ export async function getAuctionDetails(subAccId: bigint): Promise<AuctionDetail
   }
 }
 
-export async function getSubaccountMargin(subAccId: bigint): Promise<AuctionAccountMargin> {
+export async function getSubaccountMargin(subAccId: bigint, block?: number): Promise<AuctionAccountMargin> {
   const addresses = await getAllAddresses();
   const mmRes = await callWeb3(
     null,
@@ -126,6 +130,7 @@ export async function getSubaccountMargin(subAccId: bigint): Promise<AuctionAcco
     'getMM(uint256)',
     [subAccId],
     ['address', 'int256', 'int', 'uint'],
+    block
   );
   return {
     manager: mmRes[0],

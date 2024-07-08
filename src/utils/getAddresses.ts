@@ -1,4 +1,4 @@
-import { callWeb3 } from './web3/utils';
+import {callWeb3, getLogsWeb3} from './web3/utils';
 import { requireEnv } from './requireEnv';
 
 type MarketContracts = {
@@ -45,7 +45,7 @@ export type AllContracts = {
 };
 
 
-enum AssetType {
+export enum AssetType {
   NotSet,
   Option,
   Perpetual,
@@ -66,8 +66,8 @@ async function loadMarketAddresses(market: string): Promise<any> {
 
     const [option, baseAsset, spotFeed, volFeed, forwardFeed, rateFeed, perpFeed, ibpFeed, iapFeed, lib, view] =
       await Promise.all([
-        callWeb3(null, pmrm, `option()`, [], ['address']),
-        callWeb3(null, pmrm, `baseAsset()`, [], ['address']),
+        callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']),
+        callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']),
         callWeb3(null, pmrm, `spotFeed()`, [], ['address']),
         callWeb3(null, pmrm, `volFeed()`, [], ['address']),
         callWeb3(null, pmrm, `forwardFeed()`, [], ['address']),
@@ -135,6 +135,10 @@ export async function getAllAddresses(): Promise<AllContracts> {
   if (cachedAddresses) {
     return cachedAddresses;
   }
+
+  const srm = requireEnv('SRM_ADDRESS');
+  await getLogsWeb3(srm, 'MarketCreated(uint256,string)', 0);
+
   cachedAddresses = {
     clobSettlerAddress: "", rfq: "",
     usdc: requireEnv('USDC_ADDRESS'),

@@ -51,7 +51,7 @@ async function getAllCurrentAuctions() {
 
     logger.info(`\nSubaccount: ${chalk.bold(auction.subAccId)} (lastTradeId: ${portfolio.lastTradeId})`);
     logger.info(`auction is ${auction.insolvent ? chalk.yellow('insolvent') : chalk.blue('solvent')}`);
-    printPortfolio(portfolio.portfolio);
+    printPortfolio(portfolio);
     if (portfolio.margin) {
       const [bidPrice, discount] = getAuctionBidPrice(auction, portfolio.margin, auctionParams);
       logger.info(`MtM: ${prettifyBN(portfolio.margin.MtM)}`);

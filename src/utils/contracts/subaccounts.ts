@@ -12,7 +12,7 @@ export type AccountPortfolio = {
   markets: {
     [currency: string]: {
       base: bigint;
-      perp: bigint;
+      perp: { position: bigint, unrealisedPnL: bigint };
       options: {
         [expiry_strike_type: string]: bigint;
       };
@@ -75,7 +75,7 @@ export function getSubaccountIdFromEvents(logs: any[]) {
   return BigInt(subAccId);
 }
 
-export async function getAccountDetails(subAccId: bigint): Promise<AccountDetails> {
+export async function getAccountDetails(subAccId: bigint, block?: number): Promise<AccountDetails> {
   const addresses = await getAllAddresses();
 
   const lastTradeId = await callWeb3(
@@ -84,16 +84,17 @@ export async function getAccountDetails(subAccId: bigint): Promise<AccountDetail
     'lastAccountTradeId(uint256)',
     [subAccId],
     ['uint256'],
+    block
   );
 
   let margin: AccountMarginDetails | undefined = undefined;
   try {
-    margin = await getSubaccountMargin(subAccId);
+    margin = await getSubaccountMargin(subAccId, block);
   } catch (e) {
     logger.warn('Could not compute margin due to feeds being stale');
   }
 
-  const portfolio = await getAccountPortfolio(subAccId);
+  const portfolio = await getAccountPortfolio(subAccId, block);
 
   return {
     subAccId,
@@ -104,7 +105,7 @@ export async function getAccountDetails(subAccId: bigint): Promise<AccountDetail
   } as any;
 }
 
-export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPortfolio> {
+export async function getAccountPortfolio(subAccId: bigint, block?: number): Promise<AccountPortfolio> {
   const addresses = await getAllAddresses();
 
   const balances = await callWeb3(
@@ -113,6 +114,7 @@ export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPort
     'getAccountBalances(uint256)',
     [subAccId],
     ['(address,uint256,int256)[]'],
+    block
   );
 
   const res: AccountPortfolio = {
@@ -120,37 +122,49 @@ export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPort
     markets: {},
   };
   for (const balance of balances) {
-    const asset = balance[0];
+    const asset = balance[0].toLowerCase();
     const subId = balance[1];
     const amount = balance[2];
-    if (asset == addresses.cash) {
+
+    if (asset == addresses.cash?.toLowerCase()) {
       res.cash = amount;
     } else {
       for (const currency of Object.keys(addresses.markets)) {
         const market = addresses.markets[currency];
-        if (market.baseAsset == asset) {
+        if (market.baseAsset?.toLowerCase() == asset) {
           if (!res.markets[currency]) {
             res.markets[currency] = {
               base: 0n,
-              perp: 0n,
+              perp: {position: 0n, unrealisedPnL: 0n},
               options: {},
             };
           }
           res.markets[currency].base = amount;
-        } else if (market.perp == asset) {
+        } else if (market.perp?.toLowerCase() == asset) {
           if (!res.markets[currency]) {
             res.markets[currency] = {
               base: 0n,
-              perp: 0n,
+              perp: {position: 0n, unrealisedPnL: 0n},
               options: {},
             };
           }
-          res.markets[currency].perp = amount;
-        } else if (market.option == asset) {
+          const perpUnrealisedPnL = await callWeb3(
+            null,
+            market.perp,
+            'getUnsettledAndUnrealizedCash(uint256)',
+            [subAccId],
+            ['int256'],
+            block
+          );
+          res.markets[currency].perp = {
+            position: amount,
+            unrealisedPnL: perpUnrealisedPnL
+          };
+        } else if (market.option?.toLowerCase() == asset) {
           if (!res.markets[currency]) {
             res.markets[currency] = {
               base: 0n,
-              perp: 0n,
+              perp: {position: 0n, unrealisedPnL: 0n},
               options: {},
             };
           }
@@ -164,15 +178,23 @@ export async function getAccountPortfolio(subAccId: bigint): Promise<AccountPort
   return res;
 }
 
-export function printPortfolio(portfolio: AccountPortfolio) {
+export function printPortfolio(account: AccountDetails) {
+  if (account.margin) {
+    logger.info("Margin:");
+    logger.info(`- MtM: ${prettifyBN(account.margin.MtM)}`);
+    logger.info(`- MM: ${prettifyBN(account.margin.MM)}`);
+    logger.info(`- Worst Scenario: ${account.margin.worstScenario}`);
+  }
+  const portfolio = account.portfolio;
+  logger.info("Portfolio:")
   logger.info(`- Cash: ${prettifyBN(portfolio.cash)}`);
   for (const currency of Object.keys(portfolio.markets)) {
     logger.info(`- ${currency}:`);
     if (portfolio.markets[currency].base != 0n) {
       logger.info(`-- Base: ${prettifyBN(portfolio.markets[currency].base)}`);
     }
-    if (portfolio.markets[currency].perp != 0n) {
-      logger.info(`-- Perp: ${prettifyBN(portfolio.markets[currency].perp)}`);
+    if (portfolio.markets[currency].perp.position != 0n) {
+      logger.info(`-- Perp: ${prettifyBN(portfolio.markets[currency].perp.position)} (Unrealised PnL: ${prettifyBN(portfolio.markets[currency].perp.unrealisedPnL)}`);
     }
     for (const optionKey of Object.keys(portfolio.markets[currency].options)) {
       logger.info(`-- ${optionKey}: ${prettifyBN(portfolio.markets[currency].options[optionKey])}`);

@@ -8,6 +8,7 @@ import getAllCurrentAuctions from './scripts/getAllCurrentAuctions';
 import getBalances from './scripts/getBalances';
 import withdrawFromSubaccount from "./scripts/withdrawFromSubaccount";
 import getOptionSettlements from "./scripts/getOptionSettlements";
+import getAllParams from "./scripts/getAllParams";
 
 const program = new Command();
 
@@ -22,5 +23,6 @@ program.addCommand(liquidationFlow);
 program.addCommand(submitFeedData);
 program.addCommand(setupLiquidationAccs);
 program.addCommand(withdrawFromSubaccount);
+program.addCommand(getAllParams);
 
 program.parse(process.argv);
