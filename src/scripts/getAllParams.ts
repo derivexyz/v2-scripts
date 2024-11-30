@@ -3,8 +3,10 @@ import { callWeb3, getLogsWeb3 } from '../utils/web3/utils';
 import { Command } from 'commander';
 import { requireEnv } from "../utils/requireEnv";
 import { ZeroAddress } from "ethers";
-import {fromBN} from "../utils/misc/BN";
+import {fromBN, toBN} from "../utils/misc/BN";
 import { prettifySeconds } from "../utils/misc/time";
+import path from "path";
+import fs from "fs";
 
 type MarketAddresses = {
   option?: string;
@@ -18,6 +20,24 @@ type MarketAddresses = {
   ibpFeed?: string;
   iapFeed?: string;
 }
+
+const expectedCapsOnTopOfVault: {[key:string]: bigint} = {
+  RSWETH: toBN("500"),
+  WEETH: toBN("750"),
+  RSETH: toBN("500"),
+  SUSDE: toBN("1500000"),
+  LBTC: toBN("20"),
+}
+
+const vaultSubaccounts: {[key:string]: number[]} = {
+  RSWETH: [5739],
+  WEETH: [5738, 10301, 10303],
+  RSETH: [5740],
+  SUSDE: [10144],
+  LBTC: [10628, 10629]
+}
+
+
 
 const removeUndefinedValuesFromObject = <T>(obj: any): T => {
   Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
@@ -57,33 +77,29 @@ async function getSRMAddresses(marketId: string): Promise<MarketAddresses> {
 }
 
 async function getFeedParams(feed: string): Promise<[string[], string, string]> {
-  try {
-    const [signerEvents, heartbeat, requiredSigners] = await Promise.all([
-      getLogsWeb3(feed, 'SignerUpdated(address signer, bool isSigner)', 0),
-      callWeb3(null, feed, `heartbeat()`, [], ['uint256']),
-      callWeb3(null, feed, `requiredSigners()`, [], ['uint256'])
-    ]);
+  const [signerEvents, heartbeat, requiredSigners] = await Promise.all([
+    getLogsWeb3(feed, 'SignerUpdated(address signer, bool isSigner)', 0),
+    callWeb3(null, feed, `heartbeat()`, [], ['uint256']),
+    callWeb3(null, feed, `requiredSigners()`, [], ['uint256'])
+  ]);
 
-    const latestEvent: any = {}
+  const latestEvent: any = {}
 
-    for (const event of signerEvents) {
-      if (!latestEvent[event.data.signer] || latestEvent[event.data.signer].block < event.blockNumber) {
-        latestEvent[event.data.signer] = {block: event.blockNumber, isSigner: event.data.isSigner};
-      }
+  for (const event of signerEvents) {
+    if (!latestEvent[event.data.signer] || latestEvent[event.data.signer].block < event.blockNumber) {
+      latestEvent[event.data.signer] = {block: event.blockNumber, isSigner: event.data.isSigner};
     }
-
-    return [
-      Object.entries(latestEvent).filter(([_, v]) => (v as any).isSigner).map(([k, _]) => k),
-      heartbeat,
-      requiredSigners
-    ];
-  } catch (e) {
-    // for SFPs
-    return [[], '0', '0'];
   }
+
+  return [
+    Object.entries(latestEvent).filter(([_, v]) => (v as any).isSigner).map(([k, _]) => k),
+    heartbeat,
+    requiredSigners
+  ];
 }
 
-async function getMarketSRMParams(marketId: string, marketAddresses: MarketAddresses): Promise<object> {
+async function getMarketSRMParams(marketName: string, marketId: string, marketAddresses: MarketAddresses): Promise<object> {
+  const subaccounts = requireEnv("SUBACCOUNT_ADDRESS");
   const srm = requireEnv('SRM_ADDRESS');
 
   const [
@@ -124,8 +140,8 @@ async function getMarketSRMParams(marketId: string, marketAddresses: MarketAddre
 
   if (marketAddresses.base) {
     result.marginParams.baseMarginParams = {
-      marginFactor: fromBN(baseMarginParams[0]),
-      imScale: fromBN(baseMarginParams[1]),
+      marginFactor: baseMarginParams[0].toString(),
+      imScale: baseMarginParams[1].toString(),
     };
   }
 
@@ -173,11 +189,40 @@ async function getMarketSRMParams(marketId: string, marketAddresses: MarketAddre
       callWeb3(null, marketAddresses.base, `totalPositionCap(address)`, [srm], ['uint256'])
     ]);
 
-    result.oiCaps.basePosition = {
-      isWhitelisted: isWl,
-      totalPosition: fromBN(totalPosition),
-      positionCap: fromBN(positionCap),
-    };
+    let wlEnabled = false;
+    try {
+      wlEnabled = await callWeb3(null, marketAddresses.base, `wlEnabled()`, [], ['bool'], undefined, 1);
+    } catch (e) {
+      // ignore
+    }
+
+    if (Object.keys(expectedCapsOnTopOfVault).includes(marketName.toUpperCase())) {
+      let totalVaultBalance = 0n;
+      for (const subaccount of vaultSubaccounts[marketName.toUpperCase()]) {
+        const balance = await callWeb3(
+          null, subaccounts, `getBalance(uint256,address,uint256)`, [subaccount, marketAddresses.base, 0], ['uint256']
+        );
+        totalVaultBalance += balance;
+      }
+      const capOnTop = expectedCapsOnTopOfVault[marketName.toUpperCase()];
+      const expectedCap = capOnTop + totalVaultBalance;
+      result.oiCaps.basePosition = {
+        isSRMWhitelisted: isWl,
+        depositWL: wlEnabled,
+        totalPosition: fromBN(totalPosition),
+        positionCap: fromBN(positionCap),
+        expectedCap: fromBN(expectedCap),
+        vaultBalances: fromBN(totalVaultBalance),
+        nonVaultUsage: `${fromBN(totalPosition - totalVaultBalance)}/${fromBN(capOnTop)}`
+      };
+    } else {
+      result.oiCaps.basePosition = {
+        isSRMWhitelisted: isWl,
+        depositWL: wlEnabled,
+        totalPosition: fromBN(totalPosition),
+        positionCap: fromBN(positionCap),
+      };
+    }
   }
 
   result.feedParams = {};
@@ -185,8 +230,10 @@ async function getMarketSRMParams(marketId: string, marketAddresses: MarketAddre
   if (!marketAddresses.spotFeed) {
     throw new Error(`Missing spot feed for market`);
   }
-
-  const [spotSigners, spotHeartbeat, spotRequiredSigners] = await getFeedParams(marketAddresses.spotFeed);
+  let [spotSigners, spotHeartbeat, spotRequiredSigners]: [string[], string, string] = [[], '0', '0'];
+  if (!["SFP", "DOGE"].includes(marketName.toUpperCase())) {
+    [spotSigners, spotHeartbeat, spotRequiredSigners] = await getFeedParams(marketAddresses.spotFeed);
+  }
 
   result.feedParams.spotFeed = {
     signers: spotSigners,
@@ -261,6 +308,21 @@ async function getMarketSRMParams(marketId: string, marketAddresses: MarketAddre
   return result;
 }
 
+async function getOwners(marketAddresses: MarketAddresses): Promise<{[key:string]: {address: string, owner: string}}> {
+  const addressesWithOwners: {[key:string]: {address: string, owner: string}} = {};
+
+  for (const key of Object.keys(marketAddresses)) {
+    if ((marketAddresses as any)[key]) {
+      const contract = (marketAddresses as any)[key];
+      addressesWithOwners[key] = {
+        address: contract,
+        owner: await callWeb3(null, contract, `owner()`, [], ['address'])
+      }
+    }
+  }
+  return addressesWithOwners;
+}
+
 async function getAllSRMParams(): Promise<object> {
   const srm = requireEnv('SRM_ADDRESS');
 
@@ -278,7 +340,7 @@ async function getAllSRMParams(): Promise<object> {
     callWeb3(null, srm, 'liquidation()', [], ['address']),
     callWeb3(null, srm, 'viewer()', [], ['address']),
     callWeb3(null, srm, 'maxAccountSize()', [], ['uint256']),
-    callWeb3(null, srm, 'feeRecipientAcc()', [], ['address']),
+    callWeb3(null, srm, 'feeRecipientAcc()', [], ['uint256']),
     callWeb3(null, srm, 'minOIFee()', [], ['uint256']),
   ]);
   
@@ -313,20 +375,49 @@ async function getAllSRMParams(): Promise<object> {
   const logs = await getLogsWeb3(srm, 'MarketCreated(uint256 id,string marketName)', 0);
   const markets = logs.map((x: any) => x.data);
 
-  const marketParams = [];
+  const promises = [];
+
+  let ethSpotPrice = 0n;
 
   for (const market of markets) {
-    const marketId = market.id.toString();
-    const marketAddresses = await getSRMAddresses(marketId);
-    const params = await getMarketSRMParams(marketId, marketAddresses);
-    marketParams.push({
-      marketName: market.marketName,
-      marketId,
-      addresses: marketAddresses,
-      params,
-    });
-  }
+    if (market.marketName === 'SFP' || market.marketName === 'PYUSD') {
+      continue;
+    }
+    promises.push((async (): Promise<any> => {
+      const marketId = market.id.toString();
+      const marketAddresses = await getSRMAddresses(marketId);
+      //
+      //// Code block for checking swap rates within the withdrawal wrapper (sponsoring eth for bridging fees)
+      // if (marketAddresses.base) {
+      //   const erc20 = await callWeb3(null, marketAddresses.base, 'wrappedAsset()', [], ['address']);
+      //   const decimals = await callWeb3(null, erc20, 'decimals()', [], ['uint256']);
+      //   const [spotPrice, conf] = await callWeb3(null, marketAddresses.spotFeed as string, 'getSpot()', [], ['uint256', 'uint256']);
+      //   if (market.marketName === "ETH") {
+      //     ethSpotPrice = spotPrice;
+      //   } else {
+      //     while (ethSpotPrice == 0n) await new Promise((resolve) => setTimeout(resolve, 1000));
+      //   }
+      //   // get the staticPrice value which converts the minFee (in ETH) into an underlying token amount
+      //   // minFee (1e18) * staticPrice[token] (1eX) / 1e36;
+      //   // The result should be the amount of tokens being transferred
+      //   const rate = toBN("1", 18 + parseInt(decimals.toString())) * ethSpotPrice / spotPrice;
+      //
+      //   console.log(market.marketName, erc20, rate); // 2500 is the ETH price
+      // }
 
+      const params = await getMarketSRMParams(market.marketName, marketId, marketAddresses);
+      const addressesWithOwners = await getOwners(marketAddresses);
+      return {
+        marketName: market.marketName,
+        marketId,
+        addresses: addressesWithOwners,
+        params,
+      };
+    })())
+  }
+  const marketParams = await Promise.all(promises);
+
+  // throw new Error("Not implemented");
   return {
     baseManagerParams,
     srmParams,
@@ -338,8 +429,14 @@ async function getAllParams(): Promise<void> {
   console.log("# SRM Params #");
 
   const allParams = await getAllSRMParams();
-  console.log(JSON.stringify(allParams, (_, v) => typeof v === 'bigint' ? v.toString() : v)
-  );
+
+  // console.log(JSON.stringify(allParams, (_, v) => typeof v === 'bigint' ? v.toString() : v));
+
+  // write results to "data/srmParams.json"
+  const filePath = path.join(__dirname, '../../data/srmParams.json');
+  fs.writeFileSync(filePath, JSON.stringify(allParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
+
+  console.log(`Results written to ${filePath}`);
 }
 
 export default new Command('getAllParams')

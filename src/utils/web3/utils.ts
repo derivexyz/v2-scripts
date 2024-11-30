@@ -41,8 +41,8 @@ export async function executeWeb3(
   for (let i = 0; i < 1; i++) {
     try {
       const out = execSync(
-        `cast send -j --private-key ${signer.privateKey} --rpc-url ${vars.provider} ${contractAddr} "${func}" ${argsStr} ${options}`,
-        { shell: '/bin/bash' },
+        `cast send --json --private-key ${signer.privateKey} --rpc-url ${vars.provider} ${contractAddr} "${func}" ${argsStr} ${options}`,
+        { shell: '/bin/bash', stdio: 'ignore' },
       );
       return decodeCastOutput(out, func);
     } catch (e) {
@@ -78,19 +78,41 @@ export async function callWeb3(
   func: string,
   args: any[],
   types?: any[],
-  block?: number
+  block?: number,
+  retries = 5,
 ) {
   const PK = signer ? signer.privateKey : '0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef';
   const argsStr = args.map((x) => `"${x.toString()}"`).join(' ');
   logger.debug(
     `cast call <...> ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.length > 80 ? '[...]"' : '')}  ${block ? `-B ${block}` : ''}`,
   );
-  const out: any = await execAsync(
-    `cast call --private-key ${PK} --rpc-url ${vars.provider} ${block ? `--block ${block}` : ''} ${contractAddr} "${func}" ${argsStr}`,
-    {
-      shell: '/bin/bash',
-    },
-  );
+  let out: any;
+  while (true) {
+    try {
+      out = await execAsync(
+        `cast call --private-key ${PK} --rpc-url ${vars.provider} ${block ? `--block ${block}` : ''} ${contractAddr} "${func}" ${argsStr}`,
+        {
+          shell: '/bin/bash',
+          stdio: [],
+        },
+      );
+      if (out.toString('utf-8').trim().includes('Error')) {
+        throw new Error(out.toString('utf-8').trim());
+      }
+      break;
+    } catch (e) {
+      retries--;
+      if (retries <= 0) {
+        logger.error('Max retries reached. Giving up.');
+        throw new Error(`Error in callWeb3: ${e}`);
+      }
+      logger.debug('Cast call error: ', e);
+      const randomDelay = Math.floor(Math.random() * 9000 + 1000); // Random delay between 1-10 seconds
+      logger.debug(`Retrying in ${randomDelay / 1000} seconds...`);
+      await new Promise((resolve) => setTimeout(resolve, randomDelay));
+    }
+  }
+
   if (types) {
     const res = ethers.AbiCoder.defaultAbiCoder().decode(types, out.toString('utf-8').trim()).toArray();
     if (res.length === 0) {
@@ -113,9 +135,10 @@ export async function getBlockWeb3(
     `cast block <...> ${blockNumber}`,
   );
   const out: any = await execAsync(
-    `cast block --rpc-url ${vars.provider}  ${blockNumber} -j`,
+    `cast block --rpc-url ${vars.provider}  ${blockNumber} --json`,
     {
       shell: '/bin/bash',
+      stdio: 'ignore',
     },
   );
 
@@ -123,21 +146,38 @@ export async function getBlockWeb3(
 }
 
 
-export async function getLogsWeb3(contractAddr: string, eventType: string, fromBlock=0, toBlock?: number) {
+export async function getLogsWeb3(contractAddr: string, eventType: string, fromBlock=0, toBlock: number | "latest" = "latest", filters: any[] = []) {
   // TODO: filters
 
   logger.debug(
-    `cast logs -j --rpc-url ${vars.provider} --address ${contractAddr} --from-block ${fromBlock} --to-block ${toBlock ? toBlock : "latest"} "${eventType}"`,
+    `cast logs --json --rpc-url ${vars.provider} --address ${contractAddr} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}" ${filters.join(" ")}`,
   );
-  const out: any = await execAsync(
-    `cast logs -j --rpc-url ${vars.provider} --address ${contractAddr} --from-block ${fromBlock} --to-block ${toBlock ? toBlock : "latest"} "${eventType}"`,
-    {
-      shell: '/bin/bash',
-      maxBuffer: 128 * 1024 * 1024, // 128MB
-    },
-  );
+  let res;
+  let retries = 5;
+  while (true) {
+    try {
+      const out: any = await execAsync(
+        `cast logs --json --rpc-url ${vars.provider} --address ${contractAddr} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}"`,
+        {
+          shell: '/bin/bash',
+          stdio: 'ignore',
+          maxBuffer: 128 * 1024 * 1024, // 128MB
+        },
+      );
 
-  const res = JSON.parse(out.toString('utf-8').trim());
+      res = JSON.parse(out.toString('utf-8').trim());
+      break
+    } catch (e) {
+      retries--;
+      if (retries <= 0) {
+        logger.error('Max retries reached. Giving up.');
+        throw new Error(`Error in getLogsWeb3: ${e}`);
+      }
+      logger.debug('Cast logs error: ', e);
+      logger.debug(`Retrying in 1 seconds...`);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  }
 
   const types = eventType
     .split('(')[1]
@@ -172,9 +212,10 @@ export async function getLogsWeb3(contractAddr: string, eventType: string, fromB
 
 export async function deployContract(signer: ethers.Wallet, bytecode: string) {
   const out = execSync(
-    `cast send -j --private-key ${signer.privateKey} --rpc-url ${vars.provider} --create ${bytecode}`,
+    `cast send --json --private-key ${signer.privateKey} --rpc-url ${vars.provider} --create ${bytecode}`,
     {
       shell: '/bin/bash',
+      stdio: 'ignore',
     },
   );
   const res = JSON.parse(out.toString('utf-8'));

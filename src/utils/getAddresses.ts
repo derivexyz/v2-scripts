@@ -58,7 +58,7 @@ async function loadMarketAddresses(market: string): Promise<any> {
   const srm = requireEnv('SRM_ADDRESS');
   const marketId = +requireEnv(`${market}_MARKETID`);
   const type = requireEnv(`${market}_MARKET_TYPE`);
-  const baseERC20 = requireEnv(`${['BTC', 'ETH'].includes(market) ? `W${market}` : market}_ADDRESS`);
+  const baseERC20 = process.env[`${['BTC', 'ETH'].includes(market) ? `W${market}` : market}_ADDRESS`];
 
   if (type === 'ALL') {
     const pmrm = requireEnv(`${market}_PMRM_ADDRESS`);
@@ -111,6 +111,30 @@ async function loadMarketAddresses(market: string): Promise<any> {
       baseAsset,
       spotFeed,
     };
+  } else if (type === 'SRM_PERP_ONLY') {
+    const perp = await callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Perpetual], ['address']);
+    const [spotFeed, perpFeed, ibpFeed, iapFeed] =
+      await Promise.all([
+        await callWeb3(
+          null,
+          srm,
+          `getMarketFeeds(uint)`,
+          [marketId],
+          ['address', 'address', 'address'],
+        ),
+        callWeb3(null, perp, `perpFeed()`, [], ['address']),
+        callWeb3(null, perp, `impactBidPriceFeed()`, [], ['address']),
+        callWeb3(null, perp, `impactAskPriceFeed()`, [], ['address']),
+      ]);
+    return {
+      marketId,
+      baseERC20,
+      perp,
+      spotFeed,
+      perpFeed,
+      ibpFeed,
+      iapFeed,
+    };
   } else if (type === 'SRM_OPTION_ONLY') {
     const [option, baseAsset, [spotFeed, forwardFeed, volFeed]] = await Promise.all([
       callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']),
@@ -136,19 +160,25 @@ export async function getAllAddresses(): Promise<AllContracts> {
     return cachedAddresses;
   }
 
-  const srm = requireEnv('SRM_ADDRESS');
-  await getLogsWeb3(srm, 'MarketCreated(uint256,string)', 0);
+  const allMarkets = (Object.keys(process.env) || [])
+    .filter((key) => key.endsWith('_MARKETID'))
+    .map((key) => key.split('_')[0]);
+  const marketAddresses = await Promise.all(allMarkets.map((market) => loadMarketAddresses(market)));
+  const markets = allMarkets.reduce((acc, market, index) => {
+    acc[market] = marketAddresses[index];
+    return acc;
+  }, {} as any);
+
+  // const srm = requireEnv('SRM_ADDRESS');
+  // await getLogsWeb3(srm, 'MarketCreated(uint256,string)', 0);
+
+  const cash = requireEnv('CASH_ADDRESS');
+  const rateModel = await callWeb3(null, cash, 'rateModel()', [], ['address']);
 
   cachedAddresses = {
     clobSettlerAddress: "", rfq: "",
     usdc: requireEnv('USDC_ADDRESS'),
-    markets: {
-      ETH: await loadMarketAddresses('ETH'),
-      BTC: await loadMarketAddresses('BTC'),
-      USDT: await loadMarketAddresses('USDT'),
-      SNX: await loadMarketAddresses('SNX'),
-      WSTETH: await loadMarketAddresses('WSTETH'),
-    },
+    markets,
     matching: requireEnv('MATCHING_ADDRESS'),
     deposit: requireEnv('DEPOSIT_ADDRESS'),
     trade: requireEnv('TRADE_ADDRESS'),
@@ -158,7 +188,7 @@ export async function getAllAddresses(): Promise<AllContracts> {
     subAccounts: requireEnv('SUBACCOUNT_ADDRESS'),
     cash: requireEnv('CASH_ADDRESS'),
     auction: requireEnv('AUCTION_ADDRESS'),
-    rateModel: requireEnv('RATEMODEL_ADDRESS'),
+    rateModel,
     securityModule: requireEnv('SECURITYMODULE_ADDRESS'),
     srmViewer: requireEnv('SRMVIEWER_ADDRESS'),
     srm: requireEnv('SRM_ADDRESS'),

@@ -130,7 +130,9 @@ export async function getSubaccountMargin(subAccId: bigint, block?: number): Pro
     'getMM(uint256)',
     [subAccId],
     ['address', 'int256', 'int', 'uint'],
-    block
+    block,
+    // dont retry since it can commonly fail
+    0
   );
   return {
     manager: mmRes[0],

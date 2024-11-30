@@ -1,8 +1,6 @@
 import { BigNumberish } from 'ethers';
 import { getAccountDetails, printPortfolio } from '../utils/contracts/subaccounts';
-import { logger } from '../utils/logger';
 import { Command } from 'commander';
-import {callWeb3} from "../utils/web3/utils";
 
 async function getBalances(subAccId: BigNumberish, optional: any) {
   const accountDetails = await getAccountDetails(BigInt(subAccId), optional['block']);
