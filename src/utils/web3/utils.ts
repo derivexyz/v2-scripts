@@ -31,10 +31,8 @@ export async function executeWeb3(
   }
   const argsStr = args.map((x) => `"${stringifyForCast(x)}"`).join(' ');
   logger.debug(
-    `sending from ${signer.address}\n`,
-    `cast send <...> ${contractAddr} "${func}" ${
-      argsStr.slice(0, 149) + (argsStr.length > 150 ? '[...]"' : '')
-    } ${options}`,
+    `sending from ${signer.address}\n
+cast send <...> ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.length > 160 ? '[...]"' : '')} ${options}`
   );
 
   let lastError;
@@ -42,7 +40,7 @@ export async function executeWeb3(
     try {
       const out = execSync(
         `cast send --json --private-key ${signer.privateKey} --rpc-url ${vars.provider} ${contractAddr} "${func}" ${argsStr} ${options}`,
-        { shell: '/bin/bash', stdio: 'ignore' },
+        { shell: '/bin/bash' },
       );
       return decodeCastOutput(out, func);
     } catch (e) {
@@ -209,6 +207,18 @@ export async function getLogsWeb3(contractAddr: string, eventType: string, fromB
     return res;
   }
 }
+
+export async function getCalldata(fn: string, args: any[]): Promise<string> {
+  const out = await execAsync(
+    `cast calldata "${fn}" ${args.map((x) => `"${stringifyForCast(x)}"`).join(' ')}`,
+    {
+      shell: '/bin/bash',
+      stdio: 'ignore',
+    },
+  ) as any;
+  return out.toString('utf-8').trim();
+}
+
 
 export async function deployContract(signer: ethers.Wallet, bytecode: string) {
   const out = execSync(

@@ -1,4 +1,4 @@
-import { AssetType } from '../utils/getAddresses';
+import {AssetType, getAllAddresses} from '../utils/getAddresses';
 import { callWeb3, getLogsWeb3 } from '../utils/web3/utils';
 import { Command } from 'commander';
 import { requireEnv } from "../utils/requireEnv";
@@ -143,6 +143,12 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
       marginFactor: baseMarginParams[0].toString(),
       imScale: baseMarginParams[1].toString(),
     };
+    const wrappedAsset = await callWeb3(null, marketAddresses.base, 'wrappedAsset()', [], ['address']);
+    const wrappedAssetOwner = await callWeb3(null, wrappedAsset, 'owner()', [], ['address']);
+    result.marginParams.wrappedAsset = {
+      address: wrappedAsset,
+      owner: wrappedAssetOwner
+    }
   }
 
   result.marginParams.oracleContingencyParams = {
@@ -169,10 +175,11 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
   }
 
   if (marketAddresses.perp) {
-    const [isWl, totalPosition, positionCap] = await Promise.all([
+    const [isWl, totalPosition, positionCap, isTradePerp] = await Promise.all([
       callWeb3(null, marketAddresses.perp, `whitelistedManager(address)`, [srm], ['bool']),
       callWeb3(null, marketAddresses.perp, `totalPosition(address)`, [srm], ['uint256']),
-      callWeb3(null, marketAddresses.perp, `totalPositionCap(address)`, [srm], ['uint256'])
+      callWeb3(null, marketAddresses.perp, `totalPositionCap(address)`, [srm], ['uint256']),
+      callWeb3(null, (await getAllAddresses()).trade, 'isPerpAsset(address)', [marketAddresses.perp], ['bool']),
     ]);
 
     result.oiCaps.perpPosition = {
@@ -180,6 +187,7 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
       totalPosition: fromBN(totalPosition),
       positionCap: fromBN(positionCap),
     };
+    result.isTradePerp = isTradePerp;
   }
 
   if (marketAddresses.base) {
@@ -311,15 +319,19 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
 async function getOwners(marketAddresses: MarketAddresses): Promise<{[key:string]: {address: string, owner: string}}> {
   const addressesWithOwners: {[key:string]: {address: string, owner: string}} = {};
 
-  for (const key of Object.keys(marketAddresses)) {
+  const promises = Object.keys(marketAddresses).map(async (key) => {
     if ((marketAddresses as any)[key]) {
       const contract = (marketAddresses as any)[key];
+      const owner = await callWeb3(null, contract, `owner()`, [], ['address']);
       addressesWithOwners[key] = {
         address: contract,
-        owner: await callWeb3(null, contract, `owner()`, [], ['address'])
-      }
+        owner
+      };
     }
-  }
+  });
+
+  await Promise.all(promises);
+
   return addressesWithOwners;
 }
 
@@ -375,6 +387,8 @@ async function getAllSRMParams(): Promise<object> {
   const logs = await getLogsWeb3(srm, 'MarketCreated(uint256 id,string marketName)', 0);
   const markets = logs.map((x: any) => x.data);
 
+  console.log(markets)
+
   const promises = [];
 
   let ethSpotPrice = 0n;
@@ -386,24 +400,30 @@ async function getAllSRMParams(): Promise<object> {
     promises.push((async (): Promise<any> => {
       const marketId = market.id.toString();
       const marketAddresses = await getSRMAddresses(marketId);
-      //
-      //// Code block for checking swap rates within the withdrawal wrapper (sponsoring eth for bridging fees)
-      // if (marketAddresses.base) {
-      //   const erc20 = await callWeb3(null, marketAddresses.base, 'wrappedAsset()', [], ['address']);
-      //   const decimals = await callWeb3(null, erc20, 'decimals()', [], ['uint256']);
-      //   const [spotPrice, conf] = await callWeb3(null, marketAddresses.spotFeed as string, 'getSpot()', [], ['uint256', 'uint256']);
-      //   if (market.marketName === "ETH") {
-      //     ethSpotPrice = spotPrice;
-      //   } else {
-      //     while (ethSpotPrice == 0n) await new Promise((resolve) => setTimeout(resolve, 1000));
-      //   }
-      //   // get the staticPrice value which converts the minFee (in ETH) into an underlying token amount
-      //   // minFee (1e18) * staticPrice[token] (1eX) / 1e36;
-      //   // The result should be the amount of tokens being transferred
-      //   const rate = toBN("1", 18 + parseInt(decimals.toString())) * ethSpotPrice / spotPrice;
-      //
-      //   console.log(market.marketName, erc20, rate); // 2500 is the ETH price
-      // }
+
+      // Code block for checking swap rates within the withdrawal wrapper (sponsoring eth for bridging fees)
+      if (marketAddresses.base) {
+        let spotPrice;
+        const erc20 = await callWeb3(null, marketAddresses.base, 'wrappedAsset()', [], ['address']);
+        const decimals = await callWeb3(null, erc20, 'decimals()', [], ['uint256']);
+        if (market.marketName != "deUSD") {
+          const x = await callWeb3(null, marketAddresses.spotFeed as string, 'getSpot()', [], ['uint256', 'uint256']);
+          spotPrice = x[0];
+        } else {
+          spotPrice = toBN("1");
+        }
+        if (market.marketName === "ETH") {
+          ethSpotPrice = spotPrice;
+        } else {
+          while (ethSpotPrice == 0n) await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+        // get the staticPrice value which converts the minFee (in ETH) into an underlying token amount
+        // minFee (1e18) * staticPrice[token] (1eX) / 1e36;
+        // The result should be the amount of tokens being transferred
+        const rate = toBN("1", 18 + parseInt(decimals.toString())) * ethSpotPrice / spotPrice;
+
+        console.log(market.marketName, erc20, rate); // 2500 is the ETH price
+      }
 
       const params = await getMarketSRMParams(market.marketName, marketId, marketAddresses);
       const addressesWithOwners = await getOwners(marketAddresses);
@@ -428,7 +448,7 @@ async function getAllSRMParams(): Promise<object> {
 async function getAllParams(): Promise<void> {
   console.log("# SRM Params #");
 
-  const allParams = await getAllSRMParams();
+  const allParams: any = await getAllSRMParams();
 
   // console.log(JSON.stringify(allParams, (_, v) => typeof v === 'bigint' ? v.toString() : v));
 
@@ -437,6 +457,11 @@ async function getAllParams(): Promise<void> {
   fs.writeFileSync(filePath, JSON.stringify(allParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
 
   console.log(`Results written to ${filePath}`);
+
+  for (const market of allParams.marketParams) {
+    console.log(`${market.marketName.toUpperCase()}_MARKETID=${market.marketId}`);
+    // console.log(JSON.stringify(market, (_, v) => typeof v === 'bigint' ? v.toString() : v));
+  }
 }
 
 export default new Command('getAllParams')

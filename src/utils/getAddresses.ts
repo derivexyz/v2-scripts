@@ -25,6 +25,7 @@ export type AllContracts = {
   matching: string;
   deposit: string;
   trade: string;
+  liquidate: string;
   transfer: string;
   withdrawal: string;
   rfq: string;
@@ -113,7 +114,7 @@ async function loadMarketAddresses(market: string): Promise<any> {
     };
   } else if (type === 'SRM_PERP_ONLY') {
     const perp = await callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Perpetual], ['address']);
-    const [spotFeed, perpFeed, ibpFeed, iapFeed] =
+    const [[spotFeed,,], perpFeed, ibpFeed, iapFeed] =
       await Promise.all([
         await callWeb3(
           null,
@@ -155,19 +156,23 @@ async function loadMarketAddresses(market: string): Promise<any> {
   }
 }
 
-export async function getAllAddresses(): Promise<AllContracts> {
+export async function getAllAddresses(quick: boolean = false): Promise<AllContracts> {
   if (cachedAddresses) {
     return cachedAddresses;
   }
 
-  const allMarkets = (Object.keys(process.env) || [])
-    .filter((key) => key.endsWith('_MARKETID'))
-    .map((key) => key.split('_')[0]);
-  const marketAddresses = await Promise.all(allMarkets.map((market) => loadMarketAddresses(market)));
-  const markets = allMarkets.reduce((acc, market, index) => {
-    acc[market] = marketAddresses[index];
-    return acc;
-  }, {} as any);
+  let markets = {};
+
+  if (!quick) {
+    const allMarkets = (Object.keys(process.env) || [])
+      .filter((key) => key.endsWith('_MARKETID'))
+      .map((key) => key.split('_')[0]);
+    const marketAddresses = await Promise.all(allMarkets.map((market) => loadMarketAddresses(market)));
+    markets = allMarkets.reduce((acc, market, index) => {
+      acc[market] = marketAddresses[index];
+      return acc;
+    }, {} as any);
+  }
 
   // const srm = requireEnv('SRM_ADDRESS');
   // await getLogsWeb3(srm, 'MarketCreated(uint256,string)', 0);
@@ -182,6 +187,7 @@ export async function getAllAddresses(): Promise<AllContracts> {
     matching: requireEnv('MATCHING_ADDRESS'),
     deposit: requireEnv('DEPOSIT_ADDRESS'),
     trade: requireEnv('TRADE_ADDRESS'),
+    liquidate: requireEnv('LIQUIDATE_ADDRESS'),
     transfer: requireEnv('TRANSFER_ADDRESS'),
     withdrawal: requireEnv('WITHDRAWAL_ADDRESS'),
     subAccountCreator: requireEnv('SUBACCOUNT_CREATOR_ADDRESS'),

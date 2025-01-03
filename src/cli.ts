@@ -9,6 +9,9 @@ import getBalances from './scripts/getBalances';
 import withdrawFromSubaccount from "./scripts/withdrawFromSubaccount";
 import getOptionSettlements from "./scripts/getOptionSettlements";
 import getAllParams from "./scripts/getAllParams";
+import getMarketIds from "./scripts/getMarketIds";
+import getLiquidationHistory from "./scripts/getLiquidationHistory";
+import getBalanceHistory from "./scripts/getBalanceHistory";
 
 const program = new Command();
 
@@ -24,5 +27,8 @@ program.addCommand(submitFeedData);
 program.addCommand(setupLiquidationAccs);
 program.addCommand(withdrawFromSubaccount);
 program.addCommand(getAllParams);
+program.addCommand(getMarketIds);
+program.addCommand(getLiquidationHistory);
+program.addCommand(getBalanceHistory);
 
 program.parse(process.argv);

@@ -5,7 +5,7 @@ import {optionDetailsToString, subIdToOptionDetails} from './option';
 import { getManagerAddress, ManagerType } from '../../types/managers';
 import { ethers } from 'ethers';
 import { logger } from '../logger';
-import { prettifyBN, toBN } from '../misc/BN';
+import {fromBN, prettifyBN, toBN} from '../misc/BN';
 
 export type AccountPortfolio = {
   cash: bigint;
@@ -201,3 +201,25 @@ export function printPortfolio(account: AccountDetails) {
     }
   }
 }
+
+
+export async function getSpotPricesForAccount(account: AccountDetails, block?: number): Promise<{[key:string]: string}> {
+  const addresses = await getAllAddresses();
+  const portfolio = account.portfolio;
+  const res: {[key:string]: string} = {};
+  for (const currency of Object.keys(portfolio.markets)) {
+    const [spotPrice, _] = await callWeb3(
+      null,
+      addresses.markets[currency].spotFeed,
+      'getSpot()',
+      [],
+      ['uint256', 'uint256'],
+      block
+    );
+    res[currency] = fromBN(spotPrice);
+  }
+  return res;
+}
+
+
+
