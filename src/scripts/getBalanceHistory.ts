@@ -34,7 +34,9 @@ async function getBalanceHistory(subAccId: BigNumberish, optional: any) {
     const timestamp = latestTimestamp - (latestBlock.number - block) * 2;
     console.log(`\nFetching block: ${block}. Timestamp ${timestamp} (${new Date(timestamp * 1000).toISOString()})`);
     const accountDetails = await getAccountDetails(BigInt(subAccId), block);
+    console.log("```")
     printPortfolio(accountDetails);
+    console.log("```")
     if (getSpot) {
       const spotPrices = await getSpotPricesForAccount(accountDetails, block);
       console.log('Spot prices:', spotPrices);

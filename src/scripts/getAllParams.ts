@@ -22,19 +22,19 @@ type MarketAddresses = {
 }
 
 const expectedCapsOnTopOfVault: {[key:string]: bigint} = {
-  RSWETH: toBN("500"),
-  WEETH: toBN("750"),
-  RSETH: toBN("500"),
-  SUSDE: toBN("1500000"),
-  LBTC: toBN("20"),
+  // RSWETH: toBN("500"),
+  // WEETH: toBN("750"),
+  // RSETH: toBN("500"),
+  // SUSDE: toBN("1500000"),
+  // LBTC: toBN("20"),
 }
 
 const vaultSubaccounts: {[key:string]: number[]} = {
-  RSWETH: [5739],
-  WEETH: [5738, 10301, 10303],
-  RSETH: [5740],
-  SUSDE: [10144],
-  LBTC: [10628, 10629]
+  // RSWETH: [5739],
+  // WEETH: [5738, 10301, 10303],
+  // RSETH: [5740],
+  // SUSDE: [10144],
+  // LBTC: [10628, 10629]
 }
 
 

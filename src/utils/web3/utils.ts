@@ -30,7 +30,7 @@ export async function executeWeb3(
     }
   }
   const argsStr = args.map((x) => `"${stringifyForCast(x)}"`).join(' ');
-  logger.debug(
+  logger.info(
     `sending from ${signer.address}\n
 cast send <...> ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.length > 160 ? '[...]"' : '')} ${options}`
   );

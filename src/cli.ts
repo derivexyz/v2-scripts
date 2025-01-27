@@ -12,6 +12,7 @@ import getAllParams from "./scripts/getAllParams";
 import getMarketIds from "./scripts/getMarketIds";
 import getLiquidationHistory from "./scripts/getLiquidationHistory";
 import getBalanceHistory from "./scripts/getBalanceHistory";
+import getAllLiquidationHistory from "./scripts/getAllLiquidationHistory";
 
 const program = new Command();
 
@@ -29,6 +30,7 @@ program.addCommand(withdrawFromSubaccount);
 program.addCommand(getAllParams);
 program.addCommand(getMarketIds);
 program.addCommand(getLiquidationHistory);
+program.addCommand(getAllLiquidationHistory)
 program.addCommand(getBalanceHistory);
 
 program.parse(process.argv);

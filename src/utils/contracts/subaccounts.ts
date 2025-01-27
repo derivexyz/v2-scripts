@@ -129,9 +129,11 @@ export async function getAccountPortfolio(subAccId: bigint, block?: number): Pro
     if (asset == addresses.cash?.toLowerCase()) {
       res.cash = amount;
     } else {
+      let found = false;
       for (const currency of Object.keys(addresses.markets)) {
         const market = addresses.markets[currency];
         if (market.baseAsset?.toLowerCase() == asset) {
+          found = true;
           if (!res.markets[currency]) {
             res.markets[currency] = {
               base: 0n,
@@ -141,6 +143,7 @@ export async function getAccountPortfolio(subAccId: bigint, block?: number): Pro
           }
           res.markets[currency].base = amount;
         } else if (market.perp?.toLowerCase() == asset) {
+          found = true;
           if (!res.markets[currency]) {
             res.markets[currency] = {
               base: 0n,
@@ -161,6 +164,7 @@ export async function getAccountPortfolio(subAccId: bigint, block?: number): Pro
             unrealisedPnL: perpUnrealisedPnL
           };
         } else if (market.option?.toLowerCase() == asset) {
+          found = true;
           if (!res.markets[currency]) {
             res.markets[currency] = {
               base: 0n,
@@ -172,6 +176,9 @@ export async function getAccountPortfolio(subAccId: bigint, block?: number): Pro
           const optionKey = optionDetailsToString(optionDetails);
           res.markets[currency].options[optionKey] = amount;
         }
+      }
+      if (!found) {
+        logger.warn(`Unknown asset: ${asset}`);
       }
     }
   }

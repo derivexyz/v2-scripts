@@ -22,40 +22,40 @@
       "marketName": "ETH",
       "marketId": "1",
       "addresses": {
-        "base": {
-          "address": "0xE201fCEfD4852f96810C069f66560dc25B2C7A55",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "forwardFeed": {
-          "address": "0x791A570F5785FBdb02EA5C7a794c43111ae2f948",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "option": {
           "address": "0x4BB4C3CDc7562f08e9910A0C7D8bB7e108861eB4",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "ibpFeed": {
-          "address": "0xbfe7Cd69d3983299D3d18D1Ae5C411e1FF61A993",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "volFeed": {
-          "address": "0xb27cb6b08e6c298C8634D73D5F6649665e90d160",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perpFeed": {
-          "address": "0x33E18F4f508d7aD3e958aA2DCf4b3eCAec38D7c6",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "spotFeed": {
-          "address": "0x727aD65db6aE99DB5Dbee8F202846DD6009bf6D5",
+        "perp": {
+          "address": "0xAf65752C4643E25C02F693f9D4FE19cF23a095E3",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "iapFeed": {
           "address": "0xd464170afe0eE2a4865B2ca6dBcc6dfB8f4Bf125",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perp": {
-          "address": "0xAf65752C4643E25C02F693f9D4FE19cF23a095E3",
+        "ibpFeed": {
+          "address": "0xbfe7Cd69d3983299D3d18D1Ae5C411e1FF61A993",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perpFeed": {
+          "address": "0x33E18F4f508d7aD3e958aA2DCf4b3eCAec38D7c6",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "base": {
+          "address": "0xE201fCEfD4852f96810C069f66560dc25B2C7A55",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "volFeed": {
+          "address": "0xb27cb6b08e6c298C8634D73D5F6649665e90d160",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "forwardFeed": {
+          "address": "0x791A570F5785FBdb02EA5C7a794c43111ae2f948",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x727aD65db6aE99DB5Dbee8F202846DD6009bf6D5",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -93,18 +93,18 @@
         "oiCaps": {
           "optionPosition": {
             "isWhitelisted": true,
-            "totalPosition": "27356.778553668686802103",
+            "totalPosition": "19146.594824301518054487",
             "positionCap": "2000000.0"
           },
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "5004.773525999095561239",
+            "totalPosition": "5182.724035214635818626",
             "positionCap": "250000.0"
           },
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "2427.523226504779053945",
+            "totalPosition": "2409.246576440989439293",
             "positionCap": "4000.0"
           }
         },
@@ -166,24 +166,24 @@
       "marketName": "BTC",
       "marketId": "2",
       "addresses": {
-        "perpFeed": {
-          "address": "0x34BC7Fe1965B4E9f4071B69f2E60b8dC88f34475",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "option": {
           "address": "0xd0711b9eBE84b778483709CDe62BacFDBAE13623",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "volFeed": {
-          "address": "0x388341d9E5A7D7d5accD738B2a31b0622E0c1b87",
+        "spotFeed": {
+          "address": "0x5Eb59391e7870807aD2C8792E8c5e75838E0fdb0",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perp": {
+          "address": "0xDBa83C0C654DB1cd914FA2710bA743e925B53086",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "forwardFeed": {
           "address": "0x958c54bFACc0E2dee586564B31Bf3F171f256279",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "spotFeed": {
-          "address": "0x5Eb59391e7870807aD2C8792E8c5e75838E0fdb0",
+        "volFeed": {
+          "address": "0x388341d9E5A7D7d5accD738B2a31b0622E0c1b87",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "iapFeed": {
@@ -198,8 +198,8 @@
           "address": "0x7da2D398dddDfC946Efd2C758c4688D21887790d",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perp": {
-          "address": "0xDBa83C0C654DB1cd914FA2710bA743e925B53086",
+        "perpFeed": {
+          "address": "0x34BC7Fe1965B4E9f4071B69f2E60b8dC88f34475",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -237,18 +237,18 @@
         "oiCaps": {
           "optionPosition": {
             "isWhitelisted": true,
-            "totalPosition": "783.146203976568018938",
+            "totalPosition": "675.174542028268874952",
             "positionCap": "100000.0"
           },
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "104.81829470825054454",
+            "totalPosition": "97.048977703704571127",
             "positionCap": "12000.0"
           },
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "42.59968096",
+            "totalPosition": "41.70015847",
             "positionCap": "80.0"
           }
         },
@@ -310,12 +310,12 @@
       "marketName": "USDT",
       "marketId": "3",
       "addresses": {
-        "spotFeed": {
-          "address": "0x94960406A03D0F173cB851dC0Ca1B16925000262",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "base": {
           "address": "0x5E72430EC945CCc183c34e2860FFC2b5bac712c2",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x94960406A03D0F173cB851dC0Ca1B16925000262",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -340,7 +340,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "755638.521733",
+            "totalPosition": "1038216.071566",
             "positionCap": "3000000.0"
           }
         },
@@ -360,16 +360,16 @@
       "marketName": "SNX",
       "marketId": "4",
       "addresses": {
-        "base": {
-          "address": "0x4716821f59fe3c0233E939933476d2E5D9EAF2fE",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "volFeed": {
           "address": "0x533AcDAc4Ac1155a0946D0e1890712D98984de1e",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "option": {
           "address": "0xD4a8d43b600509Cb2373514b172558F60e46e15f",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "base": {
+          "address": "0x4716821f59fe3c0233E939933476d2E5D9EAF2fE",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "forwardFeed": {
@@ -454,12 +454,12 @@
       "marketName": "wstETH",
       "marketId": "5",
       "addresses": {
-        "spotFeed": {
-          "address": "0x17a0341705f8ee02E343bB9cF6756ff1aEb2f6df",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "base": {
           "address": "0x69c7AADFfD607F74eE610f047f552CaDecabca4E",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x17a0341705f8ee02E343bB9cF6756ff1aEb2f6df",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -484,7 +484,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "1238.368661629986773059",
+            "totalPosition": "1376.595548287040299939",
             "positionCap": "2000.0"
           }
         },
@@ -504,12 +504,12 @@
       "marketName": "SOL",
       "marketId": "7",
       "addresses": {
-        "perp": {
-          "address": "0xF00a5bD70772A4CD9a25fa856238962eC5Ad5326",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0x6AcBE4dF6C61907b659ef0d8dE0371153c29FfCf",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perp": {
+          "address": "0xF00a5bD70772A4CD9a25fa856238962eC5Ad5326",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "iapFeed": {
@@ -541,7 +541,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "3264.241055830587900906",
+            "totalPosition": "3972.976306998090130506",
             "positionCap": "16000.0"
           }
         },
@@ -586,12 +586,16 @@
       "marketName": "DOGE",
       "marketId": "8",
       "addresses": {
-        "spotFeed": {
-          "address": "0x4D05987DC4c0146A59a2177703b8B8061FFf1e71",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "perpFeed": {
           "address": "0xE03D5A54319BFbB03C7EBdB32d99dBa96925EA0b",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "iapFeed": {
+          "address": "0x33C40F852Bd5723bE284ECAb4CD8D2574c457899",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x4D05987DC4c0146A59a2177703b8B8061FFf1e71",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perp": {
@@ -600,10 +604,6 @@
         },
         "ibpFeed": {
           "address": "0x42Eefff508182B2bF5a66160272556f35F7a58ad",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "iapFeed": {
-          "address": "0x33C40F852Bd5723bE284ECAb4CD8D2574c457899",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -623,7 +623,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "1044042.740083184504749416",
+            "totalPosition": "712314.052645380165637076",
             "positionCap": "8000000.0"
           }
         },
@@ -695,11 +695,11 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "4276.918304607092666102",
-            "positionCap": "4300.0",
-            "expectedCap": "3992.449070376857669482",
-            "vaultBalances": "3242.449070376857669482",
-            "nonVaultUsage": "1034.46923423023499662/750.0"
+            "totalPosition": "4994.14288406178011",
+            "positionCap": "6000.0",
+            "expectedCap": "3965.444671690360167153",
+            "vaultBalances": "3215.444671690360167153",
+            "nonVaultUsage": "1778.698212371419942847/750.0"
           }
         },
         "feedParams": {
@@ -748,11 +748,11 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "1175.630191122297438983",
+            "totalPosition": "1245.414276351125271479",
             "positionCap": "2320.0",
-            "expectedCap": "1606.955351485074447235",
-            "vaultBalances": "1106.955351485074447235",
-            "nonVaultUsage": "68.674839637222991748/500.0"
+            "expectedCap": "1687.847206306008011831",
+            "vaultBalances": "1187.847206306008011831",
+            "nonVaultUsage": "57.567070045117259648/500.0"
           }
         },
         "feedParams": {
@@ -771,12 +771,12 @@
       "marketName": "rsETH",
       "marketId": "11",
       "addresses": {
-        "base": {
-          "address": "0x35fdB6e79c05809ba6Dc3B2EF5FF7D0BB5D75020",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0x984c7F384120849CfDCA309501df8BC3A23cd5fe",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "base": {
+          "address": "0x35fdB6e79c05809ba6Dc3B2EF5FF7D0BB5D75020",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -801,11 +801,11 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "507.885959814849323363",
+            "totalPosition": "523.484793697647398684",
             "positionCap": "945.0",
-            "expectedCap": "954.311055849947876823",
-            "vaultBalances": "454.311055849947876823",
-            "nonVaultUsage": "53.57490396490144654/500.0"
+            "expectedCap": "972.429449192939604754",
+            "vaultBalances": "472.429449192939604754",
+            "nonVaultUsage": "51.05534450470779393/500.0"
           }
         },
         "feedParams": {
@@ -854,11 +854,11 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "32782310.368742482879800838",
+            "totalPosition": "35570767.522476822932901407",
             "positionCap": "50000000.0",
-            "expectedCap": "13538822.837687748962781467",
-            "vaultBalances": "12038822.837687748962781467",
-            "nonVaultUsage": "20743487.531054733917019371/1500000.0"
+            "expectedCap": "13741881.044837288514323325",
+            "vaultBalances": "12241881.044837288514323325",
+            "nonVaultUsage": "23328886.477639534418578082/1500000.0"
           }
         },
         "feedParams": {
@@ -877,12 +877,12 @@
       "marketName": "DAI",
       "marketId": "13",
       "addresses": {
-        "base": {
-          "address": "0x67bB0B7c87Df9C5C433ac7eCADfa7396A2927fcF",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0x19AC6A8eA5CFd55BC5238d5302875BeAD880620D",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "base": {
+          "address": "0x67bB0B7c87Df9C5C433ac7eCADfa7396A2927fcF",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -907,7 +907,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "26074.29023667702517544",
+            "totalPosition": "25756.909577059800328852",
             "positionCap": "3000000.0"
           }
         },
@@ -1007,7 +1007,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "1258056.5456717120186723",
+            "totalPosition": "2038585.462571121814321947",
             "positionCap": "5000000.0"
           }
         },
@@ -1027,12 +1027,12 @@
       "marketName": "LBTC",
       "marketId": "17",
       "addresses": {
-        "base": {
-          "address": "0xeaF03Bb3280C609d35E7F84d24a996c7C0b74F5f",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0x5a15efb885C8974A8F3d4b04DaA76b279157fECB",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "base": {
+          "address": "0xeaF03Bb3280C609d35E7F84d24a996c7C0b74F5f",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1057,11 +1057,11 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "242.37699596",
+            "totalPosition": "232.67009858",
             "positionCap": "250.0",
-            "expectedCap": "26.78994373",
-            "vaultBalances": "6.78994373",
-            "nonVaultUsage": "235.58705223/20.0"
+            "expectedCap": "25.78110863",
+            "vaultBalances": "5.78110863",
+            "nonVaultUsage": "226.88898995/20.0"
           }
         },
         "feedParams": {
@@ -1080,12 +1080,12 @@
       "marketName": "cbBTC",
       "marketId": "18",
       "addresses": {
-        "spotFeed": {
-          "address": "0x25d35C8796c9dcD3857abE90D802FC17b1FB55A5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "base": {
           "address": "0xC1efE4c45B79250A29A5Dc66cCADc60DB0FcEEe8",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x25d35C8796c9dcD3857abE90D802FC17b1FB55A5",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1110,7 +1110,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "0.5261376",
+            "totalPosition": "2.52334875",
             "positionCap": "20.0"
           }
         },
@@ -1130,12 +1130,12 @@
       "marketName": "eBTC",
       "marketId": "19",
       "addresses": {
-        "base": {
-          "address": "0x95FE344A0f420A7aC1B1E69CB1474179a40db882",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0xb147274cB65D5285d18245594E0Bec791De7Cb46",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "base": {
+          "address": "0x95FE344A0f420A7aC1B1E69CB1474179a40db882",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1180,24 +1180,24 @@
       "marketName": "TIA",
       "marketId": "20",
       "addresses": {
-        "perp": {
-          "address": "0x3fD90C3d4C12190AF6C4431b87Aca06Ed5178C87",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "perpFeed": {
           "address": "0x5A28531a8cF3B4B65a6D9Ae4809b601615A01cE0",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perp": {
+          "address": "0x3fD90C3d4C12190AF6C4431b87Aca06Ed5178C87",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
           "address": "0xA8677845e446CF714fa04FaA3B4e52a56f4e4912",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "spotFeed": {
-          "address": "0x338A67A465489A9203585D93D311dd74CFBC19FC",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "iapFeed": {
           "address": "0x4487748cBC73b9E0eD3B9fEe43a6E32372d9f617",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x338A67A465489A9203585D93D311dd74CFBC19FC",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1217,7 +1217,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "38831.874737493386406904",
+            "totalPosition": "58679.236022905996622248",
             "positionCap": "200000.0"
           }
         },
@@ -1262,16 +1262,12 @@
       "marketName": "SUI",
       "marketId": "21",
       "addresses": {
-        "iapFeed": {
-          "address": "0xb730fAA28A2A98a00995789874Cc0D65F34cfD1d",
+        "perpFeed": {
+          "address": "0x53c426acb8E1D1552017FD1A2c143be1C3712378",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perp": {
           "address": "0x63A61e914c7D2a5E0BB593De4369d004C418ECdd",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perpFeed": {
-          "address": "0x53c426acb8E1D1552017FD1A2c143be1C3712378",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
@@ -1280,6 +1276,10 @@
         },
         "spotFeed": {
           "address": "0x52e99636fC08a9FCc240e4A6ca49AEC040066156",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "iapFeed": {
+          "address": "0xb730fAA28A2A98a00995789874Cc0D65F34cfD1d",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1299,7 +1299,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "21820.651277538544809684",
+            "totalPosition": "52726.817069254007308574",
             "positionCap": "500000.0"
           }
         },
@@ -1344,20 +1344,20 @@
       "marketName": "NEAR",
       "marketId": "22",
       "addresses": {
-        "iapFeed": {
-          "address": "0xDD1B27d0892079C1eb25940d5Cb58902041BE00D",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "perpFeed": {
           "address": "0x9d4004bD7a201eD0fd9BaB2e530F5C3Cf93eCd6D",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perp": {
+          "address": "0x630Fcb229f6C28c428579B39BFD40Ba793Caf009",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "spotFeed": {
           "address": "0x8b09262E3c0E7a834aCb4fcC63f151979F93F267",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perp": {
-          "address": "0x630Fcb229f6C28c428579B39BFD40Ba793Caf009",
+        "iapFeed": {
+          "address": "0xDD1B27d0892079C1eb25940d5Cb58902041BE00D",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
@@ -1381,7 +1381,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "17024.0",
+            "totalPosition": "41400.843284254904689228",
             "positionCap": "80000.0"
           }
         },
@@ -1426,24 +1426,24 @@
       "marketName": "PEPE",
       "marketId": "23",
       "addresses": {
-        "iapFeed": {
-          "address": "0x2411f74B78A619CD56d8982a2Df24ACad9DafF88",
+        "perp": {
+          "address": "0xb3573E11a3dFB6AaA6a761086943b5F1BBA311d9",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
           "address": "0x5E0B3b7bcDAd988839FaaBB2faD7e5C1C5e59bF2",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perp": {
-          "address": "0xb3573E11a3dFB6AaA6a761086943b5F1BBA311d9",
+        "spotFeed": {
+          "address": "0x4BE1814dF615FB2eeD3BDa476bD7a399b4374896",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "iapFeed": {
+          "address": "0x2411f74B78A619CD56d8982a2Df24ACad9DafF88",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perpFeed": {
           "address": "0xEE699B381fc11a39571C5e92677e8F8aA7a3FB3A",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "spotFeed": {
-          "address": "0x4BE1814dF615FB2eeD3BDa476bD7a399b4374896",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1463,7 +1463,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "11631393446.619089677634087798",
+            "totalPosition": "18293952335.329979770178717938",
             "positionCap": "40000000000.0"
           }
         },
@@ -1508,24 +1508,24 @@
       "marketName": "WIF",
       "marketId": "24",
       "addresses": {
-        "perp": {
-          "address": "0x84715f8BD3A0bab44aD357288ABD233cC833e3F0",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0xD4160017e17334187386932e5Dd9B8962EB47D25",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "iapFeed": {
-          "address": "0x7da5dc7D2Ca6a85FB17b02776c948056cB8F61A5",
+        "perp": {
+          "address": "0x84715f8BD3A0bab44aD357288ABD233cC833e3F0",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perpFeed": {
+          "address": "0xE575Fce5138ECC85B706B061eF227B8d47CefAF9",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
           "address": "0xd3dF6B593E4663309c1fE8E490Ccf12B713286af",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perpFeed": {
-          "address": "0xE575Fce5138ECC85B706B061eF227B8d47CefAF9",
+        "iapFeed": {
+          "address": "0x7da5dc7D2Ca6a85FB17b02776c948056cB8F61A5",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1545,7 +1545,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "87202.0",
+            "totalPosition": "198442.041631147602112556",
             "positionCap": "200000.0"
           }
         },
@@ -1590,6 +1590,10 @@
       "marketName": "WLD",
       "marketId": "25",
       "addresses": {
+        "ibpFeed": {
+          "address": "0x712Dcd7607FAB5a05c5c4D3cA6CD193d33109e8e",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
         "spotFeed": {
           "address": "0x63668B482722ee22e61F5a98A320e7Dd2852c7F4",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
@@ -1604,10 +1608,6 @@
         },
         "iapFeed": {
           "address": "0x2d69295A27679895f2b85f9582992C4860bFfe33",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0x712Dcd7607FAB5a05c5c4D3cA6CD193d33109e8e",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1627,7 +1627,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "10942.34149461266634622",
+            "totalPosition": "72014.05580950984264458",
             "positionCap": "200000.0"
           }
         },
@@ -1676,20 +1676,20 @@
           "address": "0x3E717aEba6ad3c603bEF87DF9338880F0D1c32A3",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perp": {
-          "address": "0xa7C846245A24928183092231D10FCa68506629A1",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "iapFeed": {
-          "address": "0x4D7575a523D2673B330a7E14d370E81272CD5528",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0x0b6Cb37047599Dc39a0Ee449A054138578ACAdc6",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perpFeed": {
           "address": "0xDF30d8f35A50b5B98580b06B9B78013Ea9B3682f",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perp": {
+          "address": "0xa7C846245A24928183092231D10FCa68506629A1",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "iapFeed": {
+          "address": "0x4D7575a523D2673B330a7E14d370E81272CD5528",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1709,7 +1709,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "168.7674021334579592",
+            "totalPosition": "232.358067298767843182",
             "positionCap": "1600.0"
           }
         },
@@ -1754,8 +1754,8 @@
       "marketName": "AAVE",
       "marketId": "27",
       "addresses": {
-        "perp": {
-          "address": "0x4b6EbaA6cb3c6dA4Cb9b2474216794966Aba826f",
+        "spotFeed": {
+          "address": "0x6579C4d9AeAe2C3171C63f73B41dc9b86D02A4D0",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
@@ -1766,12 +1766,12 @@
           "address": "0xa2199b5371Ce5F9baeB978066F9DE6CdD339a1f3",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perpFeed": {
-          "address": "0x13Bd6B0Bc9E47f98fe1158B2f96B938521bF25e8",
+        "perp": {
+          "address": "0x4b6EbaA6cb3c6dA4Cb9b2474216794966Aba826f",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "spotFeed": {
-          "address": "0x6579C4d9AeAe2C3171C63f73B41dc9b86D02A4D0",
+        "perpFeed": {
+          "address": "0x13Bd6B0Bc9E47f98fe1158B2f96B938521bF25e8",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1791,7 +1791,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "802.426738235662199486",
+            "totalPosition": "1096.697420402249956628",
             "positionCap": "6000.0"
           }
         },
@@ -1836,8 +1836,12 @@
       "marketName": "OP",
       "marketId": "28",
       "addresses": {
-        "perpFeed": {
-          "address": "0xeb4D1dBe594595e818001bAeD168d72dFd3366B2",
+        "base": {
+          "address": "0xDaffF9B244327d09dde1dDFcf9981ef0Df2D1568",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x1cDad048e73d379023cBCDC70Cd38216d6be754d",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "iapFeed": {
@@ -1848,16 +1852,12 @@
           "address": "0x6515dfB4eaD8d3D838c342B842f098A4A5B37642",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "base": {
-          "address": "0xDaffF9B244327d09dde1dDFcf9981ef0Df2D1568",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "ibpFeed": {
           "address": "0x5afaFe20c966AB2F7490dEB3B06d8eF17DFc023F",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "spotFeed": {
-          "address": "0x1cDad048e73d379023cBCDC70Cd38216d6be754d",
+        "perpFeed": {
+          "address": "0xeb4D1dBe594595e818001bAeD168d72dFd3366B2",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1885,13 +1885,13 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "120572.773362273117174946",
+            "totalPosition": "280414.078225719451479744",
             "positionCap": "500000.0"
           },
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "25.05882689874544126",
+            "totalPosition": "264688.045069441925434055",
             "positionCap": "500000.0"
           }
         },
@@ -1936,24 +1936,24 @@
       "marketName": "ARB",
       "marketId": "29",
       "addresses": {
-        "perp": {
-          "address": "0xCE081Cf1ed7f41Db1822c69E9d4A2746071C8d9D",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0xcB5DE1fEf7Fa2261308D9b67349BC23A4F50550c",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perp": {
+          "address": "0xCE081Cf1ed7f41Db1822c69E9d4A2746071C8d9D",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perpFeed": {
           "address": "0x2067378b579bC846E6FBB2011d41e3DD92C6ea18",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "iapFeed": {
-          "address": "0x37065e16B49878448D1674DF471035a43f121af9",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "ibpFeed": {
           "address": "0xF9452690dD6FE8192Fab53F6cfa490A0D33df460",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "iapFeed": {
+          "address": "0x37065e16B49878448D1674DF471035a43f121af9",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -1973,7 +1973,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "352636.0",
+            "totalPosition": "641818.962036038709630016",
             "positionCap": "1500000.0"
           }
         },
@@ -2018,10 +2018,6 @@
       "marketName": "LINK",
       "marketId": "30",
       "addresses": {
-        "iapFeed": {
-          "address": "0x3b328bFA5EC7D063fC8391B2e05A87bc10eBe816",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "perpFeed": {
           "address": "0x3824C5dD8Df360304e7d88740dBB2F4CA52cfB4A",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
@@ -2030,12 +2026,16 @@
           "address": "0x329f47a42D28f6Ec390F01528af7D71Cc64d89E0",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perp": {
-          "address": "0x182182F18486A335017841421F90F77D67CDB30A",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0x35eC2358C01896ABA9604c3fD13A9c7ec5aB2a66",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "iapFeed": {
+          "address": "0x3b328bFA5EC7D063fC8391B2e05A87bc10eBe816",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perp": {
+          "address": "0x182182F18486A335017841421F90F77D67CDB30A",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2055,7 +2055,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "9038.487589309370751724",
+            "totalPosition": "12391.886096522738748504",
             "positionCap": "100000.0"
           }
         },
@@ -2100,20 +2100,20 @@
       "marketName": "XRP",
       "marketId": "31",
       "addresses": {
-        "perpFeed": {
-          "address": "0x7564CaD6b1f1BDE7812Dd5aDd6B8EABE0D3fdc30",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "perp": {
           "address": "0x1DD2b6E9Db6654BB949be09b30d4193A94bbbfaE",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "ibpFeed": {
-          "address": "0x8F7E043e3953fbB8448565D3b5Ba2ee22e2E6c22",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0x3ff589114373350B2eFbCa2BFAa119D6F1C535b9",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perpFeed": {
+          "address": "0x7564CaD6b1f1BDE7812Dd5aDd6B8EABE0D3fdc30",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "ibpFeed": {
+          "address": "0x8F7E043e3953fbB8448565D3b5Ba2ee22e2E6c22",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "iapFeed": {
@@ -2137,7 +2137,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "74084.881304863141222628",
+            "totalPosition": "90169.376740476190730622",
             "positionCap": "2000000.0"
           }
         },
@@ -2182,24 +2182,24 @@
       "marketName": "AVAX",
       "marketId": "32",
       "addresses": {
-        "spotFeed": {
-          "address": "0x17DB89F8a25CEC9D212B209d7D05582d411acf07",
+        "iapFeed": {
+          "address": "0xbeDaB258aea3B81b75e18c4050C8f4aB8320e1d7",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
           "address": "0xC8F77286eed301AdC4a9dc9cD879f8c5845E6322",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "iapFeed": {
-          "address": "0xbeDaB258aea3B81b75e18c4050C8f4aB8320e1d7",
+        "perpFeed": {
+          "address": "0xf5f47ece75c92502243C273c17970e6E7E8de3E5",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x17DB89F8a25CEC9D212B209d7D05582d411acf07",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perp": {
           "address": "0x734e86D60bbB8Ed9eC0a119ceb78c099d263Bb9f",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perpFeed": {
-          "address": "0xf5f47ece75c92502243C273c17970e6E7E8de3E5",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2219,7 +2219,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "1736.0",
+            "totalPosition": "2930.236208442323750588",
             "positionCap": "40000.0"
           }
         },
@@ -2268,20 +2268,20 @@
           "address": "0x443BB222eE396485269B4F4E1Abb913255e1A8b4",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "ibpFeed": {
-          "address": "0x29aAFF41612A11367DF1A3Ef682f6A45eaec30c8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "iapFeed": {
-          "address": "0xF16019a0F59C101e5F85d810AfE76FaF33Eaf179",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "spotFeed": {
           "address": "0xfEf8C98522Ea0BfCE97b352EAAb742e39945Cbc9",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perpFeed": {
           "address": "0x4FD1B0d7402d91b8A46f941345f40C6e28d6aaBA",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "ibpFeed": {
+          "address": "0x29aAFF41612A11367DF1A3Ef682f6A45eaec30c8",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "iapFeed": {
+          "address": "0xF16019a0F59C101e5F85d810AfE76FaF33Eaf179",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2301,7 +2301,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "5680.0",
+            "totalPosition": "11282.0",
             "positionCap": "120000.0"
           }
         },
@@ -2346,16 +2346,12 @@
       "marketName": "TAO",
       "marketId": "34",
       "addresses": {
-        "perpFeed": {
-          "address": "0x13686f63251c17E5A586F301b8609e1d28A426fa",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "perp": {
           "address": "0x2458241c0e594aF68E55Dd7224b1067a5F1Ae52C",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "spotFeed": {
-          "address": "0xB2511476d47F9239AB40875c73E7dF1735a56A09",
+        "perpFeed": {
+          "address": "0x13686f63251c17E5A586F301b8609e1d28A426fa",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "iapFeed": {
@@ -2364,6 +2360,10 @@
         },
         "ibpFeed": {
           "address": "0x9B147bc86C18ccc11899BdA3628DC21B0E22D9EA",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0xB2511476d47F9239AB40875c73E7dF1735a56A09",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2383,7 +2383,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "145.08",
+            "totalPosition": "176.486223953889361012",
             "positionCap": "2000.0"
           }
         },
@@ -2428,24 +2428,24 @@
       "marketName": "SEI",
       "marketId": "35",
       "addresses": {
-        "spotFeed": {
-          "address": "0xb7b0B126E3DEAd3AB83Bf7606ff6C1908D0Fa736",
+        "iapFeed": {
+          "address": "0xA6F2987b6b97aEC0Eec68835c48CF96A2A90a174",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perpFeed": {
           "address": "0xeB26a38D3aB64dA6285f7D989d6ee6316180a0A4",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perp": {
-          "address": "0x7225889B75fd34C68eA3098dAE04D50553C09840",
+        "spotFeed": {
+          "address": "0xb7b0B126E3DEAd3AB83Bf7606ff6C1908D0Fa736",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
           "address": "0x3B6605F89773F1ED13b393d47e42537C42b90E35",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "iapFeed": {
-          "address": "0xA6F2987b6b97aEC0Eec68835c48CF96A2A90a174",
+        "perp": {
+          "address": "0x7225889B75fd34C68eA3098dAE04D50553C09840",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2510,24 +2510,24 @@
       "marketName": "EIGEN",
       "marketId": "36",
       "addresses": {
-        "perpFeed": {
-          "address": "0x909F795C191019D8501cabA723247e30691c305c",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0x52b7AfCc77DD13450F1664718699188f8B4E1DCf",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "iapFeed": {
           "address": "0xA496D48D516f171E721cd35eaAfDBC61d7CeC665",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perp": {
+          "address": "0x2c1E92601fC644212e0a895a83C2eA95983b1137",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "spotFeed": {
           "address": "0x65653c408eD6a89CDbEFAAf28caAba6C41B552b5",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "perp": {
-          "address": "0x2c1E92601fC644212e0a895a83C2eA95983b1137",
+        "ibpFeed": {
+          "address": "0x52b7AfCc77DD13450F1664718699188f8B4E1DCf",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "perpFeed": {
+          "address": "0x909F795C191019D8501cabA723247e30691c305c",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2600,16 +2600,16 @@
           "address": "0x3c95123003D786B3fdcd812a9Af8Ad29BBA00CED",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "spotFeed": {
-          "address": "0x6dfa2EED4aD222a935cc8DCc5E08bFC884F2Ae73",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "iapFeed": {
           "address": "0x011089bf72202b73070844a5728447D38Cd51160",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "ibpFeed": {
           "address": "0x9a3B9f1D49BCd0BD2d5319D7C315b5d2Cf383fe1",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x6dfa2EED4aD222a935cc8DCc5E08bFC884F2Ae73",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2629,7 +2629,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "307094.445756308734715932",
+            "totalPosition": "369133.0254060441564315",
             "positionCap": "2000000.0"
           }
         },
@@ -2674,6 +2674,10 @@
       "marketName": "BITCOIN",
       "marketId": "38",
       "addresses": {
+        "perp": {
+          "address": "0x2BA568c6DA7ADecEd133Ee3D7633971a6c5200B1",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
         "perpFeed": {
           "address": "0xB6dD91696c954B1869855605836BF951C8A40c27",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
@@ -2688,10 +2692,6 @@
         },
         "iapFeed": {
           "address": "0x49BFE5DeB83f1a7AE57BDf42646026D6e39D40dC",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perp": {
-          "address": "0x2BA568c6DA7ADecEd133Ee3D7633971a6c5200B1",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2756,24 +2756,24 @@
       "marketName": "DEGEN",
       "marketId": "39",
       "addresses": {
-        "spotFeed": {
-          "address": "0x48B6514d1Eb96522d6B5414dF43f8ae13fAB6d85",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "perp": {
           "address": "0xd36aafF4723E461E1Bc645cE241f7A0beDAB201e",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "ibpFeed": {
+          "address": "0x0d4543491B2352b1910C5B03528F522A6c124f4c",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
         "perpFeed": {
           "address": "0x7edc865A70f7303389570E1fe4b14c270bFFf20a",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "iapFeed": {
-          "address": "0xfB162931A5F1Ab187e2eE7B8C27dA6c7C038Fb5C",
+        "spotFeed": {
+          "address": "0x48B6514d1Eb96522d6B5414dF43f8ae13fAB6d85",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         },
-        "ibpFeed": {
-          "address": "0x0d4543491B2352b1910C5B03528F522A6c124f4c",
+        "iapFeed": {
+          "address": "0xfB162931A5F1Ab187e2eE7B8C27dA6c7C038Fb5C",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
@@ -2868,7 +2868,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "0.00083421474895616",
+            "totalPosition": "0.001866710850450998",
             "positionCap": "50.0"
           }
         },
@@ -2918,7 +2918,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "0.000647878928803959",
+            "totalPosition": "0.014587387953353796",
             "positionCap": "200.0"
           }
         },
@@ -2938,12 +2938,12 @@
       "marketName": "deUSD",
       "marketId": "42",
       "addresses": {
-        "spotFeed": {
-          "address": "0x9CB4A4Ffa7BE5F604f57D0dd44c0290Ba293a9C0",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "base": {
           "address": "0xDe48f1bD7B078fB369edC23007ed4cA2c206804e",
+          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        },
+        "spotFeed": {
+          "address": "0x9CB4A4Ffa7BE5F604f57D0dd44c0290Ba293a9C0",
           "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
         }
       },
