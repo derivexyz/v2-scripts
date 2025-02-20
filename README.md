@@ -1,6 +1,6 @@
 # V2 utils
 
-A collection of functions to help interact with the lyra v2 protocol and exchange.
+A collection of functions to help interact with the derive v2 protocol and exchange.
 
 ## Pre-requisites
 

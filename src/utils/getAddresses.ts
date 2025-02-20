@@ -181,7 +181,7 @@ export async function getAllAddresses(quick: boolean = false): Promise<AllContra
   const rateModel = await callWeb3(null, cash, 'rateModel()', [], ['address']);
 
   cachedAddresses = {
-    clobSettlerAddress: "", rfq: "",
+    clobSettlerAddress: "",
     usdc: requireEnv('USDC_ADDRESS'),
     markets,
     matching: requireEnv('MATCHING_ADDRESS'),
@@ -190,6 +190,7 @@ export async function getAllAddresses(quick: boolean = false): Promise<AllContra
     liquidate: requireEnv('LIQUIDATE_ADDRESS'),
     transfer: requireEnv('TRANSFER_ADDRESS'),
     withdrawal: requireEnv('WITHDRAWAL_ADDRESS'),
+    rfq: requireEnv('RFQ_ADDRESS'),
     subAccountCreator: requireEnv('SUBACCOUNT_CREATOR_ADDRESS'),
     subAccounts: requireEnv('SUBACCOUNT_ADDRESS'),
     cash: requireEnv('CASH_ADDRESS'),

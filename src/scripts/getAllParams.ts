@@ -1,5 +1,5 @@
 import {AssetType, getAllAddresses} from '../utils/getAddresses';
-import { callWeb3, getLogsWeb3 } from '../utils/web3/utils';
+import {callWeb3, getLogsWeb3, multiCallWeb3} from '../utils/web3/utils';
 import { Command } from 'commander';
 import { requireEnv } from "../utils/requireEnv";
 import { ZeroAddress } from "ethers";
@@ -47,20 +47,26 @@ const removeUndefinedValuesFromObject = <T>(obj: any): T => {
 async function getSRMAddresses(marketId: string): Promise<MarketAddresses> {
   const srm = requireEnv('SRM_ADDRESS');
 
-  const [option, perp, base, [spotFeed, forwardFeed, volFeed]] = await Promise.all([
-    callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']),
-    callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Perpetual], ['address']),
-    callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']),
-    callWeb3(null, srm, `getMarketFeeds(uint)`, [marketId], ['address', 'address', 'address']),
-  ]);
+  const [option, perp, base, [spotFeed, forwardFeed, volFeed]] = await multiCallWeb3(
+    null,
+    [
+      [srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']],
+      [srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Perpetual], ['address']],
+      [srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']],
+      [srm, `getMarketFeeds(uint)`, [marketId], ['address', 'address', 'address']],
+    ]
+  );
 
   let perpFeed, ibpFeed, iapFeed;
   if (perp != ZeroAddress) {
-    [perpFeed, ibpFeed, iapFeed] = await Promise.all([
-      callWeb3(null, perp, `perpFeed()`, [], ['address']),
-      callWeb3(null, perp, `impactBidPriceFeed()`, [], ['address']),
-      callWeb3(null, perp, `impactAskPriceFeed()`, [], ['address']),
-    ]);
+    [perpFeed, ibpFeed, iapFeed] = await multiCallWeb3(
+      null,
+      [
+        [perp, `perpFeed()`, [], ['address']],
+        [perp, `impactBidPriceFeed()`, [], ['address']],
+        [perp, `impactAskPriceFeed()`, [], ['address']],
+      ]
+    );
   }
 
   return removeUndefinedValuesFromObject({
@@ -101,18 +107,22 @@ async function getFeedParams(feed: string): Promise<[string[], string, string]> 
 async function getMarketSRMParams(marketName: string, marketId: string, marketAddresses: MarketAddresses): Promise<object> {
   const subaccounts = requireEnv("SUBACCOUNT_ADDRESS");
   const srm = requireEnv('SRM_ADDRESS');
+  const allAddrs = await getAllAddresses();
 
   const [
     perpMarginRequirements,
     optionMarginParams,
     baseMarginParams,
     oracleContingencyParams
-  ] = await Promise.all([
-    callWeb3(null, srm, `perpMarginRequirements(uint256)`, [marketId], ['(uint256,uint256)']),
-    callWeb3(null, srm, `optionMarginParams(uint256)`, [marketId], ['(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256)']),
-    callWeb3(null, srm, `baseMarginParams(uint256)`, [marketId], ['(uint256,uint256)']),
-    callWeb3(null, srm, `oracleContingencyParams(uint256)`, [marketId], ['(uint256,uint256,uint256,uint256)']),
-  ]);
+  ] = await multiCallWeb3(
+    null,
+    [
+      [srm, `perpMarginRequirements(uint256)`, [marketId], ['(uint256,uint256)']],
+      [srm, `optionMarginParams(uint256)`, [marketId], ['(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256)']],
+      [srm, `baseMarginParams(uint256)`, [marketId], ['(uint256,uint256)']],
+      [srm, `oracleContingencyParams(uint256)`, [marketId], ['(uint256,uint256,uint256,uint256)']],
+    ]
+  );
 
   const result: any = {};
 
@@ -161,11 +171,14 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
   result.oiCaps = {};
 
   if (marketAddresses.option) {
-    const [isWl, totalPosition, positionCap] = await Promise.all([
-      callWeb3(null, marketAddresses.option, `whitelistedManager(address)`, [srm], ['bool']),
-      callWeb3(null, marketAddresses.option, `totalPosition(address)`, [srm], ['uint256']),
-      callWeb3(null, marketAddresses.option, `totalPositionCap(address)`, [srm], ['uint256'])
-    ]);
+    const [isWl, totalPosition, positionCap] = await multiCallWeb3(
+      null,
+      [
+        [marketAddresses.option, `whitelistedManager(address)`, [srm], ['bool']],
+        [marketAddresses.option, `totalPosition(address)`, [srm], ['uint256']],
+        [marketAddresses.option, `totalPositionCap(address)`, [srm], ['uint256']]
+      ]
+    );
 
     result.oiCaps.optionPosition = {
       isWhitelisted: isWl,
@@ -175,27 +188,37 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
   }
 
   if (marketAddresses.perp) {
-    const [isWl, totalPosition, positionCap, isTradePerp] = await Promise.all([
-      callWeb3(null, marketAddresses.perp, `whitelistedManager(address)`, [srm], ['bool']),
-      callWeb3(null, marketAddresses.perp, `totalPosition(address)`, [srm], ['uint256']),
-      callWeb3(null, marketAddresses.perp, `totalPositionCap(address)`, [srm], ['uint256']),
-      callWeb3(null, (await getAllAddresses()).trade, 'isPerpAsset(address)', [marketAddresses.perp], ['bool']),
-    ]);
+    const [isWl, totalPosition, positionCap, isTradePerp, isRfqPerp] = await multiCallWeb3(
+      null,
+      [
+        [marketAddresses.perp, `whitelistedManager(address)`, [srm], ['bool']],
+        [marketAddresses.perp, `totalPosition(address)`, [srm], ['uint256']],
+        [marketAddresses.perp, `totalPositionCap(address)`, [srm], ['uint256']],
+        [allAddrs.trade, 'isPerpAsset(address)', [marketAddresses.perp], ['bool']],
+        [allAddrs.rfq, 'isPerpAsset(address)', [marketAddresses.perp], ['bool']],
+      ]
+    );
 
     result.oiCaps.perpPosition = {
       isWhitelisted: isWl,
       totalPosition: fromBN(totalPosition),
       positionCap: fromBN(positionCap),
     };
-    result.isTradePerp = isTradePerp;
+    result.matching = {
+      isTradePerp,
+      isRfqPerp,
+    }
   }
 
   if (marketAddresses.base) {
-    const [isWl, totalPosition, positionCap] = await Promise.all([
-      callWeb3(null, marketAddresses.base, `whitelistedManager(address)`, [srm], ['bool']),
-      callWeb3(null, marketAddresses.base, `totalPosition(address)`, [srm], ['uint256']),
-      callWeb3(null, marketAddresses.base, `totalPositionCap(address)`, [srm], ['uint256'])
-    ]);
+    const [isWl, totalPosition, positionCap] = await multiCallWeb3(
+      null,
+      [
+        [marketAddresses.base, `whitelistedManager(address)`, [srm], ['bool']],
+        [marketAddresses.base, `totalPosition(address)`, [srm], ['uint256']],
+        [marketAddresses.base, `totalPositionCap(address)`, [srm], ['uint256']]
+      ]
+    );
 
     let wlEnabled = false;
     try {
@@ -266,10 +289,13 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
     const [
       spotFeed,
       settlementHeartbeat
-    ] = await Promise.all([
-      callWeb3(null, marketAddresses.forwardFeed, `spotFeed()`, [], ['address']),
-      callWeb3(null, marketAddresses.forwardFeed, `settlementHeartbeat()`, [], ['uint64'])
-    ]);
+    ] = await multiCallWeb3(
+      null,
+      [
+        [marketAddresses.forwardFeed, `spotFeed()`, [], ['address']],
+        [marketAddresses.forwardFeed, `settlementHeartbeat()`, [], ['uint64']]
+      ]
+    );
 
     result.feedParams.forwardFeed = {
       signers: fwdSigners,
@@ -317,21 +343,28 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
 }
 
 async function getOwners(marketAddresses: MarketAddresses): Promise<{[key:string]: {address: string, owner: string}}> {
-  const addressesWithOwners: {[key:string]: {address: string, owner: string}} = {};
+  const names = Object.keys(marketAddresses).sort();
 
-  const promises = Object.keys(marketAddresses).map(async (key) => {
+  const calls: any[] = []
+  for (const key of names) {
     if ((marketAddresses as any)[key]) {
       const contract = (marketAddresses as any)[key];
-      const owner = await callWeb3(null, contract, `owner()`, [], ['address']);
+      calls.push([contract, 'owner()', [], ['address']]);
+    }
+  }
+
+  const owners = await multiCallWeb3(null, calls);
+
+  const addressesWithOwners: {[key:string]: {address: string, owner: string}} = {};
+  for (let i = 0; i < names.length; i++) {
+    const key = names[i];
+    if ((marketAddresses as any)[key]) {
       addressesWithOwners[key] = {
-        address: contract,
-        owner
+        address: (marketAddresses as any)[key],
+        owner: owners[i]
       };
     }
-  });
-
-  await Promise.all(promises);
-
+  }
   return addressesWithOwners;
 }
 
@@ -346,17 +379,20 @@ async function getAllSRMParams(): Promise<object> {
     maxAccountSize,
     feeRecipientAcc,
     minOIFee
-  ] = await Promise.all([
-    callWeb3(null, srm, 'subAccounts()', [], ['address']),
-    callWeb3(null, srm, 'cashAsset()', [], ['address']),
-    callWeb3(null, srm, 'liquidation()', [], ['address']),
-    callWeb3(null, srm, 'viewer()', [], ['address']),
-    callWeb3(null, srm, 'maxAccountSize()', [], ['uint256']),
-    callWeb3(null, srm, 'feeRecipientAcc()', [], ['uint256']),
-    callWeb3(null, srm, 'minOIFee()', [], ['uint256']),
+  ] = await multiCallWeb3(
+    null,
+    [
+    [srm, 'subAccounts()', [], ['address']],
+    [srm, 'cashAsset()', [], ['address']],
+    [srm, 'liquidation()', [], ['address']],
+    [srm, 'viewer()', [], ['address']],
+    [srm, 'maxAccountSize()', [], ['uint256']],
+    [srm, 'feeRecipientAcc()', [], ['uint256']],
+    [srm, 'minOIFee()', [], ['uint256']],
   ]);
-  
+
   const baseManagerParams = {
+    srm,
     subAccounts,
     cashAsset,
     liquidation,
@@ -366,22 +402,22 @@ async function getAllSRMParams(): Promise<object> {
     minOIFee: fromBN(minOIFee),
   };
 
-  const [borrowingEnabled, lastMarketId, stableFeed] = await Promise.all([
-    callWeb3(null, srm, 'borrowingEnabled()', [], ['bool']),
-    callWeb3(null, srm, 'lastMarketId()', [], ['uint256']),
-    callWeb3(null, srm, 'stableFeed()', [], ['address']),
+  const [borrowingEnabled, lastMarketId, stableFeed, depegParams] = await multiCallWeb3(null,
+    [
+    [srm, 'borrowingEnabled()', [], ['bool']],
+    [srm, 'lastMarketId()', [], ['uint256']],
+    [srm, 'stableFeed()', [], ['address']],
+    [srm, 'depegParams()', [], ['(uint256,uint256)']]
   ]);
 
   const srmParams: any = {
     borrowingEnabled,
     lastMarketId: lastMarketId.toString(),
     stableFeed,
-  };
-
-  const depegParams = await callWeb3(null, srm, 'depegParams()', [], ['(uint256,uint256)']);
-  srmParams["depegParams"] = {
-    depegThreshold: fromBN(depegParams[0]),
-    depegFactor: fromBN(depegParams[1]),
+    depegParams: {
+      depegThreshold: fromBN(depegParams[0]),
+      depegFactor: fromBN(depegParams[1]),
+    }
   };
 
   const logs = await getLogsWeb3(srm, 'MarketCreated(uint256 id,string marketName)', 0);
@@ -437,7 +473,6 @@ async function getAllSRMParams(): Promise<object> {
   }
   const marketParams = await Promise.all(promises);
 
-  // throw new Error("Not implemented");
   return {
     baseManagerParams,
     srmParams,

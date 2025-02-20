@@ -126,6 +126,74 @@ export async function callWeb3(
 }
 
 
+export async function multiCallWeb3(
+  signer: ethers.Wallet | null,
+  params: [string, string, any, any][],
+  block?: number,
+  allowFailures = true,
+  retries = 5,
+): Promise<any[]> {
+  const res = await multiCallWeb3Internal(
+    signer,
+    params.map(x => x[0]),
+    params.map(x => x[1]),
+    params.map(x => x[2]),
+    params.map(x => x[3]),
+    block,
+    allowFailures,
+    retries
+  );
+  if (!res) {
+    throw new Error('Multicall failed');
+  }
+  return res;
+}
+
+
+export async function multiCallWeb3Internal(
+  signer: ethers.Wallet | null,
+  contractAddrs: string[],
+  funcs: string[],
+  args: any[][],
+  types?: any[][],
+  block?: number,
+  allowFailures = true,
+  retries = 5,
+) {
+  const multicall = '0xcA11bde05977b3631167028862bE2a173976CA11';
+
+  if (contractAddrs.length !== funcs.length || contractAddrs.length !== args.length || (!!types && contractAddrs.length !== types.length)) {
+    throw new Error('Length mismatch for contractAddrs, funcs, and args');
+  }
+
+  const calls = contractAddrs.map((addr, i) => {
+    return `(${addr},true,${getCalldata(funcs[i], args[i])})`;
+  });
+  const argsStr = `[${calls.join(',')}]`;
+
+  const rawReturnBytes = await callWeb3(signer, multicall, "aggregate3((address,bool,bytes)[])", [argsStr], undefined, block, retries);
+
+  const returnType = '(bool,bytes)[]';
+
+  const result: [any[]] = ethers.AbiCoder.defaultAbiCoder().decode([returnType], rawReturnBytes).toArray() as any;
+
+  if (types) {
+    return result[0].map((x, i) => {
+      if (!x[0] && !allowFailures) {
+        throw new Error(`Multicall failed: ${x} (${i})`);
+      } else if (!x[0]) {
+        return undefined;
+      }
+      const res = ethers.AbiCoder.defaultAbiCoder().decode(types[i], x[1]).toArray();
+      if (res.length === 1) {
+        return res[0];
+      }
+      return res;
+    });
+  }
+}
+
+
 export async function getBlockWeb3(
   blockNumber: number | "latest",
 ) {
@@ -208,9 +276,28 @@ export async function getLogsWeb3(contractAddr: string, eventType: string, fromB
   }
 }
 
-export async function getCalldata(fn: string, args: any[]): Promise<string> {
+export function getCalldata(fn: string, args: any[]): string {
+  // ethers is approx 100x faster
+  let ABI = [
+    `function ${fn}`,
+  ]
+  const iface = new ethers.Interface(ABI);
+  return iface.encodeFunctionData(fn, args);
+  //
+  // const out = await execAsync(
+  //   `cast calldata "${fn}" ${args.map((x) => `"${stringifyForCast(x)}"`).join(' ')}`,
+  //   {
+  //     shell: '/bin/bash',
+  //     stdio: 'ignore',
+  //   },
+  // ) as any;
+  // return out.toString('utf-8').trim();
+}
+
+
+export async function getCode(addr: string): Promise<string> {
   const out = await execAsync(
-    `cast calldata "${fn}" ${args.map((x) => `"${stringifyForCast(x)}"`).join(' ')}`,
+    `cast code "${addr}" --rpc-url ${vars.provider}`,
     {
       shell: '/bin/bash',
       stdio: 'ignore',
