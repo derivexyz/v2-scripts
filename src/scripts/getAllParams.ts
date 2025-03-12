@@ -262,7 +262,7 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
     throw new Error(`Missing spot feed for market`);
   }
   let [spotSigners, spotHeartbeat, spotRequiredSigners]: [string[], string, string] = [[], '0', '0'];
-  if (!["SFP", "DOGE"].includes(marketName.toUpperCase())) {
+  if (!["SFP"].includes(marketName.toUpperCase())) {
     [spotSigners, spotHeartbeat, spotRequiredSigners] = await getFeedParams(marketAddresses.spotFeed);
   }
 
@@ -378,7 +378,12 @@ async function getAllSRMParams(): Promise<object> {
     viewer,
     maxAccountSize,
     feeRecipientAcc,
-    minOIFee
+    minOIFee,
+
+    borrowingEnabled,
+    lastMarketId,
+    stableFeed,
+    depegParams
   ] = await multiCallWeb3(
     null,
     [
@@ -389,6 +394,11 @@ async function getAllSRMParams(): Promise<object> {
     [srm, 'maxAccountSize()', [], ['uint256']],
     [srm, 'feeRecipientAcc()', [], ['uint256']],
     [srm, 'minOIFee()', [], ['uint256']],
+
+    [srm, 'borrowingEnabled()', [], ['bool']],
+    [srm, 'lastMarketId()', [], ['uint256']],
+    [srm, 'stableFeed()', [], ['address']],
+    [srm, 'depegParams()', [], ['(uint256,uint256)']]
   ]);
 
   const baseManagerParams = {
@@ -401,14 +411,6 @@ async function getAllSRMParams(): Promise<object> {
     feeRecipientAcc,
     minOIFee: fromBN(minOIFee),
   };
-
-  const [borrowingEnabled, lastMarketId, stableFeed, depegParams] = await multiCallWeb3(null,
-    [
-    [srm, 'borrowingEnabled()', [], ['bool']],
-    [srm, 'lastMarketId()', [], ['uint256']],
-    [srm, 'stableFeed()', [], ['address']],
-    [srm, 'depegParams()', [], ['(uint256,uint256)']]
-  ]);
 
   const srmParams: any = {
     borrowingEnabled,
@@ -480,22 +482,125 @@ async function getAllSRMParams(): Promise<object> {
   };
 }
 
+async function getAllPMParams(): Promise<object> {
+  const allAddrs = await getAllAddresses();
+  
+  const promises = [];
+
+  for (const market of Object.keys(allAddrs.markets)) {
+    const marketAddrs = allAddrs.markets[market];
+    if (!!marketAddrs.pmrm && marketAddrs.pmrm != ZeroAddress && marketAddrs.pmrm != '') {
+      promises.push((async (): Promise<any> => {
+        const pmrm = marketAddrs.pmrm;
+        const pmrmLib = marketAddrs.pmrmLib;
+        
+
+        const [
+          subAccounts,
+          cashAsset,
+          liquidation,
+          viewer,
+          maxAccountSize,
+          feeRecipientAcc,
+          minOIFee,
+          scenarios,
+          basisContingencyParams,
+          otherContingencyParams,
+          staticDiscountParams,
+          volShockParams,
+        ] = await multiCallWeb3(
+          null,
+          [
+            [pmrm, 'subAccounts()', [], ['address']],
+            [pmrm, 'cashAsset()', [], ['address']],
+            [pmrm, 'liquidation()', [], ['address']],
+            [pmrm, 'viewer()', [], ['address']],
+            [pmrm, 'maxAccountSize()', [], ['uint256']],
+            [pmrm, 'feeRecipientAcc()', [], ['uint256']],
+            [pmrm, 'minOIFee()', [], ['uint256']],
+            [pmrm, 'getScenarios()', [], ['(uint256,uint8)[]']],
+            [pmrmLib, 'getBasisContingencyParams()', [], ['(uint256,uint256,uint256,uint256)']],
+            [pmrmLib, 'getOtherContingencyParams()', [], ['(uint256,uint256,int256,int256,uint256,uint256,uint256)']],
+            [pmrmLib, 'getStaticDiscountParams()', [], ['(uint256,uint256,uint256,uint256)']],
+            [pmrmLib, 'getVolShockParams()', [], ['(uint256,uint256,int256,int256,uint256)']],
+          ]
+        );
+
+
+        return {
+          marketName: market,
+          addresses: {
+            pmrm,
+            pmrmLib,
+          },
+          params: {
+            baseManagerParams: {
+              subAccounts,
+              cashAsset,
+              liquidation,
+              viewer,
+              maxAccountSize,
+              feeRecipientAcc,
+              minOIFee: fromBN(minOIFee),
+            },
+            scenarios: scenarios.map((x: any) => `[${fromBN(x[0])},${x[1] == 1n ? 'up' : x[1] == 2n ? 'down' : 'flat'}]`),
+            basisContingencyParams: {
+              scenarioSpotUp: fromBN(basisContingencyParams[0]),
+              scenarioSpotDown: fromBN(basisContingencyParams[1]),
+              basisContAddFactor: fromBN(basisContingencyParams[2]),
+              basisContMultFactor: fromBN(basisContingencyParams[3]),
+            },
+            otherContingencyParams: {
+              pegLossThreshold: fromBN(otherContingencyParams[0]),
+              pegLossFactor: fromBN(otherContingencyParams[1]),
+              confThreshold: fromBN(otherContingencyParams[2]),
+              confMargin: fromBN(otherContingencyParams[3]),
+              basePercent: fromBN(otherContingencyParams[4]),
+              perpPercent: fromBN(otherContingencyParams[5]),
+              optionPercent: fromBN(otherContingencyParams[6]),
+            },
+            staticDiscountParams: {
+              imFactor: fromBN(staticDiscountParams[0]),
+              rateMultScale: fromBN(staticDiscountParams[1]),
+              rateAddScale: fromBN(staticDiscountParams[2]),
+              baseStaticDiscount: fromBN(staticDiscountParams[3]),
+            },
+            volShockParams: {
+              volRangeUp: fromBN(volShockParams[0]),
+              volRangeDown: fromBN(volShockParams[1]),
+              shortTermPower: fromBN(volShockParams[2]),
+              longTermPower: fromBN(volShockParams[3]),
+              dteFloor: volShockParams[4],
+            },
+          }
+        }
+      })())
+    }
+  }
+
+  const pmParams = await Promise.all(promises);
+  return pmParams;
+}
+
 async function getAllParams(): Promise<void> {
+  console.log("# PM Params #");
+  const pmParams: any = await getAllPMParams();
+
+  let filePath = path.join(__dirname, '../../data/pmParams.json');
+  fs.writeFileSync(filePath, JSON.stringify(pmParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
+  console.log(`Results written to ${filePath}`);
+
   console.log("# SRM Params #");
-
-  const allParams: any = await getAllSRMParams();
-
-  // console.log(JSON.stringify(allParams, (_, v) => typeof v === 'bigint' ? v.toString() : v));
+  const srmParams: any = await getAllSRMParams();
 
   // write results to "data/srmParams.json"
-  const filePath = path.join(__dirname, '../../data/srmParams.json');
-  fs.writeFileSync(filePath, JSON.stringify(allParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
+  filePath = path.join(__dirname, '../../data/srmParams.json');
+  fs.writeFileSync(filePath, JSON.stringify(srmParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
 
   console.log(`Results written to ${filePath}`);
 
-  for (const market of allParams.marketParams) {
+  for (const market of srmParams.marketParams) {
     console.log(`${market.marketName.toUpperCase()}_MARKETID=${market.marketId}`);
-    // console.log(JSON.stringify(market, (_, v) => typeof v === 'bigint' ? v.toString() : v));
   }
 }
 

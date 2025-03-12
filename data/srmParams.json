@@ -94,18 +94,18 @@
         "oiCaps": {
           "optionPosition": {
             "isWhitelisted": true,
-            "totalPosition": "24372.914091734220657224",
+            "totalPosition": "25043.330738329797662964",
             "positionCap": "2000000.0"
           },
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "2727.226809235201026757",
+            "totalPosition": "4522.692199138704210182",
             "positionCap": "250000.0"
           },
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "2402.45724134116314381",
+            "totalPosition": "2972.450704145248903496",
             "positionCap": "6000.0"
           }
         },
@@ -241,18 +241,18 @@
         "oiCaps": {
           "optionPosition": {
             "isWhitelisted": true,
-            "totalPosition": "715.103637485442360987",
+            "totalPosition": "580.317873903142066757",
             "positionCap": "100000.0"
           },
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "56.068544540607281126",
+            "totalPosition": "78.805198005329885617",
             "positionCap": "12000.0"
           },
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "84.4657447",
+            "totalPosition": "84.93096401",
             "positionCap": "160.0"
           }
         },
@@ -347,7 +347,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "1029422.275799",
+            "totalPosition": "780801.105293",
             "positionCap": "10000000.0"
           }
         },
@@ -491,7 +491,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "2509.232697959482196467",
+            "totalPosition": "2481.180139218883054601",
             "positionCap": "4000.0"
           }
         },
@@ -548,7 +548,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "2722.164655166090659198",
+            "totalPosition": "4632.297269203913705416",
             "positionCap": "48000.0"
           }
         },
@@ -633,7 +633,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "370094.33015841928793941",
+            "totalPosition": "81852.346618599192317444",
             "positionCap": "8000000.0"
           }
         },
@@ -643,9 +643,12 @@
         },
         "feedParams": {
           "spotFeed": {
-            "signers": [],
-            "heartbeat": "",
-            "requiredSigners": "0"
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
           },
           "perpFeed": {
             "signers": [
@@ -708,7 +711,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "4763.494283722417935176",
+            "totalPosition": "4883.518311228884916692",
             "positionCap": "8000.0"
           }
         },
@@ -758,7 +761,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "1085.696656327065742604",
+            "totalPosition": "1041.888353436509453597",
             "positionCap": "2320.0"
           }
         },
@@ -808,7 +811,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "554.873780780485617189",
+            "totalPosition": "435.182414973813881898",
             "positionCap": "945.0"
           }
         },
@@ -858,7 +861,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "17869620.160689575828615861",
+            "totalPosition": "18183461.103112457711976257",
             "positionCap": "50000000.0"
           }
         },
@@ -908,7 +911,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "29751.843878174393507085",
+            "totalPosition": "29726.67105312392791649",
             "positionCap": "3000000.0"
           }
         },
@@ -958,7 +961,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "65844.149125147463829912",
+            "totalPosition": "65783.830719628595005223",
             "positionCap": "3000000.0"
           }
         },
@@ -1008,7 +1011,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "3070114.75241655675044094",
+            "totalPosition": "748957.435573870202332151",
             "positionCap": "10000000.0"
           }
         },
@@ -1058,7 +1061,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "235.55241009",
+            "totalPosition": "243.7482914",
             "positionCap": "300.0"
           }
         },
@@ -1108,7 +1111,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "4.23197374",
+            "totalPosition": "5.47047102",
             "positionCap": "20.0"
           }
         },
@@ -1215,7 +1218,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "111334.129281192882559234",
+            "totalPosition": "26766.244782284597894504",
             "positionCap": "300000.0"
           }
         },
@@ -1300,7 +1303,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "29494.590776740826564596",
+            "totalPosition": "30160.66568306891873661",
             "positionCap": "500000.0"
           }
         },
@@ -1385,7 +1388,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "35226.119396815002852278",
+            "totalPosition": "16383.14",
             "positionCap": "320000.0"
           }
         },
@@ -1470,7 +1473,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "19771560171.250848013503391838",
+            "totalPosition": "16291080171.250848013503391838",
             "positionCap": "80000000000.0"
           }
         },
@@ -1555,7 +1558,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "177450.694098797327265534",
+            "totalPosition": "98637.904712876448578878",
             "positionCap": "1400000.0"
           }
         },
@@ -1640,7 +1643,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "109945.663974728724735626",
+            "totalPosition": "86671.268359928162711034",
             "positionCap": "400000.0"
           }
         },
@@ -1725,7 +1728,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "209.678394524282063452",
+            "totalPosition": "93.0622",
             "positionCap": "1600.0"
           }
         },
@@ -1810,7 +1813,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "828.172844126883850872",
+            "totalPosition": "957.442028911375221698",
             "positionCap": "24000.0"
           }
         },
@@ -1907,13 +1910,13 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "243134.343375615968646112",
+            "totalPosition": "267079.358860552157051708",
             "positionCap": "1000000.0"
           },
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "337171.799633089406450969",
+            "totalPosition": "349922.604641774670759926",
             "positionCap": "500000.0"
           }
         },
@@ -1998,7 +2001,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "421308.019562149842740592",
+            "totalPosition": "269315.327480273495104618",
             "positionCap": "1500000.0"
           }
         },
@@ -2083,7 +2086,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "7898.409560311065550152",
+            "totalPosition": "15866.445560311065550152",
             "positionCap": "100000.0"
           }
         },
@@ -2168,7 +2171,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "53737.186717366363387198",
+            "totalPosition": "37947.696712787334189516",
             "positionCap": "2000000.0"
           }
         },
@@ -2253,7 +2256,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "10266.372517351572078312",
+            "totalPosition": "7431.652517351572078312",
             "positionCap": "40000.0"
           }
         },
@@ -2338,7 +2341,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "19939.304264142921924502",
+            "totalPosition": "10236.244264142921924502",
             "positionCap": "120000.0"
           }
         },
@@ -2423,7 +2426,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "487.496912378280526472",
+            "totalPosition": "247.615912378280526472",
             "positionCap": "2000.0"
           }
         },
@@ -2678,7 +2681,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "1449245.180281830961343624",
+            "totalPosition": "1756596.358371187914101502",
             "positionCap": "4000000.0"
           }
         },
@@ -2926,7 +2929,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "6.514556045629398729",
+            "totalPosition": "2.339931162873511596",
             "positionCap": "10.0"
           }
         },
@@ -2976,7 +2979,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "0.013467395381028141",
+            "totalPosition": "0.063467395381028141",
             "positionCap": "1.0"
           }
         },
@@ -3076,7 +3079,7 @@
           "basePosition": {
             "isSRMWhitelisted": true,
             "depositWL": false,
-            "totalPosition": "1562470.351811",
+            "totalPosition": "3191088.432691882125488492",
             "positionCap": "50000000.0"
           }
         },
@@ -3133,7 +3136,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "2859.951763940873162984",
+            "totalPosition": "2791.809575545240737678",
             "positionCap": "14000.0"
           }
         },

@@ -76,7 +76,7 @@ export async function callWeb3(
   func: string,
   args: any[],
   types?: any[],
-  block?: number,
+  block?: number | 'latest',
   retries = 5,
 ) {
   const PK = signer ? signer.privateKey : '0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef';
