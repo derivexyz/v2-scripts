@@ -1,4 +1,4 @@
-import {callWeb3, getLogsWeb3} from './web3/utils';
+import {callWeb3, getLogsWeb3, multiCallWeb3} from './web3/utils';
 import { requireEnv } from './requireEnv';
 
 type MarketContracts = {
@@ -66,18 +66,20 @@ async function loadMarketAddresses(market: string): Promise<any> {
     const perp = await callWeb3(null, pmrm, `perp()`, [], ['address']);
 
     const [option, baseAsset, spotFeed, volFeed, forwardFeed, rateFeed, perpFeed, ibpFeed, iapFeed, lib, view] =
-      await Promise.all([
-        callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']),
-        callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']),
-        callWeb3(null, pmrm, `spotFeed()`, [], ['address']),
-        callWeb3(null, pmrm, `volFeed()`, [], ['address']),
-        callWeb3(null, pmrm, `forwardFeed()`, [], ['address']),
-        callWeb3(null, pmrm, `interestRateFeed()`, [], ['address']),
-        callWeb3(null, perp, `perpFeed()`, [], ['address']),
-        callWeb3(null, perp, `impactBidPriceFeed()`, [], ['address']),
-        callWeb3(null, perp, `impactAskPriceFeed()`, [], ['address']),
-        callWeb3(null, pmrm, `lib()`, [], ['address']),
-        callWeb3(null, pmrm, `viewer()`, [], ['address']),
+      await multiCallWeb3(
+        null,
+        [
+          [srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']],
+          [srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']],
+          [pmrm, `spotFeed()`, [], ['address']],
+          [pmrm, `volFeed()`, [], ['address']],
+          [pmrm, `forwardFeed()`, [], ['address']],
+          [pmrm, `interestRateFeed()`, [], ['address']],
+          [perp, `perpFeed()`, [], ['address']],
+          [perp, `impactBidPriceFeed()`, [], ['address']],
+          [perp, `impactAskPriceFeed()`, [], ['address']],
+          [pmrm, `lib()`, [], ['address']],
+          [pmrm, `viewer()`, [], ['address']],
       ]);
 
     return {

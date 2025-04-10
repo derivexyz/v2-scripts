@@ -125,11 +125,29 @@ export async function callWeb3(
   }
 }
 
+export async function multiCallWeb3Single(
+  address: string,
+  fn: string,
+  args: any[][],
+  // only one type for all calls
+  types: any[],
+  block?: number | 'latest',
+  allowFailures = true,
+  retries = 5,
+): Promise<any[]> {
+  return await multiCallWeb3(
+    null,
+    args.map((x) => [address, fn, x, types]),
+    block,
+    allowFailures,
+    retries,
+  );
+}
 
 export async function multiCallWeb3(
   signer: ethers.Wallet | null,
   params: [string, string, any, any][],
-  block?: number,
+  block?: number | 'latest',
   allowFailures = true,
   retries = 5,
 ): Promise<any[]> {
@@ -156,7 +174,7 @@ export async function multiCallWeb3Internal(
   funcs: string[],
   args: any[][],
   types?: any[][],
-  block?: number,
+  block?: number | 'latest',
   allowFailures = true,
   retries = 5,
 ) {
@@ -212,18 +230,16 @@ export async function getBlockWeb3(
 }
 
 
-export async function getLogsWeb3(contractAddr: string, eventType: string, fromBlock=0, toBlock: number | "latest" = "latest", filters: any[] = []) {
-  // TODO: filters
-
+export async function getLogsWeb3(contractAddr?: string, eventType?: string, fromBlock=0, toBlock: number | "latest" = "latest", filters: any[] = []) {
   logger.debug(
-    `cast logs --json --rpc-url ${vars.provider} --address ${contractAddr} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}" ${filters.join(" ")}`,
+    `cast logs --json --rpc-url ${vars.provider} ${!!contractAddr ? '--address' : ''} ${contractAddr ?? ""} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}" ${filters.join(" ")}`,
   );
   let res;
   let retries = 5;
   while (true) {
     try {
       const out: any = await execAsync(
-        `cast logs --json --rpc-url ${vars.provider} --address ${contractAddr} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}"`,
+        `cast logs --json --rpc-url ${vars.provider} ${!!contractAddr ? '--address' : ''} ${contractAddr ?? ""} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}" ${filters.join(" ")}`,
         {
           shell: '/bin/bash',
           stdio: 'ignore',
@@ -245,7 +261,7 @@ export async function getLogsWeb3(contractAddr: string, eventType: string, fromB
     }
   }
 
-  const types = eventType
+  const types = eventType ? eventType
     .split('(')[1]
     .split(')')[0]
     .split(',')
@@ -255,7 +271,8 @@ export async function getLogsWeb3(contractAddr: string, eventType: string, fromB
         name: split[split.length - 1],
         type: split[0],
       };
-    });
+    }) : undefined;
+  // console.log({types});
 
 
   if (types) {
