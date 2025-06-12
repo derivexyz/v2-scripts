@@ -36,7 +36,7 @@ cast send <...> ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.leng
   );
 
   let lastError;
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 5; i++) {
     try {
       const out = execSync(
         `cast send --json --private-key ${signer.privateKey} --rpc-url ${vars.provider} ${contractAddr} "${func}" ${argsStr} ${options}`,
@@ -174,7 +174,7 @@ export async function multiCallWeb3Internal(
   funcs: string[],
   args: any[][],
   types?: any[][],
-  block?: number | 'latest',
+  block: number | 'latest' = 'latest',
   allowFailures = true,
   retries = 5,
 ) {
@@ -182,6 +182,10 @@ export async function multiCallWeb3Internal(
 
   if (contractAddrs.length !== funcs.length || contractAddrs.length !== args.length || (!!types && contractAddrs.length !== types.length)) {
     throw new Error('Length mismatch for contractAddrs, funcs, and args');
+  }
+
+  if (block != 'latest' && block < 1935198) {
+    throw new Error(`Block is too low (multicall not deployed yet) - block (${block}) must be greater than 1935198`);
   }
 
   const calls = contractAddrs.map((addr, i) => {
@@ -198,9 +202,16 @@ export async function multiCallWeb3Internal(
   if (types) {
     return result[0].map((x, i) => {
       if (!x[0] && !allowFailures) {
-        throw new Error(`Multicall failed: ${x} (${i})`);
+        console.log({ x: x, types: types[i], contract: contractAddrs[i], func: funcs[i] });
+        throw new Error(`Multicall failed - reverted: ${x} (${i})`);
       } else if (!x[0]) {
         return undefined;
+      }
+      if (allowFailures && x[1] === '0x') {
+        return undefined;
+      } else if (x[1] === '0x' && types[i].length > 0) {
+        console.log({ x: x, types: types[i], contract: contractAddrs[i], func: funcs[i] });
+        throw new Error(`Multicall failed - no bytes returned: ${x} (${i})`);
       }
       const res = ethers.AbiCoder.defaultAbiCoder().decode(types[i], x[1]).toArray();
       if (res.length === 1) {
@@ -215,9 +226,6 @@ export async function multiCallWeb3Internal(
 export async function getBlockWeb3(
   blockNumber: number | "latest",
 ) {
-  logger.debug(
-    `cast block <...> ${blockNumber}`,
-  );
   const out: any = await execAsync(
     `cast block --rpc-url ${vars.provider}  ${blockNumber} --json`,
     {
@@ -340,7 +348,7 @@ export async function deployContract(signer: ethers.Wallet, bytecode: string) {
   return res.contractAddress;
 }
 
-function stringifyForCast(val: any) {
+export function stringifyForCast(val: any) {
   return JSON.parse(
     JSON.stringify(val, (key, value) => {
       switch (typeof value) {

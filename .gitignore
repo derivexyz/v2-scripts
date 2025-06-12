@@ -2,4 +2,9 @@ node_modules/
 .idea/
 .env*
 !.env.example
+!.env.testnet.example
+!.env.mainnet.example
+!.env.testnet.defaults
+!.env.mainnet.defaults
 .DS_Store
+price_cache/

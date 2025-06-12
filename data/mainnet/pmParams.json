@@ -6,6 +6,28 @@
       "pmrmLib": "0x81ed5Dc90F708Dd908DccFfd5128B5C3405f74c5"
     },
     "params": {
+      "oiCaps": {
+        "basePosition": {
+          "isSRMWhitelisted": true,
+          "totalPosition": "0.0",
+          "positionCap": "0.0",
+          "depositWL": false
+        },
+        "optionPosition": {
+          "isWhitelisted": true,
+          "totalPosition": "21616.073956523196751393",
+          "positionCap": "2000000.0"
+        },
+        "perpPosition": {
+          "isWhitelisted": true,
+          "totalPosition": "3243.023208405660075178",
+          "positionCap": "250000.0",
+          "matching": {
+            "isTradePerp": true,
+            "isRfqPerp": true
+          }
+        }
+      },
       "baseManagerParams": {
         "subAccounts": "0xE7603DF191D699d8BD9891b821347dbAb889E5a5",
         "cashAsset": "0x57B03E14d409ADC7fAb6CFc44b5886CAD2D5f02b",
@@ -13,7 +35,15 @@
         "viewer": "0xcAe44C93f7B3b519Fc28f9d4F7Ae22dE770a907b",
         "maxAccountSize": "128",
         "feeRecipientAcc": "1",
-        "minOIFee": "800.0"
+        "minOIFee": "800.0",
+        "option": "0x4BB4C3CDc7562f08e9910A0C7D8bB7e108861eB4",
+        "perp": "0xAf65752C4643E25C02F693f9D4FE19cF23a095E3",
+        "baseAsset": "0xcfe8bc6297e693cbB58aD93A361e64a6D0E7CDeE",
+        "spotFeed": "0x727aD65db6aE99DB5Dbee8F202846DD6009bf6D5",
+        "interestRateFeed": "0x30A6E6A3851c18aa67429ACC8a1DfAFE20A29FEb",
+        "volFeed": "0xb27cb6b08e6c298C8634D73D5F6649665e90d160",
+        "stableFeed": "0x9C61888497D716f5bBd93D5e13d443cC375f1424",
+        "forwardFeed": "0x791A570F5785FBdb02EA5C7a794c43111ae2f948"
       },
       "scenarios": [
         "[1.18,up]",
@@ -77,6 +107,28 @@
       "pmrmLib": "0xFa7f1a242b819A8EC97FD92674C3f0868395B0d3"
     },
     "params": {
+      "oiCaps": {
+        "basePosition": {
+          "isSRMWhitelisted": true,
+          "totalPosition": "0.0",
+          "positionCap": "0.0",
+          "depositWL": false
+        },
+        "optionPosition": {
+          "isWhitelisted": true,
+          "totalPosition": "560.14831305083600792",
+          "positionCap": "100000.0"
+        },
+        "perpPosition": {
+          "isWhitelisted": true,
+          "totalPosition": "158.343192621382282536",
+          "positionCap": "12000.0",
+          "matching": {
+            "isTradePerp": true,
+            "isRfqPerp": true
+          }
+        }
+      },
       "baseManagerParams": {
         "subAccounts": "0xE7603DF191D699d8BD9891b821347dbAb889E5a5",
         "cashAsset": "0x57B03E14d409ADC7fAb6CFc44b5886CAD2D5f02b",
@@ -84,7 +136,15 @@
         "viewer": "0xa364498b361d563921C9A144264205CdaAF1B5E0",
         "maxAccountSize": "128",
         "feeRecipientAcc": "1",
-        "minOIFee": "800.0"
+        "minOIFee": "800.0",
+        "option": "0xd0711b9eBE84b778483709CDe62BacFDBAE13623",
+        "perp": "0xDBa83C0C654DB1cd914FA2710bA743e925B53086",
+        "baseAsset": "0x91dB694342C1B04C35a6BC4959314B79B12a6491",
+        "spotFeed": "0x5Eb59391e7870807aD2C8792E8c5e75838E0fdb0",
+        "interestRateFeed": "0x6FEf1bb8Ade9A836663d4c15AFd5985Fb545004f",
+        "volFeed": "0x388341d9E5A7D7d5accD738B2a31b0622E0c1b87",
+        "stableFeed": "0x9C61888497D716f5bBd93D5e13d443cC375f1424",
+        "forwardFeed": "0x958c54bFACc0E2dee586564B31Bf3F171f256279"
       },
       "scenarios": [
         "[1.18,up]",

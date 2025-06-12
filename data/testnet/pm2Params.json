@@ -1,0 +1,646 @@
+[
+  {
+    "market": "weth",
+    "collaterals": {
+      "weth": {
+        "name": "weth",
+        "baseAsset": "0x41675b7746AE0E464f2594d258CF399c392A179C",
+        "expectedSpotFeed": "0x6F054A18383b2EC7F709d7f24e69D9DbCC921aD3",
+        "actualSpotFeed": "0x6F054A18383b2EC7F709d7f24e69D9DbCC921aD3",
+        "collateralParams": {
+          "isEnabled": true,
+          "isRiskCancelling": true,
+          "mmHaircut": "0.05",
+          "imHaircut": "0.02"
+        }
+      },
+      "wbtc": {
+        "name": "wbtc",
+        "baseAsset": "0x56543a7A848F630a99EfaFF1177907267afb75d0",
+        "expectedSpotFeed": "0xd71d4d99644E2592DD1a753a1f4167928Bd5B1FA",
+        "actualSpotFeed": "0xd71d4d99644E2592DD1a753a1f4167928Bd5B1FA",
+        "collateralParams": {
+          "isEnabled": true,
+          "isRiskCancelling": false,
+          "mmHaircut": "0.25",
+          "imHaircut": "0.1"
+        }
+      },
+      "weETH": {
+        "name": "weETH",
+        "baseAsset": "0x063793B0AA25CB7784375E1Fed801505838Ebc44",
+        "expectedSpotFeed": "0xB158f12c761F73ca69E556af23F88A449e075A1B",
+        "actualSpotFeed": "0xB158f12c761F73ca69E556af23F88A449e075A1B",
+        "collateralParams": {
+          "isEnabled": true,
+          "isRiskCancelling": true,
+          "mmHaircut": "0.05",
+          "imHaircut": "0.02"
+        }
+      },
+      "LBTC": {
+        "name": "LBTC",
+        "baseAsset": "0x2b743fec38360310D248ba1870a3C341278Ed41F",
+        "expectedSpotFeed": "0x3c92b48506a86Bc8b0DE6d1cEB7d679eca8DCD3D",
+        "actualSpotFeed": "0x3c92b48506a86Bc8b0DE6d1cEB7d679eca8DCD3D",
+        "collateralParams": {
+          "isEnabled": true,
+          "isRiskCancelling": false,
+          "mmHaircut": "0.25",
+          "imHaircut": "0.1"
+        }
+      }
+    },
+    "maxAccountSize": "0.000000000000000128",
+    "feeRecipientAcc": "0",
+    "minOIFee": "50.0",
+    "params": {
+      "scenarios": [
+        {
+          "spotShock": "1.18",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.135",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.135",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.135",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.09",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.09",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.09",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.045",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.045",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.045",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.955",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.955",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.955",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.91",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.91",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.91",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.865",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.865",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.865",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.82",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.34",
+          "scenarioType": "up",
+          "dampeningFactor": "0.21"
+        },
+        {
+          "spotShock": "0.67",
+          "scenarioType": "up",
+          "dampeningFactor": "0.42"
+        },
+        {
+          "spotShock": "1.5",
+          "scenarioType": "up",
+          "dampeningFactor": "0.2772"
+        },
+        {
+          "spotShock": "2.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.1386"
+        },
+        {
+          "spotShock": "3.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.0693"
+        },
+        {
+          "spotShock": "4.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.0462"
+        },
+        {
+          "spotShock": "5.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.03465"
+        },
+        {
+          "spotShock": "6.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.02772"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "linear",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "abs",
+          "dampeningFactor": "1.0"
+        }
+      ],
+      "basisContingencyParams": {
+        "scenarioSpotUp": "1.045",
+        "scenarioSpotDown": "0.955",
+        "basisContAddFactor": "0.5",
+        "basisContMultFactor": "2.0"
+      },
+      "otherContingencyParams": {
+        "pegLossThreshold": "0.99",
+        "pegLossFactor": "4.0",
+        "confThreshold": "0.55",
+        "confMargin": "1.0",
+        "MMPerpPercent": "0.03",
+        "IMPerpPercent": "0.01",
+        "MMOptionPercent": "0.003",
+        "IMOptionPercent": "0.002"
+      },
+      "marginParams": {
+        "imFactor": "1.0",
+        "mmFactor": "0.8",
+        "shortRateMultScale": "0.0",
+        "longRateMultScale": "0.0",
+        "shortRateAddScale": "0.16",
+        "longRateAddScale": "0.16",
+        "shortBaseStaticDiscount": "0.95",
+        "longBaseStaticDiscount": "1.05"
+      },
+      "volShockParams": {
+        "volRangeUp": "0.5",
+        "volRangeDown": "0.3",
+        "shortTermPower": "0.3",
+        "longTermPower": "0.13",
+        "dteFloor": "0.0000000000000864",
+        "minVolUpShock": "0.4"
+      },
+      "skewShockParams": {
+        "linearBaseCap": "0.25",
+        "absBaseCap": "0.25",
+        "linearCBase": "-0.1",
+        "absCBase": "-0.1",
+        "minKStar": "0.01",
+        "widthScale": "4.0",
+        "volParamStatic": "0.6",
+        "volParamScale": "0.0"
+      }
+    },
+    "addresses": {
+      "pmrm2": {
+        "address": "0xc9D58604D0A8929e349092DF70Dcc0F0f4b65Ef8",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "pmrm2Lib": {
+        "address": "0x77cDFD8224A9224B6e5b27864FD94F2B20495D84",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "subAccounts": {
+        "address": "0xb9ed1cc0c50bca7a391a6819e9cAb466f5501d73"
+      },
+      "cashAsset": {
+        "address": "0x6caf294DaC985ff653d5aE75b4FF8E0A66025928",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "liquidation": {
+        "address": "0x5815620F1823B34CAA0324A083dc245fDD25Accf",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "viewer": {
+        "address": "0xEef949c6de4B1dCDe63bb2af76Ab6560B957aa39",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "option": {
+        "address": "0xBcB494059969DAaB460E0B5d4f5c2366aab79aa1",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "perp": {
+        "address": "0x010e26422790C6Cb3872330980FAa7628FD20294",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "spotFeed": {
+        "address": "0x6F054A18383b2EC7F709d7f24e69D9DbCC921aD3",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "interestRateFeed": {
+        "address": "0xF027e8D52b01e08f54Bf7762d189331C2928C7be",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "volFeed": {
+        "address": "0xbc34bF4Bdb938d42dC10B21975C0B7Ad75746020",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "stableFeed": {
+        "address": "0x3187431EAAdf59425FAf9A5eEFc43786d070234e",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "forwardFeed": {
+        "address": "0xb1Fd6a8933C171cB149eda09EB91e22788EF61bB",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      }
+    }
+  },
+  {
+    "market": "wbtc",
+    "collaterals": {
+      "weth": {
+        "name": "weth",
+        "baseAsset": "0x41675b7746AE0E464f2594d258CF399c392A179C",
+        "expectedSpotFeed": "0x6F054A18383b2EC7F709d7f24e69D9DbCC921aD3",
+        "actualSpotFeed": "0x6F054A18383b2EC7F709d7f24e69D9DbCC921aD3",
+        "collateralParams": {
+          "isEnabled": true,
+          "isRiskCancelling": false,
+          "mmHaircut": "0.15",
+          "imHaircut": "0.1"
+        }
+      },
+      "wbtc": {
+        "name": "wbtc",
+        "baseAsset": "0x56543a7A848F630a99EfaFF1177907267afb75d0",
+        "expectedSpotFeed": "0xd71d4d99644E2592DD1a753a1f4167928Bd5B1FA",
+        "actualSpotFeed": "0xd71d4d99644E2592DD1a753a1f4167928Bd5B1FA",
+        "collateralParams": {
+          "isEnabled": true,
+          "isRiskCancelling": true,
+          "mmHaircut": "0.07",
+          "imHaircut": "0.03"
+        }
+      },
+      "weETH": {
+        "name": "weETH",
+        "baseAsset": "0x063793B0AA25CB7784375E1Fed801505838Ebc44",
+        "expectedSpotFeed": "0xB158f12c761F73ca69E556af23F88A449e075A1B",
+        "actualSpotFeed": "0xB158f12c761F73ca69E556af23F88A449e075A1B",
+        "collateralParams": {
+          "isEnabled": true,
+          "isRiskCancelling": false,
+          "mmHaircut": "0.15",
+          "imHaircut": "0.1"
+        }
+      },
+      "LBTC": {
+        "name": "LBTC",
+        "baseAsset": "0x2b743fec38360310D248ba1870a3C341278Ed41F",
+        "expectedSpotFeed": "0x3c92b48506a86Bc8b0DE6d1cEB7d679eca8DCD3D",
+        "actualSpotFeed": "0x3c92b48506a86Bc8b0DE6d1cEB7d679eca8DCD3D",
+        "collateralParams": {
+          "isEnabled": true,
+          "isRiskCancelling": true,
+          "mmHaircut": "0.07",
+          "imHaircut": "0.03"
+        }
+      }
+    },
+    "maxAccountSize": "0.000000000000000128",
+    "feeRecipientAcc": "0",
+    "minOIFee": "50.0",
+    "params": {
+      "scenarios": [
+        {
+          "spotShock": "1.18",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.135",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.135",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.135",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.09",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.09",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.09",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.045",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.045",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.045",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.955",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.955",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.955",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.91",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.91",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.91",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.865",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.865",
+          "scenarioType": "none",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.865",
+          "scenarioType": "down",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.82",
+          "scenarioType": "up",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "0.34",
+          "scenarioType": "up",
+          "dampeningFactor": "0.21"
+        },
+        {
+          "spotShock": "0.67",
+          "scenarioType": "up",
+          "dampeningFactor": "0.42"
+        },
+        {
+          "spotShock": "1.5",
+          "scenarioType": "up",
+          "dampeningFactor": "0.2772"
+        },
+        {
+          "spotShock": "2.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.1386"
+        },
+        {
+          "spotShock": "3.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.0693"
+        },
+        {
+          "spotShock": "4.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.0462"
+        },
+        {
+          "spotShock": "5.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.03465"
+        },
+        {
+          "spotShock": "6.0",
+          "scenarioType": "up",
+          "dampeningFactor": "0.02772"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "linear",
+          "dampeningFactor": "1.0"
+        },
+        {
+          "spotShock": "1.0",
+          "scenarioType": "abs",
+          "dampeningFactor": "1.0"
+        }
+      ],
+      "basisContingencyParams": {
+        "scenarioSpotUp": "1.045",
+        "scenarioSpotDown": "0.955",
+        "basisContAddFactor": "0.5",
+        "basisContMultFactor": "2.0"
+      },
+      "otherContingencyParams": {
+        "pegLossThreshold": "0.99",
+        "pegLossFactor": "4.0",
+        "confThreshold": "0.55",
+        "confMargin": "1.0",
+        "MMPerpPercent": "0.03",
+        "IMPerpPercent": "0.01",
+        "MMOptionPercent": "0.003",
+        "IMOptionPercent": "0.002"
+      },
+      "marginParams": {
+        "imFactor": "1.0",
+        "mmFactor": "0.8",
+        "shortRateMultScale": "0.0",
+        "longRateMultScale": "0.0",
+        "shortRateAddScale": "0.16",
+        "longRateAddScale": "0.16",
+        "shortBaseStaticDiscount": "0.95",
+        "longBaseStaticDiscount": "1.05"
+      },
+      "volShockParams": {
+        "volRangeUp": "0.5",
+        "volRangeDown": "0.3",
+        "shortTermPower": "0.3",
+        "longTermPower": "0.13",
+        "dteFloor": "0.0000000000000864",
+        "minVolUpShock": "0.4"
+      },
+      "skewShockParams": {
+        "linearBaseCap": "0.25",
+        "absBaseCap": "0.25",
+        "linearCBase": "-0.1",
+        "absCBase": "-0.1",
+        "minKStar": "0.01",
+        "widthScale": "4.0",
+        "volParamStatic": "0.6",
+        "volParamScale": "0.0"
+      }
+    },
+    "addresses": {
+      "pmrm2": {
+        "address": "0x45878987e05Bc20f550E41482a635627ee6229Ee",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "pmrm2Lib": {
+        "address": "0x7f5C1f80983E08Cf34f356D05De79C9e1A09ff17",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "subAccounts": {
+        "address": "0xb9ed1cc0c50bca7a391a6819e9cAb466f5501d73"
+      },
+      "cashAsset": {
+        "address": "0x6caf294DaC985ff653d5aE75b4FF8E0A66025928",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "liquidation": {
+        "address": "0x5815620F1823B34CAA0324A083dc245fDD25Accf",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "viewer": {
+        "address": "0x125D818604fD21E42e203fd27C8A2a02A40939B0",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "option": {
+        "address": "0xAeB81cbe6b19CeEB0dBE0d230CFFE35Bb40a13a7",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "perp": {
+        "address": "0xAFB6Bb95cd70D5367e2C39e9dbEb422B9815339D",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "spotFeed": {
+        "address": "0xd71d4d99644E2592DD1a753a1f4167928Bd5B1FA",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "interestRateFeed": {
+        "address": "0x9eae1622Bb2aE4c809b4075F607d962aC40AcB9a",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "volFeed": {
+        "address": "0x871D150B1A9Df599f8B5A153e0903037103b6a00",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "stableFeed": {
+        "address": "0x3187431EAAdf59425FAf9A5eEFc43786d070234e",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      },
+      "forwardFeed": {
+        "address": "0xEf20fBF6EA7589Fb78846c4dDC93321E5858c381",
+        "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+      }
+    }
+  }
+]

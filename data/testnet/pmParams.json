@@ -1,0 +1,204 @@
+[
+  {
+    "marketName": "weth",
+    "addresses": {
+      "pmrm": "0xDF448056d7bf3f9Ca13d713114e17f1B7470DeBF",
+      "pmrmLib": "0x5a8a664a35F33d63fAc3698d8BDf7eC641bAAd1d"
+    },
+    "params": {
+      "oiCaps": {
+        "basePosition": {
+          "isSRMWhitelisted": true,
+          "totalPosition": "1.0",
+          "positionCap": "250.0",
+          "depositWL": false
+        },
+        "optionPosition": {
+          "isWhitelisted": true,
+          "totalPosition": "587.63",
+          "positionCap": "1000000.0"
+        },
+        "perpPosition": {
+          "isWhitelisted": true,
+          "totalPosition": "20739.831464771645673028",
+          "positionCap": "100000.0",
+          "matching": {
+            "isTradePerp": true,
+            "isRfqPerp": true
+          }
+        }
+      },
+      "baseManagerParams": {
+        "subAccounts": "0xb9ed1cc0c50bca7a391a6819e9cAb466f5501d73",
+        "cashAsset": "0x6caf294DaC985ff653d5aE75b4FF8E0A66025928",
+        "liquidation": "0x3a721F98cBa066Dd1a70e814332518BC96Aef4B0",
+        "viewer": "0xC12ac2A9c4c41b64177725Ad7F36ae7F19265075",
+        "maxAccountSize": "128",
+        "feeRecipientAcc": "0",
+        "minOIFee": "2.0",
+        "option": "0xBcB494059969DAaB460E0B5d4f5c2366aab79aa1",
+        "perp": "0x010e26422790C6Cb3872330980FAa7628FD20294",
+        "baseAsset": "0x008Ef590487F188E23Cd17De7C55d9d906d6b039",
+        "spotFeed": "0x6F054A18383b2EC7F709d7f24e69D9DbCC921aD3",
+        "interestRateFeed": "0x20cD70D1cFDc66a1FFBf87bAA5B3D65462Fa756E",
+        "volFeed": "0xbc34bF4Bdb938d42dC10B21975C0B7Ad75746020",
+        "stableFeed": "0x3187431EAAdf59425FAf9A5eEFc43786d070234e",
+        "forwardFeed": "0xb1Fd6a8933C171cB149eda09EB91e22788EF61bB"
+      },
+      "scenarios": [
+        "[1.18,up]",
+        "[1.135,up]",
+        "[1.135,flat]",
+        "[1.135,down]",
+        "[1.09,up]",
+        "[1.09,flat]",
+        "[1.09,down]",
+        "[1.045,up]",
+        "[1.045,flat]",
+        "[1.045,down]",
+        "[1.0,up]",
+        "[1.0,flat]",
+        "[1.0,down]",
+        "[0.955,up]",
+        "[0.955,flat]",
+        "[0.955,down]",
+        "[0.91,up]",
+        "[0.91,flat]",
+        "[0.91,down]",
+        "[0.865,up]",
+        "[0.865,flat]",
+        "[0.865,down]",
+        "[0.82,up]"
+      ],
+      "basisContingencyParams": {
+        "scenarioSpotUp": "1.045",
+        "scenarioSpotDown": "0.955",
+        "basisContAddFactor": "0.5",
+        "basisContMultFactor": "2.0"
+      },
+      "otherContingencyParams": {
+        "pegLossThreshold": "0.99",
+        "pegLossFactor": "4.0",
+        "confThreshold": "0.55",
+        "confMargin": "1.0",
+        "basePercent": "0.03",
+        "perpPercent": "0.03",
+        "optionPercent": "0.015"
+      },
+      "staticDiscountParams": {
+        "imFactor": "1.25",
+        "rateMultScale": "1.0",
+        "rateAddScale": "0.12",
+        "baseStaticDiscount": "0.95"
+      },
+      "volShockParams": {
+        "volRangeUp": "0.5",
+        "volRangeDown": "0.275",
+        "shortTermPower": "0.3",
+        "longTermPower": "0.13",
+        "dteFloor": "86400"
+      }
+    }
+  },
+  {
+    "marketName": "wbtc",
+    "addresses": {
+      "pmrm": "0xbaC0328cd4Af53d52F9266Cdbd5bf46720320A20",
+      "pmrmLib": "0x9EC9D4263e38Ad1F9Fe7c734037549b91cD561e1"
+    },
+    "params": {
+      "oiCaps": {
+        "basePosition": {
+          "isSRMWhitelisted": true,
+          "totalPosition": "0.0",
+          "positionCap": "5.0",
+          "depositWL": false
+        },
+        "optionPosition": {
+          "isWhitelisted": true,
+          "totalPosition": "28.9",
+          "positionCap": "1000000.0"
+        },
+        "perpPosition": {
+          "isWhitelisted": true,
+          "totalPosition": "7848.579750056039095086",
+          "positionCap": "100000.0",
+          "matching": {
+            "isTradePerp": true,
+            "isRfqPerp": true
+          }
+        }
+      },
+      "baseManagerParams": {
+        "subAccounts": "0xb9ed1cc0c50bca7a391a6819e9cAb466f5501d73",
+        "cashAsset": "0x6caf294DaC985ff653d5aE75b4FF8E0A66025928",
+        "liquidation": "0x3a721F98cBa066Dd1a70e814332518BC96Aef4B0",
+        "viewer": "0x6659a528bBbACeDbcbC01A07e5554F43F9737911",
+        "maxAccountSize": "128",
+        "feeRecipientAcc": "0",
+        "minOIFee": "2.0",
+        "option": "0xAeB81cbe6b19CeEB0dBE0d230CFFE35Bb40a13a7",
+        "perp": "0xAFB6Bb95cd70D5367e2C39e9dbEb422B9815339D",
+        "baseAsset": "0x684715125bf5bBc3e1960aBB161B2Cd72b25C740",
+        "spotFeed": "0xd71d4d99644E2592DD1a753a1f4167928Bd5B1FA",
+        "interestRateFeed": "0x3923962Ad626a9141FdE39Df01a49B0607eC688c",
+        "volFeed": "0x871D150B1A9Df599f8B5A153e0903037103b6a00",
+        "stableFeed": "0x3187431EAAdf59425FAf9A5eEFc43786d070234e",
+        "forwardFeed": "0xEf20fBF6EA7589Fb78846c4dDC93321E5858c381"
+      },
+      "scenarios": [
+        "[1.18,up]",
+        "[1.135,up]",
+        "[1.135,flat]",
+        "[1.135,down]",
+        "[1.09,up]",
+        "[1.09,flat]",
+        "[1.09,down]",
+        "[1.045,up]",
+        "[1.045,flat]",
+        "[1.045,down]",
+        "[1.0,up]",
+        "[1.0,flat]",
+        "[1.0,down]",
+        "[0.955,up]",
+        "[0.955,flat]",
+        "[0.955,down]",
+        "[0.91,up]",
+        "[0.91,flat]",
+        "[0.91,down]",
+        "[0.865,up]",
+        "[0.865,flat]",
+        "[0.865,down]",
+        "[0.82,up]"
+      ],
+      "basisContingencyParams": {
+        "scenarioSpotUp": "1.045",
+        "scenarioSpotDown": "0.955",
+        "basisContAddFactor": "0.5",
+        "basisContMultFactor": "2.0"
+      },
+      "otherContingencyParams": {
+        "pegLossThreshold": "0.99",
+        "pegLossFactor": "4.0",
+        "confThreshold": "0.55",
+        "confMargin": "1.0",
+        "basePercent": "0.03",
+        "perpPercent": "0.03",
+        "optionPercent": "0.015"
+      },
+      "staticDiscountParams": {
+        "imFactor": "1.25",
+        "rateMultScale": "1.0",
+        "rateAddScale": "0.12",
+        "baseStaticDiscount": "0.95"
+      },
+      "volShockParams": {
+        "volRangeUp": "0.5",
+        "volRangeDown": "0.275",
+        "shortTermPower": "0.3",
+        "longTermPower": "0.13",
+        "dteFloor": "86400"
+      }
+    }
+  }
+]

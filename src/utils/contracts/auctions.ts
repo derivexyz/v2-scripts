@@ -63,7 +63,7 @@ export async function getAllAuctionsubAccIds() {
   const allsubAccIds = new Set<bigint>();
   let res = await getLogsWeb3(
     addresses.auction,
-    'SolventAuctionStarted(uint accountId, uint scenarioId, int markToMarket, uint fee)',
+    '2SolventAuctionStarted(uint accountId, uint scenarioId, int markToMarket, uint fee)',
   );
   res.forEach((x: any) => allsubAccIds.add(x.data.accountId));
 

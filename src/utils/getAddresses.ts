@@ -1,7 +1,8 @@
 import {callWeb3, getLogsWeb3, multiCallWeb3} from './web3/utils';
 import { requireEnv } from './requireEnv';
+import {ZeroAddress} from "ethers";
 
-type MarketContracts = {
+export type MarketContracts = {
   marketId: number;
   option: string;
   perp: string;
@@ -17,6 +18,10 @@ type MarketContracts = {
   pmrm: string;
   pmrmLib: string;
   pmrmViewer: string;
+  pmrm2: string;
+  pmrm2Lib: string;
+  pmrm2Viewer: string;
+  pmrm2RateFeed: string;
 };
 
 export type AllContracts = {
@@ -53,131 +58,163 @@ export enum AssetType {
   Base,
 }
 
-let cachedAddresses: AllContracts | undefined;
-
-async function loadMarketAddresses(market: string): Promise<any> {
-  const srm = requireEnv('SRM_ADDRESS');
-  const marketId = +requireEnv(`${market}_MARKETID`);
-  const type = requireEnv(`${market}_MARKET_TYPE`);
-  const baseERC20 = process.env[`${['BTC', 'ETH'].includes(market) ? `W${market}` : market}_ADDRESS`];
-
-  if (type === 'ALL') {
-    const pmrm = requireEnv(`${market}_PMRM_ADDRESS`);
-    const perp = await callWeb3(null, pmrm, `perp()`, [], ['address']);
-
-    const [option, baseAsset, spotFeed, volFeed, forwardFeed, rateFeed, perpFeed, ibpFeed, iapFeed, lib, view] =
-      await multiCallWeb3(
-        null,
-        [
-          [srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']],
-          [srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']],
-          [pmrm, `spotFeed()`, [], ['address']],
-          [pmrm, `volFeed()`, [], ['address']],
-          [pmrm, `forwardFeed()`, [], ['address']],
-          [pmrm, `interestRateFeed()`, [], ['address']],
-          [perp, `perpFeed()`, [], ['address']],
-          [perp, `impactBidPriceFeed()`, [], ['address']],
-          [perp, `impactAskPriceFeed()`, [], ['address']],
-          [pmrm, `lib()`, [], ['address']],
-          [pmrm, `viewer()`, [], ['address']],
-      ]);
-
-    return {
-      marketId,
-      option,
-      perp,
-      baseERC20,
-      baseAsset,
-      spotFeed,
-      volFeed,
-      forwardFeed,
-      rateFeed,
-      perpFeed,
-      ibpFeed,
-      iapFeed,
-      pmrm,
-      pmrmLib: lib,
-      pmrmViewer: view,
-    };
-  } else if (type === 'SRM_BASE_ONLY') {
-    const baseAsset = await callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']);
-    const [spotFeed, ,] = await callWeb3(
-      null,
-      srm,
-      `getMarketFeeds(uint)`,
-      [marketId],
-      ['address', 'address', 'address'],
-    );
-    return {
-      marketId,
-      baseERC20,
-      baseAsset,
-      spotFeed,
-    };
-  } else if (type === 'SRM_PERP_ONLY') {
-    const perp = await callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Perpetual], ['address']);
-    const [[spotFeed,,], perpFeed, ibpFeed, iapFeed] =
-      await Promise.all([
-        await callWeb3(
-          null,
-          srm,
-          `getMarketFeeds(uint)`,
-          [marketId],
-          ['address', 'address', 'address'],
-        ),
-        callWeb3(null, perp, `perpFeed()`, [], ['address']),
-        callWeb3(null, perp, `impactBidPriceFeed()`, [], ['address']),
-        callWeb3(null, perp, `impactAskPriceFeed()`, [], ['address']),
-      ]);
-    return {
-      marketId,
-      baseERC20,
-      perp,
-      spotFeed,
-      perpFeed,
-      ibpFeed,
-      iapFeed,
-    };
-  } else if (type === 'SRM_OPTION_ONLY') {
-    const [option, baseAsset, [spotFeed, forwardFeed, volFeed]] = await Promise.all([
-      callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Option], ['address']),
-      callWeb3(null, srm, `assetMap(uint256,uint8)`, [marketId, AssetType.Base], ['address']),
-      callWeb3(null, srm, `getMarketFeeds(uint)`, [marketId], ['address', 'address', 'address']),
-    ]);
-    return {
-      marketId,
-      baseERC20,
-      baseAsset,
-      option,
-      spotFeed,
-      forwardFeed,
-      volFeed,
-    };
-  } else {
-    throw new Error(`Unknown market type ${type}`);
-  }
+export function isAddress(addr: string) {
+  return addr != undefined && addr != '' && addr != ZeroAddress && /^0x[a-fA-F0-9]{40}$/.test(addr);
 }
 
-export async function getAllAddresses(quick: boolean = false): Promise<AllContracts> {
+let cachedAddresses: AllContracts | undefined;
+
+async function loadMarketAddresses(): Promise<{ [key: string]: MarketContracts }> {
+  const srm = requireEnv('SRM_ADDRESS');
+  const logs = await getLogsWeb3(srm, 'MarketCreated(uint256 id,string marketName)', 0);
+  const marketIds: { id: bigint, marketName: string }[] = logs.map((x: any) => x.data);
+
+  const results: { [key: string]: MarketContracts } = {}
+  const assetCalls: [string, string, any[], any[]][] = []
+
+  for (let i = 0; i < marketIds.length; i++) {
+    assetCalls.push([srm, `assetMap(uint256,uint8)`, [marketIds[i].id, AssetType.Option], ['address']])
+    assetCalls.push([srm, `assetMap(uint256,uint8)`, [marketIds[i].id, AssetType.Base], ['address']])
+    assetCalls.push([srm, `assetMap(uint256,uint8)`, [marketIds[i].id, AssetType.Perpetual], ['address']])
+  }
+
+  const assetResults = await multiCallWeb3(null, assetCalls);
+  const marketAddressCalls: [string, string, any[], any[]][] = []
+
+  for (let i = 0; i < marketIds.length; i++) {
+    const marketId = Number(marketIds[i].id);
+    const marketName = marketIds[i].marketName;
+    const option = assetResults[i * 3] == ZeroAddress ? "" : assetResults[i * 3];
+    const baseAsset = assetResults[i * 3 + 1] == ZeroAddress ? "" : assetResults[i * 3 + 1];
+    const perp = assetResults[i * 3 + 2] == ZeroAddress ? "" : assetResults[i * 3 + 2];
+
+    results[marketName] = {
+      marketId,
+      option,
+      perp,
+      baseAsset,
+      baseERC20: "",
+      spotFeed: "",
+      volFeed: "",
+      forwardFeed: "",
+      perpFeed: "",
+      ibpFeed: "",
+      iapFeed: "",
+      rateFeed: "",
+      pmrm: "",
+      pmrmLib: "",
+      pmrmViewer: "",
+      pmrm2: "",
+      pmrm2Lib: "",
+      pmrm2Viewer: "",
+      pmrm2RateFeed: "",
+    }
+
+    marketAddressCalls.push([srm, `getMarketFeeds(uint)`, [marketId], ['address', 'address', 'address']]);
+    if (perp != "") {
+      marketAddressCalls.push([perp, `perpFeed()`, [], ['address']]);
+      marketAddressCalls.push([perp, `impactBidPriceFeed()`, [], ['address']]);
+      marketAddressCalls.push([perp, `impactAskPriceFeed()`, [], ['address']]);
+    }
+    if (baseAsset != "") {
+      marketAddressCalls.push([baseAsset, `wrappedAsset()`, [], ['address']]);
+    }
+
+    if (process.env[`${marketName.toUpperCase()}_PMRM_ADDRESS`]) {
+      const pmrm = requireEnv(`${marketName.toUpperCase()}_PMRM_ADDRESS`);
+
+      results[marketName].pmrm = pmrm;
+
+      marketAddressCalls.push([pmrm, `spotFeed()`, [], ['address']]);
+      marketAddressCalls.push([pmrm, `volFeed()`, [], ['address']]);
+      marketAddressCalls.push([pmrm, `forwardFeed()`, [], ['address']]);
+      marketAddressCalls.push([pmrm, `interestRateFeed()`, [], ['address']]);
+      marketAddressCalls.push([pmrm, `lib()`, [], ['address']]);
+      marketAddressCalls.push([pmrm, `viewer()`, [], ['address']]);
+    }
+
+    if (process.env[`${marketName.toUpperCase()}_PMRM2_ADDRESS`]) {
+      const pmrm2 = requireEnv(`${marketName.toUpperCase()}_PMRM2_ADDRESS`);
+      results[marketName].pmrm2 = pmrm2;
+
+      marketAddressCalls.push([pmrm2, `spotFeed()`, [], ['address']]);
+      marketAddressCalls.push([pmrm2, `volFeed()`, [], ['address']]);
+      marketAddressCalls.push([pmrm2, `forwardFeed()`, [], ['address']]);
+      marketAddressCalls.push([pmrm2, `interestRateFeed()`, [], ['address']]);
+      marketAddressCalls.push([pmrm2, `lib()`, [], ['address']]);
+      marketAddressCalls.push([pmrm2, `viewer()`, [], ['address']]);
+    }
+
+  }
+
+
+  const marketAddressRes = await multiCallWeb3(null, marketAddressCalls);
+
+  let index = 0;
+  for (let i = 0; i < marketIds.length; i++) {
+    const marketName = marketIds[i].marketName;
+
+    const [spotFeed, forwardFeed, volFeed] = marketAddressRes[index++];
+
+    // Shared
+    results[marketName].spotFeed = spotFeed;
+    results[marketName].volFeed = volFeed;
+    results[marketName].forwardFeed = forwardFeed;
+    if (results[marketName].perp != "") {
+      results[marketName].perpFeed = marketAddressRes[index++];
+      results[marketName].iapFeed = marketAddressRes[index++];
+      results[marketName].ibpFeed = marketAddressRes[index++];
+    }
+    if (results[marketName].baseAsset != "") {
+      results[marketName].baseERC20 = marketAddressRes[index++];
+    }
+
+    // PMRM
+    if (results[marketName].pmrm != "") {
+      const spot = marketAddressRes[index++];
+      const volFeed = marketAddressRes[index++];
+      const forwardFeed = marketAddressRes[index++];
+      results[marketName].rateFeed = marketAddressRes[index++];
+      results[marketName].pmrmLib = marketAddressRes[index++];
+      results[marketName].pmrmViewer = marketAddressRes[index++];
+      if (
+        spot != results[marketName].spotFeed
+        || volFeed != results[marketName].volFeed
+        || forwardFeed != results[marketName].forwardFeed
+      ) {
+        console.log(`PMRM feeds do not match for market ${marketName}`);
+        console.log(`Expected: ${results[marketName].spotFeed}, ${results[marketName].volFeed}, ${results[marketName].forwardFeed}`);
+        console.log(`Got: ${spot}, ${volFeed}, ${forwardFeed}`);
+        throw new Error(`PMRM feeds do not match for market ${marketName}`);
+      }
+    }
+    // PMRM2
+    if (results[marketName].pmrm2 != "") {
+      const spot = marketAddressRes[index++];
+      const volFeed = marketAddressRes[index++];
+      const forwardFeed = marketAddressRes[index++];
+
+      results[marketName].pmrm2RateFeed = marketAddressRes[index++];
+      results[marketName].pmrm2Lib = marketAddressRes[index++];
+      results[marketName].pmrm2Viewer = marketAddressRes[index++];
+      if (
+        spot != results[marketName].spotFeed
+        || volFeed != results[marketName].volFeed
+        || forwardFeed != results[marketName].forwardFeed
+      ) {
+        throw new Error(`PMRM2 feeds do not match for market ${marketName}`);
+      }
+    }
+  }
+  return results;
+}
+
+export async function getAllAddresses(): Promise<AllContracts> {
   if (cachedAddresses) {
     return cachedAddresses;
   }
 
-  let markets = {};
-
-  if (!quick) {
-    const allMarkets = (Object.keys(process.env) || [])
-      .filter((key) => key.endsWith('_MARKETID'))
-      .map((key) => key.split('_')[0]);
-    const marketAddresses = await Promise.all(allMarkets.map((market) => loadMarketAddresses(market)));
-    markets = allMarkets.reduce((acc, market, index) => {
-      acc[market] = marketAddresses[index];
-      return acc;
-    }, {} as any);
-  }
-
-  // const srm = requireEnv('SRM_ADDRESS');
-  // await getLogsWeb3(srm, 'MarketCreated(uint256,string)', 0);
+  const markets = await loadMarketAddresses();
 
   const cash = requireEnv('CASH_ADDRESS');
   const rateModel = await callWeb3(null, cash, 'rateModel()', [], ['address']);
@@ -195,7 +232,7 @@ export async function getAllAddresses(quick: boolean = false): Promise<AllContra
     rfq: requireEnv('RFQ_ADDRESS'),
     subAccountCreator: requireEnv('SUBACCOUNT_CREATOR_ADDRESS'),
     subAccounts: requireEnv('SUBACCOUNT_ADDRESS'),
-    cash: requireEnv('CASH_ADDRESS'),
+    cash,
     auction: requireEnv('AUCTION_ADDRESS'),
     rateModel,
     securityModule: requireEnv('SECURITYMODULE_ADDRESS'),
