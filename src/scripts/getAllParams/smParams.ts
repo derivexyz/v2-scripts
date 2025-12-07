@@ -77,14 +77,26 @@ async function getMarketSRMParams(marketName: string, marketId: string, marketAd
 
   if (isAddress(marketAddresses.baseAsset)) {
     result.marginParams.baseMarginParams = {
-      marginFactor: baseMarginParams[0].toString(),
-      imScale: baseMarginParams[1].toString(),
+      marginFactor: fromBN(baseMarginParams[0]),
+      imScale: fromBN(baseMarginParams[1]),
     };
     const wrappedAsset = await callWeb3(null, marketAddresses.baseAsset, 'wrappedAsset()', [], ['address']);
-    const wrappedAssetOwner = await callWeb3(null, wrappedAsset, 'owner()', [], ['address']);
-    result.marginParams.wrappedAsset = {
-      address: wrappedAsset,
-      owner: wrappedAssetOwner
+    if (marketName === 'fxUSDC') {
+      result.marginParams.wrappedAsset = {
+        address: wrappedAsset,
+        owner: "0x0000000000000000000000000000000000000000",
+      };
+    } else {
+      let wrappedAssetOwner = "0x0000000000000000000000000000000000000000";
+      try {
+        wrappedAssetOwner = await callWeb3(null, wrappedAsset, 'owner()', [], ['address'], 'latest', 0);
+      } catch (e) {
+        console.log(`Could not fetch owner for wrapped asset ${wrappedAsset} for market ${marketName}: ${e}`);
+      }
+      result.marginParams.wrappedAsset = {
+        address: wrappedAsset,
+        owner: wrappedAssetOwner,
+      };
     }
   }
 
@@ -268,7 +280,7 @@ export async function getAllSRMParams(): Promise<object> {
   const promises = [];
 
   for (const marketName of Object.keys(allAddrs.markets)) {
-    if (marketName === 'SFP' || marketName === 'PYUSD') {
+    if (marketName === 'SFP' || marketName === 'PYUSD' || marketName === 'deUSD') {
       continue;
     }
     const market = allAddrs.markets[marketName];

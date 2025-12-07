@@ -63,7 +63,7 @@ export async function getAllAuctionsubAccIds() {
   const allsubAccIds = new Set<bigint>();
   let res = await getLogsWeb3(
     addresses.auction,
-    '2SolventAuctionStarted(uint accountId, uint scenarioId, int markToMarket, uint fee)',
+    'SolventAuctionStarted(uint accountId, uint scenarioId, int markToMarket, uint fee)',
   );
   res.forEach((x: any) => allsubAccIds.add(x.data.accountId));
 
@@ -126,7 +126,7 @@ export async function getSubaccountMargin(subAccId: bigint, block?: number): Pro
   const addresses = await getAllAddresses();
   const mmRes = await callWeb3(
     null,
-    addresses.auctionUtils,
+    !addresses.auctionUtilsV2 ? addresses.auctionUtils: block ?? 0 > 24748389 ? addresses.auctionUtilsV2 : addresses.auctionUtils,
     'getMM(uint256)',
     [subAccId],
     ['address', 'int256', 'int', 'uint'],

@@ -24,24 +24,26 @@ export async function executeWeb3(
 ) {
   if (!options) {
     if (vars.fixedGas != '0') {
-      options = ` --gas-limit ${vars.fixedGas} -- --broadcast`;
+      options = ` --gas-limit ${vars.fixedGas}`;
     } else {
-      options = ' -- --broadcast';
+      options = '';
     }
   }
   const argsStr = args.map((x) => `"${stringifyForCast(x)}"`).join(' ');
   logger.info(
-    `sending from ${signer.address}\n
-cast send <...> ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.length > 160 ? '[...]"' : '')} ${options}`
+    `\nsending from ${signer.address}
+cast send <...>  ${options} ${contractAddr} "${func}" ${argsStr.slice(0, 79) + (argsStr.length > 160 ? '[...]"' : '')}\n`
   );
 
   let lastError;
   for (let i = 0; i < 5; i++) {
     try {
+      // console.log(`cast send --json --private-key ${signer.privateKey} --rpc-url "${vars.provider}" ${options} ${contractAddr} "${func}" ${argsStr}`)
       const out = execSync(
-        `cast send --json --private-key ${signer.privateKey} --rpc-url ${vars.provider} ${contractAddr} "${func}" ${argsStr} ${options}`,
+        `cast send --json --private-key ${signer.privateKey} --rpc-url "${vars.provider}" ${options} ${contractAddr} "${func}" ${argsStr}`,
         { shell: '/bin/bash' },
       );
+
       return decodeCastOutput(out, func);
     } catch (e) {
       lastError = e;
@@ -62,7 +64,7 @@ export async function decodeCastOutput(out: Buffer, funcName: string): Promise<a
   if (res.status !== '0x1') {
     logger.debug('=== FAILED TRANSACTION ===\n');
     logger.debug(JSON.stringify(res));
-    await debugTraceLog(res.transactionHash);
+    await debugTraceLog(res.transactionHash, false);
     throw new Error(`Failed to execute command: ${res.error}. Tx hash: ${res.transactionHash}`);
   }
   logger.info(`${funcName} Success. Transaction hash: ${res.transactionHash}`);
@@ -240,14 +242,14 @@ export async function getBlockWeb3(
 
 export async function getLogsWeb3(contractAddr?: string, eventType?: string, fromBlock=0, toBlock: number | "latest" = "latest", filters: any[] = []) {
   logger.debug(
-    `cast logs --json --rpc-url ${vars.provider} ${!!contractAddr ? '--address' : ''} ${contractAddr ?? ""} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}" ${filters.join(" ")}`,
+    `cast logs --json --rpc-url ${vars.provider} ${!!contractAddr ? '--address' : ''} ${contractAddr ?? ""} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}" ${filters.map(x => `"${x}"`).join(" ")}`,
   );
   let res;
   let retries = 5;
   while (true) {
     try {
       const out: any = await execAsync(
-        `cast logs --json --rpc-url ${vars.provider} ${!!contractAddr ? '--address' : ''} ${contractAddr ?? ""} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}" ${filters.join(" ")}`,
+        `cast logs --json --rpc-url ${vars.provider} ${!!contractAddr ? '--address' : ''} ${contractAddr ?? ""} --from-block ${fromBlock} --to-block ${toBlock} "${eventType}" ${filters.map(x => `"${x}"`).join(" ")}`,
         {
           shell: '/bin/bash',
           stdio: 'ignore',
@@ -307,6 +309,7 @@ export function getCalldata(fn: string, args: any[]): string {
     `function ${fn}`,
   ]
   const iface = new ethers.Interface(ABI);
+  // console.log(`cast calldata "${fn}" ${args.map((x) => `"${stringifyForCast(x)}"`).join(' ')}`)
   return iface.encodeFunctionData(fn, args);
   //
   // const out = await execAsync(
@@ -355,7 +358,7 @@ export function stringifyForCast(val: any) {
         case 'bigint':
           return value.toString();
         case 'object': // to handle arrays
-          return `(${value.map((x: any) => stringifyForCast(x))})`;
+          return `[${value.map((x: any) => stringifyForCast(x))}]`;
         default:
           return value; // return everything else unchanged
       }

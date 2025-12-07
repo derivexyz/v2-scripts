@@ -15,12 +15,12 @@
         },
         "optionPosition": {
           "isWhitelisted": true,
-          "totalPosition": "21616.073956523196751393",
+          "totalPosition": "18159.787350553539816204",
           "positionCap": "2000000.0"
         },
         "perpPosition": {
           "isWhitelisted": true,
-          "totalPosition": "3243.023208405660075178",
+          "totalPosition": "5073.872149152034402877",
           "positionCap": "250000.0",
           "matching": {
             "isTradePerp": true,
@@ -116,12 +116,12 @@
         },
         "optionPosition": {
           "isWhitelisted": true,
-          "totalPosition": "560.14831305083600792",
+          "totalPosition": "636.705681664600971813",
           "positionCap": "100000.0"
         },
         "perpPosition": {
           "isWhitelisted": true,
-          "totalPosition": "158.343192621382282536",
+          "totalPosition": "211.487745539808021901",
           "positionCap": "12000.0",
           "matching": {
             "isTradePerp": true,

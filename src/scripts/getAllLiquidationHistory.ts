@@ -31,25 +31,25 @@ async function getLiquidationHistory(option: any) {
     allAddresses.auction, 'SolventAuctionStarted(uint256 accountId, uint256 scenarioId, int256 markToMarket, uint256 fee)', fromBlock, "latest"
   )
 
-  // console.log('Solvent Auctions:', solventAuctionStarted[0]);
-  //
-  // const insolventAuctionStarted = await getLogsWeb3(
-  //   allAddresses.auction, 'InsolventAuctionStarted(uint256 accountId, uint256 scenarioId, int256 maintenanceMargin)', fromBlock, "latest"
-  // )
-  //
-  // console.log('Insolvent Auctions:', insolventAuctionStarted[0]);
-  //
-  // const auctionEnded = await getLogsWeb3(
-  //   allAddresses.auction, 'AuctionEnded(uint256 accountId, uint256 endTime)', fromBlock, "latest"
-  // )
-  //
-  // console.log('Auction Ended:', auctionEnded[0]);
-  //
-  // const bids = await getLogsWeb3(
-  //   allAddresses.auction, 'Bid(uint256 accountId, uint256 bidderId, uint256 finalPercentage, uint256 cashFromBidder, uint256 cashToBidder)', fromBlock, "latest"
-  // )
-  //
-  // console.log('Bids:', bids[0]);
+  console.log('Solvent Auctions:', solventAuctionStarted[0]);
+
+  const insolventAuctionStarted = await getLogsWeb3(
+    allAddresses.auction, 'InsolventAuctionStarted(uint256 accountId, uint256 scenarioId, int256 maintenanceMargin)', fromBlock, "latest"
+  )
+
+  console.log('Insolvent Auctions:', insolventAuctionStarted[0]);
+
+  const auctionEnded = await getLogsWeb3(
+    allAddresses.auction, 'AuctionEnded(uint256 accountId, uint256 endTime)', fromBlock, "latest"
+  )
+
+  console.log('Auction Ended:', auctionEnded[0]);
+
+  const bids = await getLogsWeb3(
+    allAddresses.auction, 'Bid(uint256 accountId, uint256 bidderId, uint256 finalPercentage, uint256 cashFromBidder, uint256 cashToBidder)', fromBlock, "latest"
+  )
+
+  console.log('Bids:', bids[0]);
 
   console.log('Solvent Auctions:', solventAuctionStarted.length);
 

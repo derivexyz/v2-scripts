@@ -1,6 +1,7 @@
 import {callWeb3, getLogsWeb3, multiCallWeb3} from './web3/utils';
 import { requireEnv } from './requireEnv';
 import {ZeroAddress} from "ethers";
+import { vars } from '../vars';
 
 export type MarketContracts = {
   marketId: number;
@@ -48,6 +49,7 @@ export type AllContracts = {
   perpSettlementHelper: string;
   clobSettlerAddress: string;
   auctionUtils: string;
+  auctionUtilsV2?: string;
 };
 
 
@@ -56,6 +58,15 @@ export enum AssetType {
   Option,
   Perpetual,
   Base,
+}
+
+const SKIP_MARKETS = {
+  testnet: new Set([
+    49n, // AAVE dupe
+    9n, // SFP dupe
+    22n, // TIA dupe
+    17n, // PYUSD dupe
+  ])
 }
 
 export function isAddress(addr: string) {
@@ -67,7 +78,37 @@ let cachedAddresses: AllContracts | undefined;
 async function loadMarketAddresses(): Promise<{ [key: string]: MarketContracts }> {
   const srm = requireEnv('SRM_ADDRESS');
   const logs = await getLogsWeb3(srm, 'MarketCreated(uint256 id,string marketName)', 0);
-  const marketIds: { id: bigint, marketName: string }[] = logs.map((x: any) => x.data);
+  const marketIds: { id: bigint; marketName: string }[] = logs.map((x: any) => {
+    const data = x.data;
+    if (data.marketName === "weth") {
+      data.marketName = "ETH";
+    } else if (data.marketName === "wbtc") {
+      data.marketName = "BTC";
+    }
+    return {id: data.id, marketName: data.marketName};
+  });
+
+  // filter out any markets that are in the SKIP_MARKETS list
+  const network = vars.environment;
+  if (network in SKIP_MARKETS) {
+    const skipSet = SKIP_MARKETS[network as keyof typeof SKIP_MARKETS];
+    for (let i = marketIds.length - 1; i >= 0; i--) {
+      if (skipSet.has(marketIds[i].id)) {
+        console.log(`Skipping market ${marketIds[i].marketName} with id ${marketIds[i].id} on network ${network}`);
+        marketIds.splice(i, 1);
+      }
+    }
+  }
+
+  // work out if there are duplicates in marketIds, if so, throw an error
+  const marketIdSet = new Set();
+  for (const market of marketIds) {
+    if (marketIdSet.has(market.marketName)) {
+      throw new Error(`Duplicate market name found: ${market.marketName} - add invalid one to SKIP_MARKETS`);
+    }
+    marketIdSet.add(market.marketName);
+  }
+
 
   const results: { [key: string]: MarketContracts } = {}
   const assetCalls: [string, string, any[], any[]][] = []
@@ -144,9 +185,7 @@ async function loadMarketAddresses(): Promise<{ [key: string]: MarketContracts }
       marketAddressCalls.push([pmrm2, `lib()`, [], ['address']]);
       marketAddressCalls.push([pmrm2, `viewer()`, [], ['address']]);
     }
-
   }
-
 
   const marketAddressRes = await multiCallWeb3(null, marketAddressCalls);
 
@@ -158,8 +197,8 @@ async function loadMarketAddresses(): Promise<{ [key: string]: MarketContracts }
 
     // Shared
     results[marketName].spotFeed = spotFeed;
-    results[marketName].volFeed = volFeed;
     results[marketName].forwardFeed = forwardFeed;
+    results[marketName].volFeed = volFeed;
     if (results[marketName].perp != "") {
       results[marketName].perpFeed = marketAddressRes[index++];
       results[marketName].iapFeed = marketAddressRes[index++];
@@ -242,7 +281,8 @@ export async function getAllAddresses(): Promise<AllContracts> {
     dataSubmitter: requireEnv('DATA_SUBMITTER_ADDRESS'),
     optionSettlementHelper: requireEnv('OPTION_SETTLEMENT_HELPER'),
     perpSettlementHelper: requireEnv('PERP_SETTLEMENT_HELPER'),
-    auctionUtils: requireEnv('AUCTION_UTILS_ADDRESS')
+    auctionUtils: requireEnv('AUCTION_UTILS_ADDRESS'),
+    auctionUtilsV2: process.env['AUCTION_UTILS_V2_ADDRESS'],
   };
   return cachedAddresses;
 }

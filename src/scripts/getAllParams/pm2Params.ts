@@ -92,7 +92,7 @@ import {getOICaps} from "./shared";
 //   }
 
 
-export async function getAllPM2Params(): Promise<object> {
+export async function getAllPM2Params(): Promise<object[]> {
   const allAddrs = await getAllAddresses();
 
   let calls: any[] = [];
@@ -179,7 +179,7 @@ export async function getAllPM2Params(): Promise<object> {
         };
       }
 
-      marketRes.maxAccountSize = fromBN(callsRes[index++]);
+      marketRes.maxAccountSize = callsRes[index++].toString();
       marketRes.feeRecipientAcc = callsRes[index++];
       marketRes.minOIFee = fromBN(callsRes[index++]);
       const scenarios = callsRes[index++];

@@ -1,21 +1,21 @@
 {
   "baseManagerParams": {
-    "srm": "0x28c9ddF9A3B29c2E6a561c1BC520954e5A33de5D",
-    "subAccounts": "0xE7603DF191D699d8BD9891b821347dbAb889E5a5",
-    "cashAsset": "0x57B03E14d409ADC7fAb6CFc44b5886CAD2D5f02b",
-    "liquidation": "0x141919f1FA90F99A3fbafFb0b111e4f84AB5aB52",
-    "viewer": "0xAA8f9D05599F1a5d5929c40342c06a5Da063a4dE",
-    "maxAccountSize": "48",
-    "feeRecipientAcc": "1",
-    "minOIFee": "500.0"
+    "srm": "0x28bE681F7bEa6f465cbcA1D25A2125fe7533391C",
+    "subAccounts": "0xb9ed1cc0c50bca7a391a6819e9cAb466f5501d73",
+    "cashAsset": "0x6caf294DaC985ff653d5aE75b4FF8E0A66025928",
+    "liquidation": "0x5815620F1823B34CAA0324A083dc245fDD25Accf",
+    "viewer": "0x381aDbcA2b7Ca98A159477C9e3f47884B71a2D80",
+    "maxAccountSize": "128",
+    "feeRecipientAcc": "0",
+    "minOIFee": "10.0"
   },
   "srmParams": {
     "borrowingEnabled": true,
-    "lastMarketId": "50",
-    "stableFeed": "0x9C61888497D716f5bBd93D5e13d443cC375f1424",
+    "lastMarketId": "52",
+    "stableFeed": "0x3187431EAAdf59425FAf9A5eEFc43786d070234e",
     "depegParams": {
-      "depegThreshold": "0.99",
-      "depegFactor": "2.0"
+      "depegThreshold": "0.98",
+      "depegFactor": "1.2"
     }
   },
   "marketParams": [
@@ -24,124 +24,123 @@
       "marketId": "1",
       "addresses": {
         "baseAsset": {
-          "address": "0xE201fCEfD4852f96810C069f66560dc25B2C7A55",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x41675b7746AE0E464f2594d258CF399c392A179C",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x15CEcd5190A43C7798dD2058308781D0662e678E",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x3a34565D81156cF0B1b9bC5f14FD00333bcf6B93"
         },
         "forwardFeed": {
-          "address": "0x791A570F5785FBdb02EA5C7a794c43111ae2f948",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xb1Fd6a8933C171cB149eda09EB91e22788EF61bB",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "iapFeed": {
-          "address": "0xbfe7Cd69d3983299D3d18D1Ae5C411e1FF61A993",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x142B5483d04512429Afc3440D592c615C0E29AcB",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0xd464170afe0eE2a4865B2ca6dBcc6dfB8f4Bf125",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xCa80293391423d8B81850Ff051BAd3FcE936EbB7",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "option": {
-          "address": "0x4BB4C3CDc7562f08e9910A0C7D8bB7e108861eB4",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xBcB494059969DAaB460E0B5d4f5c2366aab79aa1",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0xAf65752C4643E25C02F693f9D4FE19cF23a095E3",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x010e26422790C6Cb3872330980FAa7628FD20294",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perpFeed": {
-          "address": "0x33E18F4f508d7aD3e958aA2DCf4b3eCAec38D7c6",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xC3370DBEd53692db0A7A793e0D0cB4868EE2A1F9",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm": {
-          "address": "0xe7cD9370CdE6C9b5eAbCe8f86d01822d3de205A0",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xDF448056d7bf3f9Ca13d713114e17f1B7470DeBF",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm2": {
-          "address": "0xc755DAe3fd295A687adf3e192387163f813F0598",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xc9D58604D0A8929e349092DF70Dcc0F0f4b65Ef8",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm2Lib": {
-          "address": "0x904507C9636cbA3E9Ffb4fF44567dD6D98031694",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x77cDFD8224A9224B6e5b27864FD94F2B20495D84",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm2RateFeed": {
-          "address": "0x14062Edef4E2b7bd5399929E014a271A22dF77E3",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xF027e8D52b01e08f54Bf7762d189331C2928C7be",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm2Viewer": {
-          "address": "0xaac6684F35aA3e581271cB353D5a6EfCA0d5EC49",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xEef949c6de4B1dCDe63bb2af76Ab6560B957aa39",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrmLib": {
-          "address": "0x81ed5Dc90F708Dd908DccFfd5128B5C3405f74c5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x5a8a664a35F33d63fAc3698d8BDf7eC641bAAd1d",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrmViewer": {
-          "address": "0xcAe44C93f7B3b519Fc28f9d4F7Ae22dE770a907b",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xC12ac2A9c4c41b64177725Ad7F36ae7F19265075",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "rateFeed": {
-          "address": "0x30A6E6A3851c18aa67429ACC8a1DfAFE20A29FEb",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x20cD70D1cFDc66a1FFBf87bAA5B3D65462Fa756E",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x727aD65db6aE99DB5Dbee8F202846DD6009bf6D5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x6F054A18383b2EC7F709d7f24e69D9DbCC921aD3",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "volFeed": {
-          "address": "0xb27cb6b08e6c298C8634D73D5F6649665e90d160"
+          "address": "0xbc34bF4Bdb938d42dC10B21975C0B7Ad75746020"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
             "mmPerpReq": "0.05",
-            "imPerpReq": "0.066"
+            "imPerpReq": "0.065"
           },
           "optionMarginParams": {
             "maxSpotReq": "0.15",
-            "minSpotReq": "0.13",
-            "mmCallSpotReq": "0.09",
-            "mmPutSpotReq": "0.09",
-            "mmPutMtMReq": "0.09",
+            "minSpotReq": "0.12",
+            "mmCallSpotReq": "0.1",
+            "mmPutSpotReq": "0.1",
+            "mmPutMtMReq": "0.1",
             "unpairedIMScale": "1.2",
             "unpairedMMScale": "1.1",
             "mmOffsetScale": "1.05"
           },
           "baseMarginParams": {
-            "marginFactor": "0.8",
-            "imScale": "0.9375"
+            "marginFactor": "0.75",
+            "imScale": "0.8"
           },
           "wrappedAsset": {
-            "address": "0x15CEcd5190A43C7798dD2058308781D0662e678E",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x3a34565D81156cF0B1b9bC5f14FD00333bcf6B93",
+            "owner": "0x0000000000000000000000000000000000000000"
           },
           "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
+            "perpThreshold": "0.4",
+            "optionThreshold": "0.4",
+            "baseThreshold": "0.4",
+            "ocFactor": "0.4"
           }
         },
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "1127.336070469411898384",
-            "positionCap": "6000.0",
+            "totalPosition": "143.880725141261071809",
+            "positionCap": "250.0",
             "depositWL": false
           },
           "optionPosition": {
             "isWhitelisted": true,
-            "totalPosition": "18328.373457902951389971",
-            "positionCap": "2000000.0"
+            "totalPosition": "10126.93",
+            "positionCap": "1000000.0"
           },
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "1527.748523224376335232",
-            "positionCap": "250000.0",
+            "totalPosition": "44309.281200868235157381",
+            "positionCap": "100000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -154,7 +153,7 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 day",
             "requiredSigners": "2"
           },
           "volFeed": {
@@ -162,7 +161,7 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 day",
             "requiredSigners": "2"
           },
           "forwardFeed": {
@@ -170,16 +169,16 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "1 hr",
+            "heartbeat": "1 day",
             "requiredSigners": "2",
-            "settlementHeartbeat": "3 mins"
+            "settlementHeartbeat": "15 mins"
           },
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 month 1 day",
             "requiredSigners": "2"
           },
           "ibpFeed": {
@@ -187,7 +186,7 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 month 1 day",
             "requiredSigners": "2"
           },
           "iapFeed": {
@@ -195,7 +194,7 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 month 1 day",
             "requiredSigners": "2"
           }
         }
@@ -206,124 +205,123 @@
       "marketId": "2",
       "addresses": {
         "baseAsset": {
-          "address": "0x7da2D398dddDfC946Efd2C758c4688D21887790d",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x56543a7A848F630a99EfaFF1177907267afb75d0",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x9b80ab732a6F1030326Af0014f106E12C4Db18EC",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xF1493F3602Ab0fC576375a20D7E4B4714DB4422d"
         },
         "forwardFeed": {
-          "address": "0x958c54bFACc0E2dee586564B31Bf3F171f256279",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xEf20fBF6EA7589Fb78846c4dDC93321E5858c381",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "iapFeed": {
-          "address": "0x35d4D9bc79B0a543934b1769304B90d752691caD",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x2f7b1ae31904e8b035718D80F404761135e51a17",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x4d6e33bf88Ab44212B10bAc4DA448E41a191cb4C",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xEbd2921149B72Bbb6BC6a950896e2d10dE9Ad2e2",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "option": {
-          "address": "0xd0711b9eBE84b778483709CDe62BacFDBAE13623",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xAeB81cbe6b19CeEB0dBE0d230CFFE35Bb40a13a7",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0xDBa83C0C654DB1cd914FA2710bA743e925B53086",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xAFB6Bb95cd70D5367e2C39e9dbEb422B9815339D",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perpFeed": {
-          "address": "0x34BC7Fe1965B4E9f4071B69f2E60b8dC88f34475",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xc89c5676baF3eA6aDc939852c3107a92b557FF16",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm": {
-          "address": "0x45DA02B9cCF384d7DbDD7b2b13e705BADB43Db0D",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xbaC0328cd4Af53d52F9266Cdbd5bf46720320A20",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm2": {
-          "address": "0xC7adAB7A2b92019098dA55Ba4C5A8C65Ae7e52DC",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x45878987e05Bc20f550E41482a635627ee6229Ee",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm2Lib": {
-          "address": "0x1A1b78AF94C2a755b911a63345ac1410f65ad61b",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x7f5C1f80983E08Cf34f356D05De79C9e1A09ff17",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm2RateFeed": {
-          "address": "0x37D299d9D83186B6043E68c00D58b1F59C965461",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x9eae1622Bb2aE4c809b4075F607d962aC40AcB9a",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrm2Viewer": {
-          "address": "0xfef4485Db57f0C326E1be2abC8d7eF0e25D54F1C",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x125D818604fD21E42e203fd27C8A2a02A40939B0",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrmLib": {
-          "address": "0xFa7f1a242b819A8EC97FD92674C3f0868395B0d3",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x9EC9D4263e38Ad1F9Fe7c734037549b91cD561e1",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "pmrmViewer": {
-          "address": "0xa364498b361d563921C9A144264205CdaAF1B5E0",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x6659a528bBbACeDbcbC01A07e5554F43F9737911",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "rateFeed": {
-          "address": "0x6FEf1bb8Ade9A836663d4c15AFd5985Fb545004f",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x3923962Ad626a9141FdE39Df01a49B0607eC688c",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x5Eb59391e7870807aD2C8792E8c5e75838E0fdb0",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xd71d4d99644E2592DD1a753a1f4167928Bd5B1FA",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "volFeed": {
-          "address": "0x388341d9E5A7D7d5accD738B2a31b0622E0c1b87"
+          "address": "0x871D150B1A9Df599f8B5A153e0903037103b6a00"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
             "mmPerpReq": "0.05",
-            "imPerpReq": "0.066"
+            "imPerpReq": "0.065"
           },
           "optionMarginParams": {
             "maxSpotReq": "0.15",
-            "minSpotReq": "0.13",
-            "mmCallSpotReq": "0.09",
-            "mmPutSpotReq": "0.09",
-            "mmPutMtMReq": "0.09",
+            "minSpotReq": "0.12",
+            "mmCallSpotReq": "0.1",
+            "mmPutSpotReq": "0.1",
+            "mmPutMtMReq": "0.1",
             "unpairedIMScale": "1.2",
             "unpairedMMScale": "1.1",
             "mmOffsetScale": "1.05"
           },
           "baseMarginParams": {
             "marginFactor": "0.75",
-            "imScale": "0.93"
+            "imScale": "0.8"
           },
           "wrappedAsset": {
-            "address": "0x9b80ab732a6F1030326Af0014f106E12C4Db18EC",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0xF1493F3602Ab0fC576375a20D7E4B4714DB4422d",
+            "owner": "0x0000000000000000000000000000000000000000"
           },
           "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
+            "perpThreshold": "0.4",
+            "optionThreshold": "0.4",
+            "baseThreshold": "0.4",
+            "ocFactor": "0.4"
           }
         },
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "160.750258439149929722",
-            "positionCap": "240.0",
+            "totalPosition": "0.0",
+            "positionCap": "5.0",
             "depositWL": false
           },
           "optionPosition": {
             "isWhitelisted": true,
-            "totalPosition": "517.009110094852295627",
-            "positionCap": "100000.0"
+            "totalPosition": "0.21",
+            "positionCap": "1000000.0"
           },
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "234.442223286854998356",
-            "positionCap": "12000.0",
+            "totalPosition": "8041.470750056039095086",
+            "positionCap": "100000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -334,9 +332,10 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 day",
             "requiredSigners": "2"
           },
           "volFeed": {
@@ -344,7 +343,7 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 day",
             "requiredSigners": "2"
           },
           "forwardFeed": {
@@ -352,16 +351,16 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "1 hr",
+            "heartbeat": "1 day",
             "requiredSigners": "2",
-            "settlementHeartbeat": "3 mins"
+            "settlementHeartbeat": "15 mins"
           },
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 month 1 day",
             "requiredSigners": "2"
           },
           "ibpFeed": {
@@ -369,7 +368,7 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 month 1 day",
             "requiredSigners": "2"
           },
           "iapFeed": {
@@ -377,7 +376,7 @@
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
-            "heartbeat": "20 mins",
+            "heartbeat": "1 month 1 day",
             "requiredSigners": "2"
           }
         }
@@ -388,39 +387,39 @@
       "marketId": "3",
       "addresses": {
         "baseAsset": {
-          "address": "0x5E72430EC945CCc183c34e2860FFC2b5bac712c2",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xB696F009e23B31F6a565E187604e43F5B030b241",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x954bE1803546150bfd887c9ff70fd221F2F505d3",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xDBDB04FbB2603430A6bD4ECb01141b61726ef761",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x94960406A03D0F173cB851dC0Ca1B16925000262"
+          "address": "0x3aCa3C0dEdB9349025e1D717062e7A00f525832c"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.98",
-            "imScale": "0.92"
+            "marginFactor": "0.95",
+            "imScale": "0.95"
           },
           "wrappedAsset": {
-            "address": "0x954bE1803546150bfd887c9ff70fd221F2F505d3",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0xDBDB04FbB2603430A6bD4ECb01141b61726ef761",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
+            "perpThreshold": "0.0",
+            "optionThreshold": "0.0",
+            "baseThreshold": "0.0",
+            "ocFactor": "0.0"
           }
         },
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "797017.964329678072843843",
-            "positionCap": "10000000.0",
+            "totalPosition": "16335.646",
+            "positionCap": "1000000.0",
             "depositWL": false
           }
         },
@@ -431,7 +430,7 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "20 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           }
         }
       }
@@ -441,32 +440,32 @@
       "marketId": "4",
       "addresses": {
         "baseAsset": {
-          "address": "0x4716821f59fe3c0233E939933476d2E5D9EAF2fE",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x2c5fed9208034F49723F91179CeeFb8F42dbBA32",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0xE4e6F3feeAD9C3714F3c9380F91CB56E04F7297E",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x751FD1d1B327D6d842cD57CAAEABf581836cFF5F",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "forwardFeed": {
-          "address": "0xf120d180C2893060bF56ADF6fdE67DF74491e578",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xFFee15F6023C5182D6fE728999Bf1221A34b4F07",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "option": {
-          "address": "0xD4a8d43b600509Cb2373514b172558F60e46e15f"
+          "address": "0xAAF4772C4ADe0c91D8F907642db7F4015829293B"
         },
         "spotFeed": {
-          "address": "0x2B80Ca27D5e836CaDb8D4Ec5c239414eb56C8120"
+          "address": "0xb97b93F68234C5D254A10c79C8E181c70aE6bbCd"
         },
         "volFeed": {
-          "address": "0x533AcDAc4Ac1155a0946D0e1890712D98984de1e"
+          "address": "0xe0b92F4a7fc49d43CB2573d8c12c8CB4A7eDF44c"
         }
       },
       "params": {
         "marginParams": {
           "optionMarginParams": {
-            "maxSpotReq": "0.35",
-            "minSpotReq": "0.3",
+            "maxSpotReq": "0.25",
+            "minSpotReq": "0.225",
             "mmCallSpotReq": "0.15",
             "mmPutSpotReq": "0.15",
             "mmPutMtMReq": "0.15",
@@ -475,12 +474,12 @@
             "mmOffsetScale": "1.05"
           },
           "baseMarginParams": {
-            "marginFactor": "0.0",
-            "imScale": "0.0"
+            "marginFactor": "0.7",
+            "imScale": "0.65"
           },
           "wrappedAsset": {
-            "address": "0xE4e6F3feeAD9C3714F3c9380F91CB56E04F7297E",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x751FD1d1B327D6d842cD57CAAEABf581836cFF5F",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -492,14 +491,14 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "164.876884370604620188",
-            "positionCap": "164.876884370604620188",
+            "totalPosition": "539999.05",
+            "positionCap": "3000000.0",
             "depositWL": false
           },
           "optionPosition": {
             "isWhitelisted": true,
             "totalPosition": "0.0",
-            "positionCap": "0.0"
+            "positionCap": "3000000.0"
           }
         },
         "feedParams": {
@@ -509,7 +508,7 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           },
           "volFeed": {
             "signers": [
@@ -517,7 +516,7 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "20 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           },
           "forwardFeed": {
             "signers": [
@@ -525,37 +524,37 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "1 hr",
-            "requiredSigners": "2",
+            "requiredSigners": "1",
             "settlementHeartbeat": "3 mins"
           }
         }
       }
     },
     {
-      "marketName": "wstETH",
+      "marketName": "WSTETH",
       "marketId": "5",
       "addresses": {
         "baseAsset": {
-          "address": "0x69c7AADFfD607F74eE610f047f552CaDecabca4E",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x8DCa1bC475fB6008165186061398e318dd3e5f06",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0xdf77b286eDa539CCb6326e9eDB86aa69D83108a5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x37Db2a7cFb832442861F0053db422bDEA20DE847",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x17a0341705f8ee02E343bB9cF6756ff1aEb2f6df"
+          "address": "0x24aC429cc326B3B9f9EC8D5A8b968d06Cc7d0Fa1"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
             "marginFactor": "0.8",
-            "imScale": "0.9"
+            "imScale": "0.9375"
           },
           "wrappedAsset": {
-            "address": "0xdf77b286eDa539CCb6326e9eDB86aa69D83108a5",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x37Db2a7cFb832442861F0053db422bDEA20DE847",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -567,8 +566,8 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "2347.487487355802946824",
-            "positionCap": "4000.0",
+            "totalPosition": "13.9",
+            "positionCap": "500.0",
             "depositWL": false
           }
         },
@@ -579,7 +578,7 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           }
         }
       }
@@ -588,148 +587,22 @@
       "marketName": "SOL",
       "marketId": "7",
       "addresses": {
-        "forwardFeed": {
-          "address": "0xD1716c93491f87D88F99173d02619E1bdEC6ECb8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
         "iapFeed": {
-          "address": "0x931355B0328a6B2C21805e1bA4957dC05334E5d8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x491dB81a08ca9676f11e37d09De7E27BdD4A6807",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0xDF72e528fB0C67fCE0cfE357cCfe676Ee701E934",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "option": {
-          "address": "0x420c9295484d834B03F45E1C9EaC5da8cD8b0710",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x36EE929114A37eD846bd9ae7eeC01071017a31F1",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0xF00a5bD70772A4CD9a25fa856238962eC5Ad5326",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xB8D5cF5CAD52216281B30f2e26F12b2f79035e9f"
         },
         "perpFeed": {
-          "address": "0xa0ae0F2728311EEe10413D42C2cB2eC6Fc60523c"
+          "address": "0x9AdA5D57Dd5D2C3143C4c5411FB9351b89230955"
         },
         "spotFeed": {
-          "address": "0x6AcBE4dF6C61907b659ef0d8dE0371153c29FfCf"
-        },
-        "volFeed": {
-          "address": "0x74230eC35A64000874A8CE6C5c7A9AE6368282b3"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.077"
-          },
-          "optionMarginParams": {
-            "maxSpotReq": "0.24",
-            "minSpotReq": "0.18",
-            "mmCallSpotReq": "0.14",
-            "mmPutSpotReq": "0.14",
-            "mmPutMtMReq": "0.14",
-            "unpairedIMScale": "1.25",
-            "unpairedMMScale": "1.2",
-            "mmOffsetScale": "1.05"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "optionPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "0.0",
-            "positionCap": "40000.0"
-          },
-          "perpPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "1244.903149148793984634",
-            "positionCap": "48000.0",
-            "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
-            }
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "volFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "forwardFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2",
-            "settlementHeartbeat": "3 mins"
-          },
-          "perpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "ibpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "iapFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "DOGE",
-      "marketId": "8",
-      "addresses": {
-        "iapFeed": {
-          "address": "0x42Eefff508182B2bF5a66160272556f35F7a58ad",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0x33C40F852Bd5723bE284ECAb4CD8D2574c457899",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perp": {
-          "address": "0xF2eA523DB4f21C597C5b0b64316192367C24c367"
-        },
-        "perpFeed": {
-          "address": "0xE03D5A54319BFbB03C7EBdB32d99dBa96925EA0b"
-        },
-        "spotFeed": {
-          "address": "0x66ce1778e3dB54ec94814933fA84BD6C8581D4A7"
+          "address": "0xAAaB14F830A68Fd4Ee7065971e5b39dd49eFbdA2"
         }
       },
       "params": {
@@ -748,11 +621,11 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "62482.402929498127523348",
-            "positionCap": "8000000.0",
+            "totalPosition": "3466.8",
+            "positionCap": "1000000.0",
             "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
+              "isTradePerp": false,
+              "isRfqPerp": false
             }
           }
         },
@@ -763,7 +636,7 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           },
           "perpFeed": {
             "signers": [
@@ -771,7 +644,7 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "15 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           },
           "ibpFeed": {
             "signers": [
@@ -779,7 +652,7 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "20 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           },
           "iapFeed": {
             "signers": [
@@ -787,36 +660,38 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "20 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           }
         }
       }
     },
     {
-      "marketName": "weETH",
-      "marketId": "9",
+      "marketName": "DOGE",
+      "marketId": "8",
       "addresses": {
-        "baseAsset": {
-          "address": "0xF30EE744fCfd135A135E6a4e327e01d0f697e6Ec",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        "iapFeed": {
+          "address": "0xa36e7bFE5Fd326f97307b9169Ad0fa21C3Da8EA0",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
-        "baseERC20": {
-          "address": "0x7B35b4c05a90Ea5f311AeC815BE4148b446a68a2",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        "ibpFeed": {
+          "address": "0x89D6a714DaFcD8DCc3A7c4798D2d177d6EB24DCa",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "perp": {
+          "address": "0x17A52E5A30B851400aF26aAC6CE5A90e30d1f8Fe"
+        },
+        "perpFeed": {
+          "address": "0x050eFaAd44d15144c660E242766dA3c87688b465"
         },
         "spotFeed": {
-          "address": "0xC70Eb1E419C28916e8a2D9DE328Ad0e21129d930"
+          "address": "0x10321582D8E0F0c6ACF54828B6D0D132beF30961"
         }
       },
       "params": {
         "marginParams": {
-          "baseMarginParams": {
-            "marginFactor": "0.7",
-            "imScale": "0.93"
-          },
-          "wrappedAsset": {
-            "address": "0x7B35b4c05a90Ea5f311AeC815BE4148b446a68a2",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "perpMarginRequirements": {
+            "mmPerpReq": "0.067",
+            "imPerpReq": "0.1"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -826,11 +701,14 @@
           }
         },
         "oiCaps": {
-          "basePosition": {
-            "isSRMWhitelisted": true,
-            "totalPosition": "2324.332183974986677506",
-            "positionCap": "5000.0",
-            "depositWL": false
+          "perpPosition": {
+            "isWhitelisted": true,
+            "totalPosition": "2680.0",
+            "positionCap": "8000000.0",
+            "matching": {
+              "isTradePerp": false,
+              "isRfqPerp": false
+            }
           }
         },
         "feedParams": {
@@ -840,7 +718,31 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
+          },
+          "perpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+            ],
+            "heartbeat": "15 mins",
+            "requiredSigners": "1"
+          },
+          "ibpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "1"
+          },
+          "iapFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "1"
           }
         }
       }
@@ -850,26 +752,26 @@
       "marketId": "10",
       "addresses": {
         "baseAsset": {
-          "address": "0xef2Fc00B7F7c71c73a68dAD25c9D673b2e1983ba",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x6e567dC9f952B361D020A594b88149016D7F3df4",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0xC419959850d49166C2d5250Ee89ff9910679D8c8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xa7456213A5c081F53fEb3A4F64b88A4637Bf3028",
+          "owner": "0x6666fe8F577F202Ec729BF653ec25Af5403cbd76"
         },
         "spotFeed": {
-          "address": "0xeD32BbB6F1331CEdF9724105b1C72875d6Ad6555"
+          "address": "0x8B6F39586DABEC73601CbFA5c32d1d8EbFc00De4"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.55",
-            "imScale": "0.91"
+            "marginFactor": "0.7",
+            "imScale": "0.9"
           },
           "wrappedAsset": {
-            "address": "0xC419959850d49166C2d5250Ee89ff9910679D8c8",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0xa7456213A5c081F53fEb3A4F64b88A4637Bf3028",
+            "owner": "0x6666fe8F577F202Ec729BF653ec25Af5403cbd76"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -881,9 +783,9 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "371.248284479617934271",
-            "positionCap": "417.0",
-            "depositWL": false
+            "totalPosition": "632.332523966278392537",
+            "positionCap": "10000000.0",
+            "depositWL": true
           }
         },
         "feedParams": {
@@ -893,36 +795,36 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           }
         }
       }
     },
     {
-      "marketName": "rsETH",
+      "marketName": "weETH",
       "marketId": "11",
       "addresses": {
         "baseAsset": {
-          "address": "0x35fdB6e79c05809ba6Dc3B2EF5FF7D0BB5D75020",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x063793B0AA25CB7784375E1Fed801505838Ebc44",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0xc47e2E800a9184cFbD274AC1eeCcCDF942715dB7",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x7ef0873bBf91B8Ecac22c0e9466b17c6Cc14B1bd",
+          "owner": "0x6666fe8F577F202Ec729BF653ec25Af5403cbd76"
         },
         "spotFeed": {
-          "address": "0x984c7F384120849CfDCA309501df8BC3A23cd5fe"
+          "address": "0xB158f12c761F73ca69E556af23F88A449e075A1B"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
             "marginFactor": "0.65",
-            "imScale": "0.925"
+            "imScale": "0.77"
           },
           "wrappedAsset": {
-            "address": "0xc47e2E800a9184cFbD274AC1eeCcCDF942715dB7",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x7ef0873bBf91B8Ecac22c0e9466b17c6Cc14B1bd",
+            "owner": "0x6666fe8F577F202Ec729BF653ec25Af5403cbd76"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -934,8 +836,8 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "148.672417775802816887",
-            "positionCap": "150.0",
+            "totalPosition": "2482.508856374538806677",
+            "positionCap": "10000000.0",
             "depositWL": false
           }
         },
@@ -946,36 +848,89 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "rsETH",
+      "marketId": "12",
+      "addresses": {
+        "baseAsset": {
+          "address": "0x911116D3BC6A16BA7af02cc81490639f2A6e7Da7",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "baseERC20": {
+          "address": "0xc3ad6f6E0940df79e12b30F307109fc4Ec2ED7D0",
+          "owner": "0x6666fe8F577F202Ec729BF653ec25Af5403cbd76"
+        },
+        "spotFeed": {
+          "address": "0xC8275d7dC2413f10d9397e7Ff979d142CB56E2ea"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "baseMarginParams": {
+            "marginFactor": "0.65",
+            "imScale": "0.77"
+          },
+          "wrappedAsset": {
+            "address": "0xc3ad6f6E0940df79e12b30F307109fc4Ec2ED7D0",
+            "owner": "0x6666fe8F577F202Ec729BF653ec25Af5403cbd76"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "basePosition": {
+            "isSRMWhitelisted": true,
+            "totalPosition": "0.021",
+            "positionCap": "10000000.0",
+            "depositWL": true
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "1"
           }
         }
       }
     },
     {
       "marketName": "sUSDe",
-      "marketId": "12",
+      "marketId": "13",
       "addresses": {
         "baseAsset": {
-          "address": "0x375804CdcF0D534FDD2657584A7c4Ff5AB14A2bb",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x5fDB7419E7517085B292741f75F5B14Cd6DcAc47",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0xb82D12742c3728a14EaA43EBe1C0d32bB62216EB",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xd87d41f1e4d8b48F3cA18faFc1069b18F9c15B9d",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x493296FC88B6Da8BcAa15CC30800ABE860d6857C"
+          "address": "0x38a09836cDdfefb67228af6eBe241CDbF994639f"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.8",
-            "imScale": "0.94"
+            "marginFactor": "0.65",
+            "imScale": "0.77"
           },
           "wrappedAsset": {
-            "address": "0xb82D12742c3728a14EaA43EBe1C0d32bB62216EB",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0xd87d41f1e4d8b48F3cA18faFc1069b18F9c15B9d",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -987,9 +942,9 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "4229849.203068654277749257",
-            "positionCap": "15000000.0",
-            "depositWL": false
+            "totalPosition": "11204323.493522405080254",
+            "positionCap": "1000000000.0",
+            "depositWL": true
           }
         },
         "feedParams": {
@@ -999,25 +954,25 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           }
         }
       }
     },
     {
       "marketName": "DAI",
-      "marketId": "13",
+      "marketId": "14",
       "addresses": {
         "baseAsset": {
-          "address": "0x67bB0B7c87Df9C5C433ac7eCADfa7396A2927fcF",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xEaAE25403B28D145f74075a6B4A3844cf8dB5fd2",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0xB56D58Ce246C31c4D3a3bFB354996FF28D081dB7",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x1feFa7F9e42cd543d8b25D8226Dff829a3590cf9",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x19AC6A8eA5CFd55BC5238d5302875BeAD880620D"
+          "address": "0x77C1a1e6324f496CAe03F56C0695611e286d85B7"
         }
       },
       "params": {
@@ -1027,8 +982,8 @@
             "imScale": "0.92"
           },
           "wrappedAsset": {
-            "address": "0xB56D58Ce246C31c4D3a3bFB354996FF28D081dB7",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x1feFa7F9e42cd543d8b25D8226Dff829a3590cf9",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1040,9 +995,9 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "53043.108587374337381364",
+            "totalPosition": "0.0",
             "positionCap": "3000000.0",
-            "depositWL": false
+            "depositWL": true
           }
         },
         "feedParams": {
@@ -1052,25 +1007,25 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           }
         }
       }
     },
     {
       "marketName": "sDAI",
-      "marketId": "14",
+      "marketId": "15",
       "addresses": {
         "baseAsset": {
-          "address": "0x84f25FB708431F2C2B8596CD30f1f1d94D67f095",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x722fC392cF57f1A941B22238FD60a683C2685Ab9",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x7215a841215cfCcAC7F0894f5F194e8fAa6E5844",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xEd8b70e957027702095060F2961c7feBf5f5c261",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x948Cdd532c421b954E210d01BA35bB19E6902601"
+          "address": "0x4b0804FfA2784Bf9703D01e1FeBc52f332a1F492"
         }
       },
       "params": {
@@ -1080,8 +1035,8 @@
             "imScale": "0.915"
           },
           "wrappedAsset": {
-            "address": "0x7215a841215cfCcAC7F0894f5F194e8fAa6E5844",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0xEd8b70e957027702095060F2961c7feBf5f5c261",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1093,9 +1048,9 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "65783.830719628595005223",
+            "totalPosition": "0.0",
             "positionCap": "3000000.0",
-            "depositWL": false
+            "depositWL": true
           }
         },
         "feedParams": {
@@ -1105,36 +1060,36 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           }
         }
       }
     },
     {
       "marketName": "USDe",
-      "marketId": "15",
+      "marketId": "16",
       "addresses": {
         "baseAsset": {
-          "address": "0x028B9fFA86fc4c366e11AA8b3E71dc0502713ABF",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x14af1E8d2194c5bCB3405f96dd471676c8Fd0CeA",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x1569e57B9e1dA866f9b862Acd8b134ea16B234F5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x5A73906EBEE0C4631f66eE84E88925a5577c598C",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0xcf02649FF9a93bAaD39Dba2523ca5d1278374118"
+          "address": "0x135CDea30C997D8946f278c3c3a13D243EF76cc8"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.85",
-            "imScale": "0.94"
+            "marginFactor": "0.8",
+            "imScale": "0.875"
           },
           "wrappedAsset": {
-            "address": "0x1569e57B9e1dA866f9b862Acd8b134ea16B234F5",
-            "owner": "0x0000000000000000000000000000000000000000"
+            "address": "0x5A73906EBEE0C4631f66eE84E88925a5577c598C",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1146,9 +1101,9 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "328965.850360687611339594",
-            "positionCap": "1000000.0",
-            "depositWL": false
+            "totalPosition": "0.0",
+            "positionCap": "500000.0",
+            "depositWL": true
           }
         },
         "feedParams": {
@@ -1158,36 +1113,36 @@
               "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
             ],
             "heartbeat": "3 mins",
-            "requiredSigners": "2"
+            "requiredSigners": "1"
           }
         }
       }
     },
     {
       "marketName": "LBTC",
-      "marketId": "17",
+      "marketId": "19",
       "addresses": {
         "baseAsset": {
-          "address": "0xeaF03Bb3280C609d35E7F84d24a996c7C0b74F5f",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x2b743fec38360310D248ba1870a3C341278Ed41F",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x36b5C126A3D7B25F6032653A0d18823Ee48a890e",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xDF129D5dc9c335B597815b1EBAB2BC0ff1af880c",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x5a15efb885C8974A8F3d4b04DaA76b279157fECB"
+          "address": "0x3c92b48506a86Bc8b0DE6d1cEB7d679eca8DCD3D"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.7",
+            "marginFactor": "0.75",
             "imScale": "0.93"
           },
           "wrappedAsset": {
-            "address": "0x36b5C126A3D7B25F6032653A0d18823Ee48a890e",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0xDF129D5dc9c335B597815b1EBAB2BC0ff1af880c",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1199,8 +1154,8 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "124.544137314199957908",
-            "positionCap": "200.0",
+            "totalPosition": "56.6379363",
+            "positionCap": "10000000.0",
             "depositWL": false
           }
         },
@@ -1218,29 +1173,29 @@
     },
     {
       "marketName": "cbBTC",
-      "marketId": "18",
+      "marketId": "20",
       "addresses": {
         "baseAsset": {
-          "address": "0xC1efE4c45B79250A29A5Dc66cCADc60DB0FcEEe8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xe0Ae57C04a29bcB9083ed021cda4b5E136Fbea9D",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x1EA87f372285409425771F19Eb7938b427DAb148",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xcBAD6D120025BB25Df708153E161FB0b37E247d2",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x25d35C8796c9dcD3857abE90D802FC17b1FB55A5"
+          "address": "0xBBBB3616733a64f7156F079F218C81F42977E36b"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.7",
-            "imScale": "0.93"
+            "marginFactor": "0.65",
+            "imScale": "0.77"
           },
           "wrappedAsset": {
-            "address": "0x1EA87f372285409425771F19Eb7938b427DAb148",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0xcBAD6D120025BB25Df708153E161FB0b37E247d2",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1252,16 +1207,17 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "12.385840658408795304",
-            "positionCap": "50.0",
-            "depositWL": false
+            "totalPosition": "0.0",
+            "positionCap": "10000000.0",
+            "depositWL": true
           }
         },
         "feedParams": {
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -1271,29 +1227,29 @@
     },
     {
       "marketName": "eBTC",
-      "marketId": "19",
+      "marketId": "21",
       "addresses": {
         "baseAsset": {
-          "address": "0x95FE344A0f420A7aC1B1E69CB1474179a40db882",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x8763353C3BF746CC320155FAF15B2129D8362519",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x4d4e6761D2D8d5AdCa3646987970D63C00704eb5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x3867b980E3a9D498495F3a2cf512D1c79AD29f0B",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0xb147274cB65D5285d18245594E0Bec791De7Cb46"
+          "address": "0x016BD352362811bedbF6390ab4327870cC691C77"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.7",
-            "imScale": "0.93"
+            "marginFactor": "0.65",
+            "imScale": "0.77"
           },
           "wrappedAsset": {
-            "address": "0x4d4e6761D2D8d5AdCa3646987970D63C00704eb5",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x3867b980E3a9D498495F3a2cf512D1c79AD29f0B",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1305,16 +1261,17 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "0.0000001",
-            "positionCap": "40.0",
-            "depositWL": true
+            "totalPosition": "50.0",
+            "positionCap": "10000000.0",
+            "depositWL": false
           }
         },
         "feedParams": {
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -1324,31 +1281,31 @@
     },
     {
       "marketName": "TIA",
-      "marketId": "20",
+      "marketId": "23",
       "addresses": {
         "iapFeed": {
-          "address": "0xA8677845e446CF714fa04FaA3B4e52a56f4e4912",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x98D3172c4d3e6914e04586503E612303078d65Ed",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x4487748cBC73b9E0eD3B9fEe43a6E32372d9f617",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xd41A7d1a5Bc12Ef0291be572A30f8525a6926449",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x3fD90C3d4C12190AF6C4431b87Aca06Ed5178C87"
+          "address": "0x4C1b50fBf5f48f166601ACFF964FE8b5C415cf53"
         },
         "perpFeed": {
-          "address": "0x5A28531a8cF3B4B65a6D9Ae4809b601615A01cE0"
+          "address": "0x0BdBF82f1d00bb775F78Ad4bd07C3655Da5cEFD7"
         },
         "spotFeed": {
-          "address": "0x338A67A465489A9203585D93D311dd74CFBC19FC"
+          "address": "0xd9226eF59F383b36E87C6311Dc545a1A38cf147a"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
+            "mmPerpReq": "0.1",
+            "imPerpReq": "0.2"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1360,8 +1317,8 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "31238.701080312142418436",
-            "positionCap": "300000.0",
+            "totalPosition": "20.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -1372,7 +1329,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -1380,7 +1338,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -1388,7 +1347,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1396,7 +1356,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1406,31 +1367,31 @@
     },
     {
       "marketName": "SUI",
-      "marketId": "21",
+      "marketId": "24",
       "addresses": {
         "iapFeed": {
-          "address": "0x90312981F76Bd2D482743A1e14b2F2dBB3AA569d",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x3B12A405040d523D0BC7f6f692976Fd75D0ecBA3",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0xb730fAA28A2A98a00995789874Cc0D65F34cfD1d",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x653c3b64d3F562900A86263E4cA142C1087a1E62",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x63A61e914c7D2a5E0BB593De4369d004C418ECdd"
+          "address": "0xFeB5b1a4EC5D7035224a62197c67cBfF4A98180f"
         },
         "perpFeed": {
-          "address": "0x53c426acb8E1D1552017FD1A2c143be1C3712378"
+          "address": "0x6d6Fb61D420cF74ADD194211285b30E83532b235"
         },
         "spotFeed": {
-          "address": "0x52e99636fC08a9FCc240e4A6ca49AEC040066156"
+          "address": "0x230cf2BeB543e5A614EA87B3e47c0aC6777Ab370"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
+            "mmPerpReq": "0.1",
+            "imPerpReq": "0.2"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1442,8 +1403,8 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "10487.878276843119729948",
-            "positionCap": "500000.0",
+            "totalPosition": "0.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -1454,7 +1415,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -1462,7 +1424,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -1470,7 +1433,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1478,7 +1442,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1488,31 +1453,31 @@
     },
     {
       "marketName": "NEAR",
-      "marketId": "22",
+      "marketId": "25",
       "addresses": {
         "iapFeed": {
-          "address": "0xfbdcEbc6f777AE4dC789089E59ce9402a482BE22",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x1178f7079c60Ea76c002dE4900b7B7Fb051731CF",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0xDD1B27d0892079C1eb25940d5Cb58902041BE00D",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xe48256B7bC713209AEb6932F1e4B9a7b8D26B391",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x630Fcb229f6C28c428579B39BFD40Ba793Caf009"
+          "address": "0x59b4755aEb9aC0bF42E5964ee1C337459Fd6282A"
         },
         "perpFeed": {
-          "address": "0x9d4004bD7a201eD0fd9BaB2e530F5C3Cf93eCd6D"
+          "address": "0xdbD92C5eB643288fe0CF22Da1851344AA8AA6714"
         },
         "spotFeed": {
-          "address": "0x8b09262E3c0E7a834aCb4fcC63f151979F93F267"
+          "address": "0xbe074E57D6a5A65791D126Ce78cb93ceDC5cc78D"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
+            "mmPerpReq": "0.1",
+            "imPerpReq": "0.2"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1524,8 +1489,8 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "12128.8",
-            "positionCap": "320000.0",
+            "totalPosition": "0.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -1536,7 +1501,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -1544,7 +1510,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -1552,7 +1519,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1560,7 +1528,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1570,30 +1539,30 @@
     },
     {
       "marketName": "PEPE",
-      "marketId": "23",
+      "marketId": "26",
       "addresses": {
         "iapFeed": {
-          "address": "0x5E0B3b7bcDAd988839FaaBB2faD7e5C1C5e59bF2",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xf44B374AeEDeA037703CF07f0ecB853f427c535c",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x2411f74B78A619CD56d8982a2Df24ACad9DafF88",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x12392d1b14A31e8c73DDC2910917Ce917376b7B9",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0xb3573E11a3dFB6AaA6a761086943b5F1BBA311d9"
+          "address": "0x9a35A412EDC6BBE38A8F544Eb41f954c23430457"
         },
         "perpFeed": {
-          "address": "0xEE699B381fc11a39571C5e92677e8F8aA7a3FB3A"
+          "address": "0xd2eE80e6F50477B499b94300077293483948B70f"
         },
         "spotFeed": {
-          "address": "0x4BE1814dF615FB2eeD3BDa476bD7a399b4374896"
+          "address": "0xD5d220Bc4A52b4f824B14359C8Fea9f1EbD5Ebe0"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.143",
+            "mmPerpReq": "0.1",
             "imPerpReq": "0.2"
           },
           "oracleContingencyParams": {
@@ -1606,8 +1575,8 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "9634155952.871381031503391838",
-            "positionCap": "80000000000.0",
+            "totalPosition": "0.0",
+            "positionCap": "40000000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -1618,7 +1587,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -1626,7 +1596,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -1634,7 +1605,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1642,7 +1614,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1652,30 +1625,30 @@
     },
     {
       "marketName": "WIF",
-      "marketId": "24",
+      "marketId": "27",
       "addresses": {
         "iapFeed": {
-          "address": "0xd3dF6B593E4663309c1fE8E490Ccf12B713286af",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xeE6b80bfA6D0fd2e559D94445170b107EF8fc4B2",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x7da5dc7D2Ca6a85FB17b02776c948056cB8F61A5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x223A31Ef4371716DCF8B3e51e4B6e85d21fb8e69",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x84715f8BD3A0bab44aD357288ABD233cC833e3F0"
+          "address": "0x7B53AE3FDd53Ad0C7c7B33Eb8E418aF2A0B4281e"
         },
         "perpFeed": {
-          "address": "0xE575Fce5138ECC85B706B061eF227B8d47CefAF9"
+          "address": "0xb06c3adAc1A583025a3Bb5C7cd2258231ec683b0"
         },
         "spotFeed": {
-          "address": "0xD4160017e17334187386932e5Dd9B8962EB47D25"
+          "address": "0x4e9aBB0984FC2902096Dcc155760ec351f64A4b5"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.143",
+            "mmPerpReq": "0.1",
             "imPerpReq": "0.2"
           },
           "oracleContingencyParams": {
@@ -1688,8 +1661,8 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "18598.644712876448578878",
-            "positionCap": "1400000.0",
+            "totalPosition": "30.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -1700,15 +1673,17 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
-            "heartbeat": "3 mins",
+            "heartbeat": "20 mins",
             "requiredSigners": "2"
           },
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -1716,7 +1691,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1724,7 +1700,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1734,31 +1711,31 @@
     },
     {
       "marketName": "WLD",
-      "marketId": "25",
+      "marketId": "28",
       "addresses": {
         "iapFeed": {
-          "address": "0x712Dcd7607FAB5a05c5c4D3cA6CD193d33109e8e",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x6dec8a0Aa2D3569783727E90B65b749870587F4a",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x2d69295A27679895f2b85f9582992C4860bFfe33",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xcFEc9040514908f5747ea487De91058D4626eB0F",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0xae6b2ACb22053E3541DE86a4c0420e5063655AFB"
+          "address": "0x50996e587524Dc6E14124B5c6BF4cF52040f6760"
         },
         "perpFeed": {
-          "address": "0x39C2709b508cF4839340aC479c8FB0B8cEe01569"
+          "address": "0x34E2a44e7B8A6F65678b78A4D2B94a5518a6D30e"
         },
         "spotFeed": {
-          "address": "0x63668B482722ee22e61F5a98A320e7Dd2852c7F4"
+          "address": "0xd3Ab9B288B9c1Aa72D0EE790Ec656e2BbDEdF4cE"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
+            "mmPerpReq": "0.1",
+            "imPerpReq": "0.2"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1770,8 +1747,8 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "9256.147209007926433492",
-            "positionCap": "400000.0",
+            "totalPosition": "0.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -1782,7 +1759,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -1790,7 +1768,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -1798,7 +1777,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1806,7 +1786,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1816,31 +1797,31 @@
     },
     {
       "marketName": "BNB",
-      "marketId": "26",
+      "marketId": "29",
       "addresses": {
         "iapFeed": {
-          "address": "0x3E717aEba6ad3c603bEF87DF9338880F0D1c32A3",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x7306085FB88C72ec3696160732Aae2baF7133eE2",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x4D7575a523D2673B330a7E14d370E81272CD5528",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xAc73437CD675d68F02c0A082A50EFad12Ae45D77",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0xa7C846245A24928183092231D10FCa68506629A1"
+          "address": "0x84a60db5BCfCbC55b83b535880A07CacEF3821b0"
         },
         "perpFeed": {
-          "address": "0xDF30d8f35A50b5B98580b06B9B78013Ea9B3682f"
+          "address": "0x74B4598BEBEdA68F2e9F2b662995d857578F5dc6"
         },
         "spotFeed": {
-          "address": "0x0b6Cb37047599Dc39a0Ee449A054138578ACAdc6"
+          "address": "0x48A4f1462b407b5Be3A825b58579247334C54D56"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
+            "mmPerpReq": "0.1",
+            "imPerpReq": "0.2"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1852,8 +1833,8 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "10.9664",
-            "positionCap": "1600.0",
+            "totalPosition": "16.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -1864,7 +1845,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -1872,7 +1854,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -1880,7 +1863,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1888,7 +1872,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -1898,52 +1883,52 @@
     },
     {
       "marketName": "AAVE",
-      "marketId": "27",
+      "marketId": "30",
       "addresses": {
         "baseAsset": {
-          "address": "0x805f0F3d3b5c3DD6E3f131dAD04704c11F0fFdAB",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x23B154C5E9d218F8f713DBcaE8dcfDDF1A425214",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x4B6D888E801e57Cb545e0d2ee261d03537992b19",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x1908Bb877f70522D1cda044150082013C6Fb9EBb",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "forwardFeed": {
-          "address": "0x2074Ab34d9b9CF86A3e3A3eFd2B2FFE943877e46",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xF4901E996946597F476293B134A47be272d612B6",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "iapFeed": {
-          "address": "0xa2134E76e6ded4AF5d5aBa0802fBB241B369F4C4",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x500d875245dD56b8Dfbb9049e860607e4EbDBa3d",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0xa2199b5371Ce5F9baeB978066F9DE6CdD339a1f3",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xF367a32a5c9855ab1184407ABEFC037d3F739EC7",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "option": {
-          "address": "0x33135bDd13A8bb9476b8777Ad3BA3AC06bBB149B",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x7a08009fEc93bFf4cdD8319eD228a0D7f73a8706",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x4b6EbaA6cb3c6dA4Cb9b2474216794966Aba826f",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x5c5413680641747Df53989F8cE4c85F79a28bcac",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perpFeed": {
-          "address": "0x13Bd6B0Bc9E47f98fe1158B2f96B938521bF25e8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x04DAA671922Ad60EfD55BE73B180Cf62d3dc3b09",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x6579C4d9AeAe2C3171C63f73B41dc9b86D02A4D0"
+          "address": "0x19CdEC5F8154C61AD92a014b1A29D1015B1FDc6B"
         },
         "volFeed": {
-          "address": "0xd38BFb9f699DdF649de4F64201583b28ED147f3e"
+          "address": "0x5899934A9072F8440b1c7943ed336B993560c27D"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
+            "mmPerpReq": "0.1",
+            "imPerpReq": "0.2"
           },
           "optionMarginParams": {
             "maxSpotReq": "0.15",
@@ -1956,12 +1941,12 @@
             "mmOffsetScale": "1.05"
           },
           "baseMarginParams": {
-            "marginFactor": "0.74",
-            "imScale": "0.9"
+            "marginFactor": "0.0",
+            "imScale": "0.0"
           },
           "wrappedAsset": {
-            "address": "0x4B6D888E801e57Cb545e0d2ee261d03537992b19",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x1908Bb877f70522D1cda044150082013C6Fb9EBb",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -1973,9 +1958,9 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "1.0",
+            "totalPosition": "1000.0",
             "positionCap": "10000.0",
-            "depositWL": true
+            "depositWL": false
           },
           "optionPosition": {
             "isWhitelisted": true,
@@ -1984,8 +1969,8 @@
           },
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "102.775257087817428916",
-            "positionCap": "24000.0",
+            "totalPosition": "2.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -1996,7 +1981,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -2004,7 +1990,8 @@
           "volFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2012,7 +1999,8 @@
           "forwardFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "1 hr",
             "requiredSigners": "2",
@@ -2021,7 +2009,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -2029,7 +2018,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2037,7 +2027,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2047,47 +2038,47 @@
     },
     {
       "marketName": "OP",
-      "marketId": "28",
+      "marketId": "31",
       "addresses": {
         "baseAsset": {
-          "address": "0xDaffF9B244327d09dde1dDFcf9981ef0Df2D1568",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xc83C7bb86658A2dc2c4312009C118C1DCA5bA19d",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x30f85847F9F17f219A9a21B93396a3B2eAEa500F",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xbf53C10761300725e270e603B8589921DACdc6A7",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "iapFeed": {
-          "address": "0x5afaFe20c966AB2F7490dEB3B06d8eF17DFc023F",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x5178934799fCBA20fE93678692fB3f73B6DA3990",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x099958Ddb5E0D957201cE2Ab386b4C364d79814B",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xeBB18c10cc2cf370828F1bB8dbF12b945F8f4EdF",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x6515dfB4eaD8d3D838c342B842f098A4A5B37642"
+          "address": "0x9fCA0D846588D97004A6Eeb0D03FC7540114f3C1"
         },
         "perpFeed": {
-          "address": "0xeb4D1dBe594595e818001bAeD168d72dFd3366B2"
+          "address": "0x153F80386f7B56b233dcAE3348fe30AF9E652529"
         },
         "spotFeed": {
-          "address": "0x1cDad048e73d379023cBCDC70Cd38216d6be754d"
+          "address": "0x8B43c15406710e907fF9A57a71909a29a5EF8646"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
+            "mmPerpReq": "0.1",
+            "imPerpReq": "0.2"
           },
           "baseMarginParams": {
             "marginFactor": "0.6",
             "imScale": "0.85"
           },
           "wrappedAsset": {
-            "address": "0x30f85847F9F17f219A9a21B93396a3B2eAEa500F",
-            "owner": "0x0000000000000000000000000000000000000000"
+            "address": "0xbf53C10761300725e270e603B8589921DACdc6A7",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -2099,14 +2090,14 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "443662.174546161981615312",
-            "positionCap": "1000000.0",
+            "totalPosition": "0.0",
+            "positionCap": "500000.0",
             "depositWL": false
           },
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "116069.1154338027776276",
-            "positionCap": "1000000.0",
+            "totalPosition": "0.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -2117,7 +2108,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -2125,7 +2117,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -2133,7 +2126,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2141,7 +2135,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2151,31 +2146,31 @@
     },
     {
       "marketName": "ARB",
-      "marketId": "29",
+      "marketId": "32",
       "addresses": {
         "iapFeed": {
-          "address": "0xF9452690dD6FE8192Fab53F6cfa490A0D33df460",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x4721Ff243322c82E635441f3Cb64d99f2FC7Ff1A",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x37065e16B49878448D1674DF471035a43f121af9",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x3Ac61D318C992A80587B460fF84606403c57f5cb",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0xCE081Cf1ed7f41Db1822c69E9d4A2746071C8d9D"
+          "address": "0xa509E4F8407189A7a9B680AbeF67AAFcbA46e6BE"
         },
         "perpFeed": {
-          "address": "0x2067378b579bC846E6FBB2011d41e3DD92C6ea18"
+          "address": "0x5174BeCA74FafFd89D6aC970Ae8D6087F3B4e5c5"
         },
         "spotFeed": {
-          "address": "0xcB5DE1fEf7Fa2261308D9b67349BC23A4F50550c"
+          "address": "0x8cF602C87eB5a77dC2e2607fFD86325d5a6b2aD0"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
+            "mmPerpReq": "0.1",
+            "imPerpReq": "0.2"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -2187,8 +2182,8 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "62596.11798368864048466",
-            "positionCap": "1500000.0",
+            "totalPosition": "10.0",
+            "positionCap": "10000000.0",
             "matching": {
               "isTradePerp": true,
               "isRfqPerp": true
@@ -2199,7 +2194,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -2207,7 +2203,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -2215,7 +2212,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2223,7 +2221,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2233,24 +2232,24 @@
     },
     {
       "marketName": "LINK",
-      "marketId": "30",
+      "marketId": "33",
       "addresses": {
         "iapFeed": {
-          "address": "0x329f47a42D28f6Ec390F01528af7D71Cc64d89E0",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x10834F2AA4B510528cadAca25b7356552E78E9B6",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x3b328bFA5EC7D063fC8391B2e05A87bc10eBe816",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x032a7Cc387A230ec746E6dB8518eB84a20d1F6c2",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x182182F18486A335017841421F90F77D67CDB30A"
+          "address": "0x80335Ddf3b76B102dE2dCfA5b37d629D5fcF0ecd"
         },
         "perpFeed": {
-          "address": "0x3824C5dD8Df360304e7d88740dBB2F4CA52cfB4A"
+          "address": "0x3001a90FCeb3E95a700227236C8446bcaf8652d0"
         },
         "spotFeed": {
-          "address": "0x35eC2358C01896ABA9604c3fD13A9c7ec5aB2a66"
+          "address": "0xacdC480875E3CF44fAb20592F776CB4a9B400935"
         }
       },
       "params": {
@@ -2269,7 +2268,7 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "428.050083342240022768",
+            "totalPosition": "0.0",
             "positionCap": "100000.0",
             "matching": {
               "isTradePerp": true,
@@ -2281,7 +2280,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -2289,7 +2289,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -2297,7 +2298,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2305,7 +2307,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2315,359 +2318,31 @@
     },
     {
       "marketName": "XRP",
-      "marketId": "31",
-      "addresses": {
-        "iapFeed": {
-          "address": "0x8F7E043e3953fbB8448565D3b5Ba2ee22e2E6c22",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0x0AaF7216A74aAb076169C3c3daf5Fe201A49D81a",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perp": {
-          "address": "0x1DD2b6E9Db6654BB949be09b30d4193A94bbbfaE"
-        },
-        "perpFeed": {
-          "address": "0x7564CaD6b1f1BDE7812Dd5aDd6B8EABE0D3fdc30"
-        },
-        "spotFeed": {
-          "address": "0x3ff589114373350B2eFbCa2BFAa119D6F1C535b9"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "perpPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "94901.498616463589888468",
-            "positionCap": "2000000.0",
-            "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
-            }
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "perpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "15 mins",
-            "requiredSigners": "2"
-          },
-          "ibpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          },
-          "iapFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "AVAX",
-      "marketId": "32",
-      "addresses": {
-        "iapFeed": {
-          "address": "0xC8F77286eed301AdC4a9dc9cD879f8c5845E6322",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0xbeDaB258aea3B81b75e18c4050C8f4aB8320e1d7",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perp": {
-          "address": "0x734e86D60bbB8Ed9eC0a119ceb78c099d263Bb9f"
-        },
-        "perpFeed": {
-          "address": "0xf5f47ece75c92502243C273c17970e6E7E8de3E5"
-        },
-        "spotFeed": {
-          "address": "0x17DB89F8a25CEC9D212B209d7D05582d411acf07"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "perpPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "588.542417439710082658",
-            "positionCap": "40000.0",
-            "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
-            }
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "perpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "15 mins",
-            "requiredSigners": "2"
-          },
-          "ibpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          },
-          "iapFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "UNI",
-      "marketId": "33",
-      "addresses": {
-        "iapFeed": {
-          "address": "0x29aAFF41612A11367DF1A3Ef682f6A45eaec30c8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0xF16019a0F59C101e5F85d810AfE76FaF33Eaf179",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perp": {
-          "address": "0x443BB222eE396485269B4F4E1Abb913255e1A8b4"
-        },
-        "perpFeed": {
-          "address": "0x4FD1B0d7402d91b8A46f941345f40C6e28d6aaBA"
-        },
-        "spotFeed": {
-          "address": "0xfEf8C98522Ea0BfCE97b352EAAb742e39945Cbc9"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "perpPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "2959.594492316013949914",
-            "positionCap": "120000.0",
-            "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
-            }
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "perpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "15 mins",
-            "requiredSigners": "2"
-          },
-          "ibpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          },
-          "iapFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "TAO",
       "marketId": "34",
       "addresses": {
         "iapFeed": {
-          "address": "0x9B147bc86C18ccc11899BdA3628DC21B0E22D9EA",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x5b99A03169f7B4B45C3D873484dFb2c4e97B8159",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x3106051023583224b83FC5136f9a4e6bE00fC2C8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x02cA548126aa5c58A4D8B50795387589336dc264",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x2458241c0e594aF68E55Dd7224b1067a5F1Ae52C"
+          "address": "0x68A1C81645E2B1b7A4bdDa805147c6a72E2411B2"
         },
         "perpFeed": {
-          "address": "0x13686f63251c17E5A586F301b8609e1d28A426fa"
+          "address": "0x1c649B95B9B0579D288CEbA44F4377F0deeedb89"
         },
         "spotFeed": {
-          "address": "0xB2511476d47F9239AB40875c73E7dF1735a56A09"
+          "address": "0x92acF59677e90828CCf620077922900790e1281a"
         }
       },
       "params": {
         "marginParams": {
           "perpMarginRequirements": {
-            "mmPerpReq": "0.143",
-            "imPerpReq": "0.2"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "perpPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "63.877112378280526472",
-            "positionCap": "2000.0",
-            "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
-            }
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "perpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "15 mins",
-            "requiredSigners": "2"
-          },
-          "ibpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          },
-          "iapFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "SEI",
-      "marketId": "35",
-      "addresses": {
-        "iapFeed": {
-          "address": "0x3B6605F89773F1ED13b393d47e42537C42b90E35",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0xA6F2987b6b97aEC0Eec68835c48CF96A2A90a174",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perp": {
-          "address": "0x7225889B75fd34C68eA3098dAE04D50553C09840"
-        },
-        "perpFeed": {
-          "address": "0xeB26a38D3aB64dA6285f7D989d6ee6316180a0A4"
-        },
-        "spotFeed": {
-          "address": "0xb7b0B126E3DEAd3AB83Bf7606ff6C1908D0Fa736"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "perpMarginRequirements": {
-            "mmPerpReq": "0.143",
-            "imPerpReq": "0.2"
+            "mmPerpReq": "0.067",
+            "imPerpReq": "0.1"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -2691,7 +2366,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -2699,7 +2375,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -2707,7 +2384,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2715,7 +2393,352 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "AVAX",
+      "marketId": "35",
+      "addresses": {
+        "iapFeed": {
+          "address": "0x5Bb89aA56AeBd0Bb281D576ef26F08D0C3466Ff2",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "ibpFeed": {
+          "address": "0x0FA0367f3100Be2beA6aa3b18a45d1da3d76C2B6",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "perp": {
+          "address": "0x93A56d43c4764d6eBD556fd912Fb8e89299B3694"
+        },
+        "perpFeed": {
+          "address": "0x74eA7Cd43D2c32BB5F2640Fb2314Ea454BDB7f93"
+        },
+        "spotFeed": {
+          "address": "0x0E815d21C987Ce9979E9D3f0458891781E44A0E5"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "perpMarginRequirements": {
+            "mmPerpReq": "0.067",
+            "imPerpReq": "0.1"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "perpPosition": {
+            "isWhitelisted": true,
+            "totalPosition": "0.0",
+            "positionCap": "40000.0",
+            "matching": {
+              "isTradePerp": true,
+              "isRfqPerp": true
+            }
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "perpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "15 mins",
+            "requiredSigners": "2"
+          },
+          "ibpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          },
+          "iapFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "UNI",
+      "marketId": "36",
+      "addresses": {
+        "iapFeed": {
+          "address": "0xF18Aa9933d9544C19C2D98fe75d4554C6aeef442",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "ibpFeed": {
+          "address": "0x777737D031CFEdD9C3F1dcdF8ADB00E7734BC2B2",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "perp": {
+          "address": "0x55cC5Ca56891ab14181b81545A48A1F5b11700F5"
+        },
+        "perpFeed": {
+          "address": "0xDca0bC89b67Dd09e443F0ef468A4d6290F0AD067"
+        },
+        "spotFeed": {
+          "address": "0x80123Eb8296E32f9E9E5Dd91cAb5d581B3EF46C6"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "perpMarginRequirements": {
+            "mmPerpReq": "0.067",
+            "imPerpReq": "0.1"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "perpPosition": {
+            "isWhitelisted": true,
+            "totalPosition": "0.0",
+            "positionCap": "120000.0",
+            "matching": {
+              "isTradePerp": true,
+              "isRfqPerp": true
+            }
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "perpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "15 mins",
+            "requiredSigners": "2"
+          },
+          "ibpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          },
+          "iapFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "TAO",
+      "marketId": "37",
+      "addresses": {
+        "iapFeed": {
+          "address": "0x7e885A8e2459e56Ce026AC155B222F64Ed635026",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "ibpFeed": {
+          "address": "0xa1A841BCC119C25Ca48F72c3085f1F593e80B92f",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "perp": {
+          "address": "0x20E94f82FcA7f6486e284B93323d40A6a9b018C1"
+        },
+        "perpFeed": {
+          "address": "0xD06A8B3f097e9c7895053745c48527AF99F37bCB"
+        },
+        "spotFeed": {
+          "address": "0x3CB047b06491aF1f08fdDCed24D9714578F5e787"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "perpMarginRequirements": {
+            "mmPerpReq": "0.143",
+            "imPerpReq": "0.2"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "perpPosition": {
+            "isWhitelisted": true,
+            "totalPosition": "2.0",
+            "positionCap": "2000.0",
+            "matching": {
+              "isTradePerp": false,
+              "isRfqPerp": true
+            }
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "perpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "15 mins",
+            "requiredSigners": "2"
+          },
+          "ibpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          },
+          "iapFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "SEI",
+      "marketId": "38",
+      "addresses": {
+        "iapFeed": {
+          "address": "0x980a9595A036C398A7342A65195eC73Ce94fD582",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "ibpFeed": {
+          "address": "0xAc5Fb676bbe04a971908768727d484EadAFf9F82",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "perp": {
+          "address": "0xA660fE7911e9B92223be41354fb740C90dC1B632"
+        },
+        "perpFeed": {
+          "address": "0x6Fc11A091240eB5a212B27afC42935C5D77490E9"
+        },
+        "spotFeed": {
+          "address": "0x0d3166b7D5e5c69d74698cdFD6514bd9B96D2708"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "perpMarginRequirements": {
+            "mmPerpReq": "0.143",
+            "imPerpReq": "0.2"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "perpPosition": {
+            "isWhitelisted": true,
+            "totalPosition": "0.0",
+            "positionCap": "2000000.0",
+            "matching": {
+              "isTradePerp": false,
+              "isRfqPerp": false
+            }
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "perpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "15 mins",
+            "requiredSigners": "2"
+          },
+          "ibpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          },
+          "iapFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2725,24 +2748,24 @@
     },
     {
       "marketName": "EIGEN",
-      "marketId": "36",
+      "marketId": "39",
       "addresses": {
         "iapFeed": {
-          "address": "0x52b7AfCc77DD13450F1664718699188f8B4E1DCf",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xFcEfAe4bfE5303406aC1361ae3cA4FC6329e173b",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0xA496D48D516f171E721cd35eaAfDBC61d7CeC665",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x0be2Cb474BdD5E09f7088ACE039B8b20bFe69e64",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x2c1E92601fC644212e0a895a83C2eA95983b1137"
+          "address": "0xD36E3BD74A68fAA1bC77341E9D7f94E656d7B72e"
         },
         "perpFeed": {
-          "address": "0x909F795C191019D8501cabA723247e30691c305c"
+          "address": "0xDD8e4c4CebfD65FA4B1Bb9384CC65e169ea7F7F3"
         },
         "spotFeed": {
-          "address": "0x65653c408eD6a89CDbEFAAf28caAba6C41B552b5"
+          "address": "0x1754E2aDB257EA0BD081CCcdDaE8b39834c1d661"
         }
       },
       "params": {
@@ -2764,8 +2787,8 @@
             "totalPosition": "0.0",
             "positionCap": "300000.0",
             "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
+              "isTradePerp": false,
+              "isRfqPerp": false
             }
           }
         },
@@ -2773,7 +2796,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -2781,7 +2805,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -2789,7 +2814,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2797,7 +2823,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2807,24 +2834,24 @@
     },
     {
       "marketName": "ENA",
-      "marketId": "37",
+      "marketId": "40",
       "addresses": {
         "iapFeed": {
-          "address": "0x9a3B9f1D49BCd0BD2d5319D7C315b5d2Cf383fe1",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xd359d20496323f8AfD11219322ceecc16925F512",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x011089bf72202b73070844a5728447D38Cd51160",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x49fF9E0B8D2F0398cC32cF1fAB74Ce35aBDe2e46",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x6aBDf5AC9aB94F537FDA1cAf317cFCB7676BBB11"
+          "address": "0x0340ed091ee952C0a94Eea00c1159e2619DE8243"
         },
         "perpFeed": {
-          "address": "0x3c95123003D786B3fdcd812a9Af8Ad29BBA00CED"
+          "address": "0x96da9DDe63DE440FD77f600C85b925C65Cc93c42"
         },
         "spotFeed": {
-          "address": "0x6dfa2EED4aD222a935cc8DCc5E08bFC884F2Ae73"
+          "address": "0x7805C3b384010dB1479cB6F294b85E554d0D7884"
         }
       },
       "params": {
@@ -2843,11 +2870,11 @@
         "oiCaps": {
           "perpPosition": {
             "isWhitelisted": true,
-            "totalPosition": "101935.204295057252176014",
-            "positionCap": "4000000.0",
+            "totalPosition": "0.0",
+            "positionCap": "2000000.0",
             "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
+              "isTradePerp": false,
+              "isRfqPerp": false
             }
           }
         },
@@ -2855,7 +2882,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -2863,7 +2891,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -2871,7 +2900,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2879,7 +2909,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2889,24 +2920,24 @@
     },
     {
       "marketName": "BITCOIN",
-      "marketId": "38",
+      "marketId": "41",
       "addresses": {
         "iapFeed": {
-          "address": "0x9E67b68Cb5E22FDA76Ca5F391f10D23e84291442",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xa61B3802146E6cA226E7855BbdCae24F1EeF87b9",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0x49BFE5DeB83f1a7AE57BDf42646026D6e39D40dC",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x4de9bc31D70fa9c2a08c32b8bD70BCb9f80e061A",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0x2BA568c6DA7ADecEd133Ee3D7633971a6c5200B1"
+          "address": "0x0b0a8F6c9E01c9534512F2a6c13Ac8e3a4014793"
         },
         "perpFeed": {
-          "address": "0xB6dD91696c954B1869855605836BF951C8A40c27"
+          "address": "0xC4d15d036861d9300A368DAE61CF5c51b59707DE"
         },
         "spotFeed": {
-          "address": "0x494A9406aF19f099AA16505140bF4E8Ca81a6ba9"
+          "address": "0x21F23E1306Ac9449Cf9A381554C07927aBfD6250"
         }
       },
       "params": {
@@ -2926,10 +2957,10 @@
           "perpPosition": {
             "isWhitelisted": true,
             "totalPosition": "0.0",
-            "positionCap": "1200000.0",
+            "positionCap": "1600000.0",
             "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
+              "isTradePerp": false,
+              "isRfqPerp": false
             }
           }
         },
@@ -2937,7 +2968,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -2945,7 +2977,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -2953,7 +2986,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2961,7 +2995,8 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -2971,24 +3006,24 @@
     },
     {
       "marketName": "DEGEN",
-      "marketId": "39",
+      "marketId": "42",
       "addresses": {
         "iapFeed": {
-          "address": "0x0d4543491B2352b1910C5B03528F522A6c124f4c",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x13f5b7ffC72022D6Fcc0adFDd3977F464755c5e7",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "ibpFeed": {
-          "address": "0xfB162931A5F1Ab187e2eE7B8C27dA6c7C038Fb5C",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xE14ebd65a080f346178CF15A5393e9905245BA57",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "perp": {
-          "address": "0xd36aafF4723E461E1Bc645cE241f7A0beDAB201e"
+          "address": "0x3b480749E2A1baa2bfEA8b8F0e082C1234e0B77e"
         },
         "perpFeed": {
-          "address": "0x7edc865A70f7303389570E1fe4b14c270bFFf20a"
+          "address": "0xF8529E71DB4085C10891cfA430E3f80177246e18"
         },
         "spotFeed": {
-          "address": "0x48B6514d1Eb96522d6B5414dF43f8ae13fAB6d85"
+          "address": "0xF972305634231dbFcFc4CAddb8486f71121106D2"
         }
       },
       "params": {
@@ -3008,10 +3043,10 @@
           "perpPosition": {
             "isWhitelisted": true,
             "totalPosition": "0.0",
-            "positionCap": "40000000.0",
+            "positionCap": "50000000.0",
             "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
+              "isTradePerp": false,
+              "isRfqPerp": false
             }
           }
         },
@@ -3019,7 +3054,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -3027,7 +3063,8 @@
           "perpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "15 mins",
             "requiredSigners": "2"
@@ -3035,7 +3072,8 @@
           "ibpFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
             "requiredSigners": "2"
@@ -3043,115 +3081,10 @@
           "iapFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "SolvBTC",
-      "marketId": "40",
-      "addresses": {
-        "baseAsset": {
-          "address": "0x4fce062aB932bDCD34221bad7570D436013Cb38F",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "baseERC20": {
-          "address": "0xCFB66706ae87F60120aF42F07eC8940bE44a34d6",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "spotFeed": {
-          "address": "0xca8dea2e500f38EC886Ef052C68695F68D5fea00"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "baseMarginParams": {
-            "marginFactor": "0.65",
-            "imScale": "0.93"
-          },
-          "wrappedAsset": {
-            "address": "0xCFB66706ae87F60120aF42F07eC8940bE44a34d6",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "basePosition": {
-            "isSRMWhitelisted": true,
-            "totalPosition": "0.000641083872651585",
-            "positionCap": "0.00065",
-            "depositWL": false
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "SolvBTCBBN",
-      "marketId": "41",
-      "addresses": {
-        "baseAsset": {
-          "address": "0x89b9BB59E0A3128c0054f7E088eF249B003fe110",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "baseERC20": {
-          "address": "0x7755C4529017CA8069f57B19E450FFaf128048A6",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "spotFeed": {
-          "address": "0x6219b20129414d54D9c767b03A12F2281ffa5168"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "baseMarginParams": {
-            "marginFactor": "0.65",
-            "imScale": "0.93"
-          },
-          "wrappedAsset": {
-            "address": "0x7755C4529017CA8069f57B19E450FFaf128048A6",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "basePosition": {
-            "isSRMWhitelisted": true,
-            "totalPosition": "0.013472485384682374",
-            "positionCap": "0.0365",
-            "depositWL": false
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
             "requiredSigners": "2"
           }
         }
@@ -3162,26 +3095,26 @@
       "marketId": "43",
       "addresses": {
         "baseAsset": {
-          "address": "0x1Abdb2896e57047fD989af7B3Ee6B7e81830F8D2",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x057fd0dEF0BEf37Bf36Aef9CB550faf88428C5D0",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0x2EE0fd70756EDC663AcC9676658A1497C247693A",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0x3FBFD80EF7591658d1D7DdEC067F413eFd6f985c",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0x4eF7219153956EC2d432AcD7550C78f63a3FC4E7"
+          "address": "0x6BFE5ea34Fd2A25f554bF9406B81cF8C054031Cb"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.15",
-            "imScale": "0.66"
+            "marginFactor": "0.08",
+            "imScale": "0.5"
           },
           "wrappedAsset": {
-            "address": "0x2EE0fd70756EDC663AcC9676658A1497C247693A",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x3FBFD80EF7591658d1D7DdEC067F413eFd6f985c",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -3193,7 +3126,7 @@
         "oiCaps": {
           "basePosition": {
             "isSRMWhitelisted": true,
-            "totalPosition": "37782674.208534980772447071",
+            "totalPosition": "51.01",
             "positionCap": "50000000.0",
             "depositWL": false
           }
@@ -3202,7 +3135,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -3211,408 +3145,19 @@
       }
     },
     {
-      "marketName": "TRUMP",
+      "marketName": "SolvBTC",
       "marketId": "44",
       "addresses": {
-        "iapFeed": {
-          "address": "0xb4F84a7ed40Ad99935f449cCbDC2f084952EbCb5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0x0Fb4f7fA70f4172618Ac3ad20261b0Fa160cb0E5",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perp": {
-          "address": "0x5C33EBbCfEb2DCE476d78094Fe201460De7fB3A3"
-        },
-        "perpFeed": {
-          "address": "0x70f5dd70f3F6C3cD05B5B9B54561A3b53037C21b"
-        },
-        "spotFeed": {
-          "address": "0x1F0eF70F29c6DDE0e41ADB29743D82feD4163D11"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "perpMarginRequirements": {
-            "mmPerpReq": "0.067",
-            "imPerpReq": "0.1"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "perpPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "329.058043578470286152",
-            "positionCap": "44000.0",
-            "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
-            }
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "perpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "15 mins",
-            "requiredSigners": "2"
-          },
-          "ibpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          },
-          "iapFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "20 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "OLAS",
-      "marketId": "45",
-      "addresses": {
         "baseAsset": {
-          "address": "0x2E4DB75E48e5Eb788D74818a79f403d9E079b21E",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xCB2CE8A455B5E1ee88B7f8e71EeB9D0F8Fe0746C",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "baseERC20": {
-          "address": "0xCd6A5DCB5a9b5E4801AC50F3E9171a80017D1EC2",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+          "address": "0xf51e67F6d80E51ad59Ee1247957dD13ac7E5B279",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
         "spotFeed": {
-          "address": "0xe5736F03689F8310cc51303376479d74b2Cf4C9F"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "baseMarginParams": {
-            "marginFactor": "0.0",
-            "imScale": "0.0"
-          },
-          "wrappedAsset": {
-            "address": "0xCd6A5DCB5a9b5E4801AC50F3E9171a80017D1EC2",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "basePosition": {
-            "isSRMWhitelisted": true,
-            "totalPosition": "35293.591750058667542226",
-            "positionCap": "500000.0",
-            "depositWL": false
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "fxUSDC",
-      "marketId": "46",
-      "addresses": {
-        "baseAsset": {
-          "address": "0xdcd623570c8a979BeE35f4Ed9932E065F0860c44",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "baseERC20": {
-          "address": "0x1fE488C69f895BfF7fc5C4c187380D25854aA7D6"
-        },
-        "spotFeed": {
-          "address": "0x9C61888497D716f5bBd93D5e13d443cC375f1424"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "baseMarginParams": {
-            "marginFactor": "0.995",
-            "imScale": "0.995"
-          },
-          "wrappedAsset": {
-            "address": "0x1fE488C69f895BfF7fc5C4c187380D25854aA7D6",
-            "owner": "0x0000000000000000000000000000000000000000"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "basePosition": {
-            "isSRMWhitelisted": true,
-            "totalPosition": "100.0",
-            "positionCap": "500000.0",
-            "depositWL": false
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "1 hr",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "MUSD",
-      "marketId": "47",
-      "addresses": {
-        "baseAsset": {
-          "address": "0x3c2F819c6771795E0aD19348d3DDf73D50A699b8",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "baseERC20": {
-          "address": "0xa30aB68436d26b3c6c303B777354105055Fc3A30",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "spotFeed": {
-          "address": "0xFfe9071962Aa590cBd71866629603Ac0699CDa2A"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "baseMarginParams": {
-            "marginFactor": "0.5",
-            "imScale": "0.5"
-          },
-          "wrappedAsset": {
-            "address": "0xa30aB68436d26b3c6c303B777354105055Fc3A30",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "basePosition": {
-            "isSRMWhitelisted": true,
-            "totalPosition": "36.694620746988743284",
-            "positionCap": "40.0",
-            "depositWL": false
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "HYPE",
-      "marketId": "48",
-      "addresses": {
-        "baseAsset": {
-          "address": "0x2dd469DB6ee0dBF0277F0f3021fd8a6486A751ce",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "baseERC20": {
-          "address": "0x1AeC0cE2f05b958369bFF35290ED0e03E776b9F4",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "forwardFeed": {
-          "address": "0x0f79fA7bD5C098b99743a9714bcD11f219C9b695",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "iapFeed": {
-          "address": "0xc7Bdb8D750BdDbB76e9FF62e9f4487c6c4766902",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "ibpFeed": {
-          "address": "0xE3e3891B3DC234d59AB085B54B92435B844Ed059",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "option": {
-          "address": "0x7344Bf2aFFF9aFCd6d024865Fc0cA53bf03464D9",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perp": {
-          "address": "0x4890cD16569a961814D277B07f3A4517DC08BcD2",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "perpFeed": {
-          "address": "0x947eB7B730EAF6a76dD7374eB443E6c5fC51503B",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "spotFeed": {
-          "address": "0x4fdeC4F8cfA5bddedbc60338516F3cb6ba03b143"
-        },
-        "volFeed": {
-          "address": "0x481916590863053eA2d8F21B64Ee9429820512d1"
-        }
-      },
-      "params": {
-        "marginParams": {
-          "perpMarginRequirements": {
-            "mmPerpReq": "0.1",
-            "imPerpReq": "0.15"
-          },
-          "optionMarginParams": {
-            "maxSpotReq": "0.3",
-            "minSpotReq": "0.25",
-            "mmCallSpotReq": "0.18",
-            "mmPutSpotReq": "0.18",
-            "mmPutMtMReq": "0.18",
-            "unpairedIMScale": "1.3",
-            "unpairedMMScale": "1.25",
-            "mmOffsetScale": "1.05"
-          },
-          "baseMarginParams": {
-            "marginFactor": "0.6",
-            "imScale": "0.834"
-          },
-          "wrappedAsset": {
-            "address": "0x1AeC0cE2f05b958369bFF35290ED0e03E776b9F4",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-          },
-          "oracleContingencyParams": {
-            "perpThreshold": "0.55",
-            "optionThreshold": "0.55",
-            "baseThreshold": "0.55",
-            "ocFactor": "1.0"
-          }
-        },
-        "oiCaps": {
-          "basePosition": {
-            "isSRMWhitelisted": true,
-            "totalPosition": "13587.408448997311762189",
-            "positionCap": "50000.0",
-            "depositWL": false
-          },
-          "optionPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "51711.0",
-            "positionCap": "150000.0"
-          },
-          "perpPosition": {
-            "isWhitelisted": true,
-            "totalPosition": "5785.48",
-            "positionCap": "150000.0",
-            "matching": {
-              "isTradePerp": true,
-              "isRfqPerp": true
-            }
-          }
-        },
-        "feedParams": {
-          "spotFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "volFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "forwardFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2",
-            "settlementHeartbeat": "3 mins"
-          },
-          "perpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "ibpFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          },
-          "iapFeed": {
-            "signers": [
-              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
-            ],
-            "heartbeat": "3 mins",
-            "requiredSigners": "2"
-          }
-        }
-      }
-    },
-    {
-      "marketName": "PUFETH",
-      "marketId": "49",
-      "addresses": {
-        "baseAsset": {
-          "address": "0xDdE81BAcF0B7B462e95BE9c4ad7a523E550A22bB",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "baseERC20": {
-          "address": "0x95d0e6282CE9A29f3051837b38ba76E1CF8227F0",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
-        },
-        "spotFeed": {
-          "address": "0x116B2d624517ba3516ddEc1523684C77D8B6645a"
+          "address": "0xF64a28E4A93e644f2558BD4eE53185D3cc02aeC7"
         }
       },
       "params": {
@@ -3622,8 +3167,62 @@
             "imScale": "0.93"
           },
           "wrappedAsset": {
-            "address": "0x95d0e6282CE9A29f3051837b38ba76E1CF8227F0",
-            "owner": "0x0000000000000000000000000000000000000000"
+            "address": "0xf51e67F6d80E51ad59Ee1247957dD13ac7E5B279",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "basePosition": {
+            "isSRMWhitelisted": true,
+            "totalPosition": "0.0",
+            "positionCap": "50.0",
+            "depositWL": false
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "SolvBTCBBN",
+      "marketId": "45",
+      "addresses": {
+        "baseAsset": {
+          "address": "0x4035479371D195590378Af53C17AD9250376ADF0",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "baseERC20": {
+          "address": "0x9583aB6Cc9357fbBBe4BBA87dC15A9647a22853D",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "spotFeed": {
+          "address": "0xe1c92b3A0A907fd2440755eD3ccF964a51b8Fc86"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "baseMarginParams": {
+            "marginFactor": "0.65",
+            "imScale": "0.93"
+          },
+          "wrappedAsset": {
+            "address": "0x9583aB6Cc9357fbBBe4BBA87dC15A9647a22853D",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -3644,7 +3243,8 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"
@@ -3653,30 +3253,116 @@
       }
     },
     {
-      "marketName": "KHYPE",
-      "marketId": "50",
+      "marketName": "TRUMP",
+      "marketId": "47",
       "addresses": {
-        "baseAsset": {
-          "address": "0x9FDf0d5722EF1491B5b79F96e120E9B84b73925e",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        "iapFeed": {
+          "address": "0x390417745e3B1518cf94ca93E88bE3E3583f4BE3",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
         },
-        "baseERC20": {
-          "address": "0x208d27a880A2cBD33386C358792AE1b292dcB6E1",
-          "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+        "ibpFeed": {
+          "address": "0x9612F819F867116C0de7D59f98807652e0497F64",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "perp": {
+          "address": "0x4dE8E1E3d1AD1D025F8d1D66414050688C0aa463"
+        },
+        "perpFeed": {
+          "address": "0x2038A25cbAEb0235630A1F41E9900c5Ec954fbe0"
         },
         "spotFeed": {
-          "address": "0xae071e877B1B40a82413aDf5579DE41508148006"
+          "address": "0x2Ea93147feAB9c6a89d16808F842c4ad65620993"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "perpMarginRequirements": {
+            "mmPerpReq": "0.4545",
+            "imPerpReq": "0.5"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "perpPosition": {
+            "isWhitelisted": true,
+            "totalPosition": "2.0",
+            "positionCap": "7000.0",
+            "matching": {
+              "isTradePerp": true,
+              "isRfqPerp": true
+            }
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "perpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "15 mins",
+            "requiredSigners": "2"
+          },
+          "ibpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          },
+          "iapFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "20 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "OLAS",
+      "marketId": "48",
+      "addresses": {
+        "baseAsset": {
+          "address": "0x50C947fC07CA5f96e1B9BB86c9E35c94938845C1",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "baseERC20": {
+          "address": "0x0B8817E46C24eC5dC768a597344C06cEE157D966",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "spotFeed": {
+          "address": "0x45d2C3fDce9A61Bf0D27304ae12A80d0c674eDB8"
         }
       },
       "params": {
         "marginParams": {
           "baseMarginParams": {
-            "marginFactor": "0.0",
-            "imScale": "0.0"
+            "marginFactor": "0.1",
+            "imScale": "0.5"
           },
           "wrappedAsset": {
-            "address": "0x208d27a880A2cBD33386C358792AE1b292dcB6E1",
-            "owner": "0xB176A44D819372A38cee878fB0603AEd4d26C5a5"
+            "address": "0x0B8817E46C24eC5dC768a597344C06cEE157D966",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
           },
           "oracleContingencyParams": {
             "perpThreshold": "0.55",
@@ -3687,9 +3373,9 @@
         },
         "oiCaps": {
           "basePosition": {
-            "isSRMWhitelisted": false,
-            "totalPosition": "0.0",
-            "positionCap": "0.0",
+            "isSRMWhitelisted": true,
+            "totalPosition": "31.0",
+            "positionCap": "500000.0",
             "depositWL": false
           }
         },
@@ -3697,7 +3383,247 @@
           "spotFeed": {
             "signers": [
               "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
-              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f"
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "fxUSDC",
+      "marketId": "50",
+      "addresses": {
+        "baseAsset": {
+          "address": "0x1ddefDd26a10eFf75301d71c65D3d0066F00A4AA",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "baseERC20": {
+          "address": "0xdf986C23f298AfaDeea0b739167Cc2Eac5F9417e"
+        },
+        "spotFeed": {
+          "address": "0x3187431EAAdf59425FAf9A5eEFc43786d070234e"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "baseMarginParams": {
+            "marginFactor": "0.99",
+            "imScale": "0.99"
+          },
+          "wrappedAsset": {
+            "address": "0xdf986C23f298AfaDeea0b739167Cc2Eac5F9417e",
+            "owner": "0x0000000000000000000000000000000000000000"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "basePosition": {
+            "isSRMWhitelisted": true,
+            "totalPosition": "20.0",
+            "positionCap": "10000000.0",
+            "depositWL": false
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "MUSD",
+      "marketId": "51",
+      "addresses": {
+        "baseAsset": {
+          "address": "0x87748e82224944A7C9125969b3D8a800F603C413",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "baseERC20": {
+          "address": "0xEac55f18256497dD12A4FFB4c6658d74f8bc6Bed",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "spotFeed": {
+          "address": "0xcFc38d440591b8434C37c48E04aB302d49512f10"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "baseMarginParams": {
+            "marginFactor": "0.95",
+            "imScale": "0.95"
+          },
+          "wrappedAsset": {
+            "address": "0xEac55f18256497dD12A4FFB4c6658d74f8bc6Bed",
+            "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "basePosition": {
+            "isSRMWhitelisted": true,
+            "totalPosition": "0.0",
+            "positionCap": "100000000.0",
+            "depositWL": false
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          }
+        }
+      }
+    },
+    {
+      "marketName": "HYPE",
+      "marketId": "52",
+      "addresses": {
+        "forwardFeed": {
+          "address": "0x41a904D3b8896A2cEF0B0a37582c6B698949B239",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "iapFeed": {
+          "address": "0x198965E5F6f0f8962c412F48Dc0768DE74B4B750",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "ibpFeed": {
+          "address": "0x01aDF4b6E62CfF37867263B19d35929C361730Ec",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "option": {
+          "address": "0x036c5e9Cbd628AD86505ABd629EcF5Cf3cbC3dC7",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "perp": {
+          "address": "0xC4550eFE72C219a3C673634aAE1465262B65acF8",
+          "owner": "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+        },
+        "perpFeed": {
+          "address": "0x0957824035Fa02A0F076A9f79358e054198A3e51"
+        },
+        "spotFeed": {
+          "address": "0x014ff1e0a895A2c7f7216aB880097932a07D6c1A"
+        },
+        "volFeed": {
+          "address": "0x89E16ff3cA5Ed21825d25b135c875e4f73d70D08"
+        }
+      },
+      "params": {
+        "marginParams": {
+          "perpMarginRequirements": {
+            "mmPerpReq": "0.067",
+            "imPerpReq": "0.1"
+          },
+          "optionMarginParams": {
+            "maxSpotReq": "0.24",
+            "minSpotReq": "0.2",
+            "mmCallSpotReq": "0.14",
+            "mmPutSpotReq": "0.14",
+            "mmPutMtMReq": "0.14",
+            "unpairedIMScale": "1.25",
+            "unpairedMMScale": "1.15",
+            "mmOffsetScale": "1.05"
+          },
+          "oracleContingencyParams": {
+            "perpThreshold": "0.55",
+            "optionThreshold": "0.55",
+            "baseThreshold": "0.55",
+            "ocFactor": "1.0"
+          }
+        },
+        "oiCaps": {
+          "optionPosition": {
+            "isWhitelisted": true,
+            "totalPosition": "0.0",
+            "positionCap": "200000.0"
+          },
+          "perpPosition": {
+            "isWhitelisted": true,
+            "totalPosition": "0.0",
+            "positionCap": "200000.0",
+            "matching": {
+              "isTradePerp": false,
+              "isRfqPerp": false
+            }
+          }
+        },
+        "feedParams": {
+          "spotFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "volFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "forwardFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2",
+            "settlementHeartbeat": "3 mins"
+          },
+          "perpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "ibpFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
+            ],
+            "heartbeat": "3 mins",
+            "requiredSigners": "2"
+          },
+          "iapFeed": {
+            "signers": [
+              "0x555eB362b5057e36f88cCb42b44D6dA5Fe7A0656",
+              "0x47ebFBAda4d85Dac6b9018C0CE75774556A8243f",
+              "0x000000A94C901AA5d4da1157B2Dd1c4c6b69815e"
             ],
             "heartbeat": "3 mins",
             "requiredSigners": "2"

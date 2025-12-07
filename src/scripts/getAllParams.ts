@@ -14,28 +14,30 @@ async function getAllParams(): Promise<void> {
     fs.mkdirSync(paramsDir, { recursive: true });
   }
 
-
-  console.log("# PM Params #");
-  const pmParams: any = await getAllPMParams();
-  let filePath = path.join(paramsDir, 'pmParams.json');
-  fs.writeFileSync(filePath, JSON.stringify(pmParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
-  console.log(`Results written to ${filePath}`);
-
+  //
+  // console.log("# PM Params #");
+  // const pmParams: any = await getAllPMParams();
+  // let filePath = path.join(paramsDir, 'pmParams.json');
+  // fs.writeFileSync(filePath, JSON.stringify(pmParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
+  // console.log(`Results written to ${filePath}`);
+  //
 
   console.log("# PM2 Params #");
-  const pm2Params: any = await getAllPM2Params();
+  const pm2Params: any[] = await getAllPM2Params();
   // write results to "data/{vars.envirnoment}/pm2Params.json"
-  filePath = path.join(paramsDir, 'pm2Params.json');
-  fs.writeFileSync(filePath, JSON.stringify(pm2Params, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
-  console.log(`Results written to ${filePath}`);
-
+  for (const market of pm2Params) {
+    let pm2FilePath = path.join(paramsDir, `${market.market}_PM2Params.json`);
+    fs.writeFileSync(pm2FilePath, JSON.stringify(market, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
+    console.log(`Results written to ${pm2FilePath}`);
+  }
 
   console.log("# SRM Params #");
   const srmParams: any = await getAllSRMParams();
+  console.log(srmParams)
   // write results to "data/srmParams.json"
-  filePath = path.join(paramsDir, 'srmParams.json');
-  fs.writeFileSync(filePath, JSON.stringify(srmParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
-  console.log(`Results written to ${filePath}`);
+  const srmFilePath = path.join(paramsDir, 'srmParams.json');
+  fs.writeFileSync(srmFilePath, JSON.stringify(srmParams, (_, v) => typeof v === 'bigint' ? v.toString() : v, 2));
+  console.log(`Results written to ${srmFilePath}`);
   // for (const market of srmParams.marketParams) {
   //   console.log(`${market.marketName.toUpperCase()}_MARKETID=${market.marketId}`);
   // }

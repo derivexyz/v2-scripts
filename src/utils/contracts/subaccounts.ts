@@ -1,11 +1,11 @@
-import { callWeb3, executeWeb3 } from '../web3/utils';
+import { callWeb3, executeWeb3, multiCallWeb3 } from '../web3/utils';
 import { getAllAddresses } from '../getAddresses';
 import { getSubaccountMargin } from './auctions';
-import {optionDetailsToString, subIdToOptionDetails} from './option';
+import { optionDetailsToString, subIdToOptionDetails } from './option';
 import { getManagerAddress, ManagerType } from '../../types/managers';
 import { ethers } from 'ethers';
 import { logger } from '../logger';
-import {fromBN, prettifyBN, toBN} from '../misc/BN';
+import { fromBN, prettifyBN } from '../misc/BN';
 
 export type AccountPortfolio = {
   cash: bigint;
@@ -121,6 +121,8 @@ export async function getAccountPortfolio(subAccId: bigint, block?: number): Pro
     cash: 0n,
     markets: {},
   };
+  const multicalls: any[] = [];
+
   for (const balance of balances) {
     const asset = balance[0].toLowerCase();
     const subId = balance[1];
@@ -130,6 +132,7 @@ export async function getAccountPortfolio(subAccId: bigint, block?: number): Pro
       res.cash = amount;
     } else {
       let found = false;
+
       for (const currency of Object.keys(addresses.markets)) {
         const market = addresses.markets[currency];
         if (market.baseAsset?.toLowerCase() == asset) {
@@ -151,17 +154,13 @@ export async function getAccountPortfolio(subAccId: bigint, block?: number): Pro
               options: {},
             };
           }
-          const perpUnrealisedPnL = await callWeb3(
-            null,
-            market.perp,
+          multicalls.push([market.perp,
             'getUnsettledAndUnrealizedCash(uint256)',
             [subAccId],
-            ['int256'],
-            block
-          );
+            ['int256'],]);
           res.markets[currency].perp = {
             position: amount,
-            unrealisedPnL: perpUnrealisedPnL
+            unrealisedPnL: "TODO" as any
           };
         } else if (market.option?.toLowerCase() == asset) {
           found = true;
@@ -182,6 +181,21 @@ export async function getAccountPortfolio(subAccId: bigint, block?: number): Pro
       }
     }
   }
+
+
+  const uPnLs = await multiCallWeb3(null, multicalls, block);
+  let i = 0;
+
+  for (const balance of balances) {
+    const asset = balance[0].toLowerCase();
+    for (const currency of Object.keys(addresses.markets)) {
+      const market = addresses.markets[currency];
+      if (market.perp?.toLowerCase() == asset) {
+        res.markets[currency].perp.unrealisedPnL = uPnLs[i++];
+      }
+    }
+  }
+
   return res;
 }
 
