@@ -267,7 +267,7 @@ export interface InvalidMakerOrTakerFee {
   data?: any;
 }
 /**
- * During option expiry listener, settlement price could not be retreived
+ * During option expiry listener, settlement price could not be retrieved
  */
 export interface OptionSettlementPriceCouldNotBeSaved {
   code: 8402;
